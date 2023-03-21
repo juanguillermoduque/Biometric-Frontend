@@ -16,6 +16,7 @@ export class AppComponent {
   onSubmit() {
     if (!this.rol || !this.documento || !this.contrasena) {
       this.mostrarError = true;
+      
     } else {
       // Aquí puedes agregar la lógica para enviar los datos del formulario
       this.rol = '';
