@@ -1,0 +1,25 @@
+<div class="logo">
+    <img src="../assets/img/sena-logo-AD3CDF05EE-seeklogo.com.png" alt="Logo">
+  </div>
+  
+  <main>
+    <form (ngSubmit)="onSubmit()">
+      <h1>Login</h1>
+      <label for="rol">Rol:</label>
+      <select id="rol" name="rol" [(ngModel)]="rol">
+        <option value="aprendiz">Aprendiz</option>
+        <option value="instructor">Instructor</option>
+        <option value="administrador">Administrador</option>
+      </select>
+      <label for="documento">Documento de identidad:</label>
+      <input type="text" id="documento" name="documento" [(ngModel)]="documento">
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena">
+      <button type="submit">Iniciar Sesión</button>
+      <p *ngIf="mostrarError">Por favor completa todos los campos.</p>
+    </form>
+  </main>
+  
+  
+  
+  
