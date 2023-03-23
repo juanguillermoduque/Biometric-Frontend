@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -12,19 +13,17 @@ export class AuthComponent {
   contrasena: string = '';
   mostrarError = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   onSubmit() {
     if (!this.rol || !this.documento || !this.contrasena) {
       this.mostrarError = true;
-      
     } else {
-      // Aquí puedes agregar la lógica para enviar los datos del formulario
       this.rol = '';
       this.documento = '';
       this.contrasena = '';
       this.mostrarError = false;
+      this.router.navigate(['/administrador/fichas']);
     }
   }
 }
-

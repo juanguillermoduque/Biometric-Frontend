@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
-import { Route } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -53,6 +53,10 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
+import { FichasComponent } from './administrador/fichas/fichas.component';
+import { RegistrarAsistenciasComponent } from './instructor/asistencias/registrar-asistencias/registrar-asistencias.component';
+import { ModificarAsistenciasComponent } from './instructor/asistencias/modificar-asistencias/modificar-asistencias.component';
+import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asistencias/listar-asistencias.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +64,11 @@ import { AdministradorComponent } from './administrador/administrador.component'
     AsistenciasComponent,
     AprendizComponent,
     InstructorComponent,
-    AdministradorComponent
+    AdministradorComponent,
+    FichasComponent,
+    RegistrarAsistenciasComponent,
+    ModificarAsistenciasComponent,
+    ListarAsistenciasComponent
   ],
   imports: [
     BrowserModule,

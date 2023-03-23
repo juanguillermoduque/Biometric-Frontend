@@ -74,6 +74,26 @@ body {
     margin-top: 10px;
     font-style: italic;
   }
+
+  @media only screen and (max-width: 600px) {
+    body {
+    font-size: 16px;
+    }
+    .logo img {
+    height: 50px;
+    }
+    main {
+    height: calc(100vh - 160px);
+    }
+    form {
+    padding: 20px;
+    }
+    form select,
+    form input[type="text"],
+    form input[type="password"] {
+    padding: 8px;
+    }
+    }
   /*
   header {
     display: flex;
