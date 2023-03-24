@@ -53,6 +53,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { AdministradorComponent } from './administrador/administrador.component'
     AsistenciasComponent,
     AprendizComponent,
     InstructorComponent,
-    AdministradorComponent
+    AdministradorComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
