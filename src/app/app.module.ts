@@ -53,10 +53,10 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { FichasComponent } from './administrador/fichas/fichas.component';
 import { RegistrarAsistenciasComponent } from './instructor/asistencias/registrar-asistencias/registrar-asistencias.component';
 import { ModificarAsistenciasComponent } from './instructor/asistencias/modificar-asistencias/modificar-asistencias.component';
 import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asistencias/listar-asistencias.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,10 +65,10 @@ import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asis
     AprendizComponent,
     InstructorComponent,
     AdministradorComponent,
-    FichasComponent,
     RegistrarAsistenciasComponent,
     ModificarAsistenciasComponent,
-    ListarAsistenciasComponent
+    ListarAsistenciasComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
