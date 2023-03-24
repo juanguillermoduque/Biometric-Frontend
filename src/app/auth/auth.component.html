@@ -1,25 +1,24 @@
 <div class="logo">
-    <img src="/Biometric-Frontend/src/app/img/sena-logo-AD3CDF05EE-seeklogo.com.png" alt="Logo">
-  </div>
-  
-  <main>
-    <form (ngSubmit)="onSubmit()">
-      <h1>Login</h1>
-      <label for="rol">Rol:</label>
-      <select id="rol" name="rol" [(ngModel)]="rol">
-        <option value="aprendiz">Aprendiz</option>
-        <option value="instructor">Instructor</option>
-        <option value="administrador">Administrador</option>
-      </select>
-      <label for="documento">Documento de identidad:</label>
-      <input type="text" id="documento" name="documento" [(ngModel)]="documento">
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena">
-      <button type="submit">Iniciar Sesión</button>
-      <p *ngIf="mostrarError">Por favor completa todos los campos.</p>
-    </form>
-  </main>
-  
-  
-  
-  
+  <img src="/Biometric-Frontend/src/assets/img/sena-logo-AD3CDF05EE-seeklogo.com.png" alt="Logo">
+</div>
+
+<form (ngSubmit)="onSubmit()" class="form">
+  <h1 class="form__title">Login</h1>
+  <mat-form-field class="form__field">
+    <mat-label>Rol</mat-label>
+    <mat-select name="rol" [(ngModel)]="rol">
+      <mat-option value="aprendiz">Aprendiz</mat-option>
+      <mat-option value="instructor">Instructor</mat-option>
+      <mat-option value="administrador">Administrador</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="form__field">
+    <mat-label>Documento de identidad</mat-label>
+    <input matInput type="text" name="documento" [(ngModel)]="documento">
+  </mat-form-field>
+  <mat-form-field class="form__field">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
+  </mat-form-field>
+  <button mat-raised-button type="submit" class="form__button">Iniciar Sesión</button>
+</form>
