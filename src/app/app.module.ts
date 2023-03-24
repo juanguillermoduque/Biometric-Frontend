@@ -56,6 +56,7 @@ import { AdministradorComponent } from './administrador/administrador.component'
 import { RegistrarAsistenciasComponent } from './instructor/asistencias/registrar-asistencias/registrar-asistencias.component';
 import { ModificarAsistenciasComponent } from './instructor/asistencias/modificar-asistencias/modificar-asistencias.component';
 import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asistencias/listar-asistencias.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asis
     AdministradorComponent,
     RegistrarAsistenciasComponent,
     ModificarAsistenciasComponent,
-    ListarAsistenciasComponent
+    ListarAsistenciasComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
