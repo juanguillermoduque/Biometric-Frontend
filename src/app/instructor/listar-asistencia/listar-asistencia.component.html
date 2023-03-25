@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card">
+      <h2>Listar Asistencias</h2>
+      <form class="form">
+        <mat-form-field>
+          <input matInput placeholder="ID Asistencia" name="idAsistencia">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="ID Aprendiz" name="idAprendiz">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="ID Ficha" name="idFicha">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" name="fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Hora de Ingreso" name="horaIngreso">
+        </mat-form-field>
+        <button mat-raised-button color="primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+  

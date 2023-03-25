@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instructor',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class InstructorComponent {
 
+  constructor(private router: Router) {}
+
+  regresar() {
+    this.router.navigateByUrl('/auth');
+  }
+
 }
+
+
+
+
