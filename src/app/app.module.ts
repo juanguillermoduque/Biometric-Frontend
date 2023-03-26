@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
-import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -53,10 +52,20 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { RegistrarAsistenciasComponent } from './instructor/asistencias/registrar-asistencias/registrar-asistencias.component';
-import { ModificarAsistenciasComponent } from './instructor/asistencias/modificar-asistencias/modificar-asistencias.component';
-import { ListarAsistenciasComponent } from './instructor/asistencias/listar-asistencias/listar-asistencias.component';
-import { MainComponent } from './main/main.component';
+import { VisualizarFichasComponent } from './fichas/visualizar-fichas/visualizar-fichas.component';
+import { ListarFichasComponent } from './fichas/listar-fichas/listar-fichas.component';
+import { GenerarReportesComponent } from './fichas/generar-reportes/generar-reportes.component';
+import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asistencias/visualizar-asistencias.component';
+
+import { RouterModule, Routes } from '@angular/router';
+import { ComponentFixture } from '@angular/core/testing';
+
+const appRoutes:Routes=[
+  {path:"", redirectTo:'/main', pathMatch:"full"},
+  {path:"auth", component:AuthComponent},
+  {path: 'instructor', component:InstructorComponent},
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,10 +74,11 @@ import { MainComponent } from './main/main.component';
     AprendizComponent,
     InstructorComponent,
     AdministradorComponent,
-    RegistrarAsistenciasComponent,
-    ModificarAsistenciasComponent,
-    ListarAsistenciasComponent,
-    MainComponent
+    VisualizarFichasComponent,
+    ListarFichasComponent,
+    GenerarReportesComponent,
+    VisualizarAsistenciasComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -109,7 +119,8 @@ import { MainComponent } from './main/main.component';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    RouterModule.forRoot(appRoutes)
   ],
   exports: [
     MatAutocompleteModule,

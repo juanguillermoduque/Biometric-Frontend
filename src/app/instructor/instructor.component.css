@@ -1,0 +1,31 @@
+.menu-icon {
+    margin-right: 10px;
+  }
+  
+  .title {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .user-icon {
+    margin-left: auto;
+  }
+  
+  .content {
+    margin-top: 20px;
+  }
+  
+  .footer {
+    background-image: linear-gradient(to top, #fb732c, #ff888d, #ffb1d5, #fbdcfb, #ffffff);
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+.barra{
+    background: linear-gradient(rgb(255, 72, 0), white);
+}
