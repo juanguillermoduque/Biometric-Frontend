@@ -1,1 +1,33 @@
-<p>instructor works!</p>
+<mat-toolbar class="barra">
+    <button mat-icon-button class="menu-icon" aria-label="Menu" matTooltip="Menu" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">Instructor</span>
+    <button mat-icon-button class="user-icon" aria-label="User" matTooltip="User" [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/generar-reporte-ficha">Generar Reporte de Ficha</a>
+    <a mat-menu-item routerLink="/listar-asistencia">Listar Asistencia</a>
+    <a mat-menu-item routerLink="/listar-usuario">Listar Usuario</a>
+    <a mat-menu-item routerLink="/registrar-usuario">Registrar Usuario</a>
+    <a mat-menu-item routerLink="/visualizar-asistencia">Visualizar Asistencia Aprendiz</a>
+    <a mat-menu-item routerLink="/visualizar-excusa">Visualizar Excusa</a>
+    <a mat-menu-item routerLink="/visualizar-fichas">Visualizar Fichas</a>
+  </mat-menu>
+  
+  
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item>Perfil de Usuario</button>
+    <button mat-menu-item>Configuración</button>
+    <button mat-menu-item (click)="regresar()">Cerrar Sesión</button>
+  </mat-menu>
+  
+  
+  <mat-toolbar  class="footer">
+    <span class="footer-text">© 2023 Sena</span>
+  </mat-toolbar>
+  
+  

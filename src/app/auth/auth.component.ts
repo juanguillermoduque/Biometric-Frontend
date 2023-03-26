@@ -13,18 +13,12 @@ export class AuthComponent {
   contrasena: string = '';
   mostrarError: boolean = false;
 
-
-
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar
   ) {}
 
-  navigateTo(page: string) {
-    this.router.navigateByUrl('/administrador' + page);
-  }
-
-  onSubmit() {
+  logearse() {
     if (!this.rol || !this.documento || !this.contrasena) {
       this._snackBar.open('Por favor completa todos los campos.', 'Cerrar', {
         duration: 5000,
@@ -36,8 +30,7 @@ export class AuthComponent {
       this.rol = '';
       this.documento = '';
       this.contrasena = '';
+      this.router.navigateByUrl('/main');
     }
   }
 }
-
-
