@@ -59,11 +59,18 @@ import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asisten
 
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
+import { FichasComponent } from './fichas/fichas.component';
+import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
 
 const appRoutes:Routes=[
   {path:"", redirectTo:'/main', pathMatch:"full"},
   {path:"auth", component:AuthComponent},
-  {path: 'instructor', component:InstructorComponent},
+  {path:'instructor', component:InstructorComponent},
+  {path:'fichas', component:FichasComponent},
+  {path:'agregar-ficha', component: AgregarFichasComponent },
+  {path:'generar-reportes', component:GenerarReportesComponent},
+  {path:'listar-fichas', component:ListarFichasComponent},
+  { path: '**', component: AgregarFichasComponent },
 ]
 
 @NgModule({
@@ -78,6 +85,9 @@ const appRoutes:Routes=[
     ListarFichasComponent,
     GenerarReportesComponent,
     VisualizarAsistenciasComponent,
+    FichasComponent,
+    AgregarFichasComponent,
+    ListarFichasComponent
 
   ],
   imports: [
@@ -158,7 +168,7 @@ const appRoutes:Routes=[
     MatPaginatorModule,
     MatSortModule,
     MatTableModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
