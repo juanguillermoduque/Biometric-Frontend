@@ -52,32 +52,18 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { MainComponent } from './main/main.component';
 import { VisualizarFichasComponent } from './fichas/visualizar-fichas/visualizar-fichas.component';
 import { ListarFichasComponent } from './fichas/listar-fichas/listar-fichas.component';
 import { GenerarReportesComponent } from './fichas/generar-reportes/generar-reportes.component';
 import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asistencias/visualizar-asistencias.component';
-import { RegistrarUsuarioComponent } from './administrador/registrar-usuario/registrar-usuario.component';
-import { ListarUsuariosComponent } from './administrador/listar-usuarios/listar-usuarios.component';
-import { AgregarFichasComponent } from './administrador/agregar-fichas/agregar-fichas.component';
-import { ModificarFichasComponent } from './administrador/modificar-fichas/modificar-fichas.component';
-import { AsignarFichasComponent } from './administrador/asignar-fichas/asignar-fichas.component';
-import { VisualizarAsistenciaAprendizComponent } from './instructor/visualizar-asistencia-aprendiz/visualizar-asistencia-aprendiz.component';
-import { ListarUsuarioComponent } from './instructor/listar-usuario/listar-usuario.component';
-import { ListarAsistenciaComponent } from './instructor/listar-asistencia/listar-asistencia.component';
-import { VisualziarFichasComponent } from './instructor/visualziar-fichas/visualziar-fichas.component';
-import { VisualizarEscusaComponent } from './instructor/visualizar-escusa/visualizar-escusa.component';
-import { GenerarReporteFichaComponent } from './instructor/generar-reporte-ficha/generar-reporte-ficha.component';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
 
 const appRoutes:Routes=[
   {path:"", redirectTo:'/main', pathMatch:"full"},
   {path:"auth", component:AuthComponent},
-  {path:"main", component:MainComponent},
   {path: 'instructor', component:InstructorComponent},
-  {path: 'generar-reporte-ficha', component:GenerarReporteFichaComponent},
-  {path: 'listar-asistencia', component:ListarAsistenciaComponent}
 ]
 
 @NgModule({
@@ -88,22 +74,11 @@ const appRoutes:Routes=[
     AprendizComponent,
     InstructorComponent,
     AdministradorComponent,
-    MainComponent,
     VisualizarFichasComponent,
     ListarFichasComponent,
     GenerarReportesComponent,
     VisualizarAsistenciasComponent,
-    RegistrarUsuarioComponent,
-    ListarUsuariosComponent,
-    AgregarFichasComponent,
-    ModificarFichasComponent,
-    AsignarFichasComponent,
-    VisualizarAsistenciaAprendizComponent,
-    ListarUsuarioComponent,
-    ListarAsistenciaComponent,
-    VisualziarFichasComponent,
-    VisualizarEscusaComponent,
-    GenerarReporteFichaComponent
+
   ],
   imports: [
     BrowserModule,
