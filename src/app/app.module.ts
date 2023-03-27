@@ -101,10 +101,8 @@ const appRoutes:Routes=[
   {path: 'generar-reportes', component:ReporteAsistenciaComponent},
   {path: 'editar-fichas', component:EditarAsistenciasComponent},
   {path: 'administrador', component:AdministradorComponent},
-  {path: 'aprendiz', component:AprendizComponent}
-
+  {path: 'aprendiz', component:AprendizComponent},
   {path: 'editar-fichas/:id', component: EditarFichasComponent}
-
 ]
 
 @NgModule({
