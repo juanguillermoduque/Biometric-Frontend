@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { HttpClientModule } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
+
 
 import { CommonModule } from '@angular/common';
 // Material Form Controls
@@ -67,8 +68,6 @@ import { ListarAsistenciasComponent } from './asistencias/listar-asistencias/lis
 import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
 
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
-import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
 import { EditarFichasComponent } from './fichas/editar-fichas/editar-fichas.component';
 import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuarios.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
@@ -76,7 +75,7 @@ import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usua
 import { VisualizarUsuarioComponent } from './usuarios/visualizar-usuario/visualizar-usuario.component';
 import { ReporteUsuarioComponent } from './usuarios/reporte-usuario/reporte-usuario.component';
 import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.component';
-import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
+
 
 
 //import services
@@ -91,7 +90,6 @@ const appRoutes:Routes=[
   {path:'instructor', component:InstructorComponent},
   {path:'fichas', component:FichasComponent},
   {path:'agregar-ficha', component: AgregarFichasComponent },
-  {path:'generar-reportes', component:GenerarReportesComponent},
   {path:'listar-fichas', component:ListarFichasComponent},
   {path: 'visualizar-fichas', component:VisualizarFichasComponent},
   {path:'asistencias', component:AsistenciasComponent},
@@ -100,6 +98,7 @@ const appRoutes:Routes=[
   {path: 'listar-asistencias', component:ListarAsistenciasComponent},
   {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
   {path: 'visualizar-asistencias', component:VisualizarAsistenciasComponent},
+  {path: 'editar-fichas/:id', component: EditarFichasComponent}
 
 ]
 
