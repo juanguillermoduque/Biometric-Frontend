@@ -1,18 +1,28 @@
 <p>
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
+        <button mat-icon-button class="menu-icon" aria-label="Menu" matTooltip="Menu" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="example-spacer">Administrador</span>
+        <button mat-icon-button class="user-icon" aria-label="User" matTooltip="User" [matMenuTriggerFor]="userMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item routerLink="/usuarios">Usuarios</a>
+            <a mat-menu-item routerLink="">Fichas</a>
+        </mat-menu>
+
+
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item>Perfil de Usuario</button>
+            <button mat-menu-item>Configuración</button>
+            <button mat-menu-item (click)="menu">Cerrar Sesión</button>
+        </mat-menu>
+
     </mat-toolbar>
-  </p>
+</p>
 
 <div class="info">
     <b>BIENVENIDOS AL CENTRO DE FORMACION DISEÑO E INNOVACION TECNOLOGICA INDUSTRIAL</b>
