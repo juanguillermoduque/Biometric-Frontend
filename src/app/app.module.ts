@@ -61,6 +61,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
 import { FichasComponent } from './fichas/fichas.component';
 import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
+import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
+import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
+import { ListarAsistenciasComponent } from './asistencias/listar-asistencias/listar-asistencias.component';
+import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
 
 const appRoutes:Routes=[
   {path:"", redirectTo:'/main', pathMatch:"full"},
@@ -70,6 +74,14 @@ const appRoutes:Routes=[
   {path:'agregar-ficha', component: AgregarFichasComponent },
   {path:'generar-reportes', component:GenerarReportesComponent},
   {path:'listar-fichas', component:ListarFichasComponent},
+  {path: 'visualizar-fichas', component:VisualizarFichasComponent},
+  {path:'asistencias', component:AsistenciasComponent},
+  {path: 'crear-asistencia', component:CrearAsistenciasComponent},
+  {path: 'editar-asistencias', component:EditarAsistenciasComponent},
+  {path: 'listar-asistencias', component:ListarAsistenciasComponent},
+  {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
+  {path: 'visualizar-asistencias', component:VisualizarAsistenciasComponent},
+
 ]
 
 @NgModule({
@@ -86,7 +98,11 @@ const appRoutes:Routes=[
     VisualizarAsistenciasComponent,
     FichasComponent,
     AgregarFichasComponent,
-    ListarFichasComponent
+    CrearAsistenciasComponent,
+    EditarAsistenciasComponent,
+    ListarAsistenciasComponent,
+    ReporteAsistenciaComponent,
+
 
   ],
   imports: [
