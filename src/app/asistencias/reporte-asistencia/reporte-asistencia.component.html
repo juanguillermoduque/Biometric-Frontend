@@ -1,1 +1,14 @@
-<p>reporte-asistencia works!</p>
+<mat-card class="report-card">
+  <mat-card-title>Reporte asistencia</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Número de Ficha" [(ngModel)]="numeroFicha">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Reporte" [(ngModel)]="reporte"></textarea>
+    </mat-form-field>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="enviarReporte()">Enviar Reporte</button>
+    </div>
+  </mat-card-content>
+</mat-card>
