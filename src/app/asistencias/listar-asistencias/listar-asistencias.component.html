@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Listar Asistencias</h2>
+  <mat-form-field>
+    <input matInput placeholder="Ingrese el id de la ficha">
+  </mat-form-field>
+  <table mat-table>
+    <ng-container matColumnDef="fechaIngreso">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Ingreso</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="numIngreso">
+      <th mat-header-cell *matHeaderCellDef>Número de Ingreso</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="asistio">
+      <th mat-header-cell *matHeaderCellDef>Asistió</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="noAsistio">
+      <th mat-header-cell *matHeaderCellDef>No Asistió</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="aula">
+      <th mat-header-cell *matHeaderCellDef>Aula</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="observaciones">
+      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="horaIngreso">
+      <th mat-header-cell *matHeaderCellDef>Hora de Ingreso</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+    <ng-container matColumnDef="horaSalida">
+      <th mat-header-cell *matHeaderCellDef>Hora de Salida</th>
+      <td mat-cell *matCellDef="let asistencia"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
