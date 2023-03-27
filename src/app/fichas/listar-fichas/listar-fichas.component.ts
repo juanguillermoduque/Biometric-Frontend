@@ -7,6 +7,7 @@ import { FichasService } from 'src/app/services/fichas/fichas.service';
   styleUrls: ['./listar-fichas.component.css']
 })
 export class ListarFichasComponent {
+  displayedColumns: string[] = ['id', 'programa', 'trimestre', 'jornada', 'lider', 'inicio', 'fin'];
   constructor(private fichaService: FichasService){
 
   }
