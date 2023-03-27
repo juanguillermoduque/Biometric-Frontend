@@ -70,7 +70,6 @@ const appRoutes:Routes=[
   {path:'agregar-ficha', component: AgregarFichasComponent },
   {path:'generar-reportes', component:GenerarReportesComponent},
   {path:'listar-fichas', component:ListarFichasComponent},
-  { path: '**', component: AgregarFichasComponent },
 ]
 
 @NgModule({
