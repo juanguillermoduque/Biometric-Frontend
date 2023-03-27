@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,17 +54,36 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { VisualizarFichasComponent } from './fichas/visualizar-fichas/visualizar-fichas.component';
 import { ListarFichasComponent } from './fichas/listar-fichas/listar-fichas.component';
-import { GenerarReportesComponent } from './fichas/generar-reportes/generar-reportes.component';
 import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asistencias/visualizar-asistencias.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
+
 import { FichasComponent } from './fichas/fichas.component';
 import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
 import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
 import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
 import { ListarAsistenciasComponent } from './asistencias/listar-asistencias/listar-asistencias.component';
 import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
+
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
+import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
+import { EditarFichasComponent } from './fichas/editar-fichas/editar-fichas.component';
+import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuarios.component';
+import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
+import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usuario.component';
+import { VisualizarUsuarioComponent } from './usuarios/visualizar-usuario/visualizar-usuario.component';
+import { ReporteUsuarioComponent } from './usuarios/reporte-usuario/reporte-usuario.component';
+import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.component';
+import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
+
+
+//import services
+import {FichasService} from './services/fichas/fichas.service';
+import { UsuariosService } from './services/usuarios/usuarios.service';
+import { AsistenciasService } from './services/asistencias/asistencias.service';
+
 
 const appRoutes:Routes=[
   {path:"", redirectTo:'/main', pathMatch:"full"},
@@ -94,19 +113,31 @@ const appRoutes:Routes=[
     AdministradorComponent,
     VisualizarFichasComponent,
     ListarFichasComponent,
-    GenerarReportesComponent,
     VisualizarAsistenciasComponent,
+
     FichasComponent,
     AgregarFichasComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
     ListarAsistenciasComponent,
-    ReporteAsistenciaComponent,
 
+    UsuariosComponent,
+    CrearAsistenciasComponent,
+    EditarAsistenciasComponent,
+    EditarFichasComponent,
+    EditarUsuariosComponent,
+    ListarUsuariosComponent,
+    AgregarUsuarioComponent,
+    VisualizarUsuarioComponent,
+    ReporteUsuarioComponent,
+    ReporteFichasComponent,
+	ReporteAsistenciaComponent,
+   
 
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     CommonModule,
@@ -175,7 +206,7 @@ const appRoutes:Routes=[
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatRippleModule,
+    MatRippleModule,  
     MatBottomSheetModule,
     MatDialogModule,
     MatSnackBarModule,
@@ -185,7 +216,11 @@ const appRoutes:Routes=[
     MatTableModule
 
   ],
-  providers: [],
+  providers: [
+    FichasService,
+    UsuariosService,
+    UsuariosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
