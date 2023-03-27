@@ -105,7 +105,6 @@ const appRoutes:Routes=[
 
   {path: 'editar-fichas/:id', component: EditarFichasComponent}
 
-
 ]
 
 @NgModule({
