@@ -7,10 +7,12 @@ import { ficha } from 'src/app/models/fichas';
   templateUrl: './listar-fichas.component.html',
   styleUrls: ['./listar-fichas.component.css']
 })
+
 export class ListarFichasComponent implements OnInit {
   displayedColumns: string[] = ['id', 'programa', 'trimestre', 'jornada',  'inicio', 'fin','lider'];
   fichas:any = [];
   dataSource = this.fichas;
+
 
   constructor(private fichaService: FichasService){
     
