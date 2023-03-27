@@ -80,6 +80,7 @@ const appRoutes:Routes=[
   {path:"", redirectTo:'/main', pathMatch:"full"},
   {path:"auth", component:AuthComponent},
   {path: 'instructor', component:InstructorComponent},
+  
 ]
 
 @NgModule({
