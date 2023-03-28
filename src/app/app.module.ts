@@ -134,7 +134,7 @@ const appRoutes:Routes=[
     ReporteUsuarioComponent,
     ReporteFichasComponent,
 	  ReporteAsistenciaComponent,
-   
+
 
   ],
   imports: [
@@ -208,7 +208,7 @@ const appRoutes:Routes=[
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatRippleModule,  
+    MatRippleModule,
     MatBottomSheetModule,
     MatDialogModule,
     MatSnackBarModule,
