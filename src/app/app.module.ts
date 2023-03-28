@@ -85,7 +85,7 @@ import { AsistenciasService } from './services/asistencias/asistencias.service';
 
 
 const appRoutes:Routes=[
-  {path:"", redirectTo:'/main', pathMatch:"full"},
+  {path:"", redirectTo:'/auth', pathMatch:"full"},
   {path:"auth", component:AuthComponent},
   {path:'instructor', component:InstructorComponent},
   {path:'fichas', component:FichasComponent},
@@ -98,8 +98,11 @@ const appRoutes:Routes=[
   {path: 'listar-asistencias', component:ListarAsistenciasComponent},
   {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
   {path: 'visualizar-asistencias', component:VisualizarAsistenciasComponent},
+  {path: 'generar-reportes', component:ReporteAsistenciaComponent},
+  {path: 'editar-fichas', component:EditarAsistenciasComponent},
+  {path: 'administrador', component:AdministradorComponent},
+  {path: 'aprendiz', component:AprendizComponent},
   {path: 'editar-fichas/:id', component: EditarFichasComponent}
-
 ]
 
 @NgModule({
@@ -130,8 +133,8 @@ const appRoutes:Routes=[
     VisualizarUsuarioComponent,
     ReporteUsuarioComponent,
     ReporteFichasComponent,
-	ReporteAsistenciaComponent,
-   
+	  ReporteAsistenciaComponent,
+
 
   ],
   imports: [
@@ -205,7 +208,7 @@ const appRoutes:Routes=[
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatRippleModule,  
+    MatRippleModule,
     MatBottomSheetModule,
     MatDialogModule,
     MatSnackBarModule,

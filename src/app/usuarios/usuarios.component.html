@@ -1,1 +1,47 @@
-<p>usuarios works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Acciones de Administrador</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-grid-list cols="2" rowHeight="150px">
+                        <mat-grid-tile>
+                            <a mat-button routerLink="/app-agregar-usuario">
+                                <mat-icon>add</mat-icon>
+                                <span>Agregar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="/Editar-Usuario">
+                                <mat-icon>edited</mat-icon>
+                                <span>Editar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="listar-fichas">
+                                <mat-icon>list</mat-icon>
+                                <span>Listar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="generar-reporte">
+                                <mat-icon>assignment</mat-icon>
+                                <span>Reporte Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="visualizar-fichas">
+                                <mat-icon>visibility</mat-icon>
+                                <span>Visualizar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+
+                    </mat-grid-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+          
+    </div>
+</div>
