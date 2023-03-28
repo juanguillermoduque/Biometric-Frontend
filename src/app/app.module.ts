@@ -100,8 +100,7 @@ const appRoutes:Routes=[
   {path: 'generar-reportes', component:ReporteAsistenciaComponent},
   {path: 'editar-fichas', component:EditarAsistenciasComponent},
   {path: 'administrador', component:AdministradorComponent},
-  {path: 'aprendiz', component:AprendizComponent}
-
+  {path: 'aprendiz', component:AprendizComponent},
 ]
 
 @NgModule({
@@ -133,7 +132,7 @@ const appRoutes:Routes=[
     ReporteUsuarioComponent,
     ReporteFichasComponent,
 	  ReporteAsistenciaComponent,
-   
+
 
   ],
   imports: [
@@ -207,7 +206,7 @@ const appRoutes:Routes=[
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatRippleModule,  
+    MatRippleModule,
     MatBottomSheetModule,
     MatDialogModule,
     MatSnackBarModule,
