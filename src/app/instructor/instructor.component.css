@@ -1,22 +1,22 @@
 .menu-icon {
     margin-right: 10px;
   }
-  
+
   .title {
     flex: 1 1 auto;
     text-align: center;
   }
-  
+
   .user-icon {
     margin-left: auto;
   }
-  
+
   .content {
     margin-top: 20px;
   }
-  
+
   .footer {
-    background-image: linear-gradient(to top, #fb732c, #ff888d, #ffb1d5, #fbdcfb, #ffffff);
+    background:#63D3A9;
     color: #333;
     padding: 20px;
     text-align: center;
@@ -24,8 +24,20 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    position: fixed;
+    bottom: 0;
   }
-  
+
+
 .barra{
-    background: linear-gradient(rgb(255, 72, 0), white);
+  background:#63D3A9;
+  position: fixed;;
+  top: 0;
 }
+
+.body{
+  margin-top:  64px;
+  height: 100%;
+  background: white;
+}
+
