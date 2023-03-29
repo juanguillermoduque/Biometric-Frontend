@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
 })
 export class InstructorComponent {
 
-  constructor(private router: Router) {}
+  activaOpcion: number = 0;
 
-  regresar() {
-    this.router.navigateByUrl('/auth');
+  AccionInstructor(opcion: number) {
+    this.activaOpcion = opcion;
   }
-
 }
+
+
 
 
 

@@ -1,29 +1,21 @@
- <div class="body">
-    <mat-toolbar class="barra">
-        <button mat-icon-button class="menu-icon" aria-label="Menu" matTooltip="Menu" [matMenuTriggerFor]="menu">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span class="title">Instructor</span>
-        <button mat-icon-button class="user-icon" aria-label="User" matTooltip="User" [matMenuTriggerFor]="userMenu">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-      </mat-toolbar>
-
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/fichas">Fichas</a>
-        <a mat-menu-item routerLink="/asistencias">Asistencias</a>
-      </mat-menu>
-
-
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item>Perfil de Usuario</button>
-        <button mat-menu-item>Configuración</button>
-        <button mat-menu-item (click)="regresar()">Cerrar Sesión</button>
-      </mat-menu>
-      <div class="body"></div>
-
-
-      <mat-toolbar  class="footer">
-        <span class="footer-text">© 2023 Sena</span>
-      </mat-toolbar>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar>
+      <img src="../../assets/img/sena.png" alt="Logo" style="max-height: 100%">
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="AccionInstructor(1)" routerLinkActive="active">Fichas</a>
+      <a mat-list-item (click)="AccionInstructor(2)" routerLinkActive="active">Generar reporte de fichas</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="contenido">
+    <div class="titulo">
+      <h2>Instructor</h2>
+    </div>
+    <div class="info">
+      <b *ngIf="activaOpcion == 0">BIENVENIDOS AL CENTRO DE FORMACION DISEÑO E INNOVACION TECNOLOGICA INDUSTRIAL</b>
+      <app-fichas *ngIf="activaOpcion == 1"></app-fichas>
+      <app-reporte-fichas *ngIf="activaOpcion == 2"></app-reporte-fichas>
+    </div>
+  </div>
+</mat-sidenav-container>

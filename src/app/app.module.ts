@@ -80,7 +80,6 @@ import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.c
 //import services
 import {FichasService} from './services/fichas/fichas.service';
 import { UsuariosService } from './services/usuarios/usuarios.service';
-import { AsistenciasService } from './services/asistencias/asistencias.service';
 import { ExcusasComponent } from './excusas/excusas.component';
 import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
 import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
@@ -123,7 +122,6 @@ const appRoutes:Routes=[
     AdministradorComponent,
     ListarFichasComponent,
     VisualizarAsistenciasComponent,
-
     FichasComponent,
     AgregarFichasComponent,
     CrearAsistenciasComponent,
