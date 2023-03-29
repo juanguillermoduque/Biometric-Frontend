@@ -110,7 +110,7 @@ const appRoutes:Routes=[
   {path: 'listar-usuarios', component:ListarUsuariosComponent},
   {path: 'editar-fichas/:id', component: EditarFichasComponent},
   {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
-
+  {path: 'crear-excusa', component:CrearExcusaComponent},
 ]
 
 @NgModule({

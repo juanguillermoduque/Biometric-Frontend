@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { ficha } from 'src/app/models/fichas';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import Swal from 'sweetalert2';
 import { AgregarFichasComponent } from './agregar-fichas/agregar-fichas.component';
 import { EditarFichasComponent } from './editar-fichas/editar-fichas.component';
 
