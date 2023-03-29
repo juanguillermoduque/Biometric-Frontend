@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./listar-usuarios.component.css']
 })
 export class ListarUsuariosComponent {
-
+  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico',  'NumeroFicha', 'Telefono','RolSistema','edit'];
 }
