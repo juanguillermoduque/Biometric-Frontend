@@ -1,36 +1,39 @@
-<div class="container">
-  <h2>Listar Ficha</h2>
-  <mat-form-field>
-    <input matInput placeholder="Ingrese el id de la ficha">
-  </mat-form-field>
-  <table mat-table>
+
+<h2>Listar Ficha</h2>
+<div  class="container">
+  <table mat-table [dataSource]="fichas[0]">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.code_ficha}}</td>
     </ng-container>
     <ng-container matColumnDef="programa">
       <th mat-header-cell *matHeaderCellDef>Programa</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.name_ficha}}</td>
     </ng-container>
     <ng-container matColumnDef="trimestre">
       <th mat-header-cell *matHeaderCellDef>Trimestre</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.trimester}}</td>
     </ng-container>
     <ng-container matColumnDef="jornada">
       <th mat-header-cell *matHeaderCellDef>Jornada</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.jornada}}</td>
     </ng-container>
-    <ng-container matColumnDef="lider">
-      <th mat-header-cell *matHeaderCellDef>Líder de la ficha</th>
-      <td mat-cell *matCellDef="let ficha"></td>
-    </ng-container>
+
     <ng-container matColumnDef="inicio">
       <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.date_start }}</td>
     </ng-container>
     <ng-container matColumnDef="fin">
       <th mat-header-cell *matHeaderCellDef>Fecha de finalización</th>
-      <td mat-cell *matCellDef="let ficha"></td>
+      <td mat-cell *matCellDef="let ficha">{{ficha.date_end}}</td>
+    </ng-container>
+    <ng-container matColumnDef="lider">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let ficha">    
+      <a mat-button [routerLink]="['/editar-fichas',ficha.code_ficha]">
+        <mat-icon>edit</mat-icon>
+        <span>Ver/Editar</span>
+      </a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { HttpClientModule } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
+
 
 import { CommonModule } from '@angular/common';
 // Material Form Controls
@@ -52,7 +53,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { VisualizarFichasComponent } from './fichas/visualizar-fichas/visualizar-fichas.component';
 import { ListarFichasComponent } from './fichas/listar-fichas/listar-fichas.component';
 import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asistencias/visualizar-asistencias.component';
 
@@ -81,17 +81,20 @@ import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.c
 import {FichasService} from './services/fichas/fichas.service';
 import { UsuariosService } from './services/usuarios/usuarios.service';
 import { AsistenciasService } from './services/asistencias/asistencias.service';
+import { ExcusasComponent } from './excusas/excusas.component';
+import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
+import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
+import { ReporteExcusasComponent } from './excusas/reporte-excusas/reporte-excusas.component';
 
 
 const appRoutes:Routes=[
-  {path:"", redirectTo:'/auth', pathMatch:"full"},
-  {path:"auth", component:AuthComponent},
-  {path:'instructor', component:InstructorComponent},
-  {path:'fichas', component:FichasComponent},
-  {path:'agregar-ficha', component: AgregarFichasComponent },
-  {path:'listar-fichas', component:ListarFichasComponent},
-  {path: 'visualizar-fichas', component:VisualizarFichasComponent},
-  {path:'asistencias', component:AsistenciasComponent},
+  {path: "", redirectTo:'/auth', pathMatch:"full"},
+  {path: "auth", component:AuthComponent},
+  {path: 'instructor', component:InstructorComponent},
+  {path: 'fichas', component:FichasComponent},
+  {path: 'agregar-ficha', component: AgregarFichasComponent },
+  {path: 'listar-fichas', component:ListarFichasComponent},
+  {path: 'asistencias', component:AsistenciasComponent},
   {path: 'crear-asistencia', component:CrearAsistenciasComponent},
   {path: 'editar-asistencias', component:EditarAsistenciasComponent},
   {path: 'listar-asistencias', component:ListarAsistenciasComponent},
@@ -101,6 +104,13 @@ const appRoutes:Routes=[
   {path: 'editar-fichas', component:EditarAsistenciasComponent},
   {path: 'administrador', component:AdministradorComponent},
   {path: 'aprendiz', component:AprendizComponent},
+  {path: 'usuarios',component:UsuariosComponent},
+  {path: 'agregar-usuario',component:AgregarUsuarioComponent},
+  {path: 'editar-usuario/:id',component:EditarUsuariosComponent},
+  {path: 'listar-usuarios', component:ListarUsuariosComponent},
+  {path: 'editar-fichas/:id', component: EditarFichasComponent},
+  {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
+
 ]
 
 @NgModule({
@@ -111,7 +121,6 @@ const appRoutes:Routes=[
     AprendizComponent,
     InstructorComponent,
     AdministradorComponent,
-    VisualizarFichasComponent,
     ListarFichasComponent,
     VisualizarAsistenciasComponent,
 
@@ -132,6 +141,10 @@ const appRoutes:Routes=[
     ReporteUsuarioComponent,
     ReporteFichasComponent,
 	  ReporteAsistenciaComponent,
+   ExcusasComponent,
+   CrearExcusaComponent,
+   EditarExcusasComponent,
+   ReporteExcusasComponent,
 
 
   ],

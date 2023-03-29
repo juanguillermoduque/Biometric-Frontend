@@ -1,15 +1,17 @@
+
+<h2>Agregar ficha</h2>
 <div class="container">
-  <h2>Agregar fichas</h2>
+
   <form class="form-container">
     <mat-form-field>
-      <input matInput placeholder="Número de fichas">
+      <input matInput type="number" name="code_ficha" [(ngModel)]="ficha.code_ficha" placeholder="Número de ficha">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Nombre del programa">
+      <input matInput type="text" name="name_ficha" [(ngModel)]="ficha.name_ficha" placeholder="Nombre del programa">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Trimestre</mat-label>
-      <mat-select>
+      <mat-select name="trimester" [(ngModel)]="ficha.trimester">
         <mat-option value="1">1</mat-option>
         <mat-option value="2">2</mat-option>
         <mat-option value="3">3</mat-option>
@@ -21,24 +23,24 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Jornada</mat-label>
-      <mat-select>
-        <mat-option value="mañana">Mañana</mat-option>
-        <mat-option value="mixta">Mixta</mat-option>
-        <mat-option value="noche">Noche</mat-option>
+      <mat-select name="jornada" [(ngModel)]="ficha.jornada">
+        <mat-option value="DIURNA">Mañana</mat-option>
+        <mat-option value="MIXTA">Mixta</mat-option>
+        <mat-option value="NOCTURNA">Noche</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Líder de la ficha">
     </mat-form-field>
     <mat-form-field>
-      <input matInput  placeholder="Fecha de inicio">
+      <input matInput name="date_start" [(ngModel)]="ficha.date_start" type="datetime"  placeholder="Fecha de inicio">
       <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
     </mat-form-field>
     <mat-form-field>
-      <input matInput  placeholder="Fecha de finalización">
+      <input matInput name="date_end" [(ngModel)]="ficha.date_end" type="datetime"  placeholder="Fecha de finalización">
       <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
     </mat-form-field>
-    <button mat-raised-button class="botom">Agregar</button>
+    <button (click)="guardarFicha()" mat-raised-button>Agregar</button>
   </form>
 </div>
 

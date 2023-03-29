@@ -2,29 +2,29 @@
   <h2>Editar asistencia</h2>
   <form class="form-container">
     <mat-form-field>
-      <input matInput placeholder="Fecha de ingreso">
+      <input matInput type="number" name="date_enter" [(ngModel)]="asistencia.date_enter" placeholder="Fecha de ingreso">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Numeración de ingreso">
+      <input matInput type="number" name="idasistencia" [(ngModel)]="asistencia.idasistencia" placeholder="Numeración de ingreso">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Estado</mat-label>
-      <mat-select>
+      <mat-select name="Estado" [(ngModel)]="asistencia.Estado">
         <mat-option value="asistio">Asistió</mat-option>
         <mat-option value="falto">Faltó</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Aula">
+      <input matInput name="aula" [(ngModel)]="asistencia.aula" placeholder="Aula">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Observaciones">
+      <input matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Hora de ingreso">
+      <input matInput name="date_start" [(ngModel)]="asistencia.date_start" placeholder="Hora de ingreso">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Hora de salida">
+      <input matInput name="date_end" [(ngModel)]="asistencia.date_end" placeholder="Hora de salida">
     </mat-form-field>
     <button mat-raised-button>Guardar cambios</button>
   </form>
