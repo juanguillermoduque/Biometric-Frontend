@@ -1,0 +1,44 @@
+<div class="container">
+
+  <form class="form-container">
+    <mat-form-field>
+      <input matInput type="number" name="code_ficha" [(ngModel)]="ficha.code_ficha" placeholder="Número de ficha">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="name_ficha" [(ngModel)]="ficha.name_ficha" placeholder="Nombre del programa">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Trimestre</mat-label>
+      <mat-select name="trimester" [(ngModel)]="ficha.trimester">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jornada</mat-label>
+      <mat-select name="jornada" [(ngModel)]="ficha.jornada">
+        <mat-option value="DIURNA">Mañana</mat-option>
+        <mat-option value="MIXTA">Mixta</mat-option>
+        <mat-option value="NOCTURNA">Noche</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Líder de la ficha">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="date_start" [(ngModel)]="ficha.date_start" type="datetime"  placeholder="Fecha de inicio">
+      <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="date_end" [(ngModel)]="ficha.date_end" type="datetime"  placeholder="Fecha de finalización">
+      <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+    </mat-form-field>
+    <button (click)="modificarFicha()" mat-raised-button>Actualizar</button>
+  </form>
+</div>
+

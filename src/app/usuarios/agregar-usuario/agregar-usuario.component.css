@@ -1,0 +1,15 @@
+.containter{
+  width: 50%;
+  margin: auto;
+}
+
+.form-container{
+  display: flex;
+    flex-direction: row;
+    gap: 60px;
+}
+.inputs-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

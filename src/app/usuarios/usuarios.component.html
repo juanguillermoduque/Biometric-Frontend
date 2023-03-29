@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Acciones de Administrador</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-grid-list cols="2" rowHeight="150px">
+                        <mat-grid-tile>
+                            <a mat-button routerLink="/agregar-usuario">
+                                <mat-icon>add</mat-icon>
+                                <span>Agregar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="/listar-usuarios">
+                                <mat-icon>list</mat-icon>
+                                <span>Listar Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <a mat-button routerLink="generar-reporte">
+                                <mat-icon>assignment</mat-icon>
+                                <span>Reporte Usuarios</span>
+                            </a>
+                        </mat-grid-tile>
+
+                    </mat-grid-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+          
+    </div>
+</div>
