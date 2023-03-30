@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -176,6 +178,8 @@ const appRoutes:Routes=[
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NativeDateModule,
+    MatNativeDateModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [
@@ -213,7 +217,9 @@ const appRoutes:Routes=[
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    NativeDateModule,
+    MatNativeDateModule,
 
   ],
   providers: [

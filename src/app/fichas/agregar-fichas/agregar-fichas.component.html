@@ -30,13 +30,19 @@
     <mat-form-field>
       <input matInput placeholder="Líder de la ficha">
     </mat-form-field>
+      <mat-form-field appearance="fill" class="date">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="picker" name="date_start" [(ngModel)]="ficha.date_start">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     <mat-form-field>
-      <input matInput name="date_start" [(ngModel)]="ficha.date_start" type="datetime"  placeholder="Fecha de inicio">
-      <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput name="date_end" [(ngModel)]="ficha.date_end" type="datetime"  placeholder="Fecha de finalización">
-      <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+      <mat-form-field appearance="fill" class="date">
+        <mat-label>Fecha de final</mat-label>
+        <input matInput [matDatepicker]="picker" name="date_start" [(ngModel)]="ficha.date_start">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </mat-form-field>
     <button (click)="guardarFicha()" mat-raised-button>Agregar</button>
   </form>

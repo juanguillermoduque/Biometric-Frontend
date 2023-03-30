@@ -21,13 +21,6 @@
   margin-bottom: 20px;
 }
 
-.form-container mat-form-field:last-of-type {
-  margin-bottom: 30px;
-}
-
 .form-container button {
   margin-top: 20px;
 }
-
-
-
