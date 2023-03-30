@@ -1,8 +1,8 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ficha } from 'src/app/models/fichas';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { ActivatedRoute,Route } from '@angular/router';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editar-fichas',
@@ -24,23 +24,21 @@ export class EditarFichasComponent implements OnInit {
 };
 params = this.activeRouted.snapshot.params;
 
-constructor(private fichasService:FichasService, private activeRouted:ActivatedRoute){
+constructor(private fichasService:FichasService,
+   private activeRouted:ActivatedRoute,
+   @Inject(MAT_DIALOG_DATA) public idFicha:number
+   ){
 
 }
-
-
   ngOnInit(){
-   
-    if(this.params['id']){
-        this.fichasService.getFicha(this.params['id'])
+    if(this.idFicha){
+        this.fichasService.getFicha(this.idFicha)
           .subscribe(
             res=>{
               console.log(res);
-        
             },
             err => console.error(err)
           )
-
     }
   }
 
@@ -51,7 +49,7 @@ constructor(private fichasService:FichasService, private activeRouted:ActivatedR
     delete this.ficha.date_end;
     delete this.ficha.date_start;
 
-    this.fichasService.updateFicha(this.params['id'],this.ficha)
+    this.fichasService.updateFicha(this.idFicha,this.ficha)
       .subscribe(
         res =>{
           console.log(res);
@@ -59,5 +57,4 @@ constructor(private fichasService:FichasService, private activeRouted:ActivatedR
         err => console.error(err)
       )
   }
-
 }
