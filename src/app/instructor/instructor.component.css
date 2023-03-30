@@ -88,3 +88,8 @@ mat-sidenav {
   align-items: center;
   margin-right: 10px;
 }
+.card-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
