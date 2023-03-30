@@ -1,1 +1,29 @@
-<p>editar-excusas works!</p>
+
+<div class="container">
+    <form class="form-container">
+
+        <h2>Editar excusas</h2>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Instructor a quien va dirigida</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Elige una fecha</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Motivo</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field>
+
+        
+        <button mat-raised-button class="botom" id="bton">Guardar</button>
+    </form>
+</div>

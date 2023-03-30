@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+  
+  .form-container mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .form-container mat-form-field:last-of-type {
+    margin-bottom: 30px;
+  }
+  
+  .form-container button {
+    margin-top: 20px;
+  }
+
+  #bton{
+    background-color: yellowgreen;
+  }
+  
+  
+  
+  

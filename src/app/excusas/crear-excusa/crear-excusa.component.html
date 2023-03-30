@@ -1,1 +1,31 @@
-<p>probando la excusa</p>
+
+<div class="container">
+    <form class="form-container">
+
+        <h2>Creacion de excusas</h2>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Instructor a quien va dirigida</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Elige una fecha</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Motivo</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field>
+
+        <h3> Adjunte su evidencia </h3>
+
+        <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+        <button mat-raised-button class="botom" id="bton">Guardar</button>
+    </form>
+</div>
