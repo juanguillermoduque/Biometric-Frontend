@@ -15,12 +15,12 @@ export class FichasComponent implements OnInit {
 
   fichas:any = [];
   dataSource = this.fichas;
-  
+
   constructor(
     private fichaService: FichasService,
     public dialog: MatDialog,
     ){
-    
+
   }
   ngOnInit(){
     this.fichaService.getFichas().subscribe(
@@ -34,13 +34,13 @@ export class FichasComponent implements OnInit {
 
   agregarFicha(){
     this.dialog.open(AgregarFichasComponent, {
-      height: '800px',
+      height: '500px',
       width: '600px',
     });
   }
 
   editarFicha(idFicha :number){
-  
+
     this.dialog.open(EditarFichasComponent, {
       height: '800px',
       width: '600px',
