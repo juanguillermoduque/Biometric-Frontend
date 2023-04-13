@@ -1,5 +1,5 @@
 export interface usuario{
-    iduser?: number;
+    iduser?: string;
     idficha?: number;
     last_name?: string;
     type_id?: string;
