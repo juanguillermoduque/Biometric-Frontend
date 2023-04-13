@@ -1,23 +1,32 @@
+<body>
+
+
 <div class="logo">
   <img src="../../assets/img/sena.png" alt="">
 </div>
-<form class="form">
-  <h1 class="form__title">Login</h1>
-  <mat-form-field class="form__field">
-    <mat-label>Rol</mat-label>
-    <mat-select name="rol" [(ngModel)]="rol">
-      <mat-option value="aprendiz">Aprendiz</mat-option>
-      <mat-option value="instructor">Instructor</mat-option>
-      <mat-option value="administrador">Administrador</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="form__field">
-    <mat-label>Documento de identidad</mat-label>
-    <input matInput type="text" name="documento" [(ngModel)]="documento">
-  </mat-form-field>
-  <mat-form-field class="form__field">
-    <mat-label>Contraseña</mat-label>
-    <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
-  </mat-form-field>
-  <button mat-raised-button type="submit" class="form__button" (click)="logearse()">Iniciar Sesión</button>
-</form>
+
+
+
+  <form class="form">
+    <h1 class="form__title"><b>Login</b></h1>
+    <mat-form-field class="form__field">
+      <mat-label><i>Rol</i></mat-label>
+      <mat-select name="rol" [(ngModel)]="rol">
+        <mat-option value="aprendiz">Aprendiz</mat-option>
+        <mat-option value="instructor">Instructor</mat-option>
+        <mat-option value="administrador">Administrador</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form__field">
+      <mat-label><i>Documento de identidad</i></mat-label>
+      <input matInput type="text" name="documento" [(ngModel)]="documento">
+    </mat-form-field>
+    <mat-form-field class="form__field">
+      <mat-label><i>Contraseña</i></mat-label>
+      <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
+    </mat-form-field>
+    <button mat-raised-button type="submit" class="form__button" (click)="logearse()"><b>Iniciar Sesión</b></button>
+  </form>
+
+</body>
+
