@@ -28,6 +28,6 @@
     <mat-form-field>
       <input matInput name="time_exit" [(ngModel)]="asistencia.date_end" placeholder="Hora de salida">
     </mat-form-field>
-    <button mat-raised-button class="botom">Agregar</button>
+    <button mat-raised-button (click)="guardarAsistencia()" class="botom">Agregar</button>
   </form>
 </div>

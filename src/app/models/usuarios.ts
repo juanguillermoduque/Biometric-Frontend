@@ -1,6 +1,7 @@
 export interface usuario{
     iduser?: number;
     idficha?: number;
+    first_name?: string;
     last_name?: string;
     type_id?: string;
     num_id?: number;

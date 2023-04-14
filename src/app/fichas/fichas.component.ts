@@ -11,15 +11,17 @@ import { EditarFichasComponent } from './editar-fichas/editar-fichas.component';
   templateUrl: './fichas.component.html',
   styleUrls: ['./fichas.component.css']
 })
-export class FichasComponent {
+export class FichasComponent implements OnInit {
 
   fichas:any = [];
   dataSource = this.fichas;
-  
-  constructor(private fichaService: FichasService,public dialog: MatDialog){
-    
-  }
 
+  constructor(
+    private fichaService: FichasService,
+    public dialog: MatDialog,
+    ){
+
+  }
   ngOnInit(){
     this.fichaService.getFichas().subscribe(
       res =>{
@@ -32,16 +34,19 @@ export class FichasComponent {
 
   agregarFicha(){
     this.dialog.open(AgregarFichasComponent, {
-      height: '800px',
+      height: '500px',
       width: '600px',
     });
   }
 
-  editarFicha(){
+  editarFicha(idFicha :number){
+
     this.dialog.open(EditarFichasComponent, {
       height: '800px',
       width: '600px',
+      data: idFicha,
     });
   }
 
 }
+
