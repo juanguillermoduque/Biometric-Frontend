@@ -85,7 +85,7 @@ import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.
 import { ReporteExcusasComponent } from './excusas/reporte-excusas/reporte-excusas.component';
 import { HorariosComponent } from './horarios/horarios.component';
 import { CrearHorariosComponent } from './horarios/crear-horarios/crear-horarios.component';
-import { EditarHorariosComponent } from './editar-horarios/editar-horarios.component';
+import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horarios.component';
 import { CompetenciasComponent } from './competencias/competencias.component';
 import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
 import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
