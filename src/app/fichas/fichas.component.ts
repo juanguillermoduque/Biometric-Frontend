@@ -35,7 +35,7 @@ export class FichasComponent implements OnInit {
   agregarFicha(){
     this.dialog.open(AgregarFichasComponent, {
       height: '500px',
-      width: '600px',
+      width: '850px',
     });
   }
 
