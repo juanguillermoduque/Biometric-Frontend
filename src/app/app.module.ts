@@ -19,6 +19,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 // Material Navigation
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -77,6 +79,7 @@ import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.c
 
 
 
+
 //import services
 import {FichasService} from './services/fichas/fichas.service';
 import { UsuariosService } from './services/usuarios/usuarios.service';
@@ -112,6 +115,7 @@ const appRoutes:Routes=[
   {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
   {path: 'excusas', component:ExcusasComponent},
   {path: 'crear-excusa', component:CrearExcusaComponent},
+  {path: 'editar-excusa',component:EditarExcusasComponent},
 ]
 
 @NgModule({
@@ -150,6 +154,7 @@ const appRoutes:Routes=[
 
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -158,6 +163,7 @@ const appRoutes:Routes=[
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    NativeDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
@@ -197,10 +203,12 @@ const appRoutes:Routes=[
     MatCheckboxModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    BrowserAnimationsModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,
+    NativeDateModule,
     MatSlideToggleModule,
     MatMenuModule,
     MatSidenavModule,
