@@ -111,6 +111,7 @@ const appRoutes:Routes=[
   {path: 'editar-usuario',component:EditarUsuariosComponent},
   {path: 'editar-fichas', component: EditarFichasComponent},
   {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
+  {path: 'excusas', component:ExcusasComponent},
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
 ]
