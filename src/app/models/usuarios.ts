@@ -1,13 +1,11 @@
 export interface usuario{
-    iduser?: string;
-    idficha?: number;
+    num_id?: number;
+    first_name?: string;
     last_name?: string;
     type_id?: string;
-    num_id?: number;
     email?: string;
-    cellphone?: number;
     rol?: string;
-    status?: string;
+    estado?: string;
     password?: string;
     biometric_date?: string;
     created_at?: string;
