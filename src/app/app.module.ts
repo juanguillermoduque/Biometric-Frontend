@@ -114,6 +114,8 @@ const appRoutes:Routes=[
   {path: 'excusas', component:ExcusasComponent},
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
+  {path: 'crear-horarios',component:CrearHorariosComponent},
+  {path: 'editar-horarios',component:EditarHorariosComponent},
 ]
 
 @NgModule({
