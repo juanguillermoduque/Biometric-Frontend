@@ -10,7 +10,8 @@ import { AsistenciasService } from 'src/app/services/asistencias/asistencias.ser
 export class CrearAsistenciasComponent implements OnInit{
 
   asistencia: asistencia ={
-    idasistencia:0,
+    idasistencia:0 ,
+    iduser: 0,
     date_enter:'',
     date_start:'',
     date_end:'',
@@ -35,6 +36,9 @@ export class CrearAsistenciasComponent implements OnInit{
     delete this.asistencia.date_enter;
     delete this.asistencia.date_start;
     delete this.asistencia.date_end;
+    delete this.asistencia.Estado;
+    delete this.asistencia.aula;
+    delete this.asistencia.idasistencia;
 
   this.asistenciasService.saveAsistencia(this.asistencia)
       .subscribe(
@@ -47,3 +51,4 @@ export class CrearAsistenciasComponent implements OnInit{
 
 
 }
+

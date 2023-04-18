@@ -26,9 +26,8 @@
             <p>{{ficha.name_ficha}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button (click)="editarFicha()" mat-button>Ver/Editar</button>
+            <button (click)="editarFicha(ficha.code_ficha)" mat-button>Ver/Editar</button>
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>
-
     </div>

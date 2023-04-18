@@ -23,11 +23,11 @@
       <input matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones">
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="time_login" [(ngModel)]="asistencia.date_start" placeholder="Hora de ingreso">
+      <input matInput name="date_start" [(ngModel)]="asistencia.date_start" placeholder="Hora de ingreso">
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="time_exit" [(ngModel)]="asistencia.date_end" placeholder="Hora de salida">
+      <input matInput name="date_end" [(ngModel)]="asistencia.date_end" placeholder="Hora de salida">
     </mat-form-field>
-    <button mat-raised-button class="botom">Agregar</button>
+    <button mat-raised-button (click)="guardarAsistencia()" class="botom">Agregar</button>
   </form>
 </div>

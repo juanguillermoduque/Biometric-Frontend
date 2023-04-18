@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+.example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+}  
+
+#boton {
+    background-color: rgb(66, 216, 66);
+    margin-right: 10px;
+}

@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -53,8 +55,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AprendizComponent } from './aprendiz/aprendiz.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { ListarFichasComponent } from './fichas/listar-fichas/listar-fichas.component';
-import { VisualizarAsistenciasComponent } from './asistencias/visualizar-asistencias/visualizar-asistencias.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
@@ -69,22 +69,26 @@ import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/rep
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EditarFichasComponent } from './fichas/editar-fichas/editar-fichas.component';
 import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuarios.component';
-import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
 import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usuario.component';
-import { VisualizarUsuarioComponent } from './usuarios/visualizar-usuario/visualizar-usuario.component';
 import { ReporteUsuarioComponent } from './usuarios/reporte-usuario/reporte-usuario.component';
 import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.component';
+
 
 
 
 //import services
 import {FichasService} from './services/fichas/fichas.service';
 import { UsuariosService } from './services/usuarios/usuarios.service';
-import { AsistenciasService } from './services/asistencias/asistencias.service';
 import { ExcusasComponent } from './excusas/excusas.component';
 import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
 import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
 import { ReporteExcusasComponent } from './excusas/reporte-excusas/reporte-excusas.component';
+import { HorariosComponent } from './horarios/horarios.component';
+import { CrearHorariosComponent } from './horarios/crear-horarios/crear-horarios.component';
+import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horarios.component';
+import { CompetenciasComponent } from './competencias/competencias.component';
+import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
+import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
 
 
 const appRoutes:Routes=[
@@ -93,24 +97,25 @@ const appRoutes:Routes=[
   {path: 'instructor', component:InstructorComponent},
   {path: 'fichas', component:FichasComponent},
   {path: 'agregar-ficha', component: AgregarFichasComponent },
-  {path: 'listar-fichas', component:ListarFichasComponent},
   {path: 'asistencias', component:AsistenciasComponent},
   {path: 'crear-asistencia', component:CrearAsistenciasComponent},
   {path: 'editar-asistencias', component:EditarAsistenciasComponent},
   {path: 'listar-asistencias', component:ListarAsistenciasComponent},
   {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
-  {path: 'visualizar-asistencias', component:VisualizarAsistenciasComponent},
   {path: 'generar-reportes', component:ReporteAsistenciaComponent},
   {path: 'editar-fichas', component:EditarAsistenciasComponent},
   {path: 'administrador', component:AdministradorComponent},
   {path: 'aprendiz', component:AprendizComponent},
   {path: 'usuarios',component:UsuariosComponent},
   {path: 'agregar-usuario',component:AgregarUsuarioComponent},
-  {path: 'editar-usuario/:id',component:EditarUsuariosComponent},
-  {path: 'listar-usuarios', component:ListarUsuariosComponent},
-  {path: 'editar-fichas/:id', component: EditarFichasComponent},
+  {path: 'editar-usuario',component:EditarUsuariosComponent},
+  {path: 'editar-fichas', component: EditarFichasComponent},
   {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
-
+  {path: 'excusas', component:ExcusasComponent},
+  {path: 'crear-excusa', component:CrearExcusaComponent},
+  {path: 'editar-excusa',component:EditarExcusasComponent},
+  {path: 'crear-horarios',component:CrearHorariosComponent},
+  {path: 'editar-horarios',component:EditarHorariosComponent},
 ]
 
 @NgModule({
@@ -121,9 +126,6 @@ const appRoutes:Routes=[
     AprendizComponent,
     InstructorComponent,
     AdministradorComponent,
-    ListarFichasComponent,
-    VisualizarAsistenciasComponent,
-
     FichasComponent,
     AgregarFichasComponent,
     CrearAsistenciasComponent,
@@ -135,9 +137,7 @@ const appRoutes:Routes=[
     EditarAsistenciasComponent,
     EditarFichasComponent,
     EditarUsuariosComponent,
-    ListarUsuariosComponent,
     AgregarUsuarioComponent,
-    VisualizarUsuarioComponent,
     ReporteUsuarioComponent,
     ReporteFichasComponent,
 	  ReporteAsistenciaComponent,
@@ -145,10 +145,17 @@ const appRoutes:Routes=[
    CrearExcusaComponent,
    EditarExcusasComponent,
    ReporteExcusasComponent,
+   HorariosComponent,
+   CrearHorariosComponent,
+   EditarHorariosComponent,
+   CompetenciasComponent,
+   EditarCompetenciasComponent,
+   CrearCompetenciasComponent,
 
 
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -157,6 +164,7 @@ const appRoutes:Routes=[
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    NativeDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
@@ -189,6 +197,8 @@ const appRoutes:Routes=[
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NativeDateModule,
+    MatNativeDateModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [
@@ -196,10 +206,12 @@ const appRoutes:Routes=[
     MatCheckboxModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    BrowserAnimationsModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,
+    NativeDateModule,
     MatSlideToggleModule,
     MatMenuModule,
     MatSidenavModule,
@@ -226,7 +238,9 @@ const appRoutes:Routes=[
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    NativeDateModule,
+    MatNativeDateModule,
 
   ],
   providers: [

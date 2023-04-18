@@ -15,7 +15,7 @@ export class AdministradorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activaOpcion = 0 
+    this.activaOpcion = 0
   }
 
 
