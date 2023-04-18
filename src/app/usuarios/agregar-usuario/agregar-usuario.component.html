@@ -26,24 +26,16 @@
 
         <div class="inputs-container">
             <mat-form-field>
-                <p>Numero de Ficha</p>
-                <input type="number" name="idficha" [(ngModel)]="usuario.idficha" matInput placeholder="Numero de Ficha">
-            </mat-form-field>
-            <mat-form-field>
-                <p>Numero de Telefono</p>
-                <input type="number" name="cellphone" [(ngModel)]="usuario.cellphone" matInput placeholder="Telefono">
-            </mat-form-field>
-            <mat-form-field>
                 <mat-label>Rol en el Sistema</mat-label>
                 <mat-select name="rol" [(ngModel)]="usuario.rol">
-                    <mat-option value="IN">Instructor</mat-option>
-                    <mat-option value="AP">Aprendiz</mat-option>
-                    <mat-option value="AD">Administrador</mat-option>
+                    <mat-option value="INSTRUCTOR">Instructor</mat-option>
+                    <mat-option value="APRENDIZ">Aprendiz</mat-option>
+                    <mat-option value="ADMIN">Administrador</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Estado</mat-label>
-                <mat-select name="status" [(ngModel)]="usuario.status">
+                <mat-select name="status" [(ngModel)]="usuario.estado">
                     <mat-option value="ACTIVO">Activo</mat-option>
                     <mat-option value="INACTIVO">Inactivo</mat-option>
                 </mat-select>

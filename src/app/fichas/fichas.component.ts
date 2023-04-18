@@ -47,6 +47,5 @@ export class FichasComponent implements OnInit {
       data: idFicha,
     });
   }
-
 }
 

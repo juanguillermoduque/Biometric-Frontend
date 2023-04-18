@@ -11,16 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class AgregarUsuarioComponent implements OnInit {
 
   usuario : usuario = {
-    iduser:0,
+    num_id:0,
     first_name:'',
-    idficha:0,
     last_name:'',
     type_id: '',
     email:'',
-    num_id :0,
-    cellphone :0,
     rol :'',
-    status: '',
+    estado: '',
     password: '',
     biometric_date: '',
     created_at: '',
@@ -34,7 +31,6 @@ constructor(private usuariosService:UsuariosService){
   }
   guardarUsuario(){
     delete this.usuario.created_at;
-    delete this.usuario.iduser;
     delete this.usuario.updated_at;
     delete this.usuario.biometric_date;
     console.log(this.usuario);

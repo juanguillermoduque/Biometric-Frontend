@@ -63,7 +63,6 @@ import { FichasComponent } from './fichas/fichas.component';
 import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
 import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
 import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
-import { ListarAsistenciasComponent } from './asistencias/listar-asistencias/listar-asistencias.component';
 import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
 
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -94,26 +93,26 @@ import { CrearCompetenciasComponent } from './competencias/crear-competencias/cr
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
+  {path: 'administrador', component:AdministradorComponent},
   {path: 'instructor', component:InstructorComponent},
+  {path: 'aprendiz', component:AprendizComponent},
+
   {path: 'fichas', component:FichasComponent},
-  {path: 'agregar-ficha', component: AgregarFichasComponent },
+  {path: 'agregar-ficha', component: AgregarFichasComponent},
+  {path: 'editar-fichas', component: EditarFichasComponent},
+
   {path: 'asistencias', component:AsistenciasComponent},
   {path: 'crear-asistencia', component:CrearAsistenciasComponent},
   {path: 'editar-asistencias', component:EditarAsistenciasComponent},
-  {path: 'listar-asistencias', component:ListarAsistenciasComponent},
-  {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
-  {path: 'generar-reportes', component:ReporteAsistenciaComponent},
-  {path: 'editar-fichas', component:EditarAsistenciasComponent},
-  {path: 'administrador', component:AdministradorComponent},
-  {path: 'aprendiz', component:AprendizComponent},
+
   {path: 'usuarios',component:UsuariosComponent},
   {path: 'agregar-usuario',component:AgregarUsuarioComponent},
   {path: 'editar-usuario',component:EditarUsuariosComponent},
-  {path: 'editar-fichas', component: EditarFichasComponent},
-  {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
+
   {path: 'excusas', component:ExcusasComponent},
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
+
   {path: 'crear-horarios',component:CrearHorariosComponent},
   {path: 'editar-horarios',component:EditarHorariosComponent},
 ]
@@ -130,7 +129,6 @@ const appRoutes:Routes=[
     AgregarFichasComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
-    ListarAsistenciasComponent,
 
     UsuariosComponent,
     CrearAsistenciasComponent,
