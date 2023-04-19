@@ -9,7 +9,6 @@ export class ExcusasComponent {
   displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado'];
   excusas:any = ['','','','','',''];
   dataSource = this.excusas;
-  
   }
 
   export interface PeriodicElement {

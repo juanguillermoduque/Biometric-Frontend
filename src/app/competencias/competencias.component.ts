@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./competencias.component.css']
 })
 export class CompetenciasComponent {
+  displayedColumns: string[] = ['Nombre de la competencia', 'Ficha vinculada'];
+  competencias:any = ['',''];
+  dataSource = this.competencias;
+  }
 
-}
+  export interface PeriodicElement {
+    competencia: string;
+    ficha: number;
+  }

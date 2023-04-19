@@ -115,6 +115,10 @@ const appRoutes:Routes=[
 
   {path: 'crear-horarios',component:CrearHorariosComponent},
   {path: 'editar-horarios',component:EditarHorariosComponent},
+
+  {path: 'competencias',component:CompetenciasComponent},
+  {path: 'crear-competencias',component:CrearCompetenciasComponent},
+  {path: 'editar-competencias',component:EditarCompetenciasComponent},
 ]
 
 @NgModule({
