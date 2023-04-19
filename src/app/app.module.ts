@@ -88,6 +88,7 @@ import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horar
 import { CompetenciasComponent } from './competencias/competencias.component';
 import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
 import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 const appRoutes:Routes=[
@@ -149,6 +150,7 @@ const appRoutes:Routes=[
    CompetenciasComponent,
    EditarCompetenciasComponent,
    CrearCompetenciasComponent,
+   MainPageComponent,
 
 
   ],
