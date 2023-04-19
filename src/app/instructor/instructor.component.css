@@ -13,7 +13,7 @@
 mat-sidenav-container {
   position: relative;
   height: 100%;
-  background-image: linear-gradient(to right bottom, rgb(255, 94, 0), white, white);
+  background-image: radial-gradient(circle, #8ea1a0, #9badab, #a9bab7, #b6c6c3, #c4d3cf);
 }
 mat-sidenav {
   position: fixed;
