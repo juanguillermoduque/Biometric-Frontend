@@ -1,1 +1,33 @@
-<p>horarios works!</p>
+
+<mat-grid-list cols="3" rowHeight="300px">
+    <!-- Columna 1 -->
+    <mat-grid-tile colspan="1">
+      <mat-card class="example-card">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+          <a mat-icon-button color="primary" (click)="agregarHorario()">
+            <mat-icon>add_circle_outline</mat-icon>
+          </a>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  <div *ngFor="let ficha of horarios[0]">
+    <!--Se recorre la bd con el ngfor -->
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Número de ficha:{{ ficha.code_ficha}}
+            <mat-card-content></mat-card-content>
+          </mat-card-title>
+          <mat-card-subtitle>Programa</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ficha.name_ficha}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="editarhorarios(ficha.code_ficha)" mat-button>Ver/Editar</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </div>
