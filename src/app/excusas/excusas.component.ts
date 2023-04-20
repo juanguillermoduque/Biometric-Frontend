@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ExcusasService } from '../services/excusas/excusas.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { CrearExcusaComponent } from './crear-excusa/crear-excusa.component';
+import { EditarExcusasComponent } from './editar-excusas/editar-excusas.component';
 
 @Component({
   selector: 'app-excusas',
@@ -21,34 +23,32 @@ export class ExcusasComponent implements OnInit{
 
   }
   ngOnInit(){
-    this.fichaService.getFichas().subscribe(
+    this.excusaService.getexcusas().subscribe(
       res =>{
-        this.fichas = res;
-        console.log(this.fichas);
+        this.excusas = res;
+        console.log(this.excusas);
       },
       err=>console.error(err)
     )
   }
 
-  agregarFicha(){
-    this.dialog.open(AgregarFichasComponent, {
+  crearExcusa(){
+    this.dialog.open(CrearExcusaComponent, {
       height: '500px',
       width: '600px',
     });
   }
 
-  editarFicha(idFicha :number){
-
-    this.dialog.open(EditarFichasComponent, {
+  editarExcusa(idExcusa :number){
+    this.dialog.open(EditarExcusasComponent, {
       height: '800px',
       width: '600px',
-      data: idFicha,
+      data: idExcusa,
     });
   }
 
 }
 
-  
   export interface PeriodicElement {
     numero: number;
     fecha: string;
