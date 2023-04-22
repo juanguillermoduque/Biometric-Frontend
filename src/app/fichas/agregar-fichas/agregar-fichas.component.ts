@@ -31,6 +31,24 @@ export class AgregarFichasComponent implements OnInit {
     });
   }
 
+  ficha : ficha = {
+    id_ficha:0,
+    code_ficha:0,
+    name_ficha:'',
+    date_start :'',
+    date_end :'',
+    created_at :'',
+    updated_at :'',
+};
+
+constructor(private fichasService:FichasService){
+
+}
+
+
+  ngOnInit(){
+
+
   ngOnInit(): void {
   }
 
@@ -45,6 +63,14 @@ export class AgregarFichasComponent implements OnInit {
       err => console.error(err)
     );
 }
+
+  guardarFicha(){
+    delete this.ficha.created_at;
+    delete this.ficha.updated_at;
+    delete this.ficha.id_ficha;
+    delete this.ficha.date_end;
+    delete this.ficha.date_start;
+
 
   ngOnDestroy() {
     if (this.subscription) {

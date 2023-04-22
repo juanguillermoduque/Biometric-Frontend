@@ -51,6 +51,7 @@ agregarFicha() {
     });
   }
 
+
   actualizarFichas(): void {
     this.fichaService.getFichas().subscribe(
       (res: any) => { // Se cambia el tipo de datos a any
@@ -60,4 +61,5 @@ agregarFicha() {
       err => console.error(err)
     );
   }
+
 }

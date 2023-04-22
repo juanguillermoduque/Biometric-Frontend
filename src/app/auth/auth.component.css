@@ -20,6 +20,7 @@
 }
 
 .form__title {
+  color: white;
   font-size: 2em;
   margin-bottom: 20px;
 
@@ -39,7 +40,7 @@ background-color: #2CD794;
 
 .form{
   align-items: center;
-  background-image: radial-gradient(circle, #2be1e1, #00e7cc, #00eba7, #00ed72, #12eb1b);
+  background-color: #3d3b3b;
 
 }
 
@@ -52,9 +53,9 @@ background-color: #2CD794;
   }
 
   body{
-    background-color: #e5e5f7;
+    background-image: radial-gradient(circle, #8ea1a0, #9badab, #a9bab7, #b6c6c3, #c4d3cf);
     opacity: 0.8;
-    background-image: radial-gradient(circle at center center, #45f7a6, #e5e5f7), repeating-radial-gradient(circle at center center, #45f7a6, #45f7a6, 10px, transparent 20px, transparent 10px);
+    background-image: radial-gradient(circle, #8ea1a0, #9badab, #a9bab7, #b6c6c3, #c4d3cf);
     background-blend-mode: multiply;
   }
 

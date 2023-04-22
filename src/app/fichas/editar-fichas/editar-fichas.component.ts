@@ -11,12 +11,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class EditarFichasComponent implements OnInit {
   ficha : ficha = {
-    idficha:0,
+    id_ficha:0,
     code_ficha:0,
     name_ficha:'',
-    trimester:0,
-    num_Students:0,
-    jornada :'',
     date_start :'',
     date_end :'',
     created_at :'',
@@ -45,7 +42,7 @@ constructor(private fichasService:FichasService,
   modificarFicha(){
     delete this.ficha.created_at;
     delete this.ficha.updated_at;
-    delete this.ficha.idficha;
+    delete this.ficha.id_ficha;
     delete this.ficha.date_end;
     delete this.ficha.date_start;
 

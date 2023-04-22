@@ -1,10 +1,18 @@
+<div class="titulo">Ingresa los datos
 <div class="container">
-  <h2>Agregar Ficha</h2>
-  <form class="form-container" [formGroup]="fichaForm" (ngSubmit)="guardarFicha()">
-    <mat-form-field appearance="fill">
-      <mat-label>Código de Ficha</mat-label>
-      <input matInput formControlName="code_ficha">
-      <mat-error *ngIf="fichaForm.get('code_ficha')?.hasError('required')">Este campo es requerido</mat-error>
+
+  <form class="form-container">
+    <div class="form-fields-container">
+      <mat-form-field>
+        <input matInput type="number" name="code_ficha" [(ngModel)]="ficha.code_ficha" placeholder="Número de ficha">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="name_ficha" [(ngModel)]="ficha.name_ficha" placeholder="Nombre del programa">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Líder de la ficha">
+
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Nombre de Ficha</mat-label>
@@ -47,4 +55,5 @@
     </mat-form-field>
     <button mat-raised-button type="submit" [disabled]="fichaForm.invalid">Agregar</button>
   </form>
+</div>
 </div>

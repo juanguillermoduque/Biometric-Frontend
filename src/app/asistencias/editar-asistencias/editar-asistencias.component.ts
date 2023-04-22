@@ -11,12 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EditarAsistenciasComponent {
 
   asistencia: asistencia ={
-    idasistencia:0,
-    date_enter:'',
-    date_start:'',
-    date_end:'',
-    aula:0,
-    Estado:'',
+    id_asistencia:0,
+    hora_ingreso:'',
     comments:'',
     created_at :'',
     updated_at :'',
@@ -45,9 +41,6 @@ params = this.activeRouted.snapshot.params;
   modificarAsistencia(){
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
-    delete this.asistencia.date_enter;
-    delete this.asistencia.date_start;
-    delete this.asistencia.date_end;
 
   this.asistenciasService.updateAsistencia(this.params['id'],this.asistencia)
       .subscribe(

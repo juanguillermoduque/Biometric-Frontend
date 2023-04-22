@@ -22,7 +22,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
 // Material Navigation
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -65,7 +64,6 @@ import { FichasComponent } from './fichas/fichas.component';
 import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
 import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
 import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
-import { ListarAsistenciasComponent } from './asistencias/listar-asistencias/listar-asistencias.component';
 import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
 
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -85,6 +83,13 @@ import { ExcusasComponent } from './excusas/excusas.component';
 import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
 import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
 import { ReporteExcusasComponent } from './excusas/reporte-excusas/reporte-excusas.component';
+import { HorariosComponent } from './horarios/horarios.component';
+import { CrearHorariosComponent } from './horarios/crear-horarios/crear-horarios.component';
+import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horarios.component';
+import { CompetenciasComponent } from './competencias/competencias.component';
+import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
+import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 import { HttpClientJsonpModule } from '@angular/common/http'; // Importa HttpClientModule y HttpClientJsonpModule
 
@@ -92,25 +97,32 @@ import { HttpClientJsonpModule } from '@angular/common/http'; // Importa HttpCli
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
+  {path: 'administrador', component:AdministradorComponent},
   {path: 'instructor', component:InstructorComponent},
+  {path: 'aprendiz', component:AprendizComponent},
+
   {path: 'fichas', component:FichasComponent},
-  {path: 'agregar-ficha', component: AgregarFichasComponent },
+  {path: 'agregar-ficha', component: AgregarFichasComponent},
+  {path: 'editar-fichas', component: EditarFichasComponent},
+
   {path: 'asistencias', component:AsistenciasComponent},
   {path: 'crear-asistencia', component:CrearAsistenciasComponent},
   {path: 'editar-asistencias', component:EditarAsistenciasComponent},
-  {path: 'listar-asistencias', component:ListarAsistenciasComponent},
-  {path: 'reporte-asistencias', component:ReporteAsistenciaComponent},
-  {path: 'generar-reportes', component:ReporteAsistenciaComponent},
-  {path: 'editar-fichas', component:EditarAsistenciasComponent},
-  {path: 'administrador', component:AdministradorComponent},
-  {path: 'aprendiz', component:AprendizComponent},
+
   {path: 'usuarios',component:UsuariosComponent},
   {path: 'agregar-usuario',component:AgregarUsuarioComponent},
   {path: 'editar-usuario',component:EditarUsuariosComponent},
-  {path: 'editar-fichas', component: EditarFichasComponent},
-  {path: 'reporte-usuarios', component:ReporteUsuarioComponent},
+
+  {path: 'excusas', component:ExcusasComponent},
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
+
+  {path: 'crear-horarios',component:CrearHorariosComponent},
+  {path: 'editar-horarios',component:EditarHorariosComponent},
+
+  {path: 'competencias',component:CompetenciasComponent},
+  {path: 'crear-competencias',component:CrearCompetenciasComponent},
+  {path: 'editar-competencias',component:EditarCompetenciasComponent},
 ]
 
 @NgModule({
@@ -124,8 +136,6 @@ const appRoutes:Routes=[
     FichasComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
-    ListarAsistenciasComponent,
-    AgregarFichasComponent,
     UsuariosComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
@@ -139,6 +149,13 @@ const appRoutes:Routes=[
    CrearExcusaComponent,
    EditarExcusasComponent,
    ReporteExcusasComponent,
+   HorariosComponent,
+   CrearHorariosComponent,
+   EditarHorariosComponent,
+   CompetenciasComponent,
+   EditarCompetenciasComponent,
+   CrearCompetenciasComponent,
+   MainPageComponent,
 
 
   ],
