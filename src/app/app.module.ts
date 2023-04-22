@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
 
 
+
 import { CommonModule } from '@angular/common';
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -71,7 +72,7 @@ import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuar
 import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usuario.component';
 import { ReporteUsuarioComponent } from './usuarios/reporte-usuario/reporte-usuario.component';
 import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -89,6 +90,8 @@ import { CompetenciasComponent } from './competencias/competencias.component';
 import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
 import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
 import { MainPageComponent } from './main-page/main-page.component';
+
+import { HttpClientJsonpModule } from '@angular/common/http'; // Importa HttpClientModule y HttpClientJsonpModule
 
 
 const appRoutes:Routes=[
@@ -131,10 +134,8 @@ const appRoutes:Routes=[
     InstructorComponent,
     AdministradorComponent,
     FichasComponent,
-    AgregarFichasComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
-
     UsuariosComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
@@ -203,6 +204,8 @@ const appRoutes:Routes=[
     MatTableModule,
     NativeDateModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
+    HttpClientJsonpModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [

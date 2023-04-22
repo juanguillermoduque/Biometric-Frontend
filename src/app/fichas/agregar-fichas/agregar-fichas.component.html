@@ -1,5 +1,6 @@
 <div class="titulo">Ingresa los datos
 <div class="container">
+
   <form class="form-container">
     <div class="form-fields-container">
       <mat-form-field>
@@ -11,20 +12,48 @@
     </div>
     <mat-form-field>
       <input matInput placeholder="Líder de la ficha">
+
     </mat-form-field>
-      <mat-form-field appearance="fill" class="date">
-        <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="picker" name="date_start" [(ngModel)]="ficha.date_start">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="date">
-        <mat-label>Fecha de final</mat-label>
-        <input matInput [matDatepicker]="picker" name="date_start" [(ngModel)]="ficha.date_start">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    <button (click)="guardarFicha()" mat-raised-button>Agregar</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de Ficha</mat-label>
+      <input matInput formControlName="name_ficha">
+      <mat-error *ngIf="fichaForm.get('name_ficha')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Trimestre</mat-label>
+      <input matInput formControlName="trimester">
+      <mat-error *ngIf="fichaForm.get('trimester')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Jornada</mat-label>
+      <mat-select formControlName="jornada">
+        <mat-option value="diurna">Dia</mat-option>
+        <mat-option value="mixta">Mixta</mat-option>
+        <mat-option value="nocturna">Nocturna</mat-option>
+        <mat-option value="otra">Otra</mat-option>
+      </mat-select>
+      <mat-error *ngIf="fichaForm.get('jornada')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Número de Estudiantes</mat-label>
+      <input matInput formControlName="num_Students">
+      <mat-error *ngIf="fichaForm.get('num_Students')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="pickerStart" formControlName="date_start">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+      <mat-error *ngIf="fichaForm.get('date_start')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de finalización</mat-label>
+      <input matInput [matDatepicker]="pickerEnd" formControlName="date_end">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+      <mat-error *ngIf="fichaForm.get('date_end')?.hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="fichaForm.invalid">Agregar</button>
   </form>
 </div>
 </div>
