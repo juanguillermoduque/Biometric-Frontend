@@ -24,10 +24,8 @@ export class EditarUsuariosComponent {
     created_at: '',
     updated_at: '',
 };
-params = this.activatedRouted.snapshot.params;
 
 constructor(private usuariosService:UsuariosService,
-  private activatedRouted:ActivatedRoute,
   @Inject(MAT_DIALOG_DATA) public num_id:number){
 
 }
@@ -36,6 +34,7 @@ constructor(private usuariosService:UsuariosService,
       this.usuariosService.getUsuario(this.num_id)
         .subscribe(
           res=>{
+            this.usuario = res;
             console.log(res);
           },
           err => console.error(err)

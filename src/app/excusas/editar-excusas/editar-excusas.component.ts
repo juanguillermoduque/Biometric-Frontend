@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Component, Inject, OnInit } from '@angular/core';
 import { excusa } from 'src/app/models/excusas';
 import { ExcusasService } from 'src/app/services/excusas/excusas.service';

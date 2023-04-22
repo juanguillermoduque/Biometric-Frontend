@@ -144,6 +144,7 @@ const appRoutes:Routes=[
     AgregarUsuarioComponent,
     ReporteUsuarioComponent,
     ReporteFichasComponent,
+    AgregarFichasComponent,
 	  ReporteAsistenciaComponent,
    ExcusasComponent,
    CrearExcusaComponent,
