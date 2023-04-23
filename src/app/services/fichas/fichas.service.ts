@@ -33,3 +33,11 @@ export class FichasService {
     );
   }
 }
+
+/*
+Este código define un servicio Angular llamado FichasService que se utiliza para interactuar con un servidor API RESTful que
+maneja datos de fichas. La clase contiene métodos que realizan solicitudes HTTP GET, POST y PUT para obtener, agregar y actualizar
+ datos de fichas en el servidor. También se define un Observable llamado _refresh$ que se emite cada vez que se guarda o actualiza
+ una ficha. Esto se hace usando la tubería "tap" de RxJS para llamar a la función next() del sujeto _refresh$ cada vez que se
+ realiza una solicitud POST o PUT.
+*/

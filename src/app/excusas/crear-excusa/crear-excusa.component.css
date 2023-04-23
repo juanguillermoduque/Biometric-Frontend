@@ -9,7 +9,7 @@
     align-items: center;
     height: 100vh;
   }
-  
+
   .form-container {
     display: flex;
     flex-direction: column;
@@ -20,16 +20,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 400px;
   }
-  
+
   .form-container mat-form-field {
     width: 100%;
     margin-bottom: 20px;
   }
-  
+
   .form-container mat-form-field:last-of-type {
     margin-bottom: 30px;
   }
-  
+
   .form-container button {
     margin-top: 20px;
   }
@@ -37,7 +37,13 @@
   #bton{
     background-color: yellowgreen;
   }
-  
-  
-  
-  
+
+  /*Este código es un estilo CSS para una página web que incluye una sección de formulario. El elemento raíz
+  tiene un estilo de visualización flexible con dirección de columna y alineación de elementos al inicio. La clase ".container"
+  tiene un estilo de visualización flexible con justificación de elementos al centro y alineación de elementos al centro de la
+  vista. La clase ".form-container" es un contenedor de formulario que tiene un estilo de visualización flexible con dirección de
+  columna y alineación de elementos al centro. También tiene un relleno de 30 píxeles, un borde sólido de 1 píxel de ancho y bordes
+  redondeados de 5 píxeles. Además, los campos de formulario tienen una anchura del 100% y un margen inferior de 20 píxeles, y el
+  último campo de formulario tiene un margen inferior de 30 píxeles. El botón tiene un margen superior de 20 píxeles. Finalmente,
+  se establece el color de fondo del botón con el ID "bton" en amarillo-verde.
+*/

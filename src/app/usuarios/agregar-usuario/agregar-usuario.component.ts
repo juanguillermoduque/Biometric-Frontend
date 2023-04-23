@@ -40,7 +40,7 @@ constructor(private usuariosService:UsuariosService){
     console.log(this.usuario);
 
     this.usuariosService.saveUsuario(this.usuario)
-    
+
       .subscribe(
         res =>{
           console.log(res);
@@ -50,3 +50,8 @@ constructor(private usuariosService:UsuariosService){
   }
 
 }
+/*
+Este código define un componente de Angular llamado "AgregarUsuarioComponent" que tiene una variable llamada "usuario" que es un
+objeto con varias propiedades. También importa y utiliza un servicio llamado "UsuariosService" para guardar el usuario en una base
+de datos. La función "guardarUsuario" se ejecuta cuando se hace clic en el botón "Agregar" y utiliza el servicio para guardar el
+usuario. La función también elimina algunas propiedades del objeto "usuario" antes de guardar el usuario en la base de datos.*/

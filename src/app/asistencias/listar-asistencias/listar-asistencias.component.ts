@@ -26,3 +26,9 @@ export class ListarAsistenciasComponent {
   }
 
 }
+
+/*Este es un componente de Angular que muestra una lista de asistencias. El componente recupera la lista de asistencias desde el
+servicio de AsistenciasService utilizando el método getAsistencias(), y luego muestra los datos en una tabla utilizando la
+directiva mat-table de Angular Material. La lista de asistencias se almacena en la propiedad asistencias del componente y se
+asigna a la propiedad dataSource de la tabla. La estructura de la tabla se define utilizando las propiedades displayedColumns y
+matColumnDef de la directiva mat-table.*/

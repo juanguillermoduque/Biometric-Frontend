@@ -2,7 +2,7 @@
     width: 50%;
     margin: auto;
   }
-  
+
   .form-container{
     display: flex;
       flex-direction: row;
@@ -13,3 +13,8 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  /*
+  Este código define estilos CSS para un contenedor de ancho 50% centrado horizontalmente y dos contenedores de entrada, uno con
+  campos de entrada dispuestos en una columna y otro con campos de entrada dispuestos en una fila con un espacio entre ellos de
+  60px.*/

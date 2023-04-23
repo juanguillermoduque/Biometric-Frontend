@@ -9,7 +9,7 @@
     align-items: center;
     height: 100vh;
   }
-  
+
   .form-container {
     display: flex;
     flex-direction: column;
@@ -20,16 +20,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 400px;
   }
-  
+
   .form-container mat-form-field {
     width: 100%;
     margin-bottom: 20px;
   }
-  
+
   .form-container mat-form-field:last-of-type {
     margin-bottom: 30px;
   }
-  
+
   .form-container button {
     margin-top: 20px;
   }
@@ -37,5 +37,11 @@
   #bton{
     background-color: yellowgreen;
   }
-  
-  
+
+  /*
+  Este código es un conjunto de estilos CSS para una página web que contiene un formulario. La sección :host establece que el
+  contenedor de los elementos estará dispuesto en una columna con los elementos a la izquierda. La clase .container establece que
+  los elementos del formulario estarán centrados tanto horizontal como verticalmente. La clase .form-container establece los
+  estilos del contenedor del formulario, incluyendo el color de fondo, sombras, bordes y tamaño. Las clases .form-container
+  mat-form-field establecen los estilos para los campos de formulario. La clase .form-container button establece el margen
+  superior para el botón. La última regla #bton establece el color de fondo para un botón con un id específico.*/

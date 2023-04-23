@@ -34,14 +34,14 @@ params = this.activeRouted.snapshot.params;
         .subscribe(
           res=>{
             console.log(res);
-      
+
           },
           err => console.error(err)
         )
 
   }
 }
-  
+
   modificarAsistencia(){
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
@@ -60,3 +60,10 @@ params = this.activeRouted.snapshot.params;
 
 
 }
+
+/*Este código es un componente de Angular que define la funcionalidad de la página de edición de asistencia. Importa las
+dependencias necesarias y define un objeto asistencia con sus propiedades iniciales. El componente también tiene una variable
+params que almacena los parámetros de la ruta activa y un constructor que inyecta servicios necesarios. En el método ngOnInit(),
+se comprueba si la página tiene un parámetro 'id' y se llama al método getAsistencia del servicio de asistencias para obtener
+los detalles de la asistencia correspondiente. Por último, el método modificarAsistencia se encarga de eliminar algunas propiedades
+ del objeto asistencia y llamar al método updateAsistencia del servicio de asistencias para guardar los cambios.*/

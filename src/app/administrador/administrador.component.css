@@ -83,3 +83,11 @@ mat-sidenav-container {
     margin: auto;
     font-size: 20px;
 }
+
+
+
+/*El estilo para una barra lateral en el lado izquierdo de la página, con un ancho de 250px, fondo blanco y sombra.
+Un estilo para el logo en la barra superior con un máximo de altura de 60px y un relleno de 5px.
+Un estilo para los enlaces de navegación en la barra lateral con un color de fuente blanco, negrita, centrado y un relleno de 10px.
+Un estilo para un título en la parte superior de la página con un fondo gris claro y una altura fija de 64px, posición fija y texto centrado.
+Un estilo para una sección de información en la página con un ancho máximo del 50%, posición absoluta y centrada verticalmente y horizontalmente.*/

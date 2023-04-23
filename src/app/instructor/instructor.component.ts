@@ -25,4 +25,8 @@ export class InstructorComponent {
 }
 
 
-
+/*
+Este código define un componente llamado "InstructorComponent". Este componente tiene dos variables miembro: "activaOpcion" y
+"fichaSeleccionada". También tiene dos métodos: "AccionInstructor()" y "editarFicha()". El método "AccionInstructor()" establece
+la variable "activaOpcion" a un valor pasado como argumento. El método "editarFicha()" establece la variable "fichaSeleccionada"
+a un valor pasado como argumento y navega a otra página utilizando el servicio "Router" de Angular.*/

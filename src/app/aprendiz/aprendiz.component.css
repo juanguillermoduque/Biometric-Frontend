@@ -129,3 +129,12 @@ nav ul li ul li a:hover{
   background-color: green;
   align-self:flex-end;
 }
+
+
+/*
+El primer bloque establece algunas propiedades generales para todos los elementos, como la eliminación de márgenes y rellenos
+predeterminados y la definición del modelo de caja como "border-box".
+
+Los bloques siguientes definen la apariencia del encabezado, el menú de navegación y el pie de página. Por ejemplo, el menú de
+navegación tiene una altura de 70 píxeles, tiene elementos de lista sin viñetas y se despliega un menú secundario cuando se pasa
+el cursor sobre un elemento de la lista principal.*/

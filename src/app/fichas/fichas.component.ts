@@ -61,3 +61,8 @@ agregarFicha() {
     );
   }
 }
+
+/*Este código es un componente Angular llamado "FichasComponent". En el ngOnInit(), se llama al método "getFichas()" del servicio
+"FichasService" para obtener una lista de fichas y se almacena en la variable "fichas". Luego, hay dos métodos, "agregarFicha()" y
+ "editarFicha()", que abren un diálogo para agregar o editar una ficha, respectivamente. El método "actualizarFichas()" se utiliza
+ para actualizar la lista de fichas después de agregar o editar una ficha. Finalmente, se exporta la clase "FichasComponent".*/

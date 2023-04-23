@@ -112,7 +112,8 @@ const appRoutes:Routes=[
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
 ]
-
+/*El código define las rutas que se utilizarán en una aplicación web usando el framework Angular. Cada ruta especifica una URL y
+un componente que se debe mostrar cuando se accede a esa URL.*/
 @NgModule({
   declarations: [
     AppComponent,

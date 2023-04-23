@@ -22,3 +22,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+/*
+Este código define dos clases de estilo. La clase .container establece un grid y centra los elementos en el medio. La clase
+.form-container también establece un grid, pero con un número dinámico de columnas y filas y un espaciado entre ellos. Además,
+define algunos estilos de diseño, como un fondo gris claro, bordes redondeados y sombras. También incluye una media query para
+cambiar la disposición a una sola columna en pantallas más pequeñas.
+*/

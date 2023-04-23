@@ -28,7 +28,7 @@ export class CrearAsistenciasComponent implements OnInit{
 
 
   ngOnInit(){
-    
+
   }
   guardarAsistencia(){
     delete this.asistencia.created_at;
@@ -52,3 +52,8 @@ export class CrearAsistenciasComponent implements OnInit{
 
 }
 
+/*Este código es un archivo TypeScript que importa dos cosas: el componente y un servicio de asistencia. El componente define una
+clase con un atributo "asistencia" que se inicializa como un objeto vacío con varios campos. También tiene un constructor que
+inyecta el servicio de asistencia y un método "guardarAsistencia()" que elimina algunos campos del objeto "asistencia" y llama
+a una función "saveAsistencia()" del servicio de asistencia para guardar la asistencia en algún lugar. El método "ngOnInit()"
+está vacío y no hace nada.*/

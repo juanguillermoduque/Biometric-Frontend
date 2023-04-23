@@ -20,3 +20,13 @@
 button {
   margin-top: 20px;
 }
+
+/*
+.container se muestra como un contenedor de flexbox que se alinea en el centro vertical y horizontalmente y tiene un margen
+superior de 50px.
+
+.form-container es un contenedor de flexbox con dirección de columna y alinea sus elementos en el centro. Tiene un ancho de 500px.
+.mat-form-field tiene un ancho del 100%.
+
+El selector button agrega un margen superior de 20px.
+*/

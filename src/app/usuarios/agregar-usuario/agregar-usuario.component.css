@@ -9,7 +9,7 @@
     width: 50%;
     margin: auto;
   }
-  
+
   .form-container{
     display: flex;
       flex-direction: row;
@@ -20,7 +20,7 @@
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .form-container {
     display: flex;
     flex-direction: column;
@@ -31,19 +31,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 400px;
   }
-  
+
   .form-container mat-form-field {
     width: 100%;
     margin-bottom: 20px;
   }
-  
+
   .form-container mat-form-field:last-of-type {
     margin-bottom: 30px;
   }
-  
+
   .form-container button {
     margin-top: 20px;
   }
-  
-  
-  
+
+
+  /*
+  Este código es CSS y define el estilo de un formulario en una página web. Establece la altura de la vista en 100% de la altura
+  de la ventana del navegador. El contenedor principal se muestra como un elemento flex con contenido centrado vertical y
+  horizontalmente. La sección de formulario tiene un ancho del 50% y está centrada en el contenedor principal. El formulario en sí
+  está contenido en un elemento de columna y tiene un relleno, un borde, un borde redondeado y una sombra. Los campos del
+  formulario están en un contenedor de columna y tienen un margen inferior y un botón al final.*/

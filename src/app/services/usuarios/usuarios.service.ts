@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class UsuariosService {
   API_URI = 'http://localhost:3000/api';
 
-  constructor(private http:HttpClient) { 
-     
+  constructor(private http:HttpClient) {
+
   }
 
   getUsuarios(){
@@ -26,3 +26,9 @@ export class UsuariosService {
     return this.http.put(`${this.API_URI}/usuarios/editar${id}`,usuario);
   }
 }
+/*
+Este código es un servicio de Angular que se encarga de hacer peticiones HTTP a una API en el backend. El servicio es para manejar
+la entidad "usuario", y tiene los métodos getUsuarios() para obtener todos los usuarios, getUsuario(id) para obtener un usuario en
+ particular, saveUsuario(usuario) para guardar un nuevo usuario y updateUsuario(id,usuario) para actualizar un usuario existente
+ mediante su ID. Se utiliza la librería HttpClient para hacer las peticiones HTTP a la API.
+*/

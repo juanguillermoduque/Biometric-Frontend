@@ -41,3 +41,20 @@
 .botom:hover {
   background-color: #ff4800;
 }
+
+/*
+El elemento con la clase "container" se muestra como un contenedor de columnas con contenido centrado verticalmente, y tiene un
+margen superior de 50px.
+
+El elemento con la clase "form-container" es un contenedor de columnas con contenido centrado verticalmente, tiene un ancho
+fijo de 500px, un relleno de 30px y un fondo de color #f2f2f2 con bordes redondeados. También tiene un encabezado "h2" con
+un margen inferior de 20px.
+
+El elemento con la clase "mat-form-field" ocupa el ancho completo y tiene un margen inferior de 20px.
+
+El elemento con la clase "mat-select" ocupa el ancho completo.
+
+El elemento con la clase "botom" tiene un margen superior de 30px, un fondo de color #ff6600, texto blanco, sin borde y con
+bordes redondeados de 5px. También tiene un tamaño de letra de 16px y un cursor de puntero. Cuando se pasa el cursor sobre el
+botón, su fondo cambia a #ff4800.
+*/

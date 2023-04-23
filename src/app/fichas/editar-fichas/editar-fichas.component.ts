@@ -58,3 +58,10 @@ constructor(private fichasService:FichasService,
       )
   }
 }
+
+/*
+Este código es un componente de Angular que se encarga de editar una ficha. Importa los módulos necesarios, define una variable
+"ficha" que contiene los campos que se pueden editar, incluyendo su ID. El componente también recibe un parámetro "idFicha" que se
+utiliza para obtener la ficha a editar. En el método "ngOnInit", se llama a un servicio que obtiene la ficha correspondiente a
+partir del ID. En el método "modificarFicha", se eliminan algunos campos no editables y se llama a otro servicio que actualiza la
+ficha en la base de datos.*/
