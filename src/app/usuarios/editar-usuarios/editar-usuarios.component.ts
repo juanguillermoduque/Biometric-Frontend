@@ -43,8 +43,6 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
     }
   }
 
-  }
-
   modificarUsuario(){ // Método que me modificará al usuario
 
     delete this.usuario.created_at;
