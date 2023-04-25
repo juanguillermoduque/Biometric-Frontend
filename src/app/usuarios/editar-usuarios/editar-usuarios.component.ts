@@ -24,10 +24,8 @@ export class EditarUsuariosComponent {
     created_at: '',
     updated_at: '',
 };
-params = this.activatedRouted.snapshot.params;
 
 constructor(private usuariosService:UsuariosService,
-  private activatedRouted:ActivatedRoute,
   @Inject(MAT_DIALOG_DATA) public num_id:number){
 
 }
@@ -42,6 +40,7 @@ constructor(private usuariosService:UsuariosService,
         )
   }
   }
+  
   modificarUsuario(){
     delete this.usuario.created_at;
     delete this.usuario.updated_at;

@@ -14,9 +14,9 @@ export class UsuariosComponent implements OnInit  {
   displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit'];
   usuarios:any = [];
   dataSource = this.usuarios;
-  
+
   constructor(private usuarioService: UsuariosService, public dialog:MatDialog){
-    
+
   }
 
   ngOnInit(){

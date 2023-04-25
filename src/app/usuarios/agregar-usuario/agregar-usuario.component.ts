@@ -27,8 +27,9 @@ constructor(private usuariosService:UsuariosService){
 
 }
   ngOnInit(){
-
+    
   }
+
   guardarUsuario(){
     delete this.usuario.created_at;
     delete this.usuario.updated_at;
