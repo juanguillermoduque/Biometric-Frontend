@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ficha } from 'src/app/models/fichas';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
-import { ActivatedRoute,Route } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -19,10 +18,8 @@ export class EditarFichasComponent implements OnInit {
     created_at :'',
     updated_at :'',
 };
-params = this.activeRouted.snapshot.params;
 
 constructor(private fichasService:FichasService,
-   private activeRouted:ActivatedRoute,
    @Inject(MAT_DIALOG_DATA) public idFicha:number
    ){
 
@@ -32,6 +29,7 @@ constructor(private fichasService:FichasService,
         this.fichasService.getFicha(this.idFicha)
           .subscribe(
             res=>{
+              this.ficha = res;
               console.log(res);
             },
             err => console.error(err)

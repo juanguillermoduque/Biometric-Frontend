@@ -34,6 +34,7 @@ constructor(private usuariosService:UsuariosService,
       this.usuariosService.getUsuario(this.num_id)
         .subscribe(
           res=>{
+            this.usuario = res;
             console.log(res);
           },
           err => console.error(err)
