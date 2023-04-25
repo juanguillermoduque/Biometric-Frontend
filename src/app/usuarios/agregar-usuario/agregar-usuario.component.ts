@@ -26,10 +26,12 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
 constructor(private usuariosService:UsuariosService){ // creación de constructor invocando el servicio de usuariosService que me trae información del backend
 
 }
+
   ngOnInit(){ // Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
 
   }
   guardarUsuario(){ // Método que me guardará un Usuario
+
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método usuario el valor de estos campos se eliminará
     delete this.usuario.biometric_date;

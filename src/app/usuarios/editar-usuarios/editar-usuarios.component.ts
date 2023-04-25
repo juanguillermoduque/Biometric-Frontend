@@ -42,7 +42,11 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
         )
     }
   }
+
+  }
+
   modificarUsuario(){ // Método que me modificará al usuario
+
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método excusa el valor de estos campos se eliminará
     delete this.usuario.biometric_date;

@@ -9,6 +9,7 @@ import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.compo
   templateUrl: './usuarios.component.html',  // es una cadena de texto que especifica la ruta del archivo de plantilla HTML asociado con el componente
   styleUrls: ['./usuarios.component.css'] // especifica las rutas de los archivos de hojas de estilo CSS asociados con el componente
 })
+
 export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
   displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla 
   usuarios:any = []; // variable excusa que es un arreglo vacío
