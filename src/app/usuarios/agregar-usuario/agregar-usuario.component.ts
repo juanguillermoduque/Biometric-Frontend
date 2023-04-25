@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class AgregarUsuarioComponent implements OnInit {
 
   usuario : usuario = {
-    num_id:0,
+    num_id:123456789,
     first_name:'',
     last_name:'',
     type_id: '',

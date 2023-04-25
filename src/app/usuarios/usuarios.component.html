@@ -1,6 +1,10 @@
-<button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
+
+
 <div class="container">
     <h2>Listar Usuarios</h2>
+    <button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
+    <br>
+    <br>
     <table mat-table [dataSource]="usuarios[0]">
       <ng-container matColumnDef="NombreUsuario">
         <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>
