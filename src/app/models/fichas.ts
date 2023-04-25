@@ -1,3 +1,4 @@
+
 export interface ficha{
     id_ficha?:number;
     code_ficha?:number;
@@ -7,3 +8,4 @@ export interface ficha{
     created_at? :string;
     updated_at? :string;
 }
+
