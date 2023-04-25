@@ -1,51 +1,87 @@
 <div class="container">
     <form class="form-container">
-        <h2>Agregar usuario</h2>
         <div class="inputs-container">
+
             <mat-form-field>
                 <input [(ngModel)]="usuario.first_name" name="first_name" matInput placeholder="Nombre de Usuario">
+                <!--[(ngmodel)] cumple la función de actualizar el valor del atributo first_name del componente usuario,
+            de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
             </mat-form-field>
+
+
             <mat-form-field>
                 <input [(ngModel)]="usuario.last_name" name="last_name" matInput placeholder="Apellido de Usuario">
+                <!--[(ngmodel)] cumple la función de actualizar el valor del atributo last_name del componente usuario,
+            de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
             </mat-form-field>
+
+
             <mat-form-field>
                 <mat-label>Tipo de documento</mat-label>
                 <mat-select [(ngModel)]="usuario.type_id" name="type_id">
+                     <!--[(ngmodel)] cumple la función de actualizar el valor del atributo type_id del componente usuario,
+            de esta manera lo ingresado en el mat-select por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
                     <mat-option value="TI">Tarjeta de Identidad</mat-option>
-                    <mat-option value="CC">Cedula de Ciudadania</mat-option>
-                    <mat-option value="CE">Cedula de Extranjeria</mat-option>
+                    <mat-option value="CC">Cédula de Ciudadanía</mat-option>
+                    <mat-option value="CE">Cédula de Extranjería</mat-option>
                 </mat-select>
             </mat-form-field>
+
+
             <mat-form-field>
                 <input type="number" name="number" [(ngModel)]="usuario.num_id" matInput placeholder="Numero de Documento">
+                <!--[(ngmodel)] cumple la función de actualizar el valor del atributo num_id del componente usuario,
+            de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
             </mat-form-field>
+
+
             <mat-form-field>
                 <input [(ngModel)]="usuario.email" name="email" matInput placeholder="Correo Electronico">
+                <!--[(ngmodel)] cumple la función de actualizar el valor del atributo email del componente usuario,
+            de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
             </mat-form-field>
         </div>
 
         <div class="inputs-container">
             <mat-form-field>
+
                 <mat-label>Rol en el Sistema</mat-label>
                 <mat-select name="rol" [(ngModel)]="usuario.rol">
+                     <!--[(ngmodel)] cumple la función de actualizar el valor del atributo rol del componente usuario,
+            de esta manera lo ingresado en el mat-select por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
+
                     <mat-option value="INSTRUCTOR">Instructor</mat-option>
                     <mat-option value="APRENDIZ">Aprendiz</mat-option>
                     <mat-option value="ADMIN">Administrador</mat-option>
                 </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
                 <mat-label>Estado</mat-label>
                 <mat-select name="status" [(ngModel)]="usuario.estado">
+                     <!--[(ngmodel)] cumple la función de actualizar el valor del atributo estado del componente usuario,
+            de esta manera lo ingresado en el mat-select por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
                     <mat-option value="ACTIVO">Activo</mat-option>
                     <mat-option value="INACTIVO">Inactivo</mat-option>
                 </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
-                <p>Contraseña</p>
                 <input name="password" [(ngModel)]="usuario.password" matInput placeholder="Contraseña">
+                <!--[(ngmodel)] cumple la función de actualizar el valor del atributo password del componente usuario,
+            de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
+            almacenado en el atributo-->
             </mat-form-field>
         </div>
         <button (click)="guardarUsuario()" mat-raised-button>Agregar</button>
+         <!--El evento click llama al método guardarUsuario() creado en el typescript de agregar-usuario-->
     </form>
 
 </div>
