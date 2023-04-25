@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdministradorComponent } from './administrador.component';
+import { CrearRolesComponent } from './crear-roles.component';
 
-describe('AdministradorComponent', () => {
-  let component: AdministradorComponent;
-  let fixture: ComponentFixture<AdministradorComponent>;
+describe('CrearRolesComponent', () => {
+  let component: CrearRolesComponent;
+  let fixture: ComponentFixture<CrearRolesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdministradorComponent ]
+      declarations: [ CrearRolesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdministradorComponent);
+    fixture = TestBed.createComponent(CrearRolesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
