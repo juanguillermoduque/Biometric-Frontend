@@ -53,9 +53,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { AprendizComponent } from './aprendiz/aprendiz.component';
-import { InstructorComponent } from './instructor/instructor.component';
-import { AdministradorComponent } from './administrador/administrador.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentFixture } from '@angular/core/testing';
@@ -91,15 +88,17 @@ import { EditarCompetenciasComponent } from './competencias/editar-competencias/
 import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
 import { MainPageComponent } from './main-page/main-page.component';
 
-import { HttpClientJsonpModule } from '@angular/common/http'; // Importa HttpClientModule y HttpClientJsonpModule
+import { HttpClientJsonpModule } from '@angular/common/http';
+import { RolesComponent } from './roles/roles.component';
+import { EditarRolesComponent } from './roles/editar-roles/editar-roles.component';
+import { CrearRolesComponent } from './roles/crear-roles/crear-roles.component'; // Importa HttpClientModule y HttpClientJsonpModule
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: 'administrador', component:AdministradorComponent},
-  {path: 'instructor', component:InstructorComponent},
-  {path: 'aprendiz', component:AprendizComponent},
+  {path: "index", component:MainPageComponent},
+  
 
   {path: 'fichas', component:FichasComponent},
   {path: 'agregar-ficha', component: AgregarFichasComponent},
@@ -123,6 +122,10 @@ const appRoutes:Routes=[
   {path: 'competencias',component:CompetenciasComponent},
   {path: 'crear-competencias',component:CrearCompetenciasComponent},
   {path: 'editar-competencias',component:EditarCompetenciasComponent},
+
+  {path: 'roles',component:CrearRolesComponent},
+  {path: 'crear-competencias',component:CrearCompetenciasComponent},
+  {path: 'editar-competencias',component:EditarCompetenciasComponent},
 ]
 
 @NgModule({
@@ -130,9 +133,6 @@ const appRoutes:Routes=[
     AppComponent,
     AuthComponent,
     AsistenciasComponent,
-    AprendizComponent,
-    InstructorComponent,
-    AdministradorComponent,
     FichasComponent,
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
@@ -157,6 +157,9 @@ const appRoutes:Routes=[
    EditarCompetenciasComponent,
    CrearCompetenciasComponent,
    MainPageComponent,
+   RolesComponent,
+   EditarRolesComponent,
+   CrearRolesComponent,
 
 
   ],
