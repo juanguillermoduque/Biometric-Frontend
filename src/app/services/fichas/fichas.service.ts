@@ -16,6 +16,8 @@ export class FichasService {
     return this._refresh$
   }
 
+
+
   getFichas(){
     return this.http.get(`${this.API_URI}/fichas/`);
   }
@@ -32,4 +34,10 @@ export class FichasService {
       tap(() => this._refresh$.next())
     );
   }
+
+  search(fichasId:String){
+    return this.http.get(`${this.API_URI}/filtros/search${fichasId}`);
+  }
+
+
 }
