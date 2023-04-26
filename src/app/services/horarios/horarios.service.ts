@@ -21,6 +21,6 @@ export class HorariosService {
     return this.http.post(`${this.API_URI}/horarios/`,horario);
   }
   updateFicha(id:number,horario:horario):Observable<horario>{
-    return this.http.put(`${this.API_URI}/horario/editar${id}`,horario);
+    return this.http.put(`${this.API_URI}/horarios/editar${id}`,horario);
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HorariosService } from '../services/horarios/horarios.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CrearHorariosComponent } from './crear-horarios/crear-horarios.component';
+import { EditarHorariosComponent } from './editar-horarios/editar-horarios.component';
 
 @Component({
   selector: 'app-horarios',
@@ -14,7 +16,7 @@ throw new Error('Method not implemented.');
 agregarHorario() {
 throw new Error('Method not implemented.');
 }
-  
+  displayedColumns: string[] = ['Horario', 'Instructor', 'Jornada', 'Ficha','edit'];
   horarios:any = [];
   dataSource = this.horarios;
 
@@ -35,4 +37,19 @@ ngOnInit(){
   )
 }
 
+nuevoHorario(){
+  this.dialog.open(CrearHorariosComponent,{
+    width:'1000px',
+    height: '1000px',
+  })
 }
+
+editarHorarios(num_id : number){
+  this.dialog.open(EditarHorariosComponent,{
+    height:'800px',
+    width: '600px',
+    data: num_id
+  });
+}
+}
+
