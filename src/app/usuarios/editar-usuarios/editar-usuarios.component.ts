@@ -17,7 +17,6 @@ export class EditarUsuariosComponent implements OnInit{
     last_name:'',
     type_id: '',
     email:'',
-    rol :'',
     estado: '',
     password: '',
     biometric_date: '',
