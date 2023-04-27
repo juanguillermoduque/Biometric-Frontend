@@ -16,7 +16,6 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
     last_name:'',
     type_id: '',
     email:'',
-    rol :'',
     estado: '',
     password: '',
     biometric_date: '',
