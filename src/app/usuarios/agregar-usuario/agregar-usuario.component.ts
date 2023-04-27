@@ -4,7 +4,7 @@ import { usuario } from 'src/app/models/usuarios'; /*importación del modelo usu
 import { Component, OnInit } from '@angular/core';  /*importación del componente OnInit*/
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
-import { usuario_rol } from 'src/app/models/usuario_rol';
+import { usuario_rol } from '../../models/usuario_rol';
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "agregar-usuario"*/
   selector: 'app-agregar-usuario', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
