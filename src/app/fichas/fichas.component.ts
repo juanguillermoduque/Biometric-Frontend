@@ -22,7 +22,7 @@ export class FichasComponent implements OnInit {
     ){
 
   }
-  ngOnInit(){
+  ngOnInit(){ 
     this.fichaService.getFichas().subscribe(
       res =>{
         this.fichas = res;
@@ -49,13 +49,18 @@ export class FichasComponent implements OnInit {
   }
 
   searchFicha(){
-    this.fichaService.search(this.searchId).subscribe(
+    if (this.searchId == ""){
+      this.ngOnInit();
+    }
+    else{
+      this.fichaService.search(this.searchId).subscribe(
       res=>{
         console.log("Busqueda realizada",res);
+        this.fichas = res;
       },
       err=>{console.log(err)}
     )
   }
-
 }
 
+}
