@@ -60,4 +60,10 @@ export class RolesService {
     return this.http.get(`${this.API_URI}/roles/`);
   }
 
+  saveUsuarioRol(ids:any){
+    return this.http.post(`${this.API_URI}/usuario_rol/`,ids);
+  }
+
+  
+
 }

@@ -41,17 +41,6 @@
 
         <div class="inputs-container">
             <mat-form-field>
-                <mat-label>Rol en el Sistema</mat-label>
-                <mat-select name="rol" [(ngModel)]="usuario.rol">
-                 <!--[(ngmodel)] cumple la función de actualizar el valor del atributo rol del componente usuario,
-            de esta manera lo ingresado en el mat-select por el usuario, actualizara el valor de lo 
-            almacenado en el atributo-->   
-                    <mat-option value="INSTRUCTOR">Instructor</mat-option>
-                    <mat-option value="APRENDIZ">Aprendiz</mat-option>
-                    <mat-option value="ADMIN">Administrador</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
                 <mat-label>Estado</mat-label>
                 <mat-select name="status" [(ngModel)]="usuario.estado">
                  <!--[(ngmodel)] cumple la función de actualizar el valor del atributo estado del componente usuario,
