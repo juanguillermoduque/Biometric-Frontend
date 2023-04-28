@@ -11,8 +11,9 @@ import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.compo
 })
 
 export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
-  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla 
-  usuarios:any = []; // variable excusa que es un arreglo vacío
+  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla
+  searchId:string = ""; 
+  usuarios:any = []; // variable usuarios que es un arreglo vacío
   dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
   
   constructor(private usuarioService: UsuariosService, public dialog:MatDialog){
@@ -48,5 +49,14 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
       width: '600px',
       data: num_id
     });
+  }
+
+  searchUser(){
+    this.usuarioService.searchUsuario(this.searchId).subscribe(
+      res=>{
+        console.log("Búsqueda realizada", res);
+      },
+      err=>{console.log(err)}
+    )
   }
 }
