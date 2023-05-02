@@ -16,7 +16,6 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
     last_name:'',
     type_id: '',
     email:'',
-    rol :'',
     estado: '',
     password: '',
     biometric_date: '',
@@ -38,7 +37,7 @@ constructor(private usuariosService:UsuariosService){ // creación de constructo
     console.log(this.usuario);
 
     this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
-    
+
       .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
         res =>{

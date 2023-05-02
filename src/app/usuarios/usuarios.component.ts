@@ -1,25 +1,20 @@
-import { Component, OnInit } from '@angular/core'; /*importación del componente OnInit*/
-import { UsuariosService } from '../services/usuarios/usuarios.service'; /* importación del servicio usuariosService que hace una conexión con el backend*/
-import {MatDialog, MatDialogRef} from '@angular/material/dialog'; // importación del componente MatDialog
-import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component'; // importación del componente AgregarUsuario
-import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.component'; // // importación del componente EditarUsuario
+import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from '../services/usuarios/usuarios.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
+import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.component';
 
-@Component({/* es un decorador que se utiliza para configurar las propiedades del componente usuarios*/
-  selector: 'app-usuarios', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
-  templateUrl: './usuarios.component.html',  // es una cadena de texto que especifica la ruta del archivo de plantilla HTML asociado con el componente
-  styleUrls: ['./usuarios.component.css'] // especifica las rutas de los archivos de hojas de estilo CSS asociados con el componente
+@Component({
+  selector: 'app-usuarios',
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.css']
 })
+export class UsuariosComponent implements OnInit {
+  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico', 'RolSistema', 'edit'];
+  usuarios: any = [];
+  dataSource = this.usuarios;
 
-export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
-  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla 
-  usuarios:any = []; // variable excusa que es un arreglo vacío
-  dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
-  
-  constructor(private usuarioService: UsuariosService, public dialog:MatDialog){
-    // definición de UsuariosService que tiene la conexión con el back
-    // MatDialog proporciona una ventana emergente en la cual se puede ingresar información sin la necesidad de cambiar de ruta
-
-  }
+  constructor(private usuarioService: UsuariosService, public dialog: MatDialog) {}
 
   ngOnInit(){
     // el ngOnInit se ejecuta cuando se inicializa el componente
@@ -34,13 +29,27 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   }
 
   nuevoUsuario(){ // Método nuevoUsuario que me muestra una ventana emergente con el componente AgregarUsuario
-    this.dialog.open(AgregarUsuarioComponent,{
-      width:'1000px',
-      height: '1000px',
-    })
+    const ref = this.dialog.open(AgregarUsuarioComponent,{
+      width:'700px',
+      height: '500px',
+    });
+    ref.afterClosed().subscribe(result =>{
+      console.log('resultado del dialogo', result);
+      this.actualizarUsuarios();
+    });
   }
 
-  editarUsuarios(num_id : number){ 
+  actualizarUsuarios(): void {
+    this.usuarioService.getUsuarios().subscribe(
+      (res: any) => { // Se cambia el tipo de datos a any
+        this.usuarios = res;
+        console.log(this.usuarios);
+      },
+      err => console.error(err)
+    );
+  }
+
+  editarUsuarios(num_id : number){
     // Método editarUsuario que me muestra una ventana emergente con el componente EditarUsuarios
     // como parámetro me recibira el valor de num_id
     this.dialog.open(EditarUsuariosComponent,{
