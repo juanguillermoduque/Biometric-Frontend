@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HorariosService } from '../services/horarios/horarios.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { horario } from 'src/app/models/horarios';
 import { CrearHorariosComponent } from './crear-horarios/crear-horarios.component';
 import { EditarHorariosComponent } from './editar-horarios/editar-horarios.component';
 
@@ -10,12 +11,7 @@ import { EditarHorariosComponent } from './editar-horarios/editar-horarios.compo
   styleUrls: ['./horarios.component.css']
 })
 export class HorariosComponent implements OnInit{
-editarhorarios(arg0: any) {
-throw new Error('Method not implemented.');
-}
-agregarHorario() {
-throw new Error('Method not implemented.');
-}
+
   displayedColumns: string[] = ['Horario', 'Instructor', 'Jornada', 'Ficha','edit'];
   horarios:any = [];
   dataSource = this.horarios;

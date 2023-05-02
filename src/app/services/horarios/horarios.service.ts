@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { horario } from 'src/app/models/horarios';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,7 @@ export class HorariosService {
   constructor(private http:HttpClient) {
 
   }
+
   getHorarios(){
     return this.http.get(`${this.API_URI}/horarios/`);
   }
@@ -20,7 +22,7 @@ export class HorariosService {
   saveHorario(horario:horario){
     return this.http.post(`${this.API_URI}/horarios/`,horario);
   }
-  updateFicha(id:number,horario:horario):Observable<horario>{
+  updateHorario(id:number,horario:horario):Observable<horario>{
     return this.http.put(`${this.API_URI}/horarios/editar${id}`,horario);
   }
 }
