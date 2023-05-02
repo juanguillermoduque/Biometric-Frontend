@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -92,12 +92,15 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 import { RolesComponent } from './roles/roles.component';
 import { EditarRolesComponent } from './roles/editar-roles/editar-roles.component';
 import { CrearRolesComponent } from './roles/crear-roles/crear-roles.component'; // Importa HttpClientModule y HttpClientJsonpModule
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
+//guards
+import { AuthGuard } from './utils/guard/auth.guard';
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: "index", component:MainPageComponent},
+  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
   
 
   {path: 'fichas', component:FichasComponent},
@@ -255,6 +258,7 @@ const appRoutes:Routes=[
 
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi:true},
     FichasService,
     UsuariosService,
     UsuariosService

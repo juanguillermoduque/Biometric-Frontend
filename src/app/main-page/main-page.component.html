@@ -11,10 +11,12 @@
       </mat-nav-list>
     </mat-sidenav>
     <div class="contenido">
+
         <div class="titulo">
             <h2>Administrador</h2>
+            <button mat-raised-button (click)="logOut()">Cerrar Sesión</button>
         </div>
-        
+
         <div class="info">
           <b *ngIf="activaOpcion == 0">BIENVENIDOS AL CENTRO DE FORMACION DISEÑO E INNOVACION TECNOLOGICA INDUSTRIAL</b>
           <app-usuarios *ngIf="activaOpcion == 1"></app-usuarios>

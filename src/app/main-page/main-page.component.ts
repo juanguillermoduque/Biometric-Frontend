@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -10,7 +11,7 @@ export class MainPageComponent {
   componentes = []
 
 
-  constructor(){
+  constructor(private router:Router){
 
   }
 
@@ -22,4 +23,10 @@ export class MainPageComponent {
   AccionAdmin(num:number){
     this.activaOpcion = num;
   }
+
+  logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth']);
+  }
+  
 }
