@@ -119,6 +119,7 @@ const appRoutes:Routes=[
   {path: 'crear-excusa', component:CrearExcusaComponent},
   {path: 'editar-excusa',component:EditarExcusasComponent},
 
+  {path: 'horarios',component:HorariosComponent},
   {path: 'crear-horarios',component:CrearHorariosComponent},
   {path: 'editar-horarios',component:EditarHorariosComponent},
 
