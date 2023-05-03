@@ -95,12 +95,14 @@ import { CrearRolesComponent } from './roles/crear-roles/crear-roles.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 //guards
 import { AuthGuard } from './utils/guard/auth.guard';
+import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
   {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
+  {path: "rolesUser",component:NavegacionComponent},
   
 
   {path: 'fichas', component:FichasComponent},
@@ -163,6 +165,7 @@ const appRoutes:Routes=[
    RolesComponent,
    EditarRolesComponent,
    CrearRolesComponent,
+   NavegacionComponent,
 
 
   ],

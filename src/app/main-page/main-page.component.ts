@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class MainPageComponent {
   activaOpcion : Number = 0;
   componentes = []
-
+  activarComponenteById:Number = 0;
 
   constructor(private router:Router){
 
@@ -27,6 +27,10 @@ export class MainPageComponent {
   logOut(){
     localStorage.removeItem('token');
     this.router.navigate(['/auth']);
+  }
+
+  activarComponente(idComponente:Number){
+    this.activarComponenteById = idComponente
   }
   
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { auth } from '../models/auth';
 import Swal from 'sweetalert2';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
