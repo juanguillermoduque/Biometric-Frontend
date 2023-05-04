@@ -2,7 +2,7 @@
 <div class="container">
 
     <button mat-raised-button id="boton">Crear excusa +</button>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Fecha</mat-label>
       <mat-select>
@@ -11,39 +11,39 @@
       </mat-select>
     </mat-form-field>
 
-    
-    
+
+
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource"> <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
-      
+        <table mat-table [dataSource]="dataSource[0]"> <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
+
           <ng-container matColumnDef="N°">
             <th mat-header-cell *matHeaderCellDef> N° </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="Fecha">
             <th mat-header-cell *matHeaderCellDef> Fecha </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="Instructor/a">
             <th mat-header-cell *matHeaderCellDef> Instructor/a </th>
             <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="Estado">
             <th mat-header-cell *matHeaderCellDef> Estado </th>
             <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
           </ng-container>
-      
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-      
+
         <mat-paginator [pageSizeOptions]="[1,2,3]"
                        showFirstLastButtons
                        aria-label="Select page of periodic elements">
         </mat-paginator>
       </div>
-      
+
 </div>

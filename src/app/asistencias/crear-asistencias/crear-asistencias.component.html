@@ -5,6 +5,9 @@
       <input matInput type="text" name="date_enter" [(ngModel)]="asistencia.hora_ingreso" placeholder="hora de ingreso">
     </mat-form-field>
     <mat-form-field>
+      <input matInput type="number" name="id_aprendiz" [(ngModel)]="asistencia.id_aprendiz" placeholder="id del aprendiz">
+    </mat-form-field>
+    <mat-form-field>
       <input matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones">
     </mat-form-field>
     <button mat-raised-button (click)="guardarAsistencia()" class="botom">Agregar</button>

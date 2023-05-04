@@ -24,7 +24,7 @@ export class CrearAsistenciasComponent implements OnInit{
 
 
   ngOnInit(){
-    
+
   }
   guardarAsistencia(){
     delete this.asistencia.created_at;
@@ -39,7 +39,6 @@ export class CrearAsistenciasComponent implements OnInit{
         err => console.error(err)
       )
     }
-
 
 }
 

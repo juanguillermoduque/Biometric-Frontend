@@ -12,7 +12,7 @@ import { EditarExcusasComponent } from './editar-excusas/editar-excusas.componen
 })
 
 export class ExcusasComponent implements OnInit{ // llamado de componente Excusas implementando la interfaz OnInit
-  displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado']; // Arreglo de columnas para mostrar en una tabla 
+  displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado']; // Arreglo de columnas para mostrar en una tabla
   excusas:any = ['','','','','','']; // variable excusa que es un arreglo de 6 valores vacíos todos de tipo string
   dataSource = this.excusas; // se utiliza como fuente de datos para la tabla
 
@@ -23,7 +23,7 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
 
   }
   ngOnInit(){ // el ngOnInit se ejecuta cuando se inicializa el componente
-    // se realiza el llamado al servicio excusaService para obtener datos de las excusas 
+    // se realiza el llamado al servicio excusaService para obtener datos de las excusas
     this.excusaService.getexcusas().subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       res =>{ // si la respuesta por parte del servidor es exitosa se asigna el valor de res a this.excusas y luego se muestra por pantalla el valor de excusas
         this.excusas = res;
@@ -57,8 +57,8 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     instructor: string;
     estado: string;
   }
-  
+
   const ELEMENT_DATA: PeriodicElement[] = [
     {numero: 1, fecha: '29/03/2023', instructor: 'Wilson Ramírez', estado: 'Validado'},
-  ]  
+  ]
 
