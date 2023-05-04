@@ -9,10 +9,6 @@ import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.compo
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
-export class UsuariosComponent implements OnInit {
-  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico', 'RolSistema', 'edit'];
-  usuarios: any = [];
-  dataSource = this.usuarios;
 
 export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
   displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla
