@@ -53,84 +53,8 @@ background-color: #2CD794;
   }
 
   body{
-    background-image: radial-gradient(circle, #8ea1a0, #9badab, #a9bab7, #b6c6c3, #c4d3cf);
+    
     opacity: 0.8;
-    background-image: radial-gradient(circle, #8ea1a0, #9badab, #a9bab7, #b6c6c3, #c4d3cf);
+   
     background-blend-mode: multiply;
   }
-
-
-/*
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #eee;
-  }
-
-  .logo img {
-    width: 50px;
-    height: auto;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
-
-  form {
-    width: 300px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  }
-
-  h1 {
-    margin-top: 0px;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  input,
-  select {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: #ff6600;
-  }
-
-  p {
-    color: #f00;
-    margin-top: 10px;
-    font-style: italic;
-  }
-  */
-
