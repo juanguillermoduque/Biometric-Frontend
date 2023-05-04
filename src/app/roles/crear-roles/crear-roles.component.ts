@@ -32,7 +32,6 @@ export class CrearRolesComponent implements OnInit{
     this.rolService.getComponentes().subscribe(
       res=>{
         this.componentes = res;
-        console.log(res);
       },
       err=>console.error(err)
     )
@@ -53,7 +52,6 @@ export class CrearRolesComponent implements OnInit{
     delete this.rol.id_rol;
     this.rolService.saveRol(this.rol).subscribe(
       res=>{
-        console.log(res)
         this.rolService.getRol(this.rol.nombre_rol).subscribe(
           res=>{
             this.crearComponenteRol(res)
@@ -67,7 +65,7 @@ export class CrearRolesComponent implements OnInit{
   crearComponenteRol(rol:any){
     const idRol = rol.id_rol;
 
-    for(let i = 0;i <= this.idComponentes.length;i++){
+    for(let i = 0;i < this.idComponentes.length;i++){
       this.componenteRol.id_componente = this.idComponentes[i]
       this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(

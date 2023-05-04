@@ -101,37 +101,7 @@ import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.co
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
-  {path: "rolesUser",component:NavegacionComponent},
-  
-
-  {path: 'fichas', component:FichasComponent},
-  {path: 'agregar-ficha', component: AgregarFichasComponent},
-  {path: 'editar-fichas', component: EditarFichasComponent},
-
-  {path: 'asistencias', component:AsistenciasComponent},
-  {path: 'crear-asistencia', component:CrearAsistenciasComponent},
-  {path: 'editar-asistencias', component:EditarAsistenciasComponent},
-
-  {path: 'usuarios',component:UsuariosComponent},
-  {path: 'agregar-usuario',component:AgregarUsuarioComponent},
-  {path: 'editar-usuario',component:EditarUsuariosComponent},
-
-  {path: 'excusas', component:ExcusasComponent},
-  {path: 'crear-excusa', component:CrearExcusaComponent},
-  {path: 'editar-excusa',component:EditarExcusasComponent},
-
-  {path: 'horarios',component:HorariosComponent},
-  {path: 'crear-horarios',component:CrearHorariosComponent},
-  {path: 'editar-horarios',component:EditarHorariosComponent},
-
-  {path: 'competencias',component:CompetenciasComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
-
-  {path: 'roles',component:CrearRolesComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
+  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]}
 ]
 
 @NgModule({

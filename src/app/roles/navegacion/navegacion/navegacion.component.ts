@@ -28,13 +28,16 @@ export class NavegacionComponent implements OnInit {
   }
 
   getComponentes(componentes_roles:any){
+    console.log(componentes_roles)
     for(let i in componentes_roles){
       this.rolServise.getComponente(componentes_roles[i].id_componente).subscribe(
         (res)=>{
+          console.log(res)
           this.componentes.push(res)
         }
       )
     }
+
 
   }
 
