@@ -1,0 +1,1 @@
+{"version":3,"file":"horarios.component.js","sourceRoot":"","sources":["../../../../src/app/horarios/horarios.component.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAO1C;IAAA;IAEA,CAAC;IAFY,iBAAiB;QAL7B,SAAS,CAAC;YACT,QAAQ,EAAE,cAAc;YACxB,WAAW,EAAE,2BAA2B;YACxC,SAAS,EAAE,CAAC,0BAA0B,CAAC;SACxC,CAAC;OACW,iBAAiB,CAE7B;IAAD,wBAAC;CAAA,AAFD,IAEC;SAFY,iBAAiB"}
