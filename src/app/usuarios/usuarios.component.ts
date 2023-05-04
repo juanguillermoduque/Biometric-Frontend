@@ -14,7 +14,17 @@ export class UsuariosComponent implements OnInit {
   usuarios: any = [];
   dataSource = this.usuarios;
 
-  constructor(private usuarioService: UsuariosService, public dialog: MatDialog) {}
+export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
+  displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla
+  searchId:string = ""; 
+  usuarios:any = []; // variable usuarios que es un arreglo vacío
+  dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
+  
+  constructor(private usuarioService: UsuariosService, public dialog:MatDialog){
+    // definición de UsuariosService que tiene la conexión con el back
+    // MatDialog proporciona una ventana emergente en la cual se puede ingresar información sin la necesidad de cambiar de ruta
+
+  }
 
   ngOnInit(){
     // el ngOnInit se ejecuta cuando se inicializa el componente
@@ -57,5 +67,14 @@ export class UsuariosComponent implements OnInit {
       width: '600px',
       data: num_id
     });
+  }
+
+  searchUser(){
+    this.usuarioService.searchUsuario(this.searchId).subscribe(
+      res=>{
+        console.log("Búsqueda realizada", res);
+      },
+      err=>{console.log(err)}
+    )
   }
 }

@@ -25,4 +25,7 @@ export class UsuariosService {
   updateUsuario(id:number,usuario:usuario):Observable<usuario>{
     return this.http.put(`${this.API_URI}/usuarios/editar${id}`,usuario);
   }
+  searchUsuario(id:String){
+    return this.http.get(`${this.API_URI}/filtros/searchUser${id}`,);
+  }
 }
