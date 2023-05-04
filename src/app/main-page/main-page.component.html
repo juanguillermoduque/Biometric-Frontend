@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened>
     <mat-toolbar>
-      <img routerLink="index" src="../../assets/img/sena.png" alt="Logo" style="max-height: 100%">
+      <img (click)="activarComponente(0)"  src="../../assets/img/sena.png" alt="Logo" style="max-height: 100%">
     </mat-toolbar>
     <app-navegacion (seEscogioComponente)="activarComponente($event)" ></app-navegacion>
   </mat-sidenav>
@@ -14,7 +14,6 @@
         </div>
 
         <div class="info">
-          {{activarComponenteById}}
           <b *ngIf="activarComponenteById == 0">BIENVENIDOS AL CENTRO DE FORMACION DISEÑO E INNOVACION TECNOLOGICA INDUSTRIAL</b>
           <app-asistencias *ngIf="activarComponenteById == 1"></app-asistencias>
           <app-competencias *ngIf="activarComponenteById == 2"></app-competencias>
@@ -22,6 +21,7 @@
           <app-fichas *ngIf="activarComponenteById == 4"></app-fichas>
           <app-horarios *ngIf="activarComponenteById == 5"></app-horarios>
           <app-usuarios *ngIf="activarComponenteById == 6"></app-usuarios>
+          <app-roles *ngIf="activarComponenteById == 7"></app-roles>
         </div>
     </div>
 </mat-sidenav-container>

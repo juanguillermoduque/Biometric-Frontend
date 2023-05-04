@@ -27,8 +27,8 @@ export class RolesService {
     return this.http.get(`${this.API_URI}/roles/`);
   }
 
-  getRolId(id_rol:string){
-    return this.http.get(`${this.API_URI}/roles/id${name}`);
+  getRolId(id_rol:Number){
+    return this.http.get(`${this.API_URI}/roles/id${id_rol}`);
   }
 
   saveRol(rol:rol){
