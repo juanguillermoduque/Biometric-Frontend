@@ -1,5 +1,8 @@
-<div class="container">
+<div class="grid">
+  <div class="container">
     <form class="form-container">
+      <div class="columns-container">
+        <h1>Agregar Usuario</h1>
         <div class="inputs-container">
 
             <mat-form-field>
@@ -32,6 +35,7 @@
 
 
             <mat-form-field>
+                <mat-label> Número de documento</mat-label>
                 <input type="number" name="number" [(ngModel)]="usuario.num_id" matInput placeholder="Numero de Documento">
                 <!--[(ngmodel)] cumple la función de actualizar el valor del atributo num_id del componente usuario,
             de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
@@ -40,6 +44,7 @@
 
 
             <mat-form-field>
+                <mat-label> Correo electronico</mat-label>
                 <input [(ngModel)]="usuario.email" name="email" matInput placeholder="Correo Electronico">
                 <!--[(ngmodel)] cumple la función de actualizar el valor del atributo email del componente usuario,
             de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
@@ -48,19 +53,22 @@
         </div>
 
         <div class="inputs-container">
-            <mat-form-field>
 
-                <mat-label>Rol en el Sistema</mat-label>
-                <mat-select name="rol" [(ngModel)]="usuario.rol">
-                     <!--[(ngmodel)] cumple la función de actualizar el valor del atributo rol del componente usuario,
-            de esta manera lo ingresado en el mat-select por el usuario, actualizara el valor de lo 
-            almacenado en el atributo-->
-
-                    <mat-option value="INSTRUCTOR">Instructor</mat-option>
-                    <mat-option value="APRENDIZ">Aprendiz</mat-option>
-                    <mat-option value="ADMIN">Administrador</mat-option>
+            <mat-form-field appearance="fill">
+                <mat-label> Roles</mat-label>
+                <mat-select>
+                  <mat-option (click)="agregarRol(rol)"  *ngFor="let rol of roles[0]">
+                    {{rol.nombre_rol}}
+                    <mat-icon  matTooltip="Agregar">add</mat-icon>
+                  </mat-option>
                 </mat-select>
             </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Rol Seleccionado</mat-label>
+                <input type="text" name="rolSeleccionado" placeholder="Rol seleccionado" matInput value={{rolSeleccionado.nombre_rol}}>
+            </mat-form-field>
+
             
             <mat-form-field>
                 <mat-label>Estado</mat-label>
@@ -79,11 +87,11 @@
             de esta manera lo ingresado en el input por el usuario, actualizara el valor de lo 
             almacenado en el atributo-->
             </mat-form-field>
-        </div>
-        <button (click)="guardarUsuario()" mat-raised-button>Agregar</button>
-         <!--El evento click llama al método guardarUsuario() creado en el typescript de agregar-usuario-->
-    </form>
 
+        </div>
+      </div>
+
+      <button (click)="guardarUsuario()" mat-raised-button>Agregar</button>
+    </form>
+  </div>
 </div>
-  
-  

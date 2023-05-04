@@ -4,7 +4,6 @@ export interface usuario{
     last_name?: string;
     type_id?: string;
     email?: string;
-    rol?: string;
     estado?: string;
     password?: string;
     biometric_date?: string;

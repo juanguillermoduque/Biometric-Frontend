@@ -1,5 +1,6 @@
 
-
+<input type="text" placeholder="Buscar" [(ngModel)]="searchId">
+<button (click)="searchFicha()">Buscar</button>
 
     <mat-grid-list cols="3" rowHeight="300px">
       <!-- Columna 1 -->
@@ -29,7 +30,6 @@
           </mat-card-content>
           <mat-card-actions>
             <button (click)="editarFicha(ficha.code_ficha)" mat-button>Ver/Editar</button>
-            <mat-icon fontSize="small">delete</mat-icon>
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>

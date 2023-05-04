@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -92,40 +92,16 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 import { RolesComponent } from './roles/roles.component';
 import { EditarRolesComponent } from './roles/editar-roles/editar-roles.component';
 import { CrearRolesComponent } from './roles/crear-roles/crear-roles.component'; // Importa HttpClientModule y HttpClientJsonpModule
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
+//guards
+import { AuthGuard } from './utils/guard/auth.guard';
+import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: "index", component:MainPageComponent},
-  
-
-  {path: 'fichas', component:FichasComponent},
-  {path: 'agregar-ficha', component: AgregarFichasComponent},
-  {path: 'editar-fichas', component: EditarFichasComponent},
-
-  {path: 'asistencias', component:AsistenciasComponent},
-  {path: 'crear-asistencia', component:CrearAsistenciasComponent},
-  {path: 'editar-asistencias', component:EditarAsistenciasComponent},
-
-  {path: 'usuarios',component:UsuariosComponent},
-  {path: 'agregar-usuario',component:AgregarUsuarioComponent},
-  {path: 'editar-usuario',component:EditarUsuariosComponent},
-
-  {path: 'excusas', component:ExcusasComponent},
-  {path: 'crear-excusa', component:CrearExcusaComponent},
-  {path: 'editar-excusa',component:EditarExcusasComponent},
-
-  {path: 'crear-horarios',component:CrearHorariosComponent},
-  {path: 'editar-horarios',component:EditarHorariosComponent},
-
-  {path: 'competencias',component:CompetenciasComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
-
-  {path: 'roles',component:CrearRolesComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
+  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -160,6 +136,7 @@ const appRoutes:Routes=[
    RolesComponent,
    EditarRolesComponent,
    CrearRolesComponent,
+   NavegacionComponent,
 
 
   ],
@@ -255,6 +232,7 @@ const appRoutes:Routes=[
 
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi:true},
     FichasService,
     UsuariosService,
     UsuariosService

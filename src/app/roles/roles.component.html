@@ -1,1 +1,26 @@
-<p>roles works!</p>
+<button mat-raised-button (click)="nuevoRol()">Crear Nuevo Rol</button>
+<div class="container">
+    <h2>Listar Usuarios</h2>
+    <table mat-table [dataSource]="roles[0]">
+      <ng-container matColumnDef="NumeroRol">
+        <th mat-header-cell *matHeaderCellDef>Numero de rol</th>
+        <td mat-cell *matCellDef="let rol">{{rol.id_rol}}</td>
+      </ng-container>
+      <ng-container matColumnDef="NombreRol">
+        <th mat-header-cell *matHeaderCellDef>Nombre del rol</th>
+        <td mat-cell *matCellDef="let rol">{{rol.nombre_rol}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let rol">    
+        <a mat-button>
+          <mat-icon>edit</mat-icon>
+          <button (click)="editarRol(rol.id_rol)">Ver/Editar</button>
+        </a></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
+
