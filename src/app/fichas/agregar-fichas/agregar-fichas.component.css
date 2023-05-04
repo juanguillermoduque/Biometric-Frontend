@@ -20,10 +20,8 @@
 @media (max-width: 768px) {
   .form-container {
     grid-template-columns: 1fr;
+    background-image: radial-gradient(circle, #a4bbb6, #abc9c2, #b1d7cf, #b8e6db, #bef4e8);
   }
-
-  background-image: radial-gradient(circle, #a4bbb6, #abc9c2, #b1d7cf, #b8e6db, #bef4e8);
-
 }
 
 .titulo{
