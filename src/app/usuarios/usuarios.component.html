@@ -1,5 +1,4 @@
 <div class="container">
-
     <h2>Listar Usuarios</h2>
     <button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
     <br>
@@ -38,9 +37,4 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  </div>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
 </div>
