@@ -12,12 +12,13 @@
 
     <mat-form-field class="form__field">
       <mat-label><i>Documento de identidad</i></mat-label>
-      <input matInput type="text" name="documento" [(ngModel)]="documento">
+      <input matInput type="text" name="documento" [(ngModel)]="email">
     </mat-form-field>
     <mat-form-field class="form__field">
       <mat-label><i>Contraseña</i></mat-label>
       <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
     </mat-form-field>
+
     <button mat-raised-button type="submit" class="form__button" (click)="logearse()"><b>Iniciar Sesión</b></button>
   </form>
 

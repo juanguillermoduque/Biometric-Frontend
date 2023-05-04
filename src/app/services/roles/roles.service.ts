@@ -18,10 +18,17 @@ export class RolesService {
     return this._refresh$
   }
 
-
-
+  //Services Roles
   getRol(name:string){
     return this.http.get(`${this.API_URI}/roles/${name}`);
+  }
+
+  getRoles(){
+    return this.http.get(`${this.API_URI}/roles/`);
+  }
+
+  getRolId(id_rol:Number){
+    return this.http.get(`${this.API_URI}/roles/id${id_rol}`);
   }
 
   saveRol(rol:rol){
@@ -35,29 +42,48 @@ export class RolesService {
       tap(() => this._refresh$.next())
     );
   }
+
+  //services usuarios Roles
+  getUsuarioRol(idUser:any){
+    return this.http.get(`${this.API_URI}/usuario_rol/${idUser}`);
+  }
+
+  saveUsuarioRol(ids:any){
+    return this.http.post(`${this.API_URI}/usuario_rol/`,ids);
+  }
+
+  //serivices de Get rol componente
   
-  getrolComponent(id:number){
-    return this.http.get(`${this.API_URI}/roles/componentes_roles${id}`);
+  getrolComponent(id:Number){
+    return this.http.get(`${this.API_URI}/componentes/componentes_roles${id}`);
   }
 
   saveRolComponent(rol:componenteRol){
-    return this.http.post(`${this.API_URI}/roles/componentes_roles`, rol).pipe(
+    return this.http.post(`${this.API_URI}/componentes/componentes_roles`, rol).pipe(
       tap(() => this._refresh$.next())
     );
   }
 
   updateRolComponent(id:number,rol:rol):Observable<any>{
-    return this.http.put(`${this.API_URI}/roles/componentes_roles/editar${id}`, rol).pipe(
+    return this.http.put(`${this.API_URI}/componentes/componentes_roles/editar${id}`, rol).pipe(
       tap(() => this._refresh$.next())
     );
   }
 
+  //component services
+
   getComponentes(){
-    return this.http.get(`${this.API_URI}/componentes`);
+    return this.http.get(`${this.API_URI}/componentes/`);
+  }
+  getComponente(id:Number){
+    return this.http.get(`${this.API_URI}/componentes/${id}`);
   }
 
-  getRoles(){
-    return this.http.get(`${this.API_URI}/roles/`);
-  }
+
+
+
+
+
+  
 
 }

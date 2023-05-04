@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { componenteRol } from 'src/app/models/component-rol';
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { componente } from 'src/app/models/componentes';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 //FALTA AGREGAR ID POR MEDIO DE MAT_DIALOG
 @Component({
   selector: 'app-editar-roles',
   templateUrl: './editar-roles.component.html',
   styleUrls: ['./editar-roles.component.css']
 })
-export class EditarRolesComponent {
+export class EditarRolesComponent implements OnInit{
   componentes:any = [];
   componentesAgregados:any= []
   idComponentes:number[] = []
+  rolAux:any = {}
 
   rol:rol={
     id_rol : 0,
@@ -26,13 +28,30 @@ export class EditarRolesComponent {
 
   constructor(
     private rolService:RolesService,
+    @Inject(MAT_DIALOG_DATA) public data:Number,
   ){}
 
   ngOnInit() {
+    this.getComponentes();
+    this.getRol();
+    this.rol = this.rolAux
+    
+
+  }
+
+  getRol(){
+    this.rolService.getRolId(this.data).subscribe(
+      res=>{ 
+        this.rolAux = res;
+        console.log(res)
+      }
+    )
+  }
+
+  getComponentes(){
     this.rolService.getComponentes().subscribe(
       res=>{
         this.componentes = res;
-        console.log(res);
       },
       err=>console.error(err)
     )
@@ -53,7 +72,6 @@ export class EditarRolesComponent {
     delete this.rol.id_rol;
     this.rolService.saveRol(this.rol).subscribe(
       res=>{
-        console.log(res)
         this.rolService.getRol(this.rol.nombre_rol).subscribe(
           res=>{
             this.crearComponenteRol(res)

@@ -6,7 +6,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una id de instructor</mat-label>
-            <mat-select disableRipple>
+            <mat-select [(ngModel)]="horario.id_instructor" name="id_instructor" disableRipple>
               <mat-option value="1">1</mat-option>
               <mat-option value="2">2</mat-option>
               <mat-option value="3">3</mat-option>
@@ -15,7 +15,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una jornada</mat-label>
-            <mat-select disableRipple>
+            <mat-select [(ngModel)]="horario.jornada" name="jornada" disableRipple>
                 <mat-option value="DIURNA">DIURNA</mat-option>
                 <mat-option value="MIXTA">MIXTA</mat-option>
                 <mat-option value="NOCTURNA">NOCTURNA</mat-option>
@@ -24,7 +24,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una ficha</mat-label>
-            <mat-select disableRipple>
+            <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha" disableRipple>
                 <mat-option value="2465417">2465417</mat-option>
                 <mat-option value="2466435">2466435</mat-option>
                 <mat-option value="2455321">2455321</mat-option>
@@ -34,7 +34,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona la hora de ingreso</mat-label>
-            <mat-select disableRipple>
+            <mat-select [(ngModel)]="horario.date_start" name="date_start" disableRipple>
                 <mat-option value="07:00">07:00</mat-option>
                 <mat-option value="10:00">10:00</mat-option>
                 <mat-option value="13:00">13:00</mat-option>
@@ -44,7 +44,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona la hora de finalización</mat-label>
-            <mat-select disableRipple>
+            <mat-select [(ngModel)]="horario.date_end" name="date_end" disableRipple>
                 <mat-option value="10:00">10:00</mat-option>
                 <mat-option value="13:00">13:00</mat-option>
                 <mat-option value="16:00">16:00</mat-option>
@@ -61,7 +61,7 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <button mat-raised-button class="botom" id="bton">Guardar</button>
+        <button (click)="guardarHorario()" mat-raised-button>Guardar</button>
     </form>
 </div>
 

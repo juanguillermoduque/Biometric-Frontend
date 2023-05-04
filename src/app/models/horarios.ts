@@ -6,4 +6,6 @@ export interface horario{
     date_start?:string;
     date_end?:string;
     fecha?:string;
+    created_at?: string;
+    updated_at?: string; 
 }
