@@ -7,8 +7,7 @@ import { HorariosService } from 'src/app/services/horarios/horarios.service';
   templateUrl: './crear-horarios.component.html',
   styleUrls: ['./crear-horarios.component.css']
 })
-export class CrearHorariosComponent implements OnInit{
-
+export class CrearHorariosComponent{
   horario : horario = {
     id_instructor:0,
     jornada: '',
@@ -17,26 +16,21 @@ export class CrearHorariosComponent implements OnInit{
     date_end: '',
     created_at: '',
     updated_at: '',
-
   };
-  constructor(private horarioService:HorariosService){
 
-  }
-    ngOnInit(){
-      
-    }
-    guardarHorario(){
-      delete this.horario.created_at;
-      delete this.horario.updated_at;
-      console.log(this.horario);
+  constructor(private horarioService:HorariosService){}
 
-      this.horarioService.saveHorario(this.horario)
-      .subscribe(
-        res =>{
-          console.log(res);
-        },
-        err => console.error(err)
-      )
-  }
+  guardarHorario(){
+    delete this.horario.created_at;
+    delete this.horario.updated_at;
+    console.log(this.horario);
+
+    this.horarioService.saveHorario(this.horario).subscribe(
+      res =>{
+        console.log(res);
+      },
+      err => console.error(err)
+    )
+}
 
 }

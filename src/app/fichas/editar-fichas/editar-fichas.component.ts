@@ -21,9 +21,8 @@ export class EditarFichasComponent implements OnInit {
 
 constructor(private fichasService:FichasService,
    @Inject(MAT_DIALOG_DATA) public idFicha:number
-   ){
+   ){}
 
-}
   ngOnInit(){
     if(this.idFicha){
         this.fichasService.getFicha(this.idFicha)

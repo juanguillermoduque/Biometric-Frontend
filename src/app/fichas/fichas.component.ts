@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
-import { ficha } from 'src/app/models/fichas';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { AgregarFichasComponent } from './agregar-fichas/agregar-fichas.component';
 import { EditarFichasComponent } from './editar-fichas/editar-fichas.component';
 
@@ -19,9 +18,7 @@ export class FichasComponent implements OnInit {
   constructor(
     private fichaService: FichasService,
     public dialog: MatDialog,
-    ){
-
-  }
+    ){}
   ngOnInit(){ 
     this.fichaService.getFichas().subscribe(
       res =>{
@@ -40,7 +37,6 @@ export class FichasComponent implements OnInit {
   }
 
   editarFicha(idFicha :number){
-
     this.dialog.open(EditarFichasComponent, {
       height: '800px',
       width: '600px',
@@ -62,5 +58,4 @@ export class FichasComponent implements OnInit {
     )
   }
 }
-
 }

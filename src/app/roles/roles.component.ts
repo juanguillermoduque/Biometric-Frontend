@@ -17,9 +17,7 @@ export class RolesComponent {
   constructor(
     private rolesService: RolesService,
     public dialog: MatDialog,
-    ){
-
-}
+    ){}
 
 ngOnInit(){
   this.rolesService.getRoles().subscribe(
@@ -45,6 +43,3 @@ editarRol(num_id : number){
   });
 }
 }
-
-
-

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { componenteRol } from 'src/app/models/component-rol';
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';

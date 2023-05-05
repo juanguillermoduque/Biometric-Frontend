@@ -10,9 +10,7 @@ export class AsistenciasComponent {
   asistencias:any = [];
   dataSource = this.asistencias;
 
-  constructor(private asistenciaService:AsistenciasService){
-
-  }
+  constructor(private asistenciaService:AsistenciasService){}
 
   ngOnInit(){
     this.asistenciaService.getAsistencias().subscribe(
@@ -23,7 +21,5 @@ export class AsistenciasComponent {
       err=>console.error(err)
     )
   }
-
-  
 }
 

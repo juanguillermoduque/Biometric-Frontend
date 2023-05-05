@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CompetenciasService } from '../services/competencias/competencias.service';
-import { competencia } from '../models/competencias';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CrearCompetenciasComponent } from './crear-competencias/crear-competencias.component';
 import { EditarCompetenciasComponent } from './editar-competencias/editar-competencias.component';
@@ -15,9 +14,7 @@ export class CompetenciasComponent implements OnInit{
   competencias:any = [];
   dataSource = this.competencias;
 
-  constructor(private CompetenciaService: CompetenciasService, public dialog:MatDialog){
-
-  }
+  constructor(private CompetenciaService: CompetenciasService, public dialog:MatDialog){}
 
   ngOnInit(){
     this.CompetenciaService.getCompetencias().subscribe(
@@ -42,7 +39,5 @@ export class CompetenciasComponent implements OnInit{
       height: '600px',
       data: num_id
     })
-
   }
-
-  }
+}

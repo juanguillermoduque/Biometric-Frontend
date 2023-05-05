@@ -61,14 +61,12 @@ import { FichasComponent } from './fichas/fichas.component';
 import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
 import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
 import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
-import { ReporteAsistenciaComponent } from './asistencias/reporte-asistencia/reporte-asistencia.component';
 
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EditarFichasComponent } from './fichas/editar-fichas/editar-fichas.component';
 import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuarios.component';
 import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usuario.component';
-import { ReporteUsuarioComponent } from './usuarios/reporte-usuario/reporte-usuario.component';
-import { ReporteFichasComponent } from './fichas/reporte-fichas/reporte-fichas.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -79,7 +77,6 @@ import { UsuariosService } from './services/usuarios/usuarios.service';
 import { ExcusasComponent } from './excusas/excusas.component';
 import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
 import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
-import { ReporteExcusasComponent } from './excusas/reporte-excusas/reporte-excusas.component';
 import { HorariosComponent } from './horarios/horarios.component';
 import { CrearHorariosComponent } from './horarios/crear-horarios/crear-horarios.component';
 import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horarios.component';
@@ -118,14 +115,10 @@ const appRoutes:Routes=[
     EditarFichasComponent,
     EditarUsuariosComponent,
     AgregarUsuarioComponent,
-    ReporteUsuarioComponent,
-    ReporteFichasComponent,
     AgregarFichasComponent,
-	  ReporteAsistenciaComponent,
    ExcusasComponent,
    CrearExcusaComponent,
    EditarExcusasComponent,
-   ReporteExcusasComponent,
    HorariosComponent,
    CrearHorariosComponent,
    EditarHorariosComponent,
@@ -232,10 +225,7 @@ const appRoutes:Routes=[
 
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi:true},
-    FichasService,
-    UsuariosService,
-    UsuariosService
+    {provide:HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

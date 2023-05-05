@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { competencia } from 'src/app/models/competencias';
 import { Observable, Subject } from 'rxjs';
 import {tap, toArray} from 'rxjs/operators'
+import { API_DOMAIN } from 'src/app/models/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CompetenciasService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>()
   constructor(private http:HttpClient) { }
 

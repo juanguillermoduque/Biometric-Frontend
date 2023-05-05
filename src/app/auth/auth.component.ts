@@ -38,8 +38,7 @@ export class AuthComponent {
       this.autenticate(data);
     }
   }
-
-
+  
   autenticate(data:auth){
     this.authServise.validateAuth(data).subscribe({
       next : (token:any)=>{

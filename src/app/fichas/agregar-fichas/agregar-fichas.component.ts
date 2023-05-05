@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -23,13 +22,9 @@ export class AgregarFichasComponent  implements OnInit{
 };
 
   constructor(
-    private router: Router,
     private fichasService: FichasService,
-  ) {
-  }
-  ngOnInit(): void {
-    
-  }
+  ) {}
+  ngOnInit(): void {}
 
   guardarFicha(): void {
     delete this.ficha.created_at;
@@ -45,5 +40,4 @@ export class AgregarFichasComponent  implements OnInit{
       err => console.error(err)
     );
 }
-
 }

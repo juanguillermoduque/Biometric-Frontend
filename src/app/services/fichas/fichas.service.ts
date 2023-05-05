@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ficha } from 'src/app/models/fichas';
 import { Observable, Subject, tap } from 'rxjs';
+import { API_DOMAIN } from 'src/app/models/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FichasService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>()
 
   constructor(private http: HttpClient) {}

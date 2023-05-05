@@ -18,14 +18,10 @@ export class CrearAsistenciasComponent implements OnInit{
     updated_at :'',
   };
 
-  constructor(private asistenciasService:AsistenciasService){
+  constructor(private asistenciasService:AsistenciasService){}
+  
+  ngOnInit(){}
 
-  }
-
-
-  ngOnInit(){
-
-  }
   guardarAsistencia(){
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
@@ -39,6 +35,5 @@ export class CrearAsistenciasComponent implements OnInit{
         err => console.error(err)
       )
     }
-
 }
 

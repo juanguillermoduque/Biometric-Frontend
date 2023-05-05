@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HorariosService } from '../services/horarios/horarios.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { horario } from 'src/app/models/horarios';
+import { MatDialog } from '@angular/material/dialog';
 import { CrearHorariosComponent } from './crear-horarios/crear-horarios.component';
 import { EditarHorariosComponent } from './editar-horarios/editar-horarios.component';
 
@@ -19,9 +18,7 @@ export class HorariosComponent implements OnInit{
   constructor(
     private horarioService: HorariosService,
     public dialog: MatDialog,
-    ){
-
-}
+    ){}
 
 ngOnInit(){
   this.horarioService.getHorarios().subscribe(
@@ -48,4 +45,3 @@ editarHorarios(num_id : number){
   });
 }
 }
-
