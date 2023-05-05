@@ -8,7 +8,6 @@ import { ExcusasService } from 'src/app/services/excusas/excusas.service'; /* im
   styleUrls: ['./crear-excusa.component.css'] // especifica las rutas de los archivos de hojas de estilo CSS asociados con el componente
 })
 export class CrearExcusaComponent implements OnInit { // llamado de componente CrearExcusa implementando la interfaz OnInit
-  
   excusa : excusa = { // definición de variable excusa que esta inicializada con un objeto que sigue la estructura de la interfaz excusa
     id_excusa:0,
     id_asistencia:0, 
@@ -17,18 +16,13 @@ export class CrearExcusaComponent implements OnInit { // llamado de componente C
 };
 
 constructor(private excusasService:ExcusasService){ // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
-
 }
 
   ngOnInit(){ // Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
-
   }
 
   guardarExcusa(){ // Método que me guardará la excusa 
-
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-   
-
     this.excusasService.saveexcusa(this.excusa) // el Método saveexcusa del servicio excusasService se llama pasandole como argumento el objeto this.excusa
       .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
@@ -36,7 +30,6 @@ constructor(private excusasService:ExcusasService){ // creación de constructor 
           console.log(res);
         },
         err => console.error(err) // de lo contrario saldrá un error
-      )
+    )
   }
-
 }

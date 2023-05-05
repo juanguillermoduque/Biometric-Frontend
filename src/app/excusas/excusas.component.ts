@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';  /*importación del componente OnInit*/
 import { ExcusasService } from '../services/excusas/excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
-import {MatDialog, MatDialogRef} from '@angular/material/dialog'; // importación del componente MatDialog
+import {MatDialog} from '@angular/material/dialog'; // importación del componente MatDialog
 import { CrearExcusaComponent } from './crear-excusa/crear-excusa.component'; // importación del componente CrearExcusas
 import { EditarExcusasComponent } from './editar-excusas/editar-excusas.component'; // importación del componente EditarExcusa
 
@@ -50,15 +50,3 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
   }
 
 }
-
-  export interface PeriodicElement {
-    numero: number;
-    fecha: string;
-    instructor: string;
-    estado: string;
-  }
-
-  const ELEMENT_DATA: PeriodicElement[] = [
-    {numero: 1, fecha: '29/03/2023', instructor: 'Wilson Ramírez', estado: 'Validado'},
-  ]
-

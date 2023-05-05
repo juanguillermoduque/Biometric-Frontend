@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { usuario } from 'src/app/models/usuarios';
 import { Observable } from 'rxjs';
+import { API_DOMAIN } from 'src/app/models/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
 
   constructor(private http:HttpClient) { 
      

@@ -11,9 +11,7 @@ export class MainPageComponent {
   componentes = []
   activarComponenteById:Number = 0;
 
-  constructor(private router:Router){
-
-  }
+  constructor(private router:Router){}
 
   ngOnInit(): void {
     this.activaOpcion = 0

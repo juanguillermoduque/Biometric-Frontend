@@ -1,13 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { RolesService } from 'src/app/services/roles/roles.service';
-import {componente} from '../../../models/componentes'
 
 @Component({
   selector: 'app-navegacion',
   templateUrl: './navegacion.component.html',
   styleUrls: ['./navegacion.component.css']
 })
+
 export class NavegacionComponent implements OnInit {
   idUsuario:number = 0;
   idRol:number = 0;
@@ -19,9 +19,7 @@ export class NavegacionComponent implements OnInit {
   @Output()
   public seEscogioComponente :EventEmitter<Number> = new EventEmitter()
 
-  constructor(private rolServise:RolesService){
-
-  }
+  constructor(private rolServise:RolesService){}
 
   ngOnInit(): void {
     this.getIdUsuario();
@@ -37,8 +35,6 @@ export class NavegacionComponent implements OnInit {
         }
       )
     }
-
-
   }
 
   getComponentesroles(idRol:Number){

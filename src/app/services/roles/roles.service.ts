@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { rol } from 'src/app/models/roles';
 import { Observable, Subject, tap } from 'rxjs';
 import { componenteRol } from 'src/app/models/component-rol';
+import { API_DOMAIN } from 'src/app/models/globals';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { componenteRol } from 'src/app/models/component-rol';
 })
 export class RolesService {
 
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>()
   constructor(private http: HttpClient) {}
 

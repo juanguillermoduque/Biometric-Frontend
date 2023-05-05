@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {asistencia} from 'src/app/models/asistencia';
 import { Observable, Subject } from 'rxjs';
-import {tap, toArray} from 'rxjs/operators'
+import {tap} from 'rxjs/operators'
+import { API_DOMAIN } from 'src/app/models/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsistenciasService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>()
 
-  constructor(private http:HttpClient) {
-
-  }
+  constructor(private http:HttpClient) {}
 
   get_refresh$(){
     return this._refresh$;

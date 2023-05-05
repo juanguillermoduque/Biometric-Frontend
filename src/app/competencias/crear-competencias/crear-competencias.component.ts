@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './crear-competencias.component.html',
   styleUrls: ['./crear-competencias.component.css']
 })
-export class CrearCompetenciasComponent {
-
-}
+export class CrearCompetenciasComponent {}

@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { excusa } from 'src/app/models/excusas';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { API_DOMAIN } from 'src/app/models/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExcusasService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>();
 
   constructor(private http: HttpClient) {

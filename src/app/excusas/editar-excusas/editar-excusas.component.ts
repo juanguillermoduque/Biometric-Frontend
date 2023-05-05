@@ -35,10 +35,7 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
   }
 
   modificarExcusa(){ // Método que me modificará la excusa 
-    
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-    
-
     this.excusasService.updateexcusa(this.idExcusa,this.excusa)
     // se llamará al método updateexcusa creado en el back y se pasará como parámetro el valor de IdExcusa y excusa 
       .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio

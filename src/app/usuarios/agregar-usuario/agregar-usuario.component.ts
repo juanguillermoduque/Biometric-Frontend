@@ -36,7 +36,6 @@ constructor(private usuariosService:UsuariosService,
   private rolService:RolesService){ // creación de constructor invocando el servicio de usuariosService que me trae información del backend
 
 }
-
   ngOnInit(){ // Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
     this.rolService.getRoles().subscribe(
     (res)=>{
@@ -45,15 +44,13 @@ constructor(private usuariosService:UsuariosService,
     }
     )
   }
-  guardarUsuario(){ // Método que me guardará un Usuario
 
+  guardarUsuario(){ // Método que me guardará un Usuario
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método usuario el valor de estos campos se eliminará
     delete this.usuario.biometric_date;
     console.log(this.usuario);
-
     this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
-
       .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
         res =>{
@@ -63,6 +60,7 @@ constructor(private usuariosService:UsuariosService,
         err => console.error(err) // de lo contrario saldrá un error
       )
   }
+
   agregarRol(rol:any){
     this.rolSeleccionado.nombre_rol = rol.nombre_rol;
     this.rolSeleccionado.id_rol = rol.id_rol;
