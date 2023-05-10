@@ -29,7 +29,4 @@ export class UsuariosService {
   searchUsuario(id:String){
     return this.http.get(`${this.API_URI}/filtros/searchUser${id}`,);
   }
-  searchInstructores(){
-    return this.http.get(`${this.API_URI}/usuario_rol/rol-instructor`);
-  }
 }

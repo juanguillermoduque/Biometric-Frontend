@@ -53,6 +53,10 @@ export class RolesService {
     return this.http.post(`${this.API_URI}/usuario_rol/`,ids);
   }
 
+  searchInstructores(){
+    return this.http.get(`${this.API_URI}/instructor/instructor`);
+  }
+
   //serivices de Get rol componente
   
   getrolComponent(id:Number){

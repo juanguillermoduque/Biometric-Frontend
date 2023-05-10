@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { horario } from 'src/app/models/horarios';
 import { HorariosService } from 'src/app/services/horarios/horarios.service';
+import { RolesService } from 'src/app/services/roles/roles.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
@@ -19,9 +20,12 @@ export class CrearHorariosComponent implements OnInit{
     updated_at: '',
   };
 
-  instructores = [];
+  instructores:any = [];
+  instructoresIdRol:any[]= []
+  instructoresId:any[]= []
   
-  constructor(private horarioService:HorariosService, private usuariosService:UsuariosService){}
+  constructor(private horarioService:HorariosService, private rolesService:RolesService, 
+  private usuariosService:UsuariosService){}
 
   guardarHorario(){
     delete this.horario.created_at;
@@ -37,9 +41,34 @@ export class CrearHorariosComponent implements OnInit{
 }
 
   ngOnInit(): void {
-    this.usuariosService.searchInstructores().subscribe(
-      instructores => {console.log(instructores)}
+    this.getIdUsuario();
+  }
+  getIdUsuario(){
+    this.rolesService.searchInstructores().subscribe(
+      (instructores) => {
+        this.instructoresIdRol.push(instructores);
+        this.getUsuario();
+
+      }
     );
+  }
+  getUsuario(){
+    for(let i = 0; i < this.instructoresIdRol.length; i++){
+      this.instructoresId.push(this.instructoresIdRol[i].id_usuario)
+    }
+    this.getInstructor();
+  }
+
+  getInstructor(){
+    for(let i = 0; i < this.instructoresId.length; i++){
+      this.usuariosService.getUsuario(this.instructoresId[i]).subscribe(
+        (data)=>{
+          this.instructores.push(data);
+        }
+      )
+
+    }
+    console.log(this.instructores)
   }
 
 }

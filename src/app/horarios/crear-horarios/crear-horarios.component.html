@@ -6,8 +6,10 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una id de instructor</mat-label>
-            <mat-select [(ngModel)]="horario.id_instructor" name="id_instructor" disableRipple>
-              <mat-option value="1">1</mat-option>
+            <mat-select >
+              <mat-option  *ngFor="let instructor of instructores">
+               Id: {{instructor.num_id}} {{instructor.first_name}} {{instructor.last_name}}
+            </mat-option>
             </mat-select>
         </mat-form-field>
 
