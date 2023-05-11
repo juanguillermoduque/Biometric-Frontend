@@ -1,6 +1,8 @@
-
-<input type="text" placeholder="Buscar" [(ngModel)]="searchId">
-<button (click)="searchFicha()">Buscar</button>
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput type="text" placeholder="Buscar" [(ngModel)]="searchId">
+</mat-form-field>
+<button mat-button (click)="searchFicha()">Buscar</button>
 
     <mat-grid-list cols="3" rowHeight="300px">
       <!-- Columna 1 -->

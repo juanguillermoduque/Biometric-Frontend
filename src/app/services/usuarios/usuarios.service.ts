@@ -10,8 +10,8 @@ import { API_DOMAIN } from 'src/app/models/globals';
 export class UsuariosService {
   API_URI = API_DOMAIN;
 
-  constructor(private http:HttpClient) { 
-     
+  constructor(private http:HttpClient) {
+
   }
 
   getUsuarios(){
@@ -28,5 +28,10 @@ export class UsuariosService {
   }
   searchUsuario(id:String){
     return this.http.get(`${this.API_URI}/filtros/searchUser${id}`,);
+  }
+
+  updatePassword(id:number, password:string):Observable<any>{
+    const data = { password: password };
+    return this.http.put(`${this.API_URI}/usuarios/${id}/password`, data);
   }
 }
