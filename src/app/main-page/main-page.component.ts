@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { PerfilComponent } from '../perfil/perfil.component';
 
 @Component({
   selector: 'app-main-page',
@@ -11,11 +13,11 @@ export class MainPageComponent {
   componentes = []
   activarComponenteById:Number = 0;
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private dialog: MatDialog){}
 
   ngOnInit(): void {
     this.activaOpcion = 0
-    
+
   }
 
   AccionAdmin(num:number){
@@ -30,5 +32,14 @@ export class MainPageComponent {
   activarComponente(idComponente:Number){
     this.activarComponenteById = idComponente
   }
-  
+
+  mostrarperfil(){ // Método nuevoUsuario que me muestra una ventana emergente con el componente AgregarUsuario
+    this.dialog.open(PerfilComponent,{
+      width:'600px',
+      height: '475px',
+    });
+  }
+
+
+
 }
