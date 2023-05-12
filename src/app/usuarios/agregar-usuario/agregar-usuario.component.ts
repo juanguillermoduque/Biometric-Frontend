@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';  /*importación del component
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { usuario_rol } from '../../models/usuario_rol';
+import Swal from 'sweetalert2'
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "agregar-usuario"*/
   selector: 'app-agregar-usuario', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -49,22 +50,52 @@ constructor(private usuariosService:UsuariosService,
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método usuario el valor de estos campos se eliminará
     delete this.usuario.biometric_date;
-    console.log(this.usuario);
-    this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
-      .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
+
+      if (this.usuario.num_id == 0 || this.usuario.first_name == '' || this.usuario.last_name == '' || this.usuario.type_id == ''
+      || this.usuario.email == '' || this.usuario.estado == '' || this.usuario.password == '' || this.rolSeleccionado.id_rol == 0) {
+        
+        Swal.fire(
+          {
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Hay campos sin completar',
+          }
+        )
+        this.usuario.num_id = 0;
+        this.usuario.first_name = '';
+        this.usuario.last_name = '';
+        this.usuario.type_id = '';
+        this.usuario.email = '';
+        this.usuario.estado = '';
+        this.usuario.password = '';
+        this.rolSeleccionado.id_rol = 0;
+        this.rolSeleccionado.nombre_rol = '';
+      }
+      else{
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El usuario fue agregado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
+        .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
-        res =>{
-          this.asignarRol();
-          console.log(res); // si la respuesta por parte del servidor es exitosa se imprime la respuesta
-        },
-        err => console.error(err) // de lo contrario saldrá un error
+          res =>{
+            this.asignarRol();
+            console.log(res); // si la respuesta por parte del servidor es exitosa se imprime la respuesta
+          },
+          err => console.error(err) // de lo contrario saldrá un error
       )
+      }
   }
 
   agregarRol(rol:any){
-    this.rolSeleccionado.nombre_rol = rol.nombre_rol;
-    this.rolSeleccionado.id_rol = rol.id_rol;
-    console.log(this.rolSeleccionado);
+      this.rolSeleccionado.nombre_rol = rol.nombre_rol;
+      this.rolSeleccionado.id_rol = rol.id_rol;
+      console.log(this.rolSeleccionado);
+      
   }
 
   asignarRol(){

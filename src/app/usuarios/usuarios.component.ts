@@ -35,6 +35,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   }
 
   nuevoUsuario(){ // Método nuevoUsuario que me muestra una ventana emergente con el componente AgregarUsuario
+      
     const ref = this.dialog.open(AgregarUsuarioComponent,{
       width:'700px',
       height: '500px',

@@ -3,6 +3,7 @@ import { componente } from 'src/app/models/componentes';
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { componenteRol } from 'src/app/models/component-rol';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-crear-roles',
@@ -50,16 +51,39 @@ export class CrearRolesComponent implements OnInit{
 
   crearRol(){
     delete this.rol.id_rol;
-    this.rolService.saveRol(this.rol).subscribe(
-      res=>{
-        this.rolService.getRol(this.rol.nombre_rol).subscribe(
-          res=>{
-            this.crearComponenteRol(res)
-          }
-        )
-      },
-      err=>console.error(err)
-    )
+    if (this.rol.nombre_rol == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+
+      this.rol.nombre_rol == ''
+      this.componenteRol.id_componente == 0
+
+    }
+
+    else{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'El rol fue creado exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.rolService.saveRol(this.rol).subscribe(
+        res=>{
+          this.rolService.getRol(this.rol.nombre_rol).subscribe(
+            res=>{
+              this.crearComponenteRol(res)
+            }
+          )
+        },
+        err=>console.error(err)
+      )
+    }
   }
 
   crearComponenteRol(rol:any){
