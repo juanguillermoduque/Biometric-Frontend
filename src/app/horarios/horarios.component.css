@@ -1,0 +1,18 @@
+.mat-mdc-button-touch-target{
+  margin: 0 5%;
+}
+
+h2{
+  text-align: center;
+}
+
+.mat-mdc-table{
+  margin: 0 5%;
+}
+
+.container{
+  margin: 0 5% 0 -9px;
+}
+.mat-mdc-raised-button:not(:disabled){
+  margin: 0 5%;
+}

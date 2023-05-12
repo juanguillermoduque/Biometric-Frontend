@@ -4,9 +4,18 @@ table {
 
 .example-container mat-form-field + mat-form-field {
     margin-left: 8px;
-}  
+}
 
 #boton {
     background-color: rgb(66, 216, 66);
     margin-right: 10px;
+    margin: 0 5%;
+}
+
+.mat-elevation-z8{
+  margin: 0 5%;
+}
+
+h3{
+  text-align: center;
 }
