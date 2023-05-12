@@ -13,7 +13,11 @@ table.mat-mdc-table.mdc-data-table__table.cdk-table {
 h2{
   text-align: center;
 }
-
-
+.container{
+  display: auto;
+  height: 30%;
+  width: 90%;
+  justify-content: space-between;
+}
 
 

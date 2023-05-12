@@ -1,8 +1,10 @@
 <div class="container">
-    <h2>Listar Usuarios</h2>
-    <button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
-    <input type ="text" placeholder="Buscar" [(ngModel)]="searchId" >
-    <button (click)="searchUser()">Buscar</button>
+  <h2>Listar Usuarios</h2>
+  <button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
+  <mat-form-field>
+    <input matInput placeholder="Buscar" [(ngModel)]="searchId">
+  </mat-form-field>
+    <button mat-raised-button (click)="searchUser()">Buscar</button>
     <br>
     <br>
     <table mat-table [dataSource]="usuarios[0]">
