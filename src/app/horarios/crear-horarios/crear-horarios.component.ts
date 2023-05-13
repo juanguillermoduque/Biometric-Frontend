@@ -44,16 +44,16 @@ export class CrearHorariosComponent{
       this.horario.updated_at= ''
     }
     else{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'El horario fue creado exitosamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
+     
       this.horarioService.saveHorario(this.horario).subscribe(
         res =>{
-          console.log(res);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El horario fue creado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         },
         err => console.error(err)
       )

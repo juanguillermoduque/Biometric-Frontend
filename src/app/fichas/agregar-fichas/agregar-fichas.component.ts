@@ -44,17 +44,16 @@ export class AgregarFichasComponent  implements OnInit{
     }
 
     else{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'La ficha fue agregada exitosamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
+
       this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
         res => {
-          console.log(res);
-          alert("ficha creada")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La ficha fue agregada exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         },
         err => console.error(err)
       );

@@ -66,13 +66,7 @@ export class CrearRolesComponent implements OnInit{
     }
 
     else{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'El rol fue creado exitosamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
+      
       this.rolService.saveRol(this.rol).subscribe(
         res=>{
           this.rolService.getRol(this.rol.nombre_rol).subscribe(
@@ -94,7 +88,13 @@ export class CrearRolesComponent implements OnInit{
       this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
-          console.log(res)
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El rol fue creado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         },
         err=>console.error(err)
       )
