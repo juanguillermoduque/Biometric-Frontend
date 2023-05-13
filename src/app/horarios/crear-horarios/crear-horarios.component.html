@@ -6,9 +6,9 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una id de instructor</mat-label>
-            <mat-select >
-              <mat-option  *ngFor="let instructor of instructores">
-               Id: {{instructor.num_id}} {{instructor.first_name}} {{instructor.last_name}}
+            <mat-select>
+              <mat-option  (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores">
+               Id: {{instructor.num_id}} - {{instructor.first_name}} {{instructor.last_name}}
             </mat-option>
             </mat-select>
         </mat-form-field>
@@ -24,11 +24,10 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona una ficha</mat-label>
-            <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha" disableRipple>
-                <mat-option value="2465417">2465417</mat-option>
-                <mat-option value="2466435">2466435</mat-option>
-                <mat-option value="2455321">2455321</mat-option>
-                <mat-option value="2433123">2433123</mat-option>
+            <mat-select>
+                <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas">
+                    Código ficha: {{ficha.code_ficha}} - Nombre ficha: {{ficha.name_ficha}}
+                 </mat-option>
             </mat-select>
         </mat-form-field>
 
