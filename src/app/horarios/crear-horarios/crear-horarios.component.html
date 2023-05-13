@@ -5,7 +5,7 @@
         <h2>Crear horario</h2>
 
         <mat-form-field appearance="fill">
-            <mat-label>Selecciona una id de instructor</mat-label>
+            <mat-label>Selecciona un id de instructor</mat-label>
             <mat-select>
               <mat-option  (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores">
                Id: {{instructor.num_id}} - {{instructor.first_name}} {{instructor.last_name}}
