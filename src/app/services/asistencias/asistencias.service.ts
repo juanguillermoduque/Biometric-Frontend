@@ -4,6 +4,7 @@ import {asistencia} from 'src/app/models/asistencia';
 import { Observable, Subject } from 'rxjs';
 import {tap} from 'rxjs/operators'
 import { API_DOMAIN } from 'src/app/models/globals';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,9 @@ export class AsistenciasService {
   updateAsistencia(id:number,asistenci:asistencia):Observable<asistencia>{
     return this.http.put(`${this.API_URI}/asistencias/editar${id}`,asistenci);
   }
+
+  search(asistenciasId:String){
+    return this.http.get(`${this.API_URI}/filtros/searchAsistencia${asistenciasId}`);
+  }
+ 
 }

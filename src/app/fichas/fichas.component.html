@@ -1,9 +1,8 @@
+
 <mat-form-field>
   <mat-label>Buscar</mat-label>
-  <input matInput type="text" placeholder="Buscar" [(ngModel)]="searchId">
+  <input type="text" [formControl]="control" placeholder="Buscar en fichas">
 </mat-form-field>
-<button  mat-button (click)="searchFicha()">Buscar</button>
-
     <mat-grid-list cols="3" rowHeight="300px">
       <!-- Columna 1 -->
       <mat-grid-tile colspan="1">

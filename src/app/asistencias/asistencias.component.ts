@@ -1,4 +1,8 @@
+import { query } from '@angular/animations';
+import { identifierName } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 import { AsistenciasService } from 'src/app/services/asistencias/asistencias.service';
 @Component({
   selector: 'app-asistencias',
@@ -9,10 +13,16 @@ export class AsistenciasComponent {
   displayedColumns: string[] = ['fechaIngreso', 'numIngreso', 'asistio', 'noAsistio', 'aula', 'observaciones', 'horaIngreso', 'horaSalida'];
   asistencias:any = [];
   dataSource = this.asistencias;
+  control = new FormControl();
 
   constructor(private asistenciaService:AsistenciasService){}
 
   ngOnInit(){
+    this.getAsistencias();
+    this.searchAsistencia();
+  }
+
+  getAsistencias(){
     this.asistenciaService.getAsistencias().subscribe(
       res =>{
         this.asistencias = res;
@@ -21,5 +31,33 @@ export class AsistenciasComponent {
       err=>console.error(err)
     )
   }
+
+  searchAsistencia(){
+
+    this.control.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(query => {
+  
+      this.findAsistencias(query)
+    }) 
+}
+
+findAsistencias(query:string){
+  if (query == ""){
+    this.getAsistencias()
+  }
+
+  this.asistenciaService.search(query).subscribe(
+  res=>{
+    console.log("Busqueda realizada",res);
+    this.asistencias = res;
+  },
+  err=>{console.log(err)}
+)
+
+}
+
+  
+    
 }
 

@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Listar Asistencias</h2>
   <mat-form-field>
-    <input matInput placeholder="Ingrese el id de la ficha">
+    <input type="text" [formControl]="control" matInput placeholder="Ingrese el documento">
   </mat-form-field>
   <table mat-table [dataSource]="asistencias[0]">
     <ng-container matColumnDef="fechaIngreso">
