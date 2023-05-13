@@ -1,11 +1,9 @@
 <div class="container">
     <h2>Listar Usuarios</h2>
     <button mat-raised-button (click)="nuevoUsuario()">Crear Nuevo Usuario</button>
-    <input type ="text" placeholder="Buscar" [(ngModel)]="searchId" >
-    <button (click)="searchUser()">Buscar</button>
+    <input type ="text" [formControl]="control" placeholder="Buscar en usuarios">
     <br>
-    <br>
-    <table mat-table [dataSource]="usuarios[0]">
+    <table  mat-table [dataSource]="usuarios[0]">
       <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
       <ng-container matColumnDef="NombreUsuario">
         <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>

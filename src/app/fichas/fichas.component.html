@@ -1,7 +1,7 @@
 
-<input type="text" placeholder="Buscar" [(ngModel)]="searchId">
-<button (click)="searchFicha()">Buscar</button>
-
+<div>
+  <input type="text" [formControl]="control" placeholder="Buscar en fichas">
+</div>
     <mat-grid-list cols="3" rowHeight="300px">
       <!-- Columna 1 -->
       <mat-grid-tile colspan="1">

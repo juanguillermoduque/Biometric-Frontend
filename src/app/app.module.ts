@@ -130,9 +130,8 @@ const appRoutes:Routes=[
    EditarRolesComponent,
    CrearRolesComponent,
    NavegacionComponent,
-
-
   ],
+
   imports: [
     MatNativeDateModule,
     BrowserModule,
@@ -180,7 +179,8 @@ const appRoutes:Routes=[
     MatNativeDateModule,
     ReactiveFormsModule,
     HttpClientJsonpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+  
   ],
   exports: [
     MatAutocompleteModule,

@@ -4,6 +4,8 @@ import { ExcusasService } from '../services/excusas/excusas.service'; /* importa
 import {MatDialog} from '@angular/material/dialog'; // importación del componente MatDialog
 import { CrearExcusaComponent } from './crear-excusa/crear-excusa.component'; // importación del componente CrearExcusas
 import { EditarExcusasComponent } from './editar-excusas/editar-excusas.component'; // importación del componente EditarExcusa
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({ /* es un decorador que se utiliza para configurar las propiedades del componente "excusas*/
   selector: 'app-excusas', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -15,6 +17,7 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
   displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado']; // Arreglo de columnas para mostrar en una tabla
   excusas:any = ['','','','','','']; // variable excusa que es un arreglo de 6 valores vacíos todos de tipo string
   dataSource = this.excusas; // se utiliza como fuente de datos para la tabla
+  control = new FormControl();
 
   constructor(
     private excusaService: ExcusasService, // definición de ExcusasService que tiene la conexión con el back
@@ -22,15 +25,20 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     ){
 
   }
-  ngOnInit(){ // el ngOnInit se ejecuta cuando se inicializa el componente
-    // se realiza el llamado al servicio excusaService para obtener datos de las excusas
-    this.excusaService.getexcusas().subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
-      res =>{ // si la respuesta por parte del servidor es exitosa se asigna el valor de res a this.excusas y luego se muestra por pantalla el valor de excusas
+  // el ngOnInit se ejecuta cuando se inicializa el componente
+  ngOnInit(){ 
+    this.getExcusas();   
+    this.searchExcusa(); 
+  }
+
+  getExcusas(){
+    this.excusaService.getExcusas().subscribe( 
+      res =>{ 
         this.excusas = res;
         console.log(this.excusas);
       },
-      err=>console.error(err) // de lo contrario saldrá un error
-    )
+      err=>console.error(err)
+      )
   }
 
   crearExcusa(){ // Método crearExcusa que me muestra una ventana emergente con el componente CrearExcusa
@@ -49,4 +57,30 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     });
   }
 
-}
+  searchExcusa(){
+
+    this.control.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(query => {
+  
+      this.findExcusas(query)
+    })
+  }
+
+  findExcusas(query:string){
+    if (query == ""){
+      this.getExcusas()
+    }
+  
+    this.excusaService.search(query).subscribe(
+    res=>{
+      console.log("Busqueda realizada",res);
+      this.excusas = res;
+    },
+    err=>{console.log(err)}
+  )
+
+
+
+
+}}
