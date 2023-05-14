@@ -43,7 +43,7 @@ export class PerfilComponent implements OnInit {
   getIdUsuario() {
     let tok: any = localStorage.getItem('token'); // Se obtiene el token almacenado en el localStorge
     let decode: any = this.decodeToken(tok); // Decodifica el token
-    this.getRol(decode.data[0].num_id); // Aca se obetiene el rol del usuario y asigna el nombre de usuario
+    this.getRol(decode.data[0].num_id); //  Aca se obetiene el rol del usuario y asigna el nombre de usuario
   }
 
   decodeToken(token: string) {
