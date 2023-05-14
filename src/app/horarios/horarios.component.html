@@ -1,3 +1,7 @@
+<div>
+  <input type="text" [formControl]="control" placeholder="Buscar en Horarios">
+</div>
+
 <button mat-raised-button (click)="nuevoHorario()">Crear Nuevo Usuario</button>
 <div class="container">
     <h2>Listar Usuarios</h2>
@@ -29,6 +33,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  </div>
+</div>
   
 

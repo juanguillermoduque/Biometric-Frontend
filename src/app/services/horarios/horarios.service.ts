@@ -26,4 +26,8 @@ export class HorariosService {
   updateHorario(id:number,horario:horario):Observable<horario>{
     return this.http.put(`${this.API_URI}/horarios/editar${id}`,horario);
   }
+
+  search(horariosId:String){
+    return this.http.get(`${this.API_URI}/filtros/searchHorarios${horariosId}`);
+  }
 }
