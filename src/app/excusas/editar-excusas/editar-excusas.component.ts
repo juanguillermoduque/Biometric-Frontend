@@ -24,7 +24,7 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
   ngOnInit(){ // el ngOnInit se ejecuta cuando se inicializa el componente
     // se realiza el llamado al servicio excusaService para obtener datos de las excusas 
     if(this.idExcusa){ 
-        this.excusasService.getexcusa(this.idExcusa)
+        this.excusasService.getExcusa(this.idExcusa)
           .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
             res=>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
               console.log(res);

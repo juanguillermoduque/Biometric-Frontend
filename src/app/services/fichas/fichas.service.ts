@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ficha } from 'src/app/models/fichas';
 import { Observable, Subject, tap } from 'rxjs';
 import { API_DOMAIN } from 'src/app/models/globals';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,13 @@ import { API_DOMAIN } from 'src/app/models/globals';
 export class FichasService {
   API_URI = API_DOMAIN;
   private _refresh$ = new Subject<void>()
+  
 
   constructor(private http: HttpClient) {}
 
   get refresh$(){
     return this._refresh$
   }
-
-
 
   getFichas(){
     return this.http.get(`${this.API_URI}/fichas/`);
@@ -35,9 +35,8 @@ export class FichasService {
       tap(() => this._refresh$.next())
     );
   }
-
   search(fichasId:String){
-    return this.http.get(`${this.API_URI}/filtros/search${fichasId}`);
+    return this.http.get(`${this.API_URI}/filtros/searchFicha${fichasId}`);
   }
 
 

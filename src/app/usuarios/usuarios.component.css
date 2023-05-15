@@ -19,6 +19,7 @@ h2 {
     flex-direction: column;
     height: 50%;
     width: 95%;
+
     margin: 0 5%;
   }
 
@@ -29,4 +30,5 @@ h2 {
 .mat-mdc-raised-button.mat-unthemed{
   background-color: rgb(66, 216, 66);
 }
+
 
