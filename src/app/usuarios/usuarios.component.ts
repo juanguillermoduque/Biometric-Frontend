@@ -93,7 +93,7 @@ findUsers(query: string){
     this.usuariosAux = res;
     this.dataSource = this.usuariosAux[0];
     console.log("Busqueda realizada",this.dataSource);
-    this.table.renderRows();
+
   },
   err=>{console.log(err)}
 )
