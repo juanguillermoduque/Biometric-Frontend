@@ -1,7 +1,12 @@
 table {
     width: 100%;
     margin: 0 auto;
-  }
+}
+
+button{
+  margin: 20px;
+}
+
 
 h2 {
     text-align: center;
@@ -14,9 +19,16 @@ h2 {
     flex-direction: column;
     height: 50%;
     width: 95%;
-    margin: 0 0 0 20px;
+
+    margin: 0 5%;
   }
 
-  .container button{
-    margin-bottom: 20px;
+  table{
+    margin: 0 5% 0 -9px;
   }
+
+.mat-mdc-raised-button.mat-unthemed{
+  background-color: rgb(66, 216, 66);
+}
+
+

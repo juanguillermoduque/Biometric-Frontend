@@ -1,0 +1,23 @@
+
+#boton {
+  background-color: rgb(66, 216, 66);
+  margin-right: 10px;
+  margin: 0 5%;
+}
+
+table.mat-mdc-table.mdc-data-table__table.cdk-table {
+  margin: 0 5%;
+
+}
+
+h2{
+  text-align: center;
+}
+.container{
+  display: auto;
+  height: 30%;
+  width: 90%;
+  justify-content: space-between;
+}
+
+
