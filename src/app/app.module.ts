@@ -93,12 +93,18 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 //guards
 import { AuthGuard } from './utils/guard/auth.guard';
 import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
+import { RecuperarContrasenaComponent } from "./recuperar-contrasena/RecuperarContrasenaComponent";
+import { ConfirmacionComponent } from './recuperar-contrasena/confirmacion/confirmacion.component';
+import { RestablecerComponent } from './recuperar-contrasena/restablecer/restablecer.component';
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]}
+  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
+  {path:'recuperar',component:RecuperarContrasenaComponent},
+  {path:'confirmacion',component:ConfirmacionComponent},
+  {path:'restablecer',component:RestablecerComponent},
 ]
 
 @NgModule({
@@ -130,6 +136,9 @@ const appRoutes:Routes=[
    EditarRolesComponent,
    CrearRolesComponent,
    NavegacionComponent,
+   RecuperarContrasenaComponent,
+   ConfirmacionComponent,
+   RestablecerComponent,
 
 
   ],

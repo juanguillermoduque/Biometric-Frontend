@@ -1,19 +1,10 @@
-.logo {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  height: 10%;
-
-}
-
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 350px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #5E95C2;
   border-radius: 10px;
 
@@ -23,6 +14,7 @@
   color: white;
   font-size: 2em;
   margin-bottom: 20px;
+  text-align: center;
 
 }
 
