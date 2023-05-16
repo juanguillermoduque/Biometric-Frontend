@@ -5,12 +5,19 @@
     </mat-toolbar>
     <app-navegacion (seEscogioComponente)="activarComponente($event)" ></app-navegacion>
   </mat-sidenav>
-    
+
     <div class="contenido">
 
         <div class="titulo">
-            <h2>{{nombreUser}}</h2>
-            <button mat-raised-button (click)="logOut()">Cerrar Sesión</button>
+            <h2>Administrador</h2>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="mostrarperfil()">Perfil</button>
+              <button mat-menu-item (click)="logOut()">Cerrar Sesion</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+
         </div>
 
         <div class="info">

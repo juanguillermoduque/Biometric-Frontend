@@ -43,6 +43,7 @@ export class CrearRolesComponent implements OnInit{
     this.componentes[0].splice(this.componentes[0].indexOf(componente) , 1);
     this.idComponentes.push(componente.id_componente);
   }
+
   quitarComponente(componente:componente){
     this.componentes[0].push(componente);
     this.componentesAgregados.splice(this.componentesAgregados.indexOf(componente),1);

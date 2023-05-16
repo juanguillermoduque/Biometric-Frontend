@@ -1,0 +1,28 @@
+.mat-mdc-button-touch-target{
+  margin: 0 5%;
+  background-color: rgb(66, 216, 66);
+}
+
+h2{
+  text-align: center;
+}
+
+.mat-mdc-table{
+  margin: 0 5%;
+}
+
+.container{
+  margin: 0 5% 0 -9px;
+}
+.mat-mdc-raised-button:not(:disabled){
+  margin: 0 5%;
+}
+.mat-mdc-raised-button:not(:disabled){
+  background-color: rgb(66, 216, 66);
+}
+.container{
+  display: auto;
+  height: 30%;
+  width: 90%;
+  justify-content: space-between;
+}
