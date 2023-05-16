@@ -33,26 +33,39 @@ export class EditarRolesComponent implements OnInit{
   ){}
 
   ngOnInit() {
-    this.getComponentes();
     this.getRol();
-    this.rol = this.rolAux
-    
-
+    this.rolAux = this.rol
   }
 
   getRol(){
     this.rolService.getRolId(this.data).subscribe(
       res=>{ 
         this.rolAux = res;
-        console.log(res)
+        this.getComponentes();
       }
     )
   }
 
   getComponentes(){
-    this.rolService.getComponentes().subscribe(
+    this.rolService.getrolComponent(this.data).subscribe(
       res=>{
-        this.componentes = res;
+        let Componentes:any = res
+        let componentes = [1,2,3,4,5,6,7];
+        for (let i = 0; i < Object.keys(Componentes).length;i++){
+          this.rolService.getComponente(Componentes[i].id_componente).subscribe(
+            (data)=>{
+              this.idComponentes.push(Componentes[i].id_componente)
+              let componente:any = data
+              this.componentesAgregados.push(componente[0]);
+              if (componentes.indexOf(Componentes[i].id_componente)){
+                Componentes.splice(Componentes[i].id_componente,1);
+              }
+            }
+          )
+        }
+        for(let i = 0; i < componentes.length;i++){
+          this.componentes[0].push(componentes[i]);
+        }
       },
       err=>console.error(err)
     )
@@ -69,7 +82,7 @@ export class EditarRolesComponent implements OnInit{
     this.idComponentes.splice(this.idComponentes.indexOf(componente.id_componente,1));
   }
 
-  crearRol(){
+  editarRol(){
     delete this.rol.id_rol;
     if (this.rol.nombre_rol == ''){
       Swal.fire(
@@ -79,9 +92,9 @@ export class EditarRolesComponent implements OnInit{
           text: 'Hay campos sin completar',
         }
       )
+  }
 
-    }
-    else{
+  else{
       this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
       this.rolService.saveRol(this.rol).subscribe(
         res=>{

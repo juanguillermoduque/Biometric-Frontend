@@ -30,15 +30,15 @@ ngOnInit(){
 
 nuevoRol(){
   this.dialog.open(CrearRolesComponent,{
-    width:'1000px',
-    height: '1000px',
+    width:'600px',
+    height:'600px',
   })
 }
 
 editarRol(num_id : number){
   this.dialog.open(EditarRolesComponent,{
-    height:'800px',
-    width: '600px',
+    height:'600px',
+    width:'600px',
     data: num_id
   });
 }
