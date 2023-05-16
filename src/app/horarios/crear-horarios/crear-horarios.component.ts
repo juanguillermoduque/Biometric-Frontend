@@ -44,7 +44,7 @@ export class CrearHorariosComponent{
       this.horario.updated_at= ''
     }
     else{
-     
+      this.horario.jornada = this.horario.jornada?.toLowerCase()
       this.horarioService.saveHorario(this.horario).subscribe(
         res =>{
           Swal.fire({
@@ -54,6 +54,7 @@ export class CrearHorariosComponent{
             showConfirmButton: false,
             timer: 1500
           })
+          console.log(res);
         },
         err => console.error(err)
       )

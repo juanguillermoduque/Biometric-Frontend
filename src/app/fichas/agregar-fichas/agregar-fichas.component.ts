@@ -41,11 +41,15 @@ export class AgregarFichasComponent  implements OnInit{
           text: 'Hay campos sin completar',
         }
       )
+      this.ficha.code_ficha=0
+      this.ficha.name_ficha= ''
+      this.ficha.date_start= ''
+      this.ficha.date_end= ''
     }
-
     else{
-
+      this.ficha.name_ficha = this.ficha.name_ficha?.toLowerCase()
       this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
+
         res => {
           Swal.fire({
             position: 'center',
@@ -54,6 +58,7 @@ export class AgregarFichasComponent  implements OnInit{
             showConfirmButton: false,
             timer: 1500
           })
+          console.log(res);
         },
         err => console.error(err)
       );

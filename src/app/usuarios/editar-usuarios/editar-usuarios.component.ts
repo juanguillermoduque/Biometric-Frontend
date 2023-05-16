@@ -60,18 +60,21 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
       )
     }
     else{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'El usuario fue modificado exitosamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
+      this.usuario.first_name = this.usuario.first_name?.toLowerCase()
+      this.usuario.last_name = this.usuario.last_name?.toLowerCase()
+      this.usuario.email = this.usuario.email?.toLowerCase()
       this.usuariosService.updateUsuario(this.num_id,this.usuario)
     
       .subscribe(// utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
         res =>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El usuario fue modificado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           console.log(res); // si la respuesta por parte del servidor es exitosa se imprime la respuesta
         },
         err => console.error(err) // de lo contrario saldrá un error

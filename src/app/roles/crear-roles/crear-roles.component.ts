@@ -66,7 +66,7 @@ export class CrearRolesComponent implements OnInit{
     }
 
     else{
-      
+      this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
       this.rolService.saveRol(this.rol).subscribe(
         res=>{
           this.rolService.getRol(this.rol.nombre_rol).subscribe(

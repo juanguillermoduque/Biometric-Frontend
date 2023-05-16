@@ -26,6 +26,7 @@ export class CrearAsistenciasComponent implements OnInit{
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
     delete this.asistencia.id_asistencia;
+    
 
   this.asistenciasService.saveAsistencia(this.asistencia)
       .subscribe(

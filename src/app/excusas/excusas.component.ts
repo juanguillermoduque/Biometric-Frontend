@@ -48,5 +48,4 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
       data: idExcusa, // data almacenará el valor de este
     });
   }
-
 }
