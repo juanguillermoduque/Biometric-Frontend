@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core'; /*importación del co
 import { excusa } from 'src/app/models/excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
 import { ExcusasService } from 'src/app/services/excusas/excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // importación MatDialog
+import Swal from 'sweetalert2'
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "editar-excusa"*/
   selector: 'app-editar-excusas', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -36,14 +37,33 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
 
   modificarExcusa(){ // Método que me modificará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-    this.excusasService.updateexcusa(this.idExcusa,this.excusa)
-    // se llamará al método updateexcusa creado en el back y se pasará como parámetro el valor de IdExcusa y excusa 
-      .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
-        res =>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
-          console.log(res);
-        },
-        err => console.error(err) // de lo contrario saldrá un error
+    if (this.excusa.comments == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
       )
+      this.excusa.comments=''
+    }
+    else{
+      this.excusasService.updateexcusa(this.idExcusa,this.excusa)
+      // se llamará al método updateexcusa creado en el back y se pasará como parámetro el valor de IdExcusa y excusa 
+        .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
+          res =>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'La excusa fue agregada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            console.log(res);
+          },
+          err => console.error(err) // de lo contrario saldrá un error
+        )
+    }
   }
 }
 

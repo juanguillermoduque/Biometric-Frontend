@@ -4,6 +4,7 @@ import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { componente } from 'src/app/models/componentes';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2'
 //FALTA AGREGAR ID POR MEDIO DE MAT_DIALOG
 @Component({
   selector: 'app-editar-roles',
@@ -70,16 +71,29 @@ export class EditarRolesComponent implements OnInit{
 
   crearRol(){
     delete this.rol.id_rol;
-    this.rolService.saveRol(this.rol).subscribe(
-      res=>{
-        this.rolService.getRol(this.rol.nombre_rol).subscribe(
-          res=>{
-            this.crearComponenteRol(res)
-          }
-        )
-      },
-      err=>console.error(err)
-    )
+    if (this.rol.nombre_rol == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+
+    }
+    else{
+      this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
+      this.rolService.saveRol(this.rol).subscribe(
+        res=>{
+          this.rolService.getRol(this.rol.nombre_rol).subscribe(
+            res=>{
+              this.crearComponenteRol(res)
+            }
+          )
+        },
+        err=>console.error(err)
+      )
+    }
   }
 
   crearComponenteRol(rol:any){
@@ -90,6 +104,13 @@ export class EditarRolesComponent implements OnInit{
       this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El rol fue modificado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           console.log(res)
         },
         err=>console.error(err)

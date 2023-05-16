@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core'; /*importación del co
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // importación MAT_DIALOG
 import { usuario } from 'src/app/models/usuarios'; /*importación del modelo usuarios trayendo la interfaz usuario*/
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';  /* importación del servicio UsuariosService que hace una conexión con el backend*/
-
+import Swal from 'sweetalert2'
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "editar-usuario"*/
   selector: 'app-editar-usuarios', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -47,17 +47,39 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método excusa el valor de estos campos se eliminará
     delete this.usuario.biometric_date;
-    console.log(this.usuario);
+    
+    if (this.usuario.num_id == 0 || this.usuario.first_name == '' || this.usuario.last_name == '' || this.usuario.type_id == ''
+    || this.usuario.email == '' || this.usuario.estado == '' || this.usuario.password == '') {
 
-    this.usuariosService.updateUsuario(this.num_id,this.usuario)
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+    }
+    else{
+      this.usuario.first_name = this.usuario.first_name?.toLowerCase()
+      this.usuario.last_name = this.usuario.last_name?.toLowerCase()
+      this.usuario.email = this.usuario.email?.toLowerCase()
+      this.usuariosService.updateUsuario(this.num_id,this.usuario)
     
       .subscribe(// utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
         res =>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El usuario fue modificado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           console.log(res); // si la respuesta por parte del servidor es exitosa se imprime la respuesta
         },
         err => console.error(err) // de lo contrario saldrá un error
       )
+    }
   }
 
 }
