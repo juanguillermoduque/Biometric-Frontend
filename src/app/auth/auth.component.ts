@@ -31,11 +31,12 @@ export class AuthComponent {
       this.email = '';
       this.contrasena = '';
     } else {
-      const data = {
-        email : this.email,
-        password : this.contrasena
-      }
-      this.autenticate(data);
+        this.email = this.email?.toLowerCase()
+        const data = {
+          email : this.email,
+          password : this.contrasena
+        }
+        this.autenticate(data);
     }
   }
   

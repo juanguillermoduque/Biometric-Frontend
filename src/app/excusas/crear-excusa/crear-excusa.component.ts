@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'; /*importación del componente OnInit*/
 import { excusa } from 'src/app/models/excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
 import { ExcusasService } from 'src/app/services/excusas/excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
+import Swal from 'sweetalert2'
 
 @Component({ /* es un decorador que se utiliza para configurar las propiedades del componente "crear-excusa"*/
   selector: 'app-crear-excusa', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -23,13 +24,33 @@ constructor(private excusasService:ExcusasService){ // creación de constructor 
 
   guardarExcusa(){ // Método que me guardará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-    this.excusasService.saveexcusa(this.excusa) // el Método saveexcusa del servicio excusasService se llama pasandole como argumento el objeto this.excusa
-      .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
-      // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
-        res =>{  // si la respuesta por parte del servidor es exitosa se imprime la respuesta
-          console.log(res);
-        },
-        err => console.error(err) // de lo contrario saldrá un error
-    )
+    if (this.excusa.comments == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+      this.excusa.comments=''
+   
+    }
+    else{
+      this.excusasService.saveexcusa(this.excusa) // el Método saveexcusa del servicio excusasService se llama pasandole como argumento el objeto this.excusa
+        .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
+        // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
+          res =>{  // si la respuesta por parte del servidor es exitosa se imprime la respuesta
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'La excusa fue agregada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            console.log(res);
+          },
+          err => console.error(err) // de lo contrario saldrá un error
+        )
+    }
   }
 }

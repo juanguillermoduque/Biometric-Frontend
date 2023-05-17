@@ -4,6 +4,7 @@ import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { componente } from 'src/app/models/componentes';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2'
 //FALTA AGREGAR ID POR MEDIO DE MAT_DIALOG
 @Component({
   selector: 'app-editar-roles',
@@ -13,7 +14,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EditarRolesComponent implements OnInit{
   componentes:any = [];
   componentesAgregados:any= []
-  idComponentes:number[] = []
+  idComponentes:any[] = []
   rolAux:any = {}
 
   rol:rol={
@@ -28,14 +29,11 @@ export class EditarRolesComponent implements OnInit{
 
   constructor(
     private rolService:RolesService,
-    @Inject(MAT_DIALOG_DATA) public data:Number,
+    @Inject(MAT_DIALOG_DATA) public data:number,
   ){}
 
   ngOnInit() {
-    this.getComponentes();
     this.getRol();
-    this.rol = this.rolAux
-    
 
   }
 
@@ -43,53 +41,109 @@ export class EditarRolesComponent implements OnInit{
     this.rolService.getRolId(this.data).subscribe(
       res=>{ 
         this.rolAux = res;
-        console.log(res)
+        this.rol.nombre_rol = this.rolAux.nombre_rol
+        this.getComponentes();
       }
     )
   }
 
   getComponentes(){
-    this.rolService.getComponentes().subscribe(
+    this.rolService.getrolComponent(this.data).subscribe(
       res=>{
-        this.componentes = res;
+        let Componentes:any = res
+        for (let i = 0; i < Object.keys(Componentes).length;i++){
+          this.rolService.getComponente(Componentes[i].id_componente).subscribe(
+            (data)=>{
+              this.idComponentes.push(Componentes[i].id_componente)
+              let componente:any = data
+              
+              this.componentesAgregados.push(componente[0]); 
+            }
+          )
+        }
+        this.getRolesASeleccionar(Componentes);
       },
       err=>console.error(err)
     )
+  }
+
+  getRolesASeleccionar(componentesLlenados:any){
+    
+    for(let i = 1;i<= 7; i++){
+      let cont = 0
+      for(let k = 0; k < Object.keys(componentesLlenados).length;k++){
+        if (componentesLlenados[k].id_componente == i){
+          cont++;
+        }
+      }
+      if(cont == 0){
+        this.rolService.getComponente(i).subscribe(
+          (data)=>{
+            let aux:any = data;
+            this.componentes.push(aux[0])
+          }
+        )
+      }
+    }
   }
 
   agregarComponente(componente:componente){
     this.componentesAgregados.push(componente);
-    this.componentes[0].splice(this.componentes[0].indexOf(componente) , 1);
+    this.componentes.splice(this.componentes.indexOf(componente) , 1);
     this.idComponentes.push(componente.id_componente);
   }
   quitarComponente(componente:componente){
-    this.componentes[0].push(componente);
+    this.componentes.push(componente);
     this.componentesAgregados.splice(this.componentesAgregados.indexOf(componente),1);
     this.idComponentes.splice(this.idComponentes.indexOf(componente.id_componente,1));
   }
 
-  crearRol(){
-    delete this.rol.id_rol;
-    this.rolService.saveRol(this.rol).subscribe(
-      res=>{
-        this.rolService.getRol(this.rol.nombre_rol).subscribe(
-          res=>{
-            this.crearComponenteRol(res)
-          }
-        )
-      },
-      err=>console.error(err)
-    )
+  editarRol(){
+    this.rol.id_rol = this.data;
+    if (this.rol.nombre_rol == '' || this.componentesAgregados.length <= 0){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
   }
 
-  crearComponenteRol(rol:any){
-    const idRol = rol.id_rol;
+  else{
+      this.rolService.updateRol(this.data,this.rol).subscribe(
+        ()=>{
+          
+        },
+        err=>console.error(err)
+      )
+      this.crearComponenteRol(this.data)
+    }
+  }
+
+  crearComponenteRol(id_rol:number){
+    this.componenteRol.id_rol = id_rol
+
+    this.rolService.deleteComponentesRol(this.componenteRol.id_rol).subscribe(
+      (res)=>{
+        console.log(res)
+      }
+    )
+    debugger
 
     for(let i = 0;i <= this.idComponentes.length;i++){
+      this.idComponentes;
+      this.componenteRol.id_rol = id_rol
       this.componenteRol.id_componente = this.idComponentes[i]
-      this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El rol fue modificado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
           console.log(res)
         },
         err=>console.error(err)

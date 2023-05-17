@@ -96,6 +96,8 @@ import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.co
 import { RecuperarContrasenaComponent } from "./recuperar-contrasena/RecuperarContrasenaComponent";
 import { ConfirmacionComponent } from './recuperar-contrasena/confirmacion/confirmacion.component';
 import { RestablecerComponent } from './recuperar-contrasena/restablecer/restablecer.component';
+import { PerfilComponent } from './perfil/perfil.component';
+
 
 
 const appRoutes:Routes=[
@@ -105,6 +107,7 @@ const appRoutes:Routes=[
   {path:'recuperar',component:RecuperarContrasenaComponent},
   {path:'confirmacion',component:ConfirmacionComponent},
   {path:'restablecer',component:RestablecerComponent},
+
 ]
 
 @NgModule({
@@ -139,9 +142,9 @@ const appRoutes:Routes=[
    RecuperarContrasenaComponent,
    ConfirmacionComponent,
    RestablecerComponent,
-
-
+   PerfilComponent,
   ],
+
   imports: [
     MatNativeDateModule,
     BrowserModule,
@@ -189,7 +192,8 @@ const appRoutes:Routes=[
     MatNativeDateModule,
     ReactiveFormsModule,
     HttpClientJsonpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+  
   ],
   exports: [
     MatAutocompleteModule,
