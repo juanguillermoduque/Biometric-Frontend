@@ -29,7 +29,7 @@ export class RolesService {
   }
 
   getRolId(id_rol:Number){
-    return this.http.get(`${this.API_URI}/roles/id${id_rol}`);
+    return this.http.get(`${this.API_URI}/roles/rol${id_rol}`);
   }
 
   saveRol(rol:rol){

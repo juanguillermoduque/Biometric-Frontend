@@ -73,10 +73,27 @@ export class CrearRolesComponent implements OnInit{
           this.rolService.getRol(this.rol.nombre_rol).subscribe(
             res=>{
               this.crearComponenteRol(res)
+            },
+            err=>{
+              Swal.fire(
+                {
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Algo salio mal',
+                }
+              )
             }
           )
         },
-        err=>console.error(err)
+        err=>{
+          Swal.fire(
+            {
+              icon: 'error',
+              title: 'Oops...',
+              text: 'El Rol ya existe',
+            }
+          )
+        }
       )
     }
   }
