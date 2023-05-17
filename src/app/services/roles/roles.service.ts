@@ -73,10 +73,13 @@ export class RolesService {
     );
   }
 
-  updateRolComponent(id:number,rol:rol):Observable<any>{
+  updateRolComponent(id:number,rol:componenteRol):Observable<any>{
     return this.http.put(`${this.API_URI}/componentes/componentes_roles/editar${id}`, rol).pipe(
       tap(() => this._refresh$.next())
     );
+  }
+  deleteComponentesRol(idRol:number):Observable<any>{
+    return this.http.delete(`${this.API_URI}/componentes/componentes_roles/delete${idRol}`);
   }
 
   //component services
