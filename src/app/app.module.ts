@@ -93,41 +93,21 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 //guards
 import { AuthGuard } from './utils/guard/auth.guard';
 import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
+import { RecuperarContrasenaComponent } from "./recuperar-contrasena/RecuperarContrasenaComponent";
+import { ConfirmacionComponent } from './recuperar-contrasena/confirmacion/confirmacion.component';
+import { RestablecerComponent } from './recuperar-contrasena/restablecer/restablecer.component';
 import { PerfilComponent } from './perfil/perfil.component';
+
 
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
-  {path: "index", component:MainPageComponent},
+  {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
+  {path:'recuperar',component:RecuperarContrasenaComponent},
+  {path:'confirmacion',component:ConfirmacionComponent},
+  {path:'restablecer',component:RestablecerComponent},
 
-
-  {path: 'fichas', component:FichasComponent},
-  {path: 'agregar-ficha', component: AgregarFichasComponent},
-  {path: 'editar-fichas', component: EditarFichasComponent},
-
-  {path: 'asistencias', component:AsistenciasComponent},
-  {path: 'crear-asistencia', component:CrearAsistenciasComponent},
-  {path: 'editar-asistencias', component:EditarAsistenciasComponent},
-
-  {path: 'usuarios',component:UsuariosComponent},
-  {path: 'agregar-usuario',component:AgregarUsuarioComponent},
-  {path: 'editar-usuario',component:EditarUsuariosComponent},
-
-  {path: 'excusas', component:ExcusasComponent},
-  {path: 'crear-excusa', component:CrearExcusaComponent},
-  {path: 'editar-excusa',component:EditarExcusasComponent},
-
-  {path: 'crear-horarios',component:CrearHorariosComponent},
-  {path: 'editar-horarios',component:EditarHorariosComponent},
-
-  {path: 'competencias',component:CompetenciasComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
-
-  {path: 'roles',component:CrearRolesComponent},
-  {path: 'crear-competencias',component:CrearCompetenciasComponent},
-  {path: 'editar-competencias',component:EditarCompetenciasComponent},
 ]
 
 @NgModule({
@@ -159,6 +139,9 @@ const appRoutes:Routes=[
    EditarRolesComponent,
    CrearRolesComponent,
    NavegacionComponent,
+   RecuperarContrasenaComponent,
+   ConfirmacionComponent,
+   RestablecerComponent,
    PerfilComponent,
   ],
 

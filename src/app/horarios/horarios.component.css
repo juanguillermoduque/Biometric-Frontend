@@ -22,6 +22,7 @@ h2{
 }
 .container{
   display: auto;
+  margin:auto;
   height: 30%;
   width: 90%;
   justify-content: space-between;

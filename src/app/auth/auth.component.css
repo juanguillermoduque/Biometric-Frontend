@@ -53,8 +53,12 @@ background-color: #2CD794;
   }
 
   body{
-    
+
     opacity: 0.8;
-   
+
     background-blend-mode: multiply;
   }
+
+.gradient-text{
+  color: #000000;
+}
