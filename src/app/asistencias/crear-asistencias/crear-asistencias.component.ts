@@ -10,12 +10,13 @@ import { AsistenciasService } from 'src/app/services/asistencias/asistencias.ser
 export class CrearAsistenciasComponent implements OnInit{
 
   asistencia: asistencia ={
-    id_asistencia:0 ,
+    id_asistencia: 0,
     id_aprendiz: 0,
-    hora_ingreso:'',
-    comments:'',
-    created_at :'',
-    updated_at :'',
+    id_horario: 0,
+    hora_ingreso: '',
+    comments: '',
+    created_at: '',
+    updated_at: '',
   };
 
   constructor(private asistenciasService:AsistenciasService){}

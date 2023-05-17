@@ -29,7 +29,7 @@ export class EditarRolesComponent implements OnInit{
 
   constructor(
     private rolService:RolesService,
-    @Inject(MAT_DIALOG_DATA) public data:Number,
+    @Inject(MAT_DIALOG_DATA) public data:number,
   ){}
 
   ngOnInit() {
@@ -99,8 +99,8 @@ export class EditarRolesComponent implements OnInit{
   }
 
   editarRol(){
-    delete this.rol.id_rol;
-    if (this.rol.nombre_rol == ''){
+    this.rol.id_rol = this.data;
+    if (this.rol.nombre_rol == '' || this.componentesAgregados.length <= 0){
       Swal.fire(
         {
           icon: 'error',
@@ -111,26 +111,30 @@ export class EditarRolesComponent implements OnInit{
   }
 
   else{
-      this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
-      this.rolService.saveRol(this.rol).subscribe(
-        res=>{
-          this.rolService.getRol(this.rol.nombre_rol).subscribe(
-            res=>{
-              this.crearComponenteRol(res)
-            }
-          )
+      this.rolService.updateRol(this.data,this.rol).subscribe(
+        ()=>{
+          
         },
         err=>console.error(err)
       )
+      this.crearComponenteRol(this.data)
     }
   }
 
-  crearComponenteRol(rol:any){
-    const idRol = rol.id_rol;
+  crearComponenteRol(id_rol:number){
+    this.componenteRol.id_rol = id_rol
+
+    this.rolService.deleteComponentesRol(this.componenteRol.id_rol).subscribe(
+      (res)=>{
+        console.log(res)
+      }
+    )
+    debugger
 
     for(let i = 0;i <= this.idComponentes.length;i++){
+      this.idComponentes;
+      this.componenteRol.id_rol = id_rol
       this.componenteRol.id_componente = this.idComponentes[i]
-      this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
           Swal.fire({
@@ -140,6 +144,7 @@ export class EditarRolesComponent implements OnInit{
             showConfirmButton: false,
             timer: 1500
           })
+          console.log(res)
         },
         err=>console.error(err)
       )

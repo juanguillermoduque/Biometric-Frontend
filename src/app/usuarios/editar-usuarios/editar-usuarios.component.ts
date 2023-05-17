@@ -25,13 +25,13 @@ export class EditarUsuariosComponent implements OnInit{
 };
 
 constructor(private usuariosService:UsuariosService, // creación de constructor invocando el servicio de usuariosService que me trae información del backend
-  @Inject(MAT_DIALOG_DATA) public num_id:number){ // MAT_DIALOG hace como un token para inyectar datos al parámetro num_id
+  @Inject(MAT_DIALOG_DATA) public data:number){ // MAT_DIALOG hace como un token para inyectar datos al parámetro num_id
 
 }
   ngOnInit(){// el ngOnInit se ejecuta cuando se inicializa el componente
     // se realiza el llamado al servicio usuariosService para obtener datos de los usuarios
-    if(this.num_id){
-      this.usuariosService.getUsuario(this.num_id)
+    if(this.data){
+      this.usuariosService.getUsuario(this.data)
         .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
           res=>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
             this.usuario = res;
@@ -63,7 +63,7 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
       this.usuario.first_name = this.usuario.first_name?.toLowerCase()
       this.usuario.last_name = this.usuario.last_name?.toLowerCase()
       this.usuario.email = this.usuario.email?.toLowerCase()
-      this.usuariosService.updateUsuario(this.num_id,this.usuario)
+      this.usuariosService.updateUsuario(this.data,this.usuario)
     
       .subscribe(// utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
       // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor

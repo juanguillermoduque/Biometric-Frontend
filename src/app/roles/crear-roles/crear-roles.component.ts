@@ -52,7 +52,7 @@ export class CrearRolesComponent implements OnInit{
 
   crearRol(){
     delete this.rol.id_rol;
-    if (this.rol.nombre_rol == ''){
+    if (this.rol.nombre_rol == '' || this.componentesAgregados.length <= 0){
       Swal.fire(
         {
           icon: 'error',
