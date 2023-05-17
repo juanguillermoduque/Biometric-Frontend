@@ -12,7 +12,7 @@
         <mat-form-field appearance="fill">
             <mat-label> Componentes</mat-label>
             <mat-select>
-              <mat-option (click)="agregarComponente(componente)" *ngFor="let componente of componentes[0]">
+              <mat-option (click)="agregarComponente(componente)" *ngFor="let componente of componentes">
                 {{componente.nombre_componente  }}
                 <mat-icon matTooltip="Agregar">add</mat-icon>
               </mat-option>

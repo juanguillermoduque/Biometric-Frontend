@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'
 export class EditarRolesComponent implements OnInit{
   componentes:any = [];
   componentesAgregados:any= []
-  idComponentes:number[] = []
+  idComponentes:any[] = []
   rolAux:any = {}
 
   rol:rol={
@@ -34,13 +34,14 @@ export class EditarRolesComponent implements OnInit{
 
   ngOnInit() {
     this.getRol();
-    this.rolAux = this.rol
+
   }
 
   getRol(){
     this.rolService.getRolId(this.data).subscribe(
       res=>{ 
         this.rolAux = res;
+        this.rol.nombre_rol = this.rolAux.nombre_rol
         this.getComponentes();
       }
     )
@@ -50,34 +51,49 @@ export class EditarRolesComponent implements OnInit{
     this.rolService.getrolComponent(this.data).subscribe(
       res=>{
         let Componentes:any = res
-        let componentes = [1,2,3,4,5,6,7];
         for (let i = 0; i < Object.keys(Componentes).length;i++){
           this.rolService.getComponente(Componentes[i].id_componente).subscribe(
             (data)=>{
               this.idComponentes.push(Componentes[i].id_componente)
               let componente:any = data
-              this.componentesAgregados.push(componente[0]);
-              if (componentes.indexOf(Componentes[i].id_componente)){
-                Componentes.splice(Componentes[i].id_componente,1);
-              }
+              
+              this.componentesAgregados.push(componente[0]); 
             }
           )
         }
-        for(let i = 0; i < componentes.length;i++){
-          this.componentes[0].push(componentes[i]);
-        }
+        this.getRolesASeleccionar(Componentes);
       },
       err=>console.error(err)
     )
   }
 
+  getRolesASeleccionar(componentesLlenados:any){
+    
+    for(let i = 1;i<= 7; i++){
+      let cont = 0
+      for(let k = 0; k < Object.keys(componentesLlenados).length;k++){
+        if (componentesLlenados[k].id_componente == i){
+          cont++;
+        }
+      }
+      if(cont == 0){
+        this.rolService.getComponente(i).subscribe(
+          (data)=>{
+            let aux:any = data;
+            this.componentes.push(aux[0])
+          }
+        )
+      }
+    }
+  }
+
   agregarComponente(componente:componente){
     this.componentesAgregados.push(componente);
-    this.componentes[0].splice(this.componentes[0].indexOf(componente) , 1);
+    this.componentes.splice(this.componentes.indexOf(componente) , 1);
     this.idComponentes.push(componente.id_componente);
   }
   quitarComponente(componente:componente){
-    this.componentes[0].push(componente);
+    this.componentes.push(componente);
     this.componentesAgregados.splice(this.componentesAgregados.indexOf(componente),1);
     this.idComponentes.splice(this.idComponentes.indexOf(componente.id_componente,1));
   }
@@ -124,7 +140,6 @@ export class EditarRolesComponent implements OnInit{
             showConfirmButton: false,
             timer: 1500
           })
-          console.log(res)
         },
         err=>console.error(err)
       )
