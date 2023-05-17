@@ -1,56 +1,35 @@
-.form {
+body {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 350px;
-  margin: 0 auto;
-  padding: 30px;
-  border: 1px solid #5E95C2;
-  border-radius: 10px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  margin: 0;
+}
 
+.form {
+  width: 400px;
+  background-color: gray;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form__title {
-  color: white;
-  font-size: 2em;
-  margin-bottom: 20px;
   text-align: center;
-
+  margin-top: 0;
+  color: #f1f1f1;
 }
 
+.form__field {
+  margin-bottom: 10px;
+}
 
 .form__button {
-background-color: #2CD794;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  border: 1px solid #5E95C2;
-}
-
-.form{
-  align-items: center;
-  background-color: #3d3b3b;
-
-}
-
-.body{
-  background-color: #e5e5f7;
-  opacity: 0.8;
-  background-image: radial-gradient(circle at center center, #45f759, #e5e5f7), repeating-radial-gradient(circle at center center, #45f759, #45f759, 10px, transparent 20px, transparent 10px);
-  background-blend-mode: multiply;
-
-  }
-
-  body{
-
-    opacity: 0.8;
-
-    background-blend-mode: multiply;
-  }
-
-.gradient-text{
-  color: #000000;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
