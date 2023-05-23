@@ -94,6 +94,9 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { AuthGuard } from './utils/guard/auth.guard';
 import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ProgramasComponent } from './programas/programas.component';
+import { CrearProgramaComponent } from './programas/crear-programa/crear-programa.component';
+import { EditarProgramaComponent } from './programas/editar-programa/editar-programa.component';
 
 
 const appRoutes:Routes=[
@@ -160,6 +163,9 @@ const appRoutes:Routes=[
    CrearRolesComponent,
    NavegacionComponent,
    PerfilComponent,
+   ProgramasComponent,
+   CrearProgramaComponent,
+   EditarProgramaComponent,
   ],
 
   imports: [

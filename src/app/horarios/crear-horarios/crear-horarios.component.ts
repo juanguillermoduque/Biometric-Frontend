@@ -26,6 +26,7 @@ export class CrearHorariosComponent implements OnInit{
   instructoresId:any[]= [];
   fichas:any;
   fichasAux:any;
+  
   fichaInstructor = {
     id_instructor: 0 , 
     id_ficha: 0
