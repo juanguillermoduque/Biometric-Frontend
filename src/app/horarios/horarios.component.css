@@ -11,9 +11,6 @@ h2{
   margin: 0 5%;
 }
 
-.container{
-  margin: 0 5% 0 -9px;
-}
 .mat-mdc-raised-button:not(:disabled){
   margin: 0 5%;
 }
@@ -26,4 +23,6 @@ h2{
   height: 30%;
   width: 90%;
   justify-content: space-between;
+  margin-top: 25.125;
 }
+
