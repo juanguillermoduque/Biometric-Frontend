@@ -14,8 +14,9 @@ h2{
   text-align: center;
 }
 .container{
+  margin-top: -26.25rem;
   display: auto;
-  height: 30%;
+  height: 100%;
   width: 90%;
   justify-content: space-between;
 }
