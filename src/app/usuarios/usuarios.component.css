@@ -27,6 +27,36 @@ h2 {
   }
 
 .mat-mdc-raised-button.mat-unthemed{
+  margin: 0 5%;
   background-color: rgb(66, 216, 66);
+  margin-left: -925px;
 }
+
+.container{
+  margin-top: -20.5rem;
+}
+
+.mat-mdc-focus-indicator{
+  background-color: rgb(66, 216, 66);
+  margin-right: 10px;
+  margin: 0 5%;
+}
+
+.mdc-button__label{
+  background-color: rgb(66, 216, 66);
+  margin-right: 40px;
+  margin: 0 5%;
+
+
+}
+
+.busqueda{
+  margin-right: -909px;
+}
+
+.crear{
+  margin-left: -808px;
+}
+
+
 
