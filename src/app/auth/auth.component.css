@@ -1,47 +1,63 @@
-.logo {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  height: 10%;
-
-}
 
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 350px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #5E95C2;
-  border-radius: 10px;
-
+  position: relative;
+  z-index: 1;
+  background: white;
+  max-width: 300px;
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  border: 4px solid rgb(5, 5, 5);
+  box-shadow: 0 0 20px green;
+  border-radius: 20px;
+  
+}
+.form .thumbnail {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  padding: 50px 30px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  box-sizing: border-box;
+}
+.form .thumbnail img {
+  display: block;
+  width: 100px;
+}
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 80%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  font-size: 14px;
 }
 
-.form__title {
+.form button{
+  background-color: rgb(239, 235, 231);
+  color: black;
+  width: 80%;
+}
+.form button:hover {
+  background: #1aff00;
   color: white;
-  font-size: 2em;
-  margin-bottom: 20px;
-
+  width: 80%;
 }
-
-
-.form__button {
-background-color: #2CD794;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  border: 1px solid #5E95C2;
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
 }
-
-.form{
-  align-items: center;
-  background-color: #3d3b3b;
-
+.form .message a {
+  color: #1aff00;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
 }
 
 .body{
@@ -53,13 +69,131 @@ background-color: #2CD794;
   }
 
   body{
+    width: 100%;
+    display: grid;
 
     opacity: 0.8;
 
     background-blend-mode: multiply;
   }
 
-.gradient-text{
-  color: #000000;
+body {
+  background: #ccc;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+}
+
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: white;
+  max-width: 300px;
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  border: 4px solid rgb(5, 5, 5);
+  box-shadow: 0 0 20px green;
+  border-radius: 20px;
+  
+}
+.form .thumbnail {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  padding: 50px 30px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  box-sizing: border-box;
+}
+.form .thumbnail img {
+  display: block;
+  width: 100px;
+}
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 80%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.form button{
+  background-color: rgb(239, 235, 231);
+  color: black;
+  width: 80%;
+}
+.form button:hover {
+  background: #1aff00;
+  color: white;
+  width: 80%;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #1aff00;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 20px 50px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+
+body {
+  background: #ccc;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
 }
 

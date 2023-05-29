@@ -2,6 +2,7 @@ import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ficha } from 'src/app/models/fichas';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-agregar-fichas',
@@ -30,14 +31,37 @@ export class AgregarFichasComponent  implements OnInit{
     delete this.ficha.created_at;
     delete this.ficha.updated_at;
     delete this.ficha.id_ficha;
-    delete this.ficha.date_end;
-    delete this.ficha.date_start;
-    this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
-      res => {
-        console.log(res);
-        alert("ficha creada")
-      },
-      err => console.error(err)
-    );
+
+    if (this.ficha.code_ficha == 0 || this.ficha.name_ficha == '' || this.ficha.date_start == '' 
+    || this.ficha.date_end == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+      this.ficha.code_ficha=0
+      this.ficha.name_ficha= ''
+      this.ficha.date_start= ''
+      this.ficha.date_end= ''
+    }
+    else{
+      this.ficha.name_ficha = this.ficha.name_ficha?.toLowerCase()
+      this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
+
+        res => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La ficha fue agregada exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(res);
+        },
+        err => console.error(err)
+      );
+    }
 }
 }

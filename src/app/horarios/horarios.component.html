@@ -1,6 +1,8 @@
 
 <div class="container">
-  <button mat-raised-button (click)="nuevoHorario()">Crear Nuevo Usuario &#10133;</button>
+    <input type="text" [formControl]="control" placeholder="Buscar en Horarios">
+  <button mat-raised-button (click)="nuevoHorario()">Crear Nuevo Usuario</button>
+
     <h2><b>Listar Usuarios</b></h2>
     <table mat-table [dataSource]="horarios[0]">
       <ng-container matColumnDef="Horario">
@@ -30,6 +32,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
   </div>
 
 

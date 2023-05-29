@@ -3,6 +3,7 @@ import { componente } from 'src/app/models/componentes';
 import { rol } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { componenteRol } from 'src/app/models/component-rol';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-crear-roles',
@@ -42,6 +43,7 @@ export class CrearRolesComponent implements OnInit{
     this.componentes[0].splice(this.componentes[0].indexOf(componente) , 1);
     this.idComponentes.push(componente.id_componente);
   }
+
   quitarComponente(componente:componente){
     this.componentes[0].push(componente);
     this.componentesAgregados.splice(this.componentesAgregados.indexOf(componente),1);
@@ -50,16 +52,50 @@ export class CrearRolesComponent implements OnInit{
 
   crearRol(){
     delete this.rol.id_rol;
-    this.rolService.saveRol(this.rol).subscribe(
-      res=>{
-        this.rolService.getRol(this.rol.nombre_rol).subscribe(
-          res=>{
-            this.crearComponenteRol(res)
-          }
-        )
-      },
-      err=>console.error(err)
-    )
+    if (this.rol.nombre_rol == '' || this.componentesAgregados.length <= 0){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+
+      this.rol.nombre_rol == ''
+      this.componenteRol.id_componente == 0
+
+    }
+
+    else{
+      this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
+      this.rolService.saveRol(this.rol).subscribe(
+        res=>{
+          this.rolService.getRol(this.rol.nombre_rol).subscribe(
+            res=>{
+              this.crearComponenteRol(res)
+            },
+            err=>{
+              Swal.fire(
+                {
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Algo salio mal',
+                }
+              )
+            }
+          )
+        },
+        err=>{
+          Swal.fire(
+            {
+              icon: 'error',
+              title: 'Oops...',
+              text: 'El Rol ya existe',
+            }
+          )
+        }
+      )
+    }
   }
 
   crearComponenteRol(rol:any){
@@ -70,7 +106,13 @@ export class CrearRolesComponent implements OnInit{
       this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
-          console.log(res)
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El rol fue creado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         },
         err=>console.error(err)
       )
