@@ -43,7 +43,7 @@ constructor(private fichasService:FichasService,
     delete this.ficha.id_ficha;
 
 
-    if (this.ficha.code_ficha == 0 || this.ficha.name_ficha == '' || this.ficha.date_start == '' 
+    if (this.ficha.code_ficha == 0 || this.ficha.id_programa == '' || this.ficha.date_start == '' 
     || this.ficha.date_end == ''){
       Swal.fire(
         {
@@ -54,7 +54,7 @@ constructor(private fichasService:FichasService,
       )
     }
     else{
-      this.ficha.name_ficha = this.ficha.name_ficha?.toLowerCase()
+      this.ficha.id_programa = this.ficha.id_programa?.toLowerCase()
       this.fichasService.updateFicha(this.idFicha,this.ficha)
         .subscribe(
           res =>{
