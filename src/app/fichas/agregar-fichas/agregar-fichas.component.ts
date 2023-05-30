@@ -52,7 +52,7 @@ export class AgregarFichasComponent  implements OnInit{
     delete this.ficha.updated_at;
     delete this.ficha.id_ficha;
 
-    if (this.ficha.code_ficha == 0 || this.ficha.name_ficha == '' || this.ficha.date_start == '' 
+    if (this.ficha.code_ficha == 0 || this.ficha.id_programa == '' || this.ficha.date_start == '' 
     || this.ficha.date_end == ''){
       Swal.fire(
         {
@@ -62,12 +62,12 @@ export class AgregarFichasComponent  implements OnInit{
         }
       )
       this.ficha.code_ficha=0
-      this.ficha.name_ficha= ''
+      this.ficha.id_programa= ''
       this.ficha.date_start= ''
       this.ficha.date_end= ''
     }
     else{
-      this.ficha.name_ficha = this.ficha.name_ficha?.toLowerCase()
+      this.ficha.id_programa = this.ficha.id_programa?.toLowerCase()
       this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
 
         res => {
