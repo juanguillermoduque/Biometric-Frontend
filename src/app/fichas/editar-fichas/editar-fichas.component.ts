@@ -13,7 +13,7 @@ export class EditarFichasComponent implements OnInit {
   ficha : ficha = {
     id_ficha:0,
     code_ficha:0,
-    name_ficha:'',
+    id_programa:'',
     date_start :'',
     date_end :'',
     created_at :'',

@@ -2,7 +2,7 @@
 export interface ficha{
     id_ficha?:number;
     code_ficha?:number;
-    name_ficha?:string;
+    id_programa?:string;
     date_start? :string;
     date_end? :string;
     created_at? :string;

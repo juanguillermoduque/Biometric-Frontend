@@ -2,6 +2,8 @@ import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ficha } from 'src/app/models/fichas';
+import { ProgramasService } from 'src/app/services/programas/programas.service';
+import { Programa } from 'src/app/models/programas';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -15,7 +17,7 @@ export class AgregarFichasComponent  implements OnInit{
   ficha : ficha = {
     id_ficha:0,
     code_ficha:0,
-    name_ficha:'',
+    id_programa:'',
     date_start :'',
     date_end :'',
     created_at :'',
@@ -24,8 +26,26 @@ export class AgregarFichasComponent  implements OnInit{
 
   constructor(
     private fichasService: FichasService,
+    private programasService:ProgramasService
   ) {}
-  ngOnInit(): void {}
+  
+  programas: any [] = []
+  agregarPrograma(programa:any){
+    this.ficha.id_programa = programa.id_programa;
+  }
+
+  getPrograma(){
+      this.programasService.getProgramas().subscribe(
+        (data)=>{
+          
+          this.programas.push(data);
+          console.log(this.programas)
+        }
+    )
+  }
+  ngOnInit(): void {
+    this.getPrograma();
+  }
 
   guardarFicha(): void {
     delete this.ficha.created_at;
