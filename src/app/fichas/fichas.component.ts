@@ -34,7 +34,7 @@ export class FichasComponent implements OnInit {
         console.log(this.fichas);
       },
       err=>console.error(err)
-    )
+    ) 
   }
   agregarFicha(){
     this.dialog.open(AgregarFichasComponent, {
