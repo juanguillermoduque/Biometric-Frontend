@@ -2,8 +2,13 @@ import { query } from '@angular/animations';
 import { identifierName } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { debounceTime } from 'rxjs';
 import { AsistenciasService } from 'src/app/services/asistencias/asistencias.service';
+import { CrearAsistenciasComponent } from './crear-asistencias/crear-asistencias.component';
+import { EditarAsistenciasComponent } from './editar-asistencias/editar-asistencias.component';
+import { ficha } from '../models/fichas';
+
 @Component({
   selector: 'app-asistencias',
   templateUrl: './asistencias.component.html',
@@ -15,7 +20,7 @@ export class AsistenciasComponent {
   dataSource = this.asistencias;
   control = new FormControl();
 
-  constructor(private asistenciaService:AsistenciasService){}
+  constructor(private asistenciaService:AsistenciasService,private dialog:MatDialog){}
 
   ngOnInit(){
     this.getAsistencias();
@@ -52,12 +57,24 @@ findAsistencias(query:string){
     console.log("Busqueda realizada",res);
     this.asistencias = res;
   },
-  err=>{console.log(err)}
-)
+    err=>{console.log(err)}
+  )
 
-}
+  }
 
-  
-    
+  crearAsistencia(){
+    this.dialog.open(CrearAsistenciasComponent,{
+      height:'400px',
+      width:'600px'
+    })
+  }
+
+  editarAsistencia(idAsistencia:Number){
+    this.dialog.open(EditarAsistenciasComponent,{
+      height:'400px',
+      width:'600px',
+      data:idAsistencia
+    })
+  }
 }
 

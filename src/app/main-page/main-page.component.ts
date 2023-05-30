@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
 import { PerfilComponent } from '../perfil/perfil.component';
 
@@ -12,13 +13,19 @@ export class MainPageComponent {
   activaOpcion : Number = 0;
   componentes = []
   activarComponenteById:Number = 0;
+  nombreUser:string = ""
 
   constructor(private router:Router, private dialog: MatDialog){}
 
   ngOnInit(): void {
     this.activaOpcion = 0
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    this.nombreUser =  decode.data[0].email;
 
   }
+
+  
 
   AccionAdmin(num:number){
     this.activaOpcion = num;

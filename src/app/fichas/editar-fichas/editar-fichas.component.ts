@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ficha } from 'src/app/models/fichas';
 import { FichasService } from 'src/app/services/fichas/fichas.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-editar-fichas',
@@ -40,15 +41,34 @@ constructor(private fichasService:FichasService,
     delete this.ficha.created_at;
     delete this.ficha.updated_at;
     delete this.ficha.id_ficha;
-    delete this.ficha.date_end;
-    delete this.ficha.date_start;
 
-    this.fichasService.updateFicha(this.idFicha,this.ficha)
-      .subscribe(
-        res =>{
-          console.log(res);
-        },
-        err => console.error(err)
+
+    if (this.ficha.code_ficha == 0 || this.ficha.name_ficha == '' || this.ficha.date_start == '' 
+    || this.ficha.date_end == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
       )
+    }
+    else{
+      this.ficha.name_ficha = this.ficha.name_ficha?.toLowerCase()
+      this.fichasService.updateFicha(this.idFicha,this.ficha)
+        .subscribe(
+          res =>{
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'La ficha fue modificada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            console.log(res);
+          },
+          err => console.error(err)
+        )
+    }
   }
 }

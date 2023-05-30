@@ -56,7 +56,6 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
       data: idExcusa, // data almacenará el valor de este
     });
   }
-
   searchExcusa(){
 
     this.control.valueChanges.pipe(
@@ -79,8 +78,5 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     },
     err=>{console.log(err)}
   )
-
-
-
-
 }}
+

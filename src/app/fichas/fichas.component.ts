@@ -59,20 +59,20 @@ export class FichasComponent implements OnInit {
   
       this.findFichas(query)
     })
+  }
+
+  findFichas(query:string){
+      if (query == ""){
+        this.getFichas()
+      }
     
+      this.fichaService.search(query).subscribe(
+      res=>{
+        console.log("Busqueda realizada",res);
+        this.fichas = res;
+      },
+      err=>{console.log(err)}
+    )
+
+  }
 }
-
-findFichas(query:string){
-    if (query == ""){
-      this.getFichas()
-    }
-  
-    this.fichaService.search(query).subscribe(
-    res=>{
-      console.log("Busqueda realizada",res);
-      this.fichas = res;
-    },
-    err=>{console.log(err)}
-  )
-
-}}

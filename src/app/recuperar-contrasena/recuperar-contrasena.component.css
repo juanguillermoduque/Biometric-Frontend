@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+  margin: 0;
+}
+
+.form {
+  width: 400px;
+  background-color: gray;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form__button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form__title{
+  text-align: center;
+  color: #ffffff;
+}
+
+.mat-label{
+  text-align: center;
+  justify-content: center;
+}

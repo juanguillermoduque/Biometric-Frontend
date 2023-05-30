@@ -1,4 +1,5 @@
 
+
 <h3>Listar excusas</h3>
 
 <div>
@@ -6,6 +7,7 @@
 </div>
 
 <div class="container">
+  <h3><b>Listar Excusas</b></h3>
 
     <button mat-raised-button id="boton">Subir excusa &#10133;</button>
 
@@ -16,8 +18,6 @@
         <mat-option value="desc">Descendente</mat-option>
       </mat-select>
     </mat-form-field>
-
-
 
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource[0]"> <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
@@ -51,5 +51,4 @@
                        aria-label="Select page of periodic elements">
         </mat-paginator>
       </div>
-
 </div>
