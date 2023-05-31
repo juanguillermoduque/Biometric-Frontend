@@ -1,11 +1,38 @@
-<body>
-  <form class="form">
-    <h1 class="form__title"><b>Recuperar Contraseña </b></h1>
 
-    <mat-form-field class="form__field">
-      <mat-label>Escribe tu correo</mat-label>
-      <input matInput type="text" name="documento" >
-    </mat-form-field>
-    <button mat-raised-button type="submit" class="form__button" ><a href="confirmacion">enviar</a></button>
-  </form>
-</body>
+<div class="login">
+<div class="form__back">
+  <a routerLink="/auth"><mat-icon class="iconretro">keyboard_arrow_left</mat-icon> Volver al inicio de sesión</a>
+</div>
+<div class="formularios">
+  <div class="recuperar">
+    <form class="form">
+      <h1 class="form__title"><b>Recuperar Contraseña</b></h1>
+
+
+      <mat-form-field class="form__field">
+        <mat-label>Escribe tu correo</mat-label>
+        <input matInput type="text" name="documento">
+      </mat-form-field>
+      <button mat-raised-button type="submit" class="form__button">Enviar</button>
+    </form>
+  </div>
+
+  <div class="restablecer">
+    <form class="form">
+      <h1 class="form__title"><b>Restablecer</b></h1>
+      <h2>Escribe la nueva contraseña</h2>
+      <mat-form-field class="form__field">
+        <mat-label><i>Contraseña</i></mat-label>
+        <input matInput type="password" name="contrasena">
+      </mat-form-field>
+      <h2>Confirmación</h2>
+      <mat-form-field class="form__field">
+        <mat-label><i>Contraseña</i></mat-label>
+        <input matInput type="password" name="contrasena">
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" class="form__button">Aceptar</button>
+    </form>
+  </div>
+</div>
+</div>
