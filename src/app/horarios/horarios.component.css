@@ -18,7 +18,7 @@ h2{
   margin: 0 5%;
 }
 .mat-mdc-raised-button:not(:disabled){
-  background-color: rgb(66, 216, 66);
+  background-color:#00C977;
 }
 .container{
   display: auto;

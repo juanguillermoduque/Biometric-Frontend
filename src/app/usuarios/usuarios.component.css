@@ -28,7 +28,7 @@ h2 {
 
 .mat-mdc-raised-button.mat-unthemed{
   margin: 0 5%;
-  background-color: rgb(66, 216, 66);
+  background-color: #00C977;
   margin-left: -925px;
 }
 
@@ -37,13 +37,13 @@ h2 {
 }
 
 .mat-mdc-focus-indicator{
-  background-color: rgb(66, 216, 66);
+  background-color:#00C977;
   margin-right: 10px;
   margin: 0 5%;
 }
 
 .mdc-button__label{
-  background-color: rgb(66, 216, 66);
+  background-color:#00C977;
   margin-right: 40px;
   margin: 0 5%;
 
