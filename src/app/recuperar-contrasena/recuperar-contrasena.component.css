@@ -53,17 +53,14 @@
     cursor: pointer;
   }
 
-  /* Estilos específicos para el formulario de recuperar */
   .recuperar {
     width: 100%;
   }
 
-  /* Estilos específicos para el formulario de restablecer */
   .restablecer {
     width: 100%;
   }
 
-  /* Estilos para dispositivos móviles */
   @media screen and (max-width: 480px) {
     .login {
       padding: 10px;

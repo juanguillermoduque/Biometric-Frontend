@@ -67,9 +67,9 @@
 }
 .img {
   display: block;
-  width: 80px; /* Ajusta el ancho de la imagen */
-  height: auto; /* Permite que la altura se ajuste proporcionalmente */
-  margin-bottom: 10px; /* Espacio inferior opcional */
+  width: 80px; 
+  height: auto; 
+  margin-bottom: 10px; 
 }
 
 .form .thumbnail {
@@ -165,12 +165,12 @@
 h1.fondo::after {
   content: '';
   position: absolute;
-  bottom: -15px; /* Ajusta la posición vertical de la línea */
+  bottom: -15px; 
   left: 0;
   width: 0;
   height: 5px;
-  background-color: #1aff00; /* Cambia el color de fondo a tu preferencia */
-  animation: borderAnimation 4s linear infinite; /* Ajusta la duración y el tipo de animación según tus necesidades */
+  background-color: #1aff00; 
+  animation: borderAnimation 4s linear infinite; 
 }
 
 .fondo {
