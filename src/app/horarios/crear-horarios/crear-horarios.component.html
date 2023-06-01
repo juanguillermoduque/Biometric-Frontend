@@ -5,31 +5,30 @@
         <h2>Crear horario</h2>
 
         <mat-form-field appearance="fill">
-          <mat-label>Selecciona un ID de instructor</mat-label>
-          <mat-select [(ngModel)]="horario.id_instructor">
-            <mat-option *ngFor="let instructor of instructores" [value]="instructor.num_id">
-              ID: {{ instructor.num_id }} - {{ instructor.first_name }} {{ instructor.last_name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
+            <mat-label>Selecciona un id de instructor</mat-label>
+            <mat-select [(ngModel)]="horario.id_instructor" name="id_instructor">
+              <mat-option (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores" [value]="instructor.num_id">
+                Id: {{instructor.num_id}} - {{instructor.first_name}} {{instructor.last_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Selecciona una jornada</mat-label>
             <mat-select [(ngModel)]="horario.jornada" name="jornada" disableRipple>
-                <mat-option value="DIURNA">DIURNA</mat-option>
-                <mat-option value="MIXTA">MIXTA</mat-option>
-                <mat-option value="NOCTURNA">NOCTURNA</mat-option>
+              <mat-option value="DIURNA">DIURNA</mat-option>
+              <mat-option value="MIXTA">MIXTA</mat-option>
+              <mat-option value="NOCTURNA">NOCTURNA</mat-option>
             </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Selecciona una ficha</mat-label>
-          <mat-select [(ngModel)]="horario.id_ficha">
-            <mat-option *ngFor="let ficha of fichas" [value]="ficha.id_ficha">
-              Código ficha: {{ ficha.code_ficha }} - Nombre ficha: {{ ficha.name_ficha }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Selecciona una ficha</mat-label>
+            <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha">
+              <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas" [value]="ficha.id_ficha">
+                Código ficha: {{ficha.code_ficha}} - Nombre ficha: {{ficha.name_ficha}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Selecciona la hora de ingreso</mat-label>
