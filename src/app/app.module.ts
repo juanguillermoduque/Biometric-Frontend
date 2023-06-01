@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AsistenciasComponent } from './asistencias/asistencias.component';
-
-
-
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientJsonpModule } from '@angular/common/http';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
+
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -53,105 +52,48 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
 import { RouterModule, Routes } from '@angular/router';
-import { ComponentFixture } from '@angular/core/testing';
 
-import { FichasComponent } from './fichas/fichas.component';
-import { AgregarFichasComponent } from './fichas/agregar-fichas/agregar-fichas.component';
-import { CrearAsistenciasComponent } from './asistencias/crear-asistencias/crear-asistencias.component';
-import { EditarAsistenciasComponent } from './asistencias/editar-asistencias/editar-asistencias.component';
-
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { EditarFichasComponent } from './fichas/editar-fichas/editar-fichas.component';
-import { EditarUsuariosComponent } from './usuarios/editar-usuarios/editar-usuarios.component';
-import { AgregarUsuarioComponent } from './usuarios/agregar-usuario/agregar-usuario.component';
-
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-//import services
-import {FichasService} from './services/fichas/fichas.service';
-import { UsuariosService } from './services/usuarios/usuarios.service';
-import { ExcusasComponent } from './excusas/excusas.component';
-import { CrearExcusaComponent } from './excusas/crear-excusa/crear-excusa.component';
-import { EditarExcusasComponent } from './excusas/editar-excusas/editar-excusas.component';
-import { HorariosComponent } from './horarios/horarios.component';
-import { CrearHorariosComponent } from './horarios/crear-horarios/crear-horarios.component';
-import { EditarHorariosComponent } from './horarios/editar-horarios/editar-horarios.component';
-import { CompetenciasComponent } from './competencias/competencias.component';
-import { EditarCompetenciasComponent } from './competencias/editar-competencias/editar-competencias.component';
-import { CrearCompetenciasComponent } from './competencias/crear-competencias/crear-competencias.component';
-import { MainPageComponent } from './main-page/main-page.component';
-
-import { HttpClientJsonpModule } from '@angular/common/http';
-import { RolesComponent } from './roles/roles.component';
-import { EditarRolesComponent } from './roles/editar-roles/editar-roles.component';
-import { CrearRolesComponent } from './roles/crear-roles/crear-roles.component'; // Importa HttpClientModule y HttpClientJsonpModule
-import { AddTokenInterceptor } from './utils/add-token.interceptor';
 //guards
 import { AuthGuard } from './utils/guard/auth.guard';
-import { NavegacionComponent } from './roles/navegacion/navegacion/navegacion.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { ProgramasComponent } from './programas/programas.component';
-import { CrearProgramaComponent } from './programas/crear-programa/crear-programa.component';
-import { EditarProgramaComponent } from './programas/editar-programa/editar-programa.component';
-import { RecuperarContrasenaComponent } from "./recuperar-contrasena/RecuperarContrasenaComponent";
-import { ConfirmacionComponent } from './recuperar-contrasena/confirmacion/confirmacion.component';
-import { RestablecerComponent } from './recuperar-contrasena/restablecer/restablecer.component';
+//componentes
+import { AuthComponent } from './auth/componentes/login/auth.component';
+import { MainPageComponent } from '../app/navegacion/componentes/main-page/main-page.component';
 
-
+//Modulos 
+import { AsistenciasModule } from './asistencias/asistencias.module';
+import { AuthModule } from './auth/auth.module';
+import { CompetenciasModule } from './competencias/competencias.module';
+import { ExcusasModule } from './excusas/excusas.module';
+import { FichasModule } from './fichas/fichas.module';
+import { HorariosModule } from './horarios/horarios.module';
+import { NavegacionModule } from './navegacion/navegacion.module';
+import { RolesModule } from './roles/roles.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { ProgramasModule } from './programas/programas.module';
 
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
   {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
-  {path:'recuperar',component:RecuperarContrasenaComponent},
-  {path:'confirmacion',component:ConfirmacionComponent},
-  {path:'restablecer',component:RestablecerComponent},
-
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    AsistenciasComponent,
-    FichasComponent,
-    CrearAsistenciasComponent,
-    EditarAsistenciasComponent,
-    UsuariosComponent,
-    CrearAsistenciasComponent,
-    EditarAsistenciasComponent,
-    EditarFichasComponent,
-    EditarUsuariosComponent,
-    AgregarUsuarioComponent,
-    AgregarFichasComponent,
-   ExcusasComponent,
-   CrearExcusaComponent,
-   EditarExcusasComponent,
-   HorariosComponent,
-   CrearHorariosComponent,
-   EditarHorariosComponent,
-   CompetenciasComponent,
-   EditarCompetenciasComponent,
-   CrearCompetenciasComponent,
-   MainPageComponent,
-   RolesComponent,
-   EditarRolesComponent,
-   CrearRolesComponent,
-   NavegacionComponent,
-   RecuperarContrasenaComponent,
-   ConfirmacionComponent,
-   RestablecerComponent,
-   PerfilComponent,
-   ProgramasComponent,
-   CrearProgramaComponent,
-   EditarProgramaComponent,
   ],
 
   imports: [
+    AsistenciasModule,
+    CompetenciasModule,
+    ExcusasModule,
+    FichasModule,
+    HorariosModule,
+    NavegacionModule,
+    RolesModule,
+    UsuariosModule,
+    ProgramasModule,
+    
     MatNativeDateModule,
     BrowserModule,
     HttpClientModule,
