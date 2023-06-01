@@ -56,6 +56,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //guards
 import { AuthGuard } from './utils/guard/auth.guard';
+
 //componentes
 import { AuthComponent } from './auth/componentes/login/auth.component';
 import { MainPageComponent } from '../app/navegacion/componentes/main-page/main-page.component';
@@ -85,6 +86,7 @@ const appRoutes:Routes=[
 
   imports: [
     AsistenciasModule,
+    AuthModule,
     CompetenciasModule,
     ExcusasModule,
     FichasModule,
@@ -93,7 +95,7 @@ const appRoutes:Routes=[
     RolesModule,
     UsuariosModule,
     ProgramasModule,
-    
+
     MatNativeDateModule,
     BrowserModule,
     HttpClientModule,
