@@ -1,6 +1,6 @@
 
 #boton {
-  background-color: rgb(66, 216, 66);
+  background-color:#00C977;
   margin-right: 10px;
   margin: 0 5%;
 }
@@ -20,5 +20,30 @@ h2{
   width: 90%;
   justify-content: space-between;
 }
+
+.container{
+  margin-top: -313px;
+}
+
+.mat-mdc-text-field-wrapper{
+  float: right;
+}
+
+.mdc-text-field{
+  float: right;
+}
+
+.ng-tns-c70-1{
+  float: right;
+}
+
+.mdc-text-field--filled{
+  float: right;
+}
+
+.mdc-text-field--no-label{
+  float: right;
+}
+
 
 

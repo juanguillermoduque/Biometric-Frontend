@@ -7,7 +7,7 @@ table {
 }
 
 #boton {
-    background-color: rgb(66, 216, 66);
+    background-color:#00C977;
     margin-right: 10px;
     margin: 3%;
 
@@ -29,4 +29,17 @@ h3{
 
 .mat-elevation-z8{
   margin: 0 5%;
+}
+
+.container{
+  margin-top: -343px;
+}
+
+
+.mat-mdc-form-field-infix{
+  float: right;
+}
+
+.ng-tns-c70-2{
+  float: right;
 }

@@ -15,7 +15,7 @@ h2{
   margin: 0 5%;
 }
 .mat-mdc-raised-button:not(:disabled){
-  background-color: rgb(66, 216, 66);
+  background-color:#00C977;
 }
 .container{
   display: auto;
@@ -24,5 +24,13 @@ h2{
   width: 90%;
   justify-content: space-between;
   margin-top: 25.125;
+}
+
+.container{
+  margin-top: -313px;
+}
+
+.container{
+  margin-right: 101px;
 }
 

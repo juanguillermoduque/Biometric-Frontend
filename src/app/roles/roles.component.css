@@ -16,9 +16,13 @@ table{
 }
 .mdc-button{
   margin: 0 5%;
-  background-color: rgb(66, 216, 66);
+  background-color: #00C977;
 }
 
 .container{
   margin: 0 7% 0 -9px;
+}
+
+.container{
+  margin-top: -343px;
 }

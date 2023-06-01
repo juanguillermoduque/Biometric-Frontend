@@ -7,7 +7,7 @@ table {
 }
 
 #boton {
-    background-color: rgb(66, 216, 66);
+    background-color:#00C977;
     margin-right: 10px;
     margin: 0 5%;
 }
@@ -18,4 +18,15 @@ table {
 
 h3{
   text-align: center;
+}
+
+.container{
+  margin-top: -345px;
+}
+
+.mat-mdc-form-field-infix{
+  float: right;
+}
+.ng-tns-c70-1{
+  float: right;
 }
