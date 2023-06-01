@@ -5,12 +5,12 @@
         <h2>Crear horario</h2>
 
         <mat-form-field appearance="fill">
-            <mat-label>Selecciona un id de instructor</mat-label>
-            <mat-select>
-              <mat-option  (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores">
-               Id: {{instructor.num_id}} - {{instructor.first_name}} {{instructor.last_name}}
+          <mat-label>Selecciona un ID de instructor</mat-label>
+          <mat-select [(ngModel)]="horario.id_instructor">
+            <mat-option *ngFor="let instructor of instructores" [value]="instructor.num_id">
+              ID: {{ instructor.num_id }} - {{ instructor.first_name }} {{ instructor.last_name }}
             </mat-option>
-            </mat-select>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -23,12 +23,12 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Selecciona una ficha</mat-label>
-            <mat-select>
-                <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas">
-                    Código ficha: {{ficha.code_ficha}} - Nombre ficha: {{ficha.name_ficha}}
-                 </mat-option>
-            </mat-select>
+          <mat-label>Selecciona una ficha</mat-label>
+          <mat-select [(ngModel)]="horario.id_ficha">
+            <mat-option *ngFor="let ficha of fichas" [value]="ficha.id_ficha">
+              Código ficha: {{ ficha.code_ficha }} - Nombre ficha: {{ ficha.name_ficha }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -51,7 +51,7 @@
             </mat-select>
         </mat-form-field>
 
-          
+
         <mat-form-field appearance="fill">
             <mat-label>Elige la fecha de formación</mat-label>
             <input matInput [matDatepicker]="picker">
