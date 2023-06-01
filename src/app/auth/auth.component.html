@@ -1,13 +1,20 @@
-
-<div class="form">
+<div class="general">
+<h1 class="fondo">Bienvenidos</h1>
+<div>
+  <img class="img" src="../../assets/img/logo-sena-verde-complementario-png-2022.png" alt="">
+</div>
+  <div class="form">
   <div class="thumbnail">
-  <img src="../../assets//img/LogoSena.png"/></div>
+  <h1>login</h1></div>
   <form class="login-form">
     <input name="documento" [(ngModel)]="email" type="text" placeholder="username"/>
     <input type="password" name="contrasena" [(ngModel)]="contrasena" placeholder="password"/>
     <button mat-button (click)="logearse()">Ingresar</button>
-    <p class="message">Olvidaste tu contraseña? <a href="#">Recuperar contraseña</a></p>
+    <p class="message">Olvidaste tu contraseña? <a routerLink="/recuperar">Recuperar contraseña</a></p>
   </form>
 </div>
+</div>
+
+
 
 
