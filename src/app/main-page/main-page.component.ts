@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
 import { PerfilComponent } from '../perfil/perfil.component';
+import { UsuariosService } from '../services/usuarios/usuarios.service';
+import { RolesService } from '../services/roles/roles.service';
+import { debounceTime } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-main-page',
@@ -13,9 +17,15 @@ export class MainPageComponent {
   activaOpcion : Number = 0;
   componentes = []
   activarComponenteById:Number = 0;
-  nombreUser:string = ""
+  nombreUser:string = "";
+  rol_id:number= 1;
+  usuario_rol:string ="";
 
-  constructor(private router:Router, private dialog: MatDialog){}
+
+  constructor(private router:Router, private dialog: MatDialog,
+    private usuarioService: UsuariosService, private rolService:RolesService){
+
+  }
 
   ngOnInit(): void {
     this.activaOpcion = 0
@@ -23,9 +33,9 @@ export class MainPageComponent {
     let decode:any = jwtDecode(tok);
     this.nombreUser =  decode.data[0].email;
 
+
   }
 
-  
 
   AccionAdmin(num:number){
     this.activaOpcion = num;

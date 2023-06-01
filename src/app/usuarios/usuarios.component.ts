@@ -7,6 +7,7 @@ import { query } from '@angular/animations';
 import { FormControl } from '@angular/forms';
 import { debounceTime, find } from 'rxjs';
 import { MatTable } from '@angular/material/table';
+import { RolesService } from '../services/roles/roles.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -15,25 +16,27 @@ import { MatTable } from '@angular/material/table';
 })
 
 export class UsuariosComponent implements OnInit  { // llamado de componente Usuarios implementando la interfaz OnInit
-  
+
 
   @ViewChild(MatTable) table: MatTable<any>;
-  
+
   displayedColumns: string[] = ['NombreUsuario', 'TipoDocumento', 'NumeroDocumento', 'CorreoElectronico','RolSistema','edit']; // Arreglo de columnas para mostrar en una tabla
-  searchId:string = ""; 
-  
+  searchId:string = "";
+
   usuarios:any = []; // variable usuarios que es un arreglo vacío
   dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
   control = new FormControl();
   usuariosAux: any;
-  
-  constructor(private usuarioService: UsuariosService, public dialog:MatDialog){
+
+  constructor(
+    private usuarioService: UsuariosService, public dialog:MatDialog, private rolService:RolesService
+    ){
+
     // definición de UsuariosService que tiene la conexión con el back
     // MatDialog proporciona una ventana emergente en la cual se puede ingresar información sin la necesidad de cambiar de ruta
-
   }
 
-   
+
   ngOnInit(){
     this.getUsuario();
     this.searchUser();
@@ -43,6 +46,23 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
     this.usuarioService.getUsuarios().subscribe(
       res =>{
         this.usuarios = res;
+        for(let i = 0; i < this.usuarios[0].length;i++){
+          this.rolService.getUsuarioRol(this.usuarios[0][i].num_id).subscribe(
+            usuarioRol=>{
+              let aux:any = usuarioRol
+              if(aux != null){
+                this.rolService.getRolId(aux.id_rol).subscribe(
+                  rol =>{
+                    let aux2:any = rol
+                    console.log(aux2)
+                    let nombreRol = aux2.nombre_rol;
+                    this.usuarios[0][i].rol = nombreRol;
+                  }
+                )
+              }
+            }
+          )
+        }
         console.log(this.usuarios);
       },
       err=>console.error(err)
@@ -50,13 +70,12 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   }
 
   nuevoUsuario(){ // Método nuevoUsuario que me muestra una ventana emergente con el componente AgregarUsuario
-      
+
     const ref = this.dialog.open(AgregarUsuarioComponent,{
       width:'700px',
       height: '500px',
     });
     ref.afterClosed().subscribe(result =>{
-      console.log('resultado del dialogo', result);
       this.actualizarUsuarios();
     });
   }
@@ -65,7 +84,6 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
     this.usuarioService.getUsuarios().subscribe(
       (res: any) => { // Se cambia el tipo de datos a any
         this.usuarios = res;
-        console.log(this.usuarios);
       },
       err => console.error(err)
     );
@@ -90,7 +108,7 @@ findUsers(query: string){
 
   this.usuarioService.searchUsuario(query).subscribe(
   res=>{
-    
+
     this.usuariosAux = res;
     this.dataSource = this.usuariosAux[0];
     console.log("Busqueda realizada",this.dataSource);
@@ -107,6 +125,6 @@ searchUser(){
 
     this.findUsers(query)
   })
-  
+
 }
 }
