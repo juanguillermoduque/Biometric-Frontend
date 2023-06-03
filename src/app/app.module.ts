@@ -60,6 +60,7 @@ import { AuthGuard } from './utils/guard/auth.guard';
 //componentes
 import { AuthComponent } from './auth/componentes/login/auth.component';
 import { MainPageComponent } from '../app/navegacion/componentes/main-page/main-page.component';
+import { RecuperarContrasenaComponent } from './auth/componentes/recuperar-contrasena/RecuperarContrasenaComponent';
 
 //Modulos 
 import { AsistenciasModule } from './asistencias/asistencias.module';
@@ -76,6 +77,7 @@ import { ProgramasModule } from './programas/programas.module';
 const appRoutes:Routes=[
   {path: "", redirectTo:'/auth', pathMatch:"full"},
   {path: "auth", component:AuthComponent},
+  {path: "res", component:RecuperarContrasenaComponent},
   {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
 ]
 

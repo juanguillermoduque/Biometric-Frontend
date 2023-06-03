@@ -4,6 +4,8 @@ import { auth } from '../../auth';
 import Swal from 'sweetalert2';
 import {  Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { RecuperarContrasenaComponent } from '../recuperar-contrasena/RecuperarContrasenaComponent';
 
 @Component({
   selector: 'app-auth',
@@ -17,6 +19,7 @@ export class AuthComponent {
   constructor(
    private authServise:AuthService,
    private router:Router,
+   public dialog: MatDialog, 
   ){}
 
   logearse() {
@@ -38,6 +41,12 @@ export class AuthComponent {
         }
         this.autenticate(data);
     }
+  }
+  recuperarContrasena(){
+    this.dialog.open(RecuperarContrasenaComponent, {
+      height: '500px',
+      width: '600px',
+    });
   }
   
   autenticate(data:auth){

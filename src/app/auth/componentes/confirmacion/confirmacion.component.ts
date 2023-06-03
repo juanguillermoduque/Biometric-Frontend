@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./confirmacion.component.css']
 })
 export class ConfirmacionComponent {
-
+  goLogin(){
+    location.reload() 
+  }
 }

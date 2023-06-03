@@ -11,7 +11,7 @@
     <input name="documento" [(ngModel)]="email" type="text" placeholder="username"/>
     <input type="password" name="contrasena" [(ngModel)]="contrasena" placeholder="password"/>
     <button mat-button (click)="logearse()">Ingresar</button>
-    <p class="message">Olvidaste tu contraseña? <a routerLink="/recuperar">Recuperar contraseña</a></p>
+    <p class="message">Olvidaste tu contraseña? <a (click)="recuperarContrasena()">Recuperar contraseña</a></p>
   </form>
 </div>
 </div>

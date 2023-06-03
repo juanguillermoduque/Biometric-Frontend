@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ConfirmacionComponent } from './componentes/confirmacion/confirmacion.component';
 import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena/RecuperarContrasenaComponent';
-import { RestablecerComponent } from './componentes/restablecer/restablecer.component';
 import { AuthComponent } from './componentes/login/auth.component';
 import { Routes } from '@angular/router';
 
@@ -59,14 +58,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ConfirmacionComponent,
     RecuperarContrasenaComponent,
-    RestablecerComponent,
     AuthComponent
   ],
 
   exports:[
     ConfirmacionComponent,
     RecuperarContrasenaComponent,
-    RestablecerComponent,
     AuthComponent
   ],
   
