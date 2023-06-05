@@ -1,4 +1,4 @@
-
+<!--
 <div class="general">
 <h1 class="fondo">Bienvenidos</h1>
 <div>
@@ -14,4 +14,30 @@
     <p class="message">Olvidaste tu contraseña? <a (click)="recuperarContrasena()">Recuperar contraseña</a></p>
   </form>
 </div>
+</div>
+-->
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="25">
+    <mat-toolbar>
+      <img src="../../assets/img/logo-sena-verde-complementario-png-2022.png" alt="">
+      <p id="text">Bienvenidos</p>
+    </mat-toolbar>
+    <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+      <br>
+      <mat-form-field>
+        <mat-label>Correo electrónico:</mat-label>
+        <input matInput name="documento" [(ngModel)]="email">
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Contraseña:</mat-label>
+        <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
+      </mat-form-field>
+      <a class="message" (click)="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
+      <br>
+      <br>
+      <button class="button-login" mat-raised-button type="submit" (click)="logearse()">Iniciar sesión</button>
+    </form>    
+  </mat-card>
 </div>

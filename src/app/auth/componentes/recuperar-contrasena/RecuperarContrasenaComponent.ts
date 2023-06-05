@@ -34,8 +34,8 @@ export class RecuperarContrasenaComponent {
 
   mensajeEmail(){
     this.dialog.open(ConfirmacionComponent,{
-      width:"500px",
-      height:"400px",
+      height: '350px',
+      width: '400px',
     })
   }
 }
