@@ -7,10 +7,10 @@
     <form class="form">
       <h1 class="form__title"><b>Recuperar Contraseña</b></h1>
       <mat-form-field class="form__field">
-        <mat-label>Escribe tu correo</mat-label>
-        <input matInput type="text" name="documento">
+        <mat-label>Escribe tu numero de documento</mat-label>
+        <input [(ngModel)]="documento" matInput type="number" name="documento">
       </mat-form-field>
-      <button mat-raised-button type="submit" (click)="mensajeEmail()" class="form__button">Enviar</button>
+      <button mat-raised-button (click)="recuperar()" class="form__button">Enviar</button>
     </form>
   </div>
 </div>
