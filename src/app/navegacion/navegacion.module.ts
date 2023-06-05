@@ -49,6 +49,7 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 //Componentes
 import { MainPageComponent } from './componentes/main-page/main-page.component';
@@ -82,6 +83,7 @@ import { UsuariosModule } from '../usuarios/usuarios.module';
     UsuariosModule,
 
     CommonModule,
+    FlexLayoutModule,
     //Angular Material
     MatNativeDateModule,
     MatAutocompleteModule,

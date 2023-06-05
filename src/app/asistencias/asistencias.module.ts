@@ -49,6 +49,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
@@ -69,7 +70,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
   imports: [
     CommonModule,
-
+    FlexLayoutModule,
     //angular material
     MatAutocompleteModule,
     MatCheckboxModule,

@@ -34,7 +34,6 @@ export class NavegacionComponent implements OnInit {
         }
       )
     }
-    debugger
     console.log(this.componentes)
 
   }
