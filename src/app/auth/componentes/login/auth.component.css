@@ -1,4 +1,4 @@
-
+/*
 .general{
   background: #1aff00;
 }
@@ -220,4 +220,46 @@ h1.fondo::after {
     margin-top: 10px;
   }
 
+}
+*/
+
+.main-div {
+  background-image: url('https://lh3.googleusercontent.com/p/AF1QipOyuws8FCDu0S04udT2kEm8zRz5rlwdqmlksSD6=s680-w680-h510');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-div mat-card {
+  padding: 0;
+  border-radius: 10px;
+}
+
+#text {
+  margin-top: 14px;
+  margin-left: 3rem;
+}
+
+mat-toolbar {
+  color: #70b22d;
+}
+
+.login-form {
+  padding: 20px;
+}
+
+.button-login {
+  height: 50px;
+  background-color: #70b22d !important;
+}
+
+.message {
+  color: rgba(0, 0, 0, 0.808);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+mat-toolbar img {
+  width: 40px; 
+  height: auto; 
+  margin-right: 10px; 
 }
