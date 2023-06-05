@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionComponent } from '../confirmacion/confirmacion.component';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
@@ -10,8 +11,25 @@ import { ConfirmacionComponent } from '../confirmacion/confirmacion.component';
 })
 export class RecuperarContrasenaComponent {
 
-  constructor(public dialog:MatDialog){
+  documento = 0
+  constructor(public dialog:MatDialog,
+    public authService:AuthService){
     
+  }
+
+  recuperar(){
+    this.authService.recoveryPassword(this.documento).subscribe(
+      data=>{
+        let aux:any = data;
+        if(aux.ok ){
+          this.mensajeEmail()
+        }
+        else{
+
+        }
+        console.log(data)
+      }
+    )
   }
 
   mensajeEmail(){
