@@ -28,7 +28,7 @@ export class AuthComponent {
         {
           icon: 'error',
           title: 'Oops...',
-          text: 'Campos Sin Completar',
+          text: 'Campos sin completar',
         }
       )
       this.email = '';
@@ -44,8 +44,8 @@ export class AuthComponent {
   }
   recuperarContrasena(){
     this.dialog.open(RecuperarContrasenaComponent, {
-      height: '500px',
-      width: '600px',
+      height: '350px',
+      width: '400px',
     });
   }
   
