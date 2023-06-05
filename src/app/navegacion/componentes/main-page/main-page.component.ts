@@ -4,9 +4,9 @@ import jwtDecode from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuariosService } from '../../../usuarios/usuarios.service';
 import { RolesService } from '../../../roles/roles.service';
-import { debounceTime } from 'rxjs';
-import { FormControl } from '@angular/forms';
 import { PerfilComponent } from '../../../usuarios/componentes/perfil/perfil.component';
+import { usuario_rol } from 'src/app/roles/usuario_rol';
+import {rol} from 'src/app/roles/roles'
 
 @Component({
   selector: 'app-main-page',
@@ -17,8 +17,6 @@ export class MainPageComponent {
   activaOpcion : Number = 0;
   componentes = []
   activarComponenteById:Number = 0;
-  nombreUser:string = "";
-  rol_id:number= 1;
   usuario_rol:string ="";
 
 
@@ -28,12 +26,28 @@ export class MainPageComponent {
   }
 
   ngOnInit(): void {
+    this.getRol()
+  }
+
+  getRol(){
     this.activaOpcion = 0
     let tok:any = localStorage.getItem('token')
     let decode:any = jwtDecode(tok);
-    this.nombreUser =  decode.data[0].email;
-
-
+    console.log(decode.data[0])
+    let idUser = decode.data[0].num_id;
+    this.rolService.getUsuarioRol(idUser).subscribe(
+      (data:any)=>{
+        let usuarioRol:usuario_rol = data;
+        let idRol = usuarioRol.id_rol;
+        this.rolService.getRolId(idRol).subscribe(
+          (rol:any) =>{
+            let aux:rol = rol;
+            console.log(aux)
+            this.usuario_rol = aux.nombre_rol;
+          }
+        )
+      }
+    )
   }
 
 

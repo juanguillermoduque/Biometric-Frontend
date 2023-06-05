@@ -53,6 +53,7 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   
   imports: [
     CommonModule,
+    FlexLayoutModule,
     //angular material
     MatAutocompleteModule,
     MatCheckboxModule,

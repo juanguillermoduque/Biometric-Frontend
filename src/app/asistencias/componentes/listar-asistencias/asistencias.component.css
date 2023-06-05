@@ -14,7 +14,6 @@ h2{
   text-align: center;
 }
 .container{
-  margin-top: -26.25rem;
   display: auto;
   height: 100%;
   width: 90%;
@@ -22,7 +21,6 @@ h2{
 }
 
 .container{
-  margin-top: -313px;
 }
 
 .mat-mdc-text-field-wrapper{

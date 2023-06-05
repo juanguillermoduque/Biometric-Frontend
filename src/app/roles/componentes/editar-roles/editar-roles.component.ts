@@ -129,7 +129,6 @@ export class EditarRolesComponent implements OnInit{
         console.log(res)
       }
     )
-    debugger
 
     for(let i = 0;i <= this.idComponentes.length;i++){
       this.idComponentes;
