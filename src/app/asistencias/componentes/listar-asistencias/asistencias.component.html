@@ -1,43 +1,27 @@
 <div class="container">
-  <h2><b>Listar Asistencias</b></h2>
+  <h2><b>Asistencias</b></h2>
 
   <button mat-raised-button (click)="crearAsistencia()" id="boton">Registrar asistencias &#10133;</button>
-
+ 
   <mat-form-field>
     <input type="text" [formControl]="control" matInput placeholder="Ingrese el documento">
   </mat-form-field>
   <table  mat-table [dataSource]="asistencias[0]">
-    <ng-container matColumnDef="fechaIngreso">
-      <th mat-header-cell *matHeaderCellDef>Fecha de Ingreso</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.date_enter}}</td>
+    <ng-container matColumnDef="numId">
+      <th mat-header-cell *matHeaderCellDef>Aprendiz</th>
+      <td mat-cell *matCellDef="let asistencia">{{asistencia.id_aprendiz}}</td>
     </ng-container>
-    <ng-container matColumnDef="numIngreso">
-      <th mat-header-cell *matHeaderCellDef>Número de Ingreso</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.numIngreso}}</td>
-    </ng-container>
-    <ng-container matColumnDef="asistio">
-      <th mat-header-cell *matHeaderCellDef>Asistió</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.asistio}}</td>
-    </ng-container>
-    <ng-container matColumnDef="noAsistio">
-      <th mat-header-cell *matHeaderCellDef>No Asistió</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.noAsistio}}</td>
-    </ng-container>
-    <ng-container matColumnDef="aula">
-      <th mat-header-cell *matHeaderCellDef>Aula</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.aula}}</td>
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let asistencia">{{asistencia.id_horario}}</td>
     </ng-container>
     <ng-container matColumnDef="observaciones">
       <th mat-header-cell *matHeaderCellDef>Observaciones</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.observaciones}}</td>
+      <td mat-cell *matCellDef="let asistencia">{{asistencia.comments}}</td>
     </ng-container>
     <ng-container matColumnDef="horaIngreso">
-      <th mat-header-cell *matHeaderCellDef>Hora de Ingreso</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.horaIngreso}}</td>
-    </ng-container>
-    <ng-container matColumnDef="horaSalida">
-      <th mat-header-cell *matHeaderCellDef>Hora de Salida</th>
-      <td mat-cell *matCellDef="let asistencia">{{asistencia.horaSalida}}</td>
+      <th mat-header-cell *matHeaderCellDef>Hora de ingreso</th>
+      <td mat-cell *matCellDef="let asistencia">{{asistencia.hora_ingreso}}</td>
     </ng-container>
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>

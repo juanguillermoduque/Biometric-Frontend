@@ -15,7 +15,7 @@ import { ficha } from '../../../fichas/fichas';
   styleUrls: ['./asistencias.component.css']
 })
 export class AsistenciasComponent {
-  displayedColumns: string[] = ['fechaIngreso', 'numIngreso', 'asistio', 'noAsistio', 'aula', 'observaciones', 'horaIngreso', 'horaSalida'];
+  displayedColumns: string[] = ['numId', 'fecha', 'observaciones','horaIngreso','acciones'];
   asistencias:any = [];
   dataSource = this.asistencias;
   control = new FormControl();
