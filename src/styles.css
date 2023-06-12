@@ -4,5 +4,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 :root {
-    --verde-sena: #70b22d
+    --verde-sena: #7CC383;
+    --gris-sena: #F3F3F3;
+    --verde-claro: #5BCB26;
+    --verde-oscuro: #00AD00;
   }
+
+@media(max-width:1380px){
+  .mensaje{
+    font-size: 2.125rem !important;
+  }
+}
+
+@media(max-width:1250px){
+  .logo-sena{
+    width: 6.813rem !important;
+    margin-left: 1.563rem;
+  }
+  .opciones{
+    font-size: 20px !important;
+  }
+}
+
+@media(max-width:1080px){
+  .opciones{
+    font-size: 15px !important;
+  }
+}
+
+@media(max-width:950px){
+  .mensaje{
+    font-size: 1.125rem !important;
+  }
+
+  .logo-sena{
+    width: 4.813rem !important;
+    margin-left: 1.563rem;
+  }
+}

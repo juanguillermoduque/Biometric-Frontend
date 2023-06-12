@@ -38,6 +38,10 @@ export class RolesService {
     );
   }
 
+  getRolByIdUser(idUser:Number){
+    return this.http.get(`${this.API_URI}/roles/usuario/${idUser}`);
+  }
+
   updateRol(id:number,rol:rol):Observable<any>{
     return this.http.put(`${this.API_URI}/roles/editar${id}`, rol).pipe(
       tap(() => this._refresh$.next())
@@ -59,6 +63,10 @@ export class RolesService {
 
   createFichaInstructor(ids:any){
     return this.http.post(`${this.API_URI}/instructor/fichainstructor`, ids);
+  }
+
+  getAprendices(){
+    return this.http.get(`${this.API_URI}/aprendiz/`);
   }
 
   //services de Get rol componente

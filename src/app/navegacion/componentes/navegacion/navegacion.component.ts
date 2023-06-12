@@ -19,6 +19,17 @@ export class NavegacionComponent implements OnInit {
   @Output()
   public seEscogioComponente :EventEmitter<Number> = new EventEmitter()
 
+
+  logos = new Map<string,string>([
+    ["Asistencias" , "../../../../assets/img/svg/logos-navegacion/asistencia.svg"],
+    ["Fichas" , "../../../../assets/img/svg/logos-navegacion/ficha.svg"],
+    ["Horarios" ,"../../../../assets/img/svg/logos-navegacion/horario.svg"],
+    ["Usuarios" , "../../../../assets/img/svg/logos-navegacion/usuarios.svg"],
+    ["Excusas" , "../../../../assets/img/svg/logos-navegacion/excusa.svg"],
+    ["Roles" , "../../../../assets/img/svg/logos-navegacion/roles.svg"],
+    ["Ver Perfil" , "../../../../assets/img/svg/logos-navegacion/perfil.svg"],
+  ]);
+
   constructor(private rolServise:RolesService){}
 
   ngOnInit(): void {
@@ -26,16 +37,22 @@ export class NavegacionComponent implements OnInit {
   }
 
   getComponentes(componentes_roles:any){
+    let verPerfil = {
+      id_componente : 0,
+      nombre_componente: "Ver Perfil",
+
+    }
+    this.componentes.push(verPerfil)
+    
     for(let i = 0;i < componentes_roles.length;i++){
       this.rolServise.getComponente(componentes_roles[i].id_componente).subscribe(
         (res:any)=>{
           let aux:any = res;
           this.componentes.push(aux[0])
+          console.log(this.componentes)
         }
       )
     }
-    console.log(this.componentes)
-
   }
 
   getComponentesroles(idRol:Number){

@@ -23,7 +23,7 @@ export class CrearHorariosComponent implements OnInit{
   };
 
   instructores:any = [];
-  instructoresIdRol:any[]= [];
+  instructoresIdRol:any= [];
   instructoresId:any[]= [];
   fichas:any;
   fichasAux:any;
@@ -60,13 +60,6 @@ export class CrearHorariosComponent implements OnInit{
           text: 'Hay campos sin completar',
         }
       )
-      this.horario.id_instructor=0
-      this.horario.jornada= ''
-      this.horario.id_ficha= 0
-      this.horario.date_start= ''
-      this.horario.date_end= ''
-      this.horario.created_at= ''
-      this.horario.updated_at= ''
     }
     else{
       this.horario.jornada = this.horario.jornada?.toLowerCase()
@@ -102,7 +95,7 @@ export class CrearHorariosComponent implements OnInit{
   getIdUsuario(){
     this.rolesService.searchInstructores().subscribe(
       (instructores) => {
-        this.instructoresIdRol.push(instructores);
+        this.instructoresIdRol = instructores;
         this.getUsuario();
       }
     );

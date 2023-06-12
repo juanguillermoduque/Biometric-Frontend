@@ -1,57 +1,163 @@
 .logo{
-  margin-top: 1.25rem;
+  margin-top: 2.25rem !important;
   transform: scale(4);
-}
-.mensaje{
-  display: flex;
-  padding: 13% 9%;
-  font-size: 3.125rem;
-  justify-content: center;
+  margin: 0 auto;
 }
 
-.logo-contenedor{
-  margin-top: 1.25rem;
-  right: 3%;
-  position: fixed;
-}
-.menu{
-  margin-top: 1.25rem;
-  right: 3%;
-}
-.separador{
-  margin:0;
-  height: 100vh;
-  background: black;
-  border: 0.031rem solid;
+.barra-lateral{
+  background: var(--gris-sena);
 }
 
 .logo-sena{
-  width: 7.813rem;
-  margin-left: 1.563rem;
-}
-.container-logo-sena{
-  height: 7.5rem;
-  background: white;
+  margin-top: 2.25rem;
+  transform: scale(4);
+  margin-left: 320%;
 }
 
 .container{
-  height: 100vh;
+  height: 94vh;
   width: 100vw;
-}
-
-.rol{
-  margin-top: 1.25rem;
-  margin-left: 40%;
-  font-size: 3.125rem;
-}
-
-.header{
-  background: var(--verde-sena);
-  height: 7.5rem;
-  margin:0;
 }
 
 .info .opcion{
   margin-top: 3.125rem;
   display: flow-root;
+  margin: 4% 7% 5%;
+  background: var(--gris-sena);
+  overflow: auto;
+  height: 82vh;
+}
+
+.footer{
+  bottom: 0;
+  height: 6vh;
+  width: 100%;
+  position: fixed;
+  background: var(--verde-sena);
+}
+
+.footer-text{
+  margin: 0;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  color: white;
+}
+
+.nombre{
+  margin: 10px auto;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.rol{
+  margin-bottom: 1.75rem !important;
+  margin-top: -45px !important;
+  margin: 0 auto;
+}
+
+.logo-sena{
+  width: 15px;
+  top: -5px;
+  right: 40px;
+  position: absolute;
+}
+
+/*Logout*/
+.logout:hover{
+  background: var(--verde-sena);
+  cursor: pointer;
+}
+
+.logout{
+  position: fixed;
+  bottom: 100px;
+  margin-left: 17px;
+  width: 19%;
+}
+
+.icono{
+  margin-top: -15px;
+}
+
+.logout:hover .icono{
+  color: white;
+}
+
+.logout:hover h1{
+  color: white;
+}
+
+/**********************************/
+
+
+.label-menu-pequeno{
+  font-size: 20px;
+}
+.icon-menu-pequeno{
+  width: 30px;
+  margin-bottom: -6px;
+}
+.toolbar{
+  background: var(--verde-sena);
+}
+
+.toolbar-text{
+  color: white;
+}
+
+@media(max-width:800px){
+  .footer-text{
+    padding: 0.25rem;
+    font-size: 0.75rem;
+  }
+  .info .opcion{
+    max-height: 80%;
+    height: 60vh;
+  }
+  .footer{
+    z-index: 1;
+  }
+
+  .opcion:hover{
+    background: var(--verde-sena);
+    cursor: pointer;
+  }
+  
+  .opcion:hover .label-menu-pequeno{
+    color: white;
+  }
+  .logo-sena{
+    display: none;
+  }
+  
+}
+
+@media(max-height:900px){
+  .footer-text{
+    padding: 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .footer{
+    z-index: 1;
+  }
+
+  .info .opcion{
+    height: 60vh;
+    max-height: 80%;
+  }
+
+  .opcion:hover{
+    background: var(--verde-sena);
+    cursor: pointer;
+  }
+  
+  .opcion:hover .label-menu-pequeno{
+    color: white;
+  }
+
+  .logo-sena{
+    display: none;
+  }
 }
