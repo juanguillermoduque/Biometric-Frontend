@@ -38,6 +38,10 @@ export class RolesService {
     );
   }
 
+  getRolByIdUser(idUser:Number){
+    return this.http.get(`${this.API_URI}/roles/usuario/${idUser}`);
+  }
+
   updateRol(id:number,rol:rol):Observable<any>{
     return this.http.put(`${this.API_URI}/roles/editar${id}`, rol).pipe(
       tap(() => this._refresh$.next())

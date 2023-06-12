@@ -1,39 +1,108 @@
-<div fxLayout="row" class="container">
-  <div fxLayout="column" fxLayoutGap="3.75rem" fxFlex="15%">
-    <div class="container-logo-sena">
-      <img class="logo-sena" (click)="activarComponente(0)"  src="../../../../assets/img/logo-sena-verde-complementario-png-2022.png" alt="Logo">
-    </div>
-    <app-navegacion (seEscogioComponente)="activarComponente($event)" ></app-navegacion>
-  </div>
+  <div *ngIf="EsPantallaGrande();else pantallaChica" class="container" fxLayout="row">
+    <div class="barra-lateral" fxLayout="column" fxLayoutGap="3.75rem" fxFlex="20%">
 
-  <hr fxFlex="0.3%" class="separador">
+      <mat-icon class="logo">account_circle</mat-icon>
 
-  <div fxLayout="column" fxFlex="84.7%" class="contenido">
-    <div class="header">
-      <div fxLayout="row">
-        <h1 class="rol" >{{usuario_rol}}</h1>
-        <div>
-          <button class="logo-contenedor" mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon class="logo">account_circle</mat-icon>
-          </button>
-          
-          <mat-menu #menu="matMenu" yPosition="below">
-            <button mat-menu-item (click)="mostrarperfil()">Perfil</button>
-            <button mat-menu-item (click)="logOut()">Cerrar Sesion</button>
-          </mat-menu>
+ 
+      <p class="nombre">{{getnombre()}}</p>
+      <p class="rol">{{this.usuario_rol}}</p>
+      
+      <app-navegacion (seEscogioComponente)="activarComponente($event)" ></app-navegacion>
+
+      
+      <mat-nav-list  (click)="logOut()"  class="logout">
+        <div fxLayout="row">
+          <img class="icono" src="../../../../assets/img/svg/logos-navegacion/logout.svg" alt="Cerrar Sesión">
+          <a mat-list-item><h1 class="opciones">Cerrar Sesión</h1></a>
         </div>
+      </mat-nav-list>
+    
+      
+    </div>
+  
+    <div fxLayout="column" fxFlex="80%" class="contenido">
+
+      <div class="info">
+        <app-perfil class="opcion" *ngIf="activarComponenteById == 0"></app-perfil>
+        <app-asistencias class="opcion" *ngIf="activarComponenteById == 1"></app-asistencias>
+        <app-excusas class="opcion" *ngIf="activarComponenteById == 2"></app-excusas>
+        <app-fichas class="opcion" *ngIf="activarComponenteById == 3"></app-fichas>
+        <app-horarios class="opcion" *ngIf="activarComponenteById == 4"></app-horarios>
+        <app-usuarios class="opcion" *ngIf="activarComponenteById == 5"></app-usuarios>
+        <app-roles class="opcion" *ngIf="activarComponenteById == 6"></app-roles>
       </div>
     </div>
 
-    <div class="info">
-      <b class="mensaje" *ngIf="activarComponenteById == 0">BIENVENIDO AL CENTRO DE FORMACION  <br><br><br> DISEÑO E INNOVACION TECNOLOGICA  <br><br><br>          INDUSTRIAL </b>
-      <app-asistencias class="opcion" *ngIf="activarComponenteById == 1"></app-asistencias>
-      <app-competencias class="opcion" *ngIf="activarComponenteById == 2"></app-competencias>
-      <app-excusas class="opcion" *ngIf="activarComponenteById == 3"></app-excusas>
-      <app-fichas class="opcion" *ngIf="activarComponenteById == 4"></app-fichas>
-      <app-horarios class="opcion" *ngIf="activarComponenteById == 5"></app-horarios>
-      <app-usuarios class="opcion" *ngIf="activarComponenteById == 6"></app-usuarios>
-      <app-roles class="opcion" *ngIf="activarComponenteById == 7"></app-roles>
+
+  </div>
+
+  <ng-template #pantallaChica>
+    <div  class="container" fxLayout="column">
+      <mat-toolbar class="toolbar" >
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+          <mat-icon class="toolbar-text">menu</mat-icon>
+        </button>
+        <span class="toolbar-text">Menu</span>
+      </mat-toolbar>
+  
+      <mat-menu #menu="matMenu">
+        <button class="opcion" (click)="activarComponente(1)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/asistencia.svg" alt="Opcion Asistencias">
+          <span class="label-menu-pequeno" >Asistencias</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(3)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/ficha.svg" alt="Opcion Fichas">
+          <span  class="label-menu-pequeno">Fichas</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(4)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/horario.svg" alt="Opcion Horarios">
+          <span class="label-menu-pequeno">Horarios</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(5)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/usuarios.svg" alt="Opcion Usuarios">
+          <span class="label-menu-pequeno">Usuarios</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(2)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/excusa.svg" alt="Opcion Excusas">
+          <span class="label-menu-pequeno">Excusas</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(6)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/roles.svg" alt="Opcion Roles">
+          <span class="label-menu-pequeno">Roles</span>
+        </button>
+        <button class="opcion" (click)="activarComponente(0)" mat-menu-item>
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/perfil.svg" alt="Opcion Ver Perfil">
+          <span class="label-menu-pequeno">Ver Perfil</span>
+        </button>
+        <button class="opcion" mat-menu-item  (click)="logOut()" >
+          <img class="icon-menu-pequeno" src="../../../../assets/img/svg/logos-navegacion/logout.svg" alt="Opcion Cerrar Sesión">
+          <span class="label-menu-pequeno">Cerrar Sesión</span>
+        </button>
+      </mat-menu>
+  
+      <div fxLayout="column"  class="contenido">
+  
+        <div class="info">
+          <app-perfil class="opcion" *ngIf="activarComponenteById == 0"></app-perfil>
+          <app-asistencias class="opcion" *ngIf="activarComponenteById == 1"></app-asistencias>
+          <app-excusas class="opcion" *ngIf="activarComponenteById == 2"></app-excusas>
+          <app-fichas class="opcion" *ngIf="activarComponenteById == 3"></app-fichas>
+          <app-horarios class="opcion" *ngIf="activarComponenteById == 4"></app-horarios>
+          <app-usuarios class="opcion" *ngIf="activarComponenteById == 5"></app-usuarios>
+          <app-roles class="opcion" *ngIf="activarComponenteById == 6"></app-roles>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <div class="container-logo-sena">
+    <img class="logo-sena" (click)="activarComponente(0)"  src="../../../../assets/img/logo-sena-verde-complementario-png-2022.png" alt="Logo">
+  </div>
+
+  <div class="footer">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="footer-text">
+        <p>© 2021 - Centro de Formación en Diseño e Innovación Tecnológica Industrial</p>
+      </div>
     </div>
   </div>
-</div>

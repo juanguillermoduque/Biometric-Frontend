@@ -56,7 +56,6 @@ import { MainPageComponent } from './componentes/main-page/main-page.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 
 import { AsistenciasModule } from '../asistencias/asistencias.module';
-import { CompetenciasModule } from '../competencias/competencias.module';
 import { ExcusasModule } from '../excusas/excusas.module';
 import { FichasModule } from '../fichas/fichas.module';
 import { HorariosModule } from '../horarios/horarios.module';
@@ -77,7 +76,6 @@ import { UsuariosModule } from '../usuarios/usuarios.module';
     HorariosModule,
     FichasModule,
     ExcusasModule,
-    CompetenciasModule,
     AsistenciasModule,
     RolesModule,
     UsuariosModule,

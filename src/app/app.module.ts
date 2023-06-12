@@ -66,7 +66,6 @@ import { RecuperarContrasenaComponent } from './auth/componentes/recuperar-contr
 //Modulos 
 import { AsistenciasModule } from './asistencias/asistencias.module';
 import { AuthModule } from './auth/auth.module';
-import { CompetenciasModule } from './competencias/competencias.module';
 import { ExcusasModule } from './excusas/excusas.module';
 import { FichasModule } from './fichas/fichas.module';
 import { HorariosModule } from './horarios/horarios.module';
@@ -90,7 +89,6 @@ const appRoutes:Routes=[
   imports: [
     AsistenciasModule,
     AuthModule,
-    CompetenciasModule,
     ExcusasModule,
     FichasModule,
     HorariosModule,

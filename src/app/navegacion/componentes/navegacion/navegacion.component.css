@@ -1,0 +1,22 @@
+.opcion:hover{
+    background: var(--verde-sena);
+    cursor: pointer;
+}
+
+.opcion{
+    margin-top: 11px;
+    margin-left: 17px;
+}
+
+.icono{
+    margin-top: -15px;
+}
+
+.opcion:hover .icono{
+    color: white;
+}
+
+.opcion:hover h1{
+    color: white;
+}
+

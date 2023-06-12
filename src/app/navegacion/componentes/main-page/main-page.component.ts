@@ -1,11 +1,10 @@
+import {  NgZone } from "@angular/core";
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
-import { UsuariosService } from '../../../usuarios/usuarios.service';
 import { RolesService } from '../../../roles/roles.service';
 import { PerfilComponent } from '../../../usuarios/componentes/perfil/perfil.component';
-import { usuario_rol } from 'src/app/roles/usuario_rol';
 import {rol} from 'src/app/roles/roles'
 
 @Component({
@@ -19,37 +18,47 @@ export class MainPageComponent {
   activarComponenteById:Number = 0;
   usuario_rol:string ="";
 
+  mediaMatcherWidth: MediaQueryList = matchMedia(`(max-width:800px)`);
+  mediaMatcherHeight: MediaQueryList = matchMedia(`(max-height:900px)`);
+
 
   constructor(private router:Router, private dialog: MatDialog,
-    private usuarioService: UsuariosService, private rolService:RolesService){
+     private rolService:RolesService,
+     zone:NgZone)
+  {
+    this.mediaMatcherWidth.addListener(mql =>
+      zone.run(() => this.mediaMatcherWidth = matchMedia(`(max-width: 800px)`)));
 
+    this.mediaMatcherHeight.addListener(mql =>
+      zone.run(() => this.mediaMatcherHeight = matchMedia(`(max-height: 900px)`)));
   }
 
   ngOnInit(): void {
-    this.getRol()
+    this.getRol();
   }
 
   getRol(){
     this.activaOpcion = 0
     let tok:any = localStorage.getItem('token')
     let decode:any = jwtDecode(tok);
-    console.log(decode.data[0])
     let idUser = decode.data[0].num_id;
-    this.rolService.getUsuarioRol(idUser).subscribe(
+
+    this.rolService.getRolByIdUser(idUser).subscribe(
       (data:any)=>{
-        let usuarioRol:usuario_rol = data;
-        let idRol = usuarioRol.id_rol;
-        this.rolService.getRolId(idRol).subscribe(
-          (rol:any) =>{
-            let aux:rol = rol;
-            console.log(aux)
-            this.usuario_rol = aux.nombre_rol;
-          }
-        )
+        let aux:rol = data;
+        this.usuario_rol = aux.nombre_rol;
+        console.log(data)
       }
     )
   }
 
+  getnombre(){
+    this.activaOpcion = 0
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    let nombreUsuario = decode.data[0].first_name + " " + decode.data[0].last_name;
+    return nombreUsuario;
+  }
 
   AccionAdmin(num:number){
     this.activaOpcion = num;
@@ -71,5 +80,12 @@ export class MainPageComponent {
     });
   }
 
-
+  EsPantallaGrande(){
+    if(this.mediaMatcherWidth.matches || this.mediaMatcherHeight.matches){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
 }
