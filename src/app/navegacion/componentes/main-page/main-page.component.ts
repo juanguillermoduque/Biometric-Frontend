@@ -18,7 +18,7 @@ export class MainPageComponent {
   activarComponenteById:Number = 0;
   usuario_rol:string ="";
 
-  mediaMatcherWidth: MediaQueryList = matchMedia(`(max-width:800px)`);
+  mediaMatcherWidth: MediaQueryList = matchMedia(`(max-width:1000px)`);
   mediaMatcherHeight: MediaQueryList = matchMedia(`(max-height:900px)`);
 
 
@@ -27,7 +27,7 @@ export class MainPageComponent {
      zone:NgZone)
   {
     this.mediaMatcherWidth.addListener(mql =>
-      zone.run(() => this.mediaMatcherWidth = matchMedia(`(max-width: 800px)`)));
+      zone.run(() => this.mediaMatcherWidth = matchMedia(`(max-width: 1000px)`)));
 
     this.mediaMatcherHeight.addListener(mql =>
       zone.run(() => this.mediaMatcherHeight = matchMedia(`(max-height: 900px)`)));

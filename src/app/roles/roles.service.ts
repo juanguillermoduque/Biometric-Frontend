@@ -48,6 +48,11 @@ export class RolesService {
     );
   }
 
+  searchRoles(query:string){
+    return this.http.get(`${this.API_URI}/filtros/searchRol${query}`);
+  }
+  
+
   //services usuarios Roles
   getUsuarioRol(idUser:any){
     return this.http.get(`${this.API_URI}/usuario_rol/${idUser}`);
@@ -98,6 +103,8 @@ export class RolesService {
   getComponente(id:Number){
     return this.http.get(`${this.API_URI}/componentes/${id}`);
   }
+
+
 
 
 

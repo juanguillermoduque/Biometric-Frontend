@@ -3,11 +3,12 @@ import { UsuariosService } from '../../usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarUsuarioComponent } from '../agregar-usuario/agregar-usuario.component';
 import { EditarUsuariosComponent } from '../editar-usuarios/editar-usuarios.component';
-import { query } from '@angular/animations';
 import { FormControl } from '@angular/forms';
 import { debounceTime, find } from 'rxjs';
 import { MatTable } from '@angular/material/table';
 import { RolesService } from '../../../roles/roles.service';
+import { rol } from 'src/app/roles/roles';
+import { usuario } from '../../usuarios';
 
 @Component({
   selector: 'app-usuarios',
@@ -26,7 +27,6 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   usuarios:any = []; // variable usuarios que es un arreglo vacío
   dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
   control = new FormControl();
-  usuariosAux: any;
 
   constructor(
     private usuarioService: UsuariosService, public dialog:MatDialog, private rolService:RolesService
@@ -46,24 +46,8 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
     this.usuarioService.getUsuarios().subscribe(
       res =>{
         this.usuarios = res;
-        for(let i = 0; i < this.usuarios[0].length;i++){
-          this.rolService.getUsuarioRol(this.usuarios[0][i].num_id).subscribe(
-            usuarioRol=>{
-              let aux:any = usuarioRol
-              if(aux != null){
-                this.rolService.getRolId(aux.id_rol).subscribe(
-                  rol =>{
-                    let aux2:any = rol
-                    console.log(aux2)
-                    let nombreRol = aux2.nombre_rol;
-                    this.usuarios[0][i].rol = nombreRol;
-                  }
-                )
-              }
-            }
-          )
-        }
-        console.log(this.usuarios);
+        this.usuarios = this.cargarRoles(this.usuarios);
+
       },
       err=>console.error(err)
     )
@@ -72,59 +56,67 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   nuevoUsuario(){ // Método nuevoUsuario que me muestra una ventana emergente con el componente AgregarUsuario
 
     const ref = this.dialog.open(AgregarUsuarioComponent,{
-      width:'700px',
-      height: '500px',
+      height:'550px',
+      width: '600px',
+      panelClass: 'custom-dialog-create-update'
     });
     ref.afterClosed().subscribe(result =>{
-      this.actualizarUsuarios();
+      this.getUsuario();
     });
   }
 
-  actualizarUsuarios(): void {
-    this.usuarioService.getUsuarios().subscribe(
-      (res: any) => { // Se cambia el tipo de datos a any
-        this.usuarios = res;
-      },
-      err => console.error(err)
-    );
+  cargarRoles(lista:any){
+    for(let i = 0; i < lista[0].length;i++){
+      this.rolService.getRolByIdUser(lista[0][i].num_id).subscribe(
+        (data:any)=>{
+          let rol:rol = data
+          let nombreRol = rol.nombre_rol;
+          lista[0][i].rol = nombreRol;
+        }
+      )
+    }
+    return lista;
   }
 
   editarUsuarios(num_id : number){
-    // Método editarUsuario que me muestra una ventana emergente con el componente EditarUsuarios
-    // como parámetro me recibira el valor de num_id
-    this.dialog.open(EditarUsuariosComponent,{
-      height:'800px',
+    const ref = this.dialog.open(EditarUsuariosComponent,{
+      height:'550px',
       width: '600px',
+      panelClass: 'custom-dialog-create-update',
       data: num_id
+    });
+    ref.afterClosed().subscribe(result =>{
+      this.getUsuario();
     });
   }
 
 
+  findUsers(query: string){
+    if (query == ""){
+      this.getUsuario()
+    }
 
-findUsers(query: string){
-  if (query == ""){
-    this.getUsuario()
+    this.usuarioService.searchUsuario(query).subscribe(
+      (res:any)=>{
+
+        let aux = res;
+        this.usuarios = aux;
+        this.usuarios = this.cargarRoles(this.usuarios);
+        this.table.renderRows();
+
+      },
+      err=>{console.error(err)}
+    )
   }
 
-  this.usuarioService.searchUsuario(query).subscribe(
-  res=>{
+  searchUser(){
 
-    this.usuariosAux = res;
-    this.dataSource = this.usuariosAux[0];
-    console.log("Busqueda realizada",this.dataSource);
+    this.control.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(query => {
 
-  },
-  err=>{console.log(err)}
-)
-}
-searchUser(){
+      this.findUsers(query)
+    })
 
-  this.control.valueChanges.pipe(
-    debounceTime(500)
-  ).subscribe(query => {
-
-    this.findUsers(query)
-  })
-
-}
+  }
 }

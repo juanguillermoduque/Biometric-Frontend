@@ -53,6 +53,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CrearRolesComponent } from './componentes/crear-roles/crear-roles.component';
 import { EditarRolesComponent } from './componentes/editar-roles/editar-roles.component';
 import { RolesComponent } from './componentes/listar-roles/roles.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { RolesComponent } from './componentes/listar-roles/roles.component';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     //Angular Material
     MatNativeDateModule,
     MatAutocompleteModule,

@@ -1,22 +1,12 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+.form{
+  margin: 6% 4% 0 9%;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 500px;
+.boton-centrado{
+  width: 20%;
+  margin: 5% auto 0px;
 }
 
-.mat-form-field {
-  width: 100%;
-}
-
-button {
-  margin-top: 20px;
+.titulo{
+  margin-top: 5%;
 }

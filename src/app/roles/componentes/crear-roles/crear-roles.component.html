@@ -1,34 +1,33 @@
-<div class="container">
-    <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
 
-        <h2>Crear roles</h2>
+  <h2 class="titulo">Crear roles</h2>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Nombre del Rol</mat-label>
-            <input type="text" [(ngModel)]="rol.nombre_rol" name="nombre_rol" matInput placeholder="Ingrese el nombre del rol">
-        </mat-form-field>
+  <form fxLayout="column" class="form"> 
+    <mat-form-field >
+      <mat-label>Nombre del Rol</mat-label>
+      <input type="text" [(ngModel)]="rol.nombre_rol" name="nombre_rol" matInput placeholder="Ingrese el nombre del rol">
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label> Componentes</mat-label>
-            <mat-select>
-              <mat-option (click)="agregarComponente(componente)" *ngFor="let componente of componentes[0]">
-                {{componente.nombre_componente  }}
-                <mat-icon matTooltip="Agregar">add</mat-icon>
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field >
+      <mat-label> Componentes</mat-label>
+      <mat-select>
+        <mat-option (click)="agregarComponente(componente)" *ngFor="let componente of componentes[0]">
+          {{componente.nombre_componente  }}
+          <mat-icon matTooltip="Agregar">add</mat-icon>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label> Componentes agregados</mat-label>
-            <mat-select>
-              <mat-option (click)="quitarComponente(componente)" *ngFor="let componente of componentesAgregados">
-                {{componente.nombre_componente  }} 
-                <mat-icon matTooltip="Quitar">cancel</mat-icon>
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <button mat-raised-button (click)="crearRol()" class="botom" id="bton">Crear rol</button>
-    </form>
+    <mat-form-field >
+      <mat-label> Componentes agregados</mat-label>
+      <mat-select>
+        <mat-option (click)="quitarComponente(componente)" *ngFor="let componente of componentesAgregados">
+          {{componente.nombre_componente  }} 
+          <mat-icon matTooltip="Quitar">cancel</mat-icon>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="crearRol()" class="boton boton-centrado">Crear rol</button>
 </div>
 
