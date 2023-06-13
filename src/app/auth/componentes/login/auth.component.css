@@ -1,41 +1,49 @@
-
-.main-div {
-  background-image: url('https://lh3.googleusercontent.com/p/AF1QipOyuws8FCDu0S04udT2kEm8zRz5rlwdqmlksSD6=s680-w680-h510');
-  background-repeat: no-repeat;
-  background-size: cover;
+.contenedor-imagen-login {
+  margin-top: 3%;
+  margin-left: 7.5%;
+  width: 85%;
+  border: 1px solid #DDDDDD;
 }
 
-.main-div mat-card {
-  padding: 0;
-  border-radius: 10px;
+.logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
 }
 
-#text {
-  margin-top: 14px;
-  margin-left: 3rem;
+.cuadro-login {
+  margin-top: 57px;
+  margin-left: 55px;
 }
 
-mat-toolbar {
-  color: var(--verde-sena);
+.text {
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .login-form {
-  padding: 20px;
-}
-
-.button-login {
-  height: 50px;
-  background-color: var(--verde-sena) !important;
+  margin: 10%;
 }
 
 .message {
-  color: rgba(0, 0, 0, 0.808);
-  cursor: pointer;
+  color: #4DC324;
   text-decoration: underline;
+  cursor: pointer;
 }
 
-mat-toolbar img {
-  width: 40px; 
-  height: auto; 
-  margin-right: 10px; 
+.button-login {
+  width: 180px;
+  margin: auto;
+  background-color: #5BCB26 !important;
+  color: white !important;
+}
+
+.pie {
+  background-color: #7CC383;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
