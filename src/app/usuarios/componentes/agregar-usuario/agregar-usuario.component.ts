@@ -61,15 +61,6 @@ constructor(private usuariosService:UsuariosService,
             text: 'Hay campos sin completar',
           }
         )
-        this.usuario.num_id = 0;
-        this.usuario.first_name = '';
-        this.usuario.last_name = '';
-        this.usuario.type_id = '';
-        this.usuario.email = '';
-        this.usuario.estado = '';
-        this.usuario.password = '';
-        this.rolSeleccionado.id_rol = 0;
-        this.rolSeleccionado.nombre_rol = '';
       }
       else{
         this.usuario.first_name = this.usuario.first_name?.toLowerCase()
@@ -87,7 +78,7 @@ constructor(private usuariosService:UsuariosService,
               showConfirmButton: false,
               timer: 1500
             })
-            console.log(res); // si la respuesta por parte del servidor es exitosa se imprime la respuesta
+        
           },
           err => console.error(err) // de lo contrario saldrá un error
       )

@@ -10,17 +10,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --verde-oscuro: #00AD00;
   }
 
-@media(max-width:1380px){
-  .mensaje{
-    font-size: 2.125rem !important;
-  }
+
+
+.titulo{
+  text-align: center;
 }
 
+.margin-table{
+  margin: auto 5% auto 5%;
+  min-width: 80% !important;
+}
+
+.custom-dialog-create-update{
+  box-shadow: 0px 0px 20px 8px var(--verde-sena);
+}
+
+
+/*boton styles*/
+.boton{
+  background: var(--verde-claro) !important;
+}
+
+.boton:hover{
+  background: var(--verde-oscuro) !important;
+}
+/***********************************/
+
 @media(max-width:1250px){
-  .logo-sena{
-    width: 6.813rem !important;
-    margin-left: 1.563rem;
-  }
   .opciones{
     font-size: 20px !important;
   }
@@ -29,16 +45,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @media(max-width:1080px){
   .opciones{
     font-size: 15px !important;
-  }
-}
-
-@media(max-width:950px){
-  .mensaje{
-    font-size: 1.125rem !important;
-  }
-
-  .logo-sena{
-    width: 4.813rem !important;
-    margin-left: 1.563rem;
   }
 }

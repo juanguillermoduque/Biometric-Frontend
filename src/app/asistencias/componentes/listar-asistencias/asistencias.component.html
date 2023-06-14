@@ -1,12 +1,21 @@
-<div class="container">
-  <h2><b>Asistencias</b></h2>
+<div fxLayout="column" fxLayoutGap="5%">
 
-  <button mat-raised-button (click)="crearAsistencia()" id="boton">Registrar asistencias &#10133;</button>
+  <h2 class="titulo">Listar Asistencias</h2>
+
+  <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
+    <button  matTooltip="Crear Asistencia" fxFlex="6%" class="boton" mat-fab  (click)="crearAsistencia()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <div fxFlex="10%" >
+      <mat-form-field  matTooltip="Buscar Asistencia Documento del aprendiz">
+        <input matInput placeholder="Buscar" [formControl]="control">
+      </mat-form-field>
+    </div>
  
-  <mat-form-field>
-    <input type="text" [formControl]="control" matInput placeholder="Ingrese el documento">
-  </mat-form-field>
-  <table  mat-table [dataSource]="asistencias[0]">
+  </div>
+
+  <table  class="margin-table" mat-table [dataSource]="asistencias[0]">
     <ng-container matColumnDef="numId">
       <th mat-header-cell *matHeaderCellDef>Aprendiz</th>
       <td mat-cell *matCellDef="let asistencia">{{asistencia.id_aprendiz}}</td>
@@ -26,8 +35,8 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let asistencia">
-        <button (click)="editarAsistencia(asistencia.id_asistencia)">
-          Ver / Editar 
+        <button matTooltip="Editar Asistencia" class="boton" mat-mini-fab (click)="editarAsistencia(asistencia.id_asistencia)">
+          <mat-icon>edit</mat-icon>
         </button>
       </td>
     </ng-container>

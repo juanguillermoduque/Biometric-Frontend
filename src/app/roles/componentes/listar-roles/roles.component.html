@@ -1,30 +1,42 @@
 
-<div class="container">
-  <button mat-raised-button (click)="nuevoRol()"><b>Crear Nuevo Rol</b></button>
-    <h2><b>Listar Usuarios</b></h2>
-    <table mat-table [dataSource]="roles[0]">
-      <ng-container matColumnDef="NumeroRol">
-        <th mat-header-cell *matHeaderCellDef>Numero de rol</th>
-        <td mat-cell *matCellDef="let rol">{{rol.id_rol}}</td>
-      </ng-container>
-      <ng-container matColumnDef="NombreRol">
-        <th mat-header-cell *matHeaderCellDef>Nombre del rol</th>
-        <td mat-cell *matCellDef="let rol">{{rol.nombre_rol.charAt(0).toUpperCase() + rol.nombre_rol.slice(1)}}</td>
-      </ng-container>
-      <ng-container matColumnDef="Acciones">
-        <th mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td mat-cell *matCellDef="let rol">
-          <a >
-            <button mat-button (click)="editarRol(rol.id_rol)">
-              <mat-icon>edit</mat-icon>
-              Ver/Editar
-            </button>
-          </a>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+<div  fxLayout="column" fxLayoutGap="5%">
+  <h2 class="titulo">Listar roles</h2>
+
+  <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
+    <button  matTooltip="Crear rol" fxFlex="6%" class="boton" mat-fab  (click)="nuevoRol()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <div fxFlex="10%" >
+      <mat-form-field  matTooltip="Buscar Rol">
+        <input matInput placeholder="Buscar" [formControl]="control">
+      </mat-form-field>
+    </div>
+
   </div>
 
+  <table #table class="margin-table" mat-table [dataSource]="roles[0]">
+
+    <ng-container matColumnDef="NumeroRol">
+      <th mat-header-cell *matHeaderCellDef>Numero de rol</th>
+      <td mat-cell *matCellDef="let rol">{{rol.id_rol}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="NombreRol">
+      <th mat-header-cell *matHeaderCellDef>Nombre del rol</th>
+      <td mat-cell *matCellDef="let rol">{{rol.nombre_rol | titlecase}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let rol">
+        <button matTooltip="Editar Rol" class="boton" mat-mini-fab (click)="editarRol(rol.id_rol)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
 

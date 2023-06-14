@@ -1,18 +1,32 @@
-<div class="container">
-  <h2>Editar asistencia</h2>
-  <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
+
+  <h2 class="titulo">Editar asistencia</h2>
+  
+  <form fxLayout="column" class="form">
+
     <mat-form-field>
-      <input matInput type="number" name="date_enter" [(ngModel)]="asistencia.hora_ingreso" placeholder="Hora de ingreso">
+      <mat-label>Selecciona el aprendiz</mat-label>
+      <mat-select>
+        <mat-option (click)="agregarAprendiz(aprendiz.num_id)" *ngFor="let aprendiz of aprendices" [value]="aprendiz">
+          Numero de documento: {{aprendiz.num_id}} - {{aprendiz.first_name}} {{aprendiz.last_name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="number" name="id_aprendiz" [(ngModel)]="asistencia.id_aprendiz" placeholder="id del aprendiz">
+      <mat-label>Selecciona el horario</mat-label>
+      <mat-select>
+        <mat-option (click)="agregarHorario(horario.id_horario)" *ngFor="let horario of horarios[0]" [value]="horario">
+          {{horario.fecha}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-
+    
     <mat-form-field>
-      <input matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones">
+      <textarea matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones"></textarea>
     </mat-form-field>
 
-    <button mat-raised-button (click)="modificarAsistencia()">Guardar cambios</button>
   </form>
+
+  <button mat-raised-button (click)="modificarAsistencia()" class="boton boton-centrado">Agregar</button>
 </div>

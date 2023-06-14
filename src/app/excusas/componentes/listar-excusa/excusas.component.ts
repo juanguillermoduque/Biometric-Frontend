@@ -14,7 +14,7 @@ import { debounceTime } from 'rxjs';
 })
 
 export class ExcusasComponent implements OnInit{ // llamado de componente Excusas implementando la interfaz OnInit
-  displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado']; // Arreglo de columnas para mostrar en una tabla
+  displayedColumns: string[] = ['N°', 'Fecha', 'Instructor/a', 'Estado','Acciones']; // Arreglo de columnas para mostrar en una tabla
   excusas:any = ['','','','','','']; // variable excusa que es un arreglo de 6 valores vacíos todos de tipo string
   dataSource = this.excusas; // se utiliza como fuente de datos para la tabla
   control = new FormControl();

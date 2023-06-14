@@ -64,15 +64,17 @@ findAsistencias(query:string){
 
   crearAsistencia(){
     this.dialog.open(CrearAsistenciasComponent,{
-      height:'400px',
-      width:'600px'
+      height:'550px',
+      width:'600px',
+      panelClass: 'custom-dialog-create-update',
     })
   }
 
   editarAsistencia(idAsistencia:Number){
     this.dialog.open(EditarAsistenciasComponent,{
-      height:'400px',
+      height:'550px',
       width:'600px',
+      panelClass: 'custom-dialog-create-update',
       data:idAsistencia
     })
   }

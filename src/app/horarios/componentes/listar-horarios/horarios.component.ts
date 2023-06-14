@@ -42,15 +42,17 @@ getHorarios(){
 
 nuevoHorario(){
   this.dialog.open(CrearHorariosComponent,{
-    width:'1000px',
-    height: '1000px',
+    height:'700px',
+    width:'500px',
+    panelClass: 'custom-dialog-create-update',
   })
 }
 
 editarHorarios(num_id : number){
   this.dialog.open(EditarHorariosComponent,{
-    height:'800px',
-    width: '600px',
+    height:'700px',
+    width:'500px',
+    panelClass: 'custom-dialog-create-update',
     data: num_id
   });
 }

@@ -27,44 +27,32 @@ export class CrearAsistenciasComponent implements OnInit{
 
   constructor(private asistenciasService:AsistenciasService,
     private rolesService:RolesService,
-    private horariosService:HorariosService,
-    private usuariosService:UsuariosService){}
+    private horariosService:HorariosService
+    ){}
   
   ngOnInit(){
-    this.getIdAprendices();
+    this.getAprendices();
     this.getHorarios();
   }
 
   getHorarios(){
     this.horariosService.getHorarios().subscribe(
       res => {
+        console.log( res );
         let aux:any = res;
         this.horarios.push(aux[0]);
       }
     )
   }
 
-  getIdAprendices(){
+  getAprendices(){
     this.rolesService.getAprendices().subscribe(
       res => {
+        
         let aux:any = res;
-        this.aprendices.push(aux);
-        this.getAprendices(this.aprendices[0]);
+        this.aprendices = aux;
       }
     )
-  }
-
-  getAprendices(aprendicesId:any){
-    let aprendices:any = [];
-    for(let i = 0; i < aprendicesId.length; i++){
-      this.usuariosService.getUsuario(aprendicesId[i].id_usuario).subscribe(
-        res => {
-          let aux:any = res;
-          aprendices.push(aux);
-        }
-      )
-    }
-    this.aprendices = aprendices;
   }
 
   getCurrentTime(){
@@ -81,6 +69,7 @@ export class CrearAsistenciasComponent implements OnInit{
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
     delete this.asistencia.id_asistencia;
+    this.getCurrentTime();
 
     this.asistenciasService.saveAsistencia(this.asistencia)
       .subscribe(

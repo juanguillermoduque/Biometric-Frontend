@@ -1,21 +1,23 @@
-<div class="container">
-  <h2>Crear asistencia</h2>
-  <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
 
-    <mat-form-field appearance="fill">
+  <h2 class="titulo">Crear asistencia</h2>
+  
+  <form fxLayout="column" class="form">
+
+    <mat-form-field>
       <mat-label>Selecciona el aprendiz</mat-label>
       <mat-select>
         <mat-option (click)="agregarAprendiz(aprendiz.num_id)" *ngFor="let aprendiz of aprendices" [value]="aprendiz">
-          Id: {{aprendiz.num_id}} - {{aprendiz.first_name}} {{aprendiz.last_name}}
+          Numero de documento: {{aprendiz.num_id}} - {{aprendiz.first_name}} {{aprendiz.last_name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Selecciona el horario</mat-label>
       <mat-select>
         <mat-option (click)="agregarHorario(horario.id_horario)" *ngFor="let horario of horarios[0]" [value]="horario">
-          {{horario.id_horario}}
+          {{horario.fecha}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -24,6 +26,7 @@
       <textarea matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones"></textarea>
     </mat-form-field>
 
-    <button mat-raised-button (click)="guardarAsistencia()" class="botom">Agregar</button>
   </form>
+
+  <button mat-raised-button (click)="guardarAsistencia()" class="boton boton-centrado">Agregar</button>
 </div>

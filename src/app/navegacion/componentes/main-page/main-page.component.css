@@ -58,8 +58,8 @@
 
 .logo-sena{
   width: 15px;
-  top: -5px;
-  right: 40px;
+  top: -8px;
+  right: 28px;
   position: absolute;
 }
 
@@ -106,14 +106,14 @@
   color: white;
 }
 
-@media(max-width:800px){
+@media(max-width:1000px){
   .footer-text{
     padding: 0.25rem;
     font-size: 0.75rem;
   }
   .info .opcion{
     max-height: 80%;
-    height: 60vh;
+    height: 80vh;
   }
   .footer{
     z-index: 1;

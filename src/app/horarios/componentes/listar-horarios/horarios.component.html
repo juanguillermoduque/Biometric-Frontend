@@ -1,10 +1,22 @@
 
-<div class="container">
-    <input type="text" [formControl]="control" placeholder="Buscar en Horarios">
-  <button mat-raised-button (click)="nuevoHorario()">Crear Nuevo Usuario</button>
+<div fxLayout="column" fxLayoutGap="5%">
+  <h2  class="titulo">Listar Horarios</h2>
 
-    <h2><b>Listar Horarios</b></h2>
-    <table mat-table [dataSource]="horarios[0]">
+
+  <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
+    <button  matTooltip="Crear Horario" fxFlex="6%" class="boton" mat-fab  (click)="nuevoHorario()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <div fxFlex="10%" >
+      <mat-form-field  matTooltip="Buscar Horario">
+        <input matInput placeholder="Buscar" [formControl]="control">
+      </mat-form-field>
+    </div>
+ 
+  </div>
+
+    <table class="margin-table" mat-table [dataSource]="horarios[0]">
       <ng-container matColumnDef="Horario">
         <th mat-header-cell *matHeaderCellDef>Horario</th>
         <td mat-cell *matCellDef="let horario">{{horario.id_horario}}</td>
@@ -24,10 +36,10 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let usuario">
-        <a mat-button>
-          <mat-icon>edit</mat-icon>
-          <button (click)="editarHorarios(usuario.num_id)">Ver/Editar</button>
-        </a></td>
+          <button matTooltip="Editar Horario" class="boton" mat-mini-fab (click)="editarHorarios(usuario.num_id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

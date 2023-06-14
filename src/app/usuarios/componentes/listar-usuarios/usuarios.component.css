@@ -1,50 +1,8 @@
-table {
-    width: 100%;
-    margin: 0 auto;
+.primera-linea{
+  margin-left: 5%;
+  margin-bottom: 5%;
 }
 
-button{
-  margin: 20px;
+.titulo{
+  margin-top: 5%;
 }
-
-
-h2 {
-    text-align: center;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 5%;
-  }
-
-  table{
-  }
-
-.mat-mdc-raised-button.mat-unthemed{
-  margin: 0 5%;
-  background-color: #00C977;
-}
-
-.container{
-
-}
-
-.mat-mdc-focus-indicator{
-  background-color:#00C977;
-  margin-right: 10px;
-  margin: 0 5%;
-}
-
-.mdc-button__label{
-  background-color:#00C977;
-  margin-right: 40px;
-  margin: 0 5%;
-
-
-}
-
-
-
