@@ -1,9 +1,10 @@
-<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+<!--<div fxLayoutAlign="center center" fxFlexFill class="main-div">
   <mat-card fxFlex="25">
     <mat-toolbar>
       <img src="../../assets/img/logo-sena-verde-complementario-png-2022.png" alt="">
       <p id="text">Bienvenidos</p>
     </mat-toolbar>
+
     <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
       <br>
       <mat-form-field>
@@ -21,4 +22,89 @@
       <button class="button-login" mat-raised-button type="submit" (click)="logearse()">Iniciar sesión</button>
     </form>    
   </mat-card>
+</div>>
+
+<div class="body">
+
+  <div class="header">
+    <img src="../../assets/img/senaverde.png" alt="">
+  </div>
+
+  <div class="main-div">
+
+    <div fxLayoutAlign="center center" fxFlexFill class="login">
+      <mat-card fxFlex="25">
+
+        <div class="container-login"> 
+          <mat-toolbar>
+            <p id="text">Iniciar sesión</p>
+          </mat-toolbar>
+
+          <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+            <br>
+            <mat-form-field>
+              <mat-label>Correo electrónico:</mat-label>
+              <input matInput name="documento" [(ngModel)]="email">
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Contraseña:</mat-label>
+              <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
+            </mat-form-field>
+            <a class="message" (click)="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
+            <br>
+            <button class="button-login" mat-raised-button type="submit" (click)="logearse()">Iniciar sesión</button>
+          </form>  
+        </div>
+
+      </mat-card>
+    </div>
+    
+  </div>
+
+  <div class="footer">Biometric Service 2023 © Todos los derechos reservados | CDITI</div>
+
+</div-->
+
+<img class="logo" src="../../../../assets/img/senaverdee.png" alt="">
+<div class="" fxLayout="column">
+  
+  <div class="contenedor_general" fxLayout="column" fxFlex="90vh">
+    
+    <div class="contenedor-imagen-login" fxFlex="85%" fxLayout="row"> <!--Depende del padre si es height o width-->
+      
+      <img src="../../../../assets/img/fondologin.jpg" alt="">  
+      
+      <div class="login" fxFlex="40%">
+        <div class="cuadro-login">
+          <h2 class="text">Iniciar sesión</h2>
+          
+          <form fxLayoutAlign="stretch" fxLayout="column" fxLayoutGap="10px" class="login-form">
+            
+            <mat-form-field>
+              <mat-label>Correo electrónico:</mat-label>
+              <input matInput name="documento" [(ngModel)]="email">
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Contraseña:</mat-label>
+              <input matInput type="password" name="contrasena" [(ngModel)]="contrasena">
+            </mat-form-field>
+            
+            <a class="message" (click)="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
+            <br>
+            <button class="button-login" mat-raised-button type="submit" (click)="logearse()">Iniciar sesión</button>
+          
+          </form>  
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="pie" fxFlex="10vh">
+    Biometric Service 2023 © Todos los derechos reservados | CDITI
+  </div>
+
 </div>
