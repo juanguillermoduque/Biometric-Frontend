@@ -52,6 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AgregarFichasComponent } from './componentes/agregar-fichas/agregar-fichas.component';
 import { EditarFichasComponent } from './componentes/editar-fichas/editar-fichas.component';
 import { FichasComponent } from './componentes/listar-fichas/fichas.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { FichasComponent } from './componentes/listar-fichas/fichas.component';
 
   imports: [
     CommonModule,
+    FlexLayoutModule,
     //Angular Material
     MatNativeDateModule,
     MatAutocompleteModule,

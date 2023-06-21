@@ -27,7 +27,6 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
     last_name:'',
     type_id: '',
     email:'',
-    estado: '',
     password: '',
     biometric_date: '',
     created_at: '',
@@ -52,7 +51,7 @@ constructor(private usuariosService:UsuariosService,
     delete this.usuario.biometric_date;
 
       if (this.usuario.num_id == 0 || this.usuario.first_name == '' || this.usuario.last_name == '' || this.usuario.type_id == ''
-      || this.usuario.email == '' || this.usuario.estado == '' || this.usuario.password == '' || this.rolSeleccionado.id_rol == 0) {
+      || this.usuario.email == '' || this.usuario.password == '' || this.rolSeleccionado.id_rol == 0) {
         
         Swal.fire(
           {

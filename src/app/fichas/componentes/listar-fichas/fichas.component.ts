@@ -31,23 +31,26 @@ export class FichasComponent implements OnInit {
     this.fichaService.getFichas().subscribe(
       res =>{
         this.fichas = res;
-        console.log(this.fichas);
       },
       err=>console.error(err)
     ) 
   }
   agregarFicha(){
     this.dialog.open(AgregarFichasComponent, {
-      height: '500px',
-      width: '600px',
+      height: '400px',
+      width: '400px',
+    }).afterClosed().subscribe(result => {
+      this.getFichas();
     });
   }
 
   editarFicha(idFicha :number){
     this.dialog.open(EditarFichasComponent, {
-      height: '800px',
-      width: '600px',
+      height: '400px',
+      width: '400px',
       data: idFicha,
+    }).afterClosed().subscribe(result => {
+      this.getFichas();
     });
   }
 
@@ -68,7 +71,6 @@ export class FichasComponent implements OnInit {
     
       this.fichaService.search(query).subscribe(
       res=>{
-        console.log("Busqueda realizada",res);
         this.fichas = res;
       },
       err=>{console.log(err)}
