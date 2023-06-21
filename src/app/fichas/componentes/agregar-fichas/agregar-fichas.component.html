@@ -1,32 +1,24 @@
-<div class="container">
-  <form class="form-container">
-    <div class="form-fields-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Selecciona un programa de formacion</mat-label>
-        <mat-select>
-          <mat-option  (click)="agregarPrograma(programa)" *ngFor="let programa of programas [0][0]">
-            Programa: {{programa.name_programa}} 
-          </mat-option> 
-        </mat-select>
-    </mat-form-field>
-      
-    </div>
-    <mat-form-field>
-      <input matInput placeholder="Líder de la ficha">
-    </mat-form-field>
-      <mat-form-field appearance="fill" class="date">
-        <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="picker" name="date_start" [(ngModel)]="ficha.date_start">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="date">
-        <mat-label>Fecha de final</mat-label>
+<div fxLayoutGap="1%" fxLayout="column">
 
-        <input matInput [matDatepicker]="picker1" name="date_end" [(ngModel)]="ficha.date_end">
-        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
-    <button (click)="guardarFicha()" mat-raised-button>Agregar</button>
+  <h2 class="titulo">Crear ficha</h2>
+
+  <form fxLayout="column" class="form">
+
+    <mat-form-field >
+      <mat-label>Codigo de la ficha</mat-label>
+      <input matInput class="input-numerico" type="text" [(ngModel)]="ficha.code_ficha" name="code_ficha">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Selecciona un programa de formacion</mat-label>
+      <mat-select>
+        <mat-option  (click)="agregarPrograma(programa)" *ngFor="let programa of programas [0]">
+          {{programa.name_programa}} 
+        </mat-option> 
+      </mat-select>
+    </mat-form-field>
+
   </form>
+  <button class="boton boton-centrado" (click)="guardarFicha()" mat-raised-button>Guardar</button>
 </div>
+

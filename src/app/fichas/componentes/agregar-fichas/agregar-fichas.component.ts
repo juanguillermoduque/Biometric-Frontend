@@ -5,6 +5,7 @@ import { ProgramasService } from '../../../programas/programas.service';
 import { Programa } from '../../../programas/programas';
 import { ficha } from '../../fichas';
 import Swal from 'sweetalert2'
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-agregar-fichas',
@@ -15,18 +16,16 @@ export class AgregarFichasComponent  implements OnInit{
 
   subscription: Subscription = new Subscription();
   ficha : ficha = {
-    id_ficha:0,
     code_ficha:0,
     id_programa:'',
-    date_start :'',
-    date_end :'',
     created_at :'',
     updated_at :'',
 };
 
   constructor(
     private fichasService: FichasService,
-    private programasService:ProgramasService
+    private programasService:ProgramasService,
+    public dialogRef: MatDialogRef<AgregarFichasComponent>
   ) {}
   
   programas: any [] = []
@@ -37,9 +36,7 @@ export class AgregarFichasComponent  implements OnInit{
   getPrograma(){
       this.programasService.getProgramas().subscribe(
         (data)=>{
-          
           this.programas.push(data);
-          console.log(this.programas)
         }
     )
   }
@@ -50,10 +47,8 @@ export class AgregarFichasComponent  implements OnInit{
   guardarFicha(): void {
     delete this.ficha.created_at;
     delete this.ficha.updated_at;
-    delete this.ficha.id_ficha;
 
-    if (this.ficha.code_ficha == 0 || this.ficha.id_programa == '' || this.ficha.date_start == '' 
-    || this.ficha.date_end == ''){
+    if (this.ficha.code_ficha == 0 || this.ficha.id_programa == ''){
       Swal.fire(
         {
           icon: 'error',
@@ -61,24 +56,22 @@ export class AgregarFichasComponent  implements OnInit{
           text: 'Hay campos sin completar',
         }
       )
-      this.ficha.code_ficha=0
-      this.ficha.id_programa= ''
-      this.ficha.date_start= ''
-      this.ficha.date_end= ''
     }
     else{
-      this.ficha.id_programa = this.ficha.id_programa?.toLowerCase()
-      this.subscription = this.fichasService.saveFicha(this.ficha).subscribe(
 
+      this.fichasService.saveFicha(this.ficha).subscribe(
         res => {
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'La ficha fue agregada exitosamente',
-            showConfirmButton: false,
+            showConfirmButton: true,
             timer: 1500
-          })
-          console.log(res);
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.dialogRef.close();
+            } 
+          });
         },
         err => console.error(err)
       );

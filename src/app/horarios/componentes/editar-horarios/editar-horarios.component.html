@@ -1,66 +1,65 @@
-<div class="container">
-    <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
 
-        <h2>Editar horario</h2>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Selecciona una id de instructor</mat-label>
-            <mat-select [(ngModel)]="horario.id_instructor" name="id_instructor" disableRipple>
-              <mat-option value="1">1</mat-option>
-              <mat-option value="2">2</mat-option>
-              <mat-option value="3">3</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Selecciona una jornada</mat-label>
-            <mat-select [(ngModel)]="horario.jornada" name="jornada" disableRipple>
-                <mat-option value="DIURNA">DIURNA</mat-option>
-                <mat-option value="MIXTA">MIXTA</mat-option>
-                <mat-option value="NOCTURNA">NOCTURNA</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Selecciona una ficha</mat-label>
-            <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha" disableRipple>
-                <mat-option value="2465417">2465417</mat-option>
-                <mat-option value="2466435">2466435</mat-option>
-                <mat-option value="2455321">2455321</mat-option>
-                <mat-option value="2433123">2433123</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Selecciona la hora de ingreso</mat-label>
-            <mat-select [(ngModel)]="horario.date_start" name="date_start" disableRipple>
-                <mat-option value="07:00">07:00</mat-option>
-                <mat-option value="10:00">10:00</mat-option>
-                <mat-option value="13:00">13:00</mat-option>
-                <mat-option value="16:00">16:00</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Selecciona la hora de finalización</mat-label>
-            <mat-select [(ngModel)]="horario.date_end" name="date_end" disableRipple>
-                <mat-option value="10:00">10:00</mat-option>
-                <mat-option value="13:00">13:00</mat-option>
-                <mat-option value="16:00">16:00</mat-option>
-                <mat-option value="18:00">18:00</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-          
-        <mat-form-field appearance="fill">
-            <mat-label>Elige la fecha de formación</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <button (click)="ModificarHorario()" mat-raised-button>Guardar</button>
+    <h2 class="titulo">Editar horario</h2>
+  
+    <form fxLayout="column" class="form">
+  
+      <mat-form-field>
+        <mat-label>Selecciona un id de instructor</mat-label>
+        <mat-select [(ngModel)]="horario.id_instructor" name="id_instructor">
+          <mat-option (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores" [value]="instructor.num_id">
+            Id: {{instructor.num_id}} - {{instructor.first_name}} {{instructor.last_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field >
+        <mat-label>Selecciona una jornada</mat-label>
+        <mat-select [(ngModel)]="horario.jornada" name="jornada" disableRipple>
+          <mat-option value="DIURNA">DIURNA</mat-option>
+          <mat-option value="MIXTA">MIXTA</mat-option>
+          <mat-option value="NOCTURNA">NOCTURNA</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field >
+        <mat-label>Selecciona una ficha</mat-label>
+        <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha">
+          <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas" [value]="ficha.id_ficha">
+            Código ficha: {{ficha.code_ficha}} - Nombre ficha: {{ficha.name_ficha}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field >
+        <mat-label>Selecciona la hora de ingreso</mat-label>
+        <mat-select [(ngModel)]="horario.date_start" name="date_start" disableRipple>
+          <mat-option value="07:00">07:00</mat-option>
+          <mat-option value="10:00">10:00</mat-option>
+          <mat-option value="13:00">13:00</mat-option>
+          <mat-option value="16:00">16:00</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field >
+        <mat-label>Selecciona la hora de finalización</mat-label>
+        <mat-select [(ngModel)]="horario.date_end" name="date_end" disableRipple>
+          <mat-option value="10:00">10:00</mat-option>
+          <mat-option value="13:00">13:00</mat-option>
+          <mat-option value="16:00">16:00</mat-option>
+          <mat-option value="18:00">18:00</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field >
+          <mat-label>Elige la fecha de formación</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
     </form>
-</div>
-
+    <button class="boton boton-centrado" (click)="ModificarHorario()" mat-raised-button>Guardar</button>
+  </div>
+  
+  

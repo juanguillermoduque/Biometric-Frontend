@@ -1,22 +1,33 @@
-<div class="container">
 
-  <form class="form-container">
-    <mat-form-field>
-      <input matInput type="number" name="code_ficha" [(ngModel)]="ficha.code_ficha" placeholder="Número de ficha">
+<div fxLayoutGap="1%" fxLayout="column">
+
+  <h2 class="titulo">Crear ficha</h2>
+
+  <form fxLayout="column" class="form">
+
+    <mat-form-field >
+      <mat-label>Codigo de la ficha</mat-label>
+      <input matInput class="input-numerico" type="text" [(ngModel)]="ficha.code_ficha" name="code_ficha">
     </mat-form-field>
-    
+
     <mat-form-field>
-      <input matInput placeholder="Líder de la ficha">
+      <mat-label>Selecciona un programa de formacion</mat-label>
+      <mat-select name="name_programa" [(ngModel)]="ficha.name_programa">
+        <mat-option (click)="agregarPrograma(programa)" [value]="programa.name_programa" *ngFor="let programa of programas [0]">
+          {{programa.name_programa}} 
+        </mat-option> 
+      </mat-select>
     </mat-form-field>
+
     <mat-form-field>
-      <input matInput name="date_start" [(ngModel)]="ficha.date_start" type="datetime"  placeholder="Fecha de inicio">
-      <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput name="date_end" [(ngModel)]="ficha.date_end" type="datetime"  placeholder="Fecha de finalización">
-      <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
-    </mat-form-field>
-    <button (click)="modificarFicha()" mat-raised-button>Actualizar</button>
+      <mat-label>Estado</mat-label>
+      <mat-select name="status" [(ngModel)]="ficha.estado"> 
+          <mat-option value="ACTIVO">Activo</mat-option>
+          <mat-option value="INACTIVO">Inactivo</mat-option>
+      </mat-select>
+  </mat-form-field>
+
   </form>
+  <button class="boton boton-centrado" (click)="modificarFicha()" mat-raised-button>Guardar</button>
 </div>
 
