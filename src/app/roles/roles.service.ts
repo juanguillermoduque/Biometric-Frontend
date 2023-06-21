@@ -103,6 +103,10 @@ export class RolesService {
   getComponente(id:Number){
     return this.http.get(`${this.API_URI}/componentes/${id}`);
   }
+  getComponentesByRol(id:Number){
+    return this.http.get(`${this.API_URI}/componentes/componentes_by_rol${id}`);
+    
+  }
 
 
 

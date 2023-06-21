@@ -4,6 +4,7 @@ import { AsistenciasService } from '../../asistencias.service';
 import { RolesService } from 'src/app/roles/roles.service';
 import { HorariosService } from 'src/app/horarios/horarios.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UsuariosService } from 'src/app/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-editar-asistencias',
@@ -22,22 +23,49 @@ export class EditarAsistenciasComponent {
     updated_at: '',
   };
 
+  aprendizInicial:object;
+  horarioInicial:object;
+
   aprendices:any[] = [];
   horarios:any[] =[];
 
   constructor(private asistenciasService:AsistenciasService,
     private rolesService:RolesService,
     private horariosService:HorariosService,
+    private usuariosServise:UsuariosService,
     @Inject(MAT_DIALOG_DATA) public data:number,
     ){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.getAsistencia();
+    this.getAprendices();
+    this.getHorarios();
+  }
+
+  getAsistencia(){
+    this.asistenciasService.getAsistencia(this.data).subscribe(
+      (res:any)=>{
+        this.asistencia = res;
+        this.usuariosServise.getUsuario(res.id_aprendiz).subscribe(
+          aprendiz=>{
+            this.aprendizInicial = aprendiz;
+          }
+        )
+
+        this.horariosService.getHorario(res.id_horario).subscribe(
+          horario=>{
+            this.horarioInicial = horario;
+          }
+        )
+      }
+    )
+    
+  }
 
   modificarAsistencia(){
     delete this.asistencia.created_at;
     delete this.asistencia.updated_at;
     delete this.asistencia.id_asistencia;
-    this.getCurrentTime();
 
     this.asistenciasService.updateAsistencia(this.data,this.asistencia)
       .subscribe(

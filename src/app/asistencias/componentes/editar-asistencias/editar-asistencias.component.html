@@ -4,7 +4,7 @@
   
   <form fxLayout="column" class="form">
 
-    <mat-form-field>
+    <!--mat-form-field>
       <mat-label>Selecciona el aprendiz</mat-label>
       <mat-select>
         <mat-option (click)="agregarAprendiz(aprendiz.num_id)" *ngFor="let aprendiz of aprendices" [value]="aprendiz">
@@ -20,13 +20,14 @@
           {{horario.fecha}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field-->
     
     <mat-form-field>
+      <mat-label>Observaciones</mat-label>
       <textarea matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones"></textarea>
     </mat-form-field>
 
   </form>
 
-  <button mat-raised-button (click)="modificarAsistencia()" class="boton boton-centrado">Agregar</button>
+  <button mat-raised-button (click)="modificarAsistencia()" class="boton boton-centrado">Editar</button>
 </div>

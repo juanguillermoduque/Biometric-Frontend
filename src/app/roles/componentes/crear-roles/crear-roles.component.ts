@@ -4,6 +4,7 @@ import { rol } from '../../roles';
 import { RolesService } from '../../roles.service';
 import { componenteRol } from '../../component-rol';
 import Swal from 'sweetalert2'
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crear-roles',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./crear-roles.component.css']
 })
 export class CrearRolesComponent implements OnInit{
+
   componentes:any = [];
   componentesAgregados:any= []
   idComponentes:number[] = []
@@ -27,6 +29,7 @@ export class CrearRolesComponent implements OnInit{
 
   constructor(
     private rolService:RolesService,
+    public dialogRef: MatDialogRef<CrearRolesComponent>
   ){}
 
   ngOnInit() {
@@ -60,19 +63,25 @@ export class CrearRolesComponent implements OnInit{
           text: 'Hay campos sin completar',
         }
       )
-
-      this.rol.nombre_rol == ''
-      this.componenteRol.id_componente == 0
-
     }
 
     else{
-      this.rol.nombre_rol = this.rol.nombre_rol?.toLowerCase()
       this.rolService.saveRol(this.rol).subscribe(
         res=>{
           this.rolService.getRol(this.rol.nombre_rol).subscribe(
             res=>{
-              this.crearComponenteRol(res)
+              this.crearComponenteRol(res);
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'El rol fue creado exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  this.dialogRef.close();
+                } 
+              });
             },
             err=>{
               Swal.fire(
@@ -106,13 +115,7 @@ export class CrearRolesComponent implements OnInit{
       this.componenteRol.id_rol = idRol;
       this.rolService.saveRolComponent(this.componenteRol).subscribe(
         res=>{
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'El rol fue creado exitosamente',
-            showConfirmButton: false,
-            timer: 1500
-          })
+
         },
         err=>console.error(err)
       )
