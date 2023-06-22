@@ -34,7 +34,6 @@ export class AuthComponent {
       this.email = '';
       this.contrasena = '';
     } else {
-        this.email = this.email?.toLowerCase()
         const data = {
           email : this.email,
           password : this.contrasena

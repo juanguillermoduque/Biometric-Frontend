@@ -10,8 +10,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --verde-oscuro: #00AD00;
   }
 
-
-
 .titulo{
   text-align: center;
 }
@@ -24,7 +22,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .custom-dialog-create-update{
   box-shadow: 0px 0px 20px 8px var(--verde-sena);
 }
-
 
 /*boton styles*/
 .boton{
