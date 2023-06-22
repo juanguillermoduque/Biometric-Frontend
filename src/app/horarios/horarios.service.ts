@@ -28,6 +28,6 @@ export class HorariosService {
   }
 
   search(horariosId:String){
-    return this.http.get(`${this.API_URI}/filtros/searchHorarios${horariosId}`);
+    return this.http.get(`${this.API_URI}/filtros/searchHorario${horariosId}`);
   }
 }

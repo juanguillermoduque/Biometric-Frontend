@@ -10,6 +10,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --verde-oscuro: #00AD00;
   }
 
+  .input-numerico::-webkit-inner-spin-button,
+  .input-numerico::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    /* Opcionalmente, puedes agregar otras propiedades de estilo aquí */
+  }
+  
+
+
 .titulo{
   text-align: center;
 }

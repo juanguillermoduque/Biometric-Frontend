@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { horario } from '../../horarios';
 import { HorariosService } from '../../horarios.service';
 import Swal from 'sweetalert2'
+import { UsuariosService } from 'src/app/usuarios/usuarios.service';
+import { RolesService } from 'src/app/roles/roles.service';
+import { FichasService } from 'src/app/fichas/fichas.service';
 
 @Component({
   selector: 'app-editar-horarios',
@@ -19,7 +22,30 @@ export class EditarHorariosComponent{
     updated_at: '',
   };
 
-  constructor(private horarioService:HorariosService){}
+
+  instructores:any = [];
+  instructoresIdRol:any= [];
+  instructoresId:any[]= [];
+  fichas:any;
+  fichasAux:any;
+  
+  fichaInstructor = {
+    id_instructor: 0 , 
+    id_ficha: 0
+  };
+  
+  constructor(private horarioService:HorariosService, private rolesService:RolesService, 
+  private usuariosService:UsuariosService, private fichasService:FichasService){}
+
+  agregarInstructor(instructor:any){
+    this.fichaInstructor.id_instructor = instructor.num_id;
+    this.horario.id_instructor = instructor.num_id;
+  }
+
+  agregarFicha (ficha:any){
+    this.fichaInstructor.id_ficha = ficha.id_ficha;
+    this.horario.id_ficha = ficha.id_ficha;
+  }
   
   ModificarHorario(){
     delete this.horario.created_at;

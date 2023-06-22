@@ -1,0 +1,28 @@
+.primera-linea{
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .titulo{
+    margin-top: 5%;
+  }
+  
+.logo-sena{
+    width: 150px;
+    display: block;
+    margin: -25px auto;
+}
+
+.card{
+    margin: 3% ;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.centrado{
+    text-align: center;
+}
+
+.nombre-programa{
+    margin: 1% 5%;
+}

@@ -1,32 +1,48 @@
-<mat-label>Buscar</mat-label>
-  <input type="text" [formControl]="control" placeholder="Buscar en fichas">
+<div fxLayout="column" fxLayoutGap="5%">
+  <h2 class="titulo">Listar Fichas</h2>
 
-    <mat-grid-list cols="3" rowHeight="300px">
-      <!-- Columna 1 -->
-      <mat-grid-tile colspan="1">
-        <mat-card class="example-card">
-          <mat-card-header>
-          </mat-card-header>
-          <mat-card-content>
-            <a mat-icon-button color="primary" (click)="agregarFicha()">
-              <mat-icon>add_circle_outline</mat-icon>
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    <div *ngFor="let ficha of fichas[0]">
-      <!--Se recorre la bd con el ngfor -->
-      <mat-grid-tile>
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Número de ficha:{{ ficha.code_ficha}}
-              <mat-card-content></mat-card-content>
-            </mat-card-title>
-            <mat-card-subtitle>Programa</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-actions>
-            <button (click)="editarFicha(ficha.code_ficha)" mat-button>Ver/Editar</button>
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
+  <div class="primera-linea" fxLayoutGap="42%" fxLayout="row">
+    <button matTooltip="Crear Ficha" fxFlex="6%" class="boton" mat-fab (click)="agregarFicha()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <div fxFlex="80%" fxLayout="row" fxLayoutGap="4%" >
+      <mat-form-field  matTooltip="Buscar Ficha por codigo">
+        <input matInput placeholder="Buscar" [formControl]="control">
+      </mat-form-field>
+
+      <mat-form-field  matTooltip="Buscar ficha por programa de estudio">
+        <mat-label>Estado</mat-label>
+        <mat-select name="status" [formControl]="control">
+            <mat-option value="ACTIVO">Activo</mat-option>
+            <mat-option value="INACTIVO">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+  </div>
+
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
+      <div matTooltip="Editar Ficha" (click)="editarFicha(ficha.code_ficha)" fxLayout="column" class="card" *ngFor="let ficha of fichas[0]">
+        <div>
+          <p class="centrado">{{ficha.code_ficha}}</p>
+          <hr>
+          <img class="logo-sena" src="../../../../assets/img/senaverde.png" alt="">
+          <hr>
+          <p class="centrado nombre-programa">{{ficha.name_programa | titlecase}}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div fxLayout="row" fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
+      <!-- Columnas para la segunda fila -->
+    </div>
+  
+    <div fxLayout="row" fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
+      <!-- Columnas para la tercera fila -->
+    </div>
+  </div>
+</div>
+
+ 
+

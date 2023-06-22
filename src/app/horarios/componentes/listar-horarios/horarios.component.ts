@@ -26,8 +26,7 @@ export class HorariosComponent implements OnInit{
 ngOnInit(){
   this.getHorarios();
   this.searchHorario();
-  
-  
+
 }
 
 getHorarios(){
