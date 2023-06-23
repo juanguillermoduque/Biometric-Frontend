@@ -17,7 +17,7 @@
       <mat-label>Selecciona el horario</mat-label>
       <mat-select>
         <mat-option (click)="agregarHorario(horario.id_horario)" *ngFor="let horario of horarios[0]" [value]="horario">
-          {{horario.fecha}}
+          {{horario.fecha | date: 'dd/MM/yyyy'}} - Ficha: {{horario.id_ficha}} 
         </mat-option>
       </mat-select>
     </mat-form-field>
