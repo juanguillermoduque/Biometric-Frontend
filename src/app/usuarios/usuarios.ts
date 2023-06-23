@@ -1,8 +1,9 @@
 export interface usuario{
-    num_id?: number;
+    id_user?: number;
     first_name?: string;
     last_name?: string;
     type_id?: string;
+    num_id?: number;
     email?: string;
     estado?: string;
     password?: string;
