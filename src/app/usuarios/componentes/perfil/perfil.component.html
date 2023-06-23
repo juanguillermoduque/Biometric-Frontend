@@ -1,42 +1,42 @@
-<div class="container">
-  <form [formGroup]="form"> <!--  instanciamos del formulario en el componente osea en el typescript -->
-    <p>Perfil</p>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label>Su Nombre es: {{nombreUsuario}} </label>
-        </div>
-        <div class="form-group">
-          <label>Su rol es : Administrador</label>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>ID de usuario</mat-label>
-            <input matInput formControlName="num_id" type="text"> <!--  La etiqueta input lo enlazamos con el formControl que tiene como nombre num_id y el tipo de input es texto -->
-            <mat-error *ngIf="form.get('num_id')?.hasError('required')">El ID es requerido</mat-error> <!-- en caso de que sea requerido, muestra un mensaje de error -->
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Contraseña</mat-label>
-            <input matInput formControlName="contrasena" type="password"> <!-- La etiqueta input lo enlazamos con el formControl con el nombre contrasena y el tipo de input que es password -->
-            <mat-error *ngIf="form.get('contrasena')?.hasError('required')">La contraseña es requerida</mat-error> <!-- en caso de que sea requerido, muestra un mensaje de error -->
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Confirmar contraseña</mat-label>
-            <input matInput formControlName="confirmarContrasena" type="password"> <!-- La etiqueta input lo enlazamos con el formControl con el nombre confirmarContrasena y el tipo de input es password -->
-            <mat-error *ngIf="form.get('confirmarContrasena')?.hasError('required')">La confirmación de contraseña es requerida</mat-error> <!-- en caso de que sea requerido, muestra un mensaje de error -->
-            <mat-error *ngIf="form.hasError('noCoincide')">Las contraseñas no coinciden</mat-error> <!-- en caso de que no coincidan las contraseñas, muestra un mensaje de error -->
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <button mat-button (click)="updatePassword()">Enviar</button> <!-- este botón es para enviar el formulario y actualizar la contraseña -->
-        </div>
-      </div>
-    </div>
-  </form>
+<div class="contenedor-padre" fxLayout="column" fxLayoutGap="20px" fxFlex="100%">
+  
+  <p class="titulo">Información personal</p>
+
+  <div class="contenedor-campos-datos" fxLayoutGap="25px" fxLayout="column">
+    
+    <p class="datos">Datos personales</p>
+
+    <form fxLayoutGap="4%" fxLayout="row">
+
+      <mat-form-field fxFlex="32%" >
+        <mat-label>Favorite food</mat-label>
+        <input matInput  [value]="type_id + ' - ' + num_id" disabled>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="32%" >
+        <mat-label>Favorite food</mat-label>
+        <input matInput [value]="first_name" disabled>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="32%" >
+        <mat-label>Favorite food</mat-label>
+        <input matInput [value]="last_name" disabled>
+      </mat-form-field>
+
+    </form>
+
+  </div>
+
+  <div fxLayoutGap="25px" fxLayout="column">
+    <p class="datos">Información de contacto</p>
+    <form fxLayout="row">
+      <mat-form-field fxFlex="30.5%">
+        <mat-label>Favorite food</mat-label>
+        <input matInput [value]="email" disabled>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <button class="boton boton-centrado" mat-raised-button>Cambiar contraseña</button>
+
 </div>

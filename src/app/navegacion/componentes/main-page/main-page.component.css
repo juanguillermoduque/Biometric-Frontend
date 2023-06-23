@@ -22,7 +22,7 @@
 .info .opcion{
   margin-top: 3.125rem;
   display: flow-root;
-  margin: 4% 7% 5%;
+  margin: 2.7% 7% 2%;
   background: var(--gris-sena);
   overflow: auto;
   height: 82vh;
@@ -144,7 +144,7 @@
   }
 
   .info .opcion{
-    height: 60vh;
+    height: 82vh;
     max-height: 80%;
   }
 
