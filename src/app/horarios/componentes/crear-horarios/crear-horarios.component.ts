@@ -70,7 +70,6 @@ export class CrearHorariosComponent implements OnInit{
             icon: 'success',
             title: 'El horario fue creado exitosamente',
             showConfirmButton: false,
-            timer: 1500
           })
           console.log(res);
         },

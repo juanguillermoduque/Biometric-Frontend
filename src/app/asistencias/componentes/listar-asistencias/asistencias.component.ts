@@ -65,7 +65,10 @@ findAsistencias(query:string){
       height:'550px',
       width:'600px',
       panelClass: 'custom-dialog-create-update',
-    })
+    }).afterClosed().subscribe(() => {
+      this.getAsistencias();
+    }
+    );
   }
 
   editarAsistencia(idAsistencia:Number){
@@ -74,7 +77,11 @@ findAsistencias(query:string){
       width:'600px',
       panelClass: 'custom-dialog-create-update',
       data:idAsistencia
-    })
+    }).afterClosed().subscribe(
+      ()=>{
+        this.getAsistencias();
+      }
+    )
   }
 }
 

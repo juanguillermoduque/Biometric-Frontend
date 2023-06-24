@@ -54,13 +54,15 @@ import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 
 @NgModule({
   declarations: [
     AgregarUsuarioComponent,
     EditarUsuariosComponent,
     PerfilComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    CambiarContrasenaComponent
   ],
   imports: [
     CommonModule,

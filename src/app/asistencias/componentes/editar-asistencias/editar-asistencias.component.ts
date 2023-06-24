@@ -3,8 +3,9 @@ import { asistencia } from '../../asistencia';
 import { AsistenciasService } from '../../asistencias.service';
 import { RolesService } from 'src/app/roles/roles.service';
 import { HorariosService } from 'src/app/horarios/horarios.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsuariosService } from 'src/app/usuarios/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-asistencias',
@@ -34,6 +35,7 @@ export class EditarAsistenciasComponent {
     private horariosService:HorariosService,
     private usuariosServise:UsuariosService,
     @Inject(MAT_DIALOG_DATA) public data:number,
+    public dialogRef: MatDialogRef<EditarAsistenciasComponent>
     ){}
 
   ngOnInit(){
@@ -67,13 +69,34 @@ export class EditarAsistenciasComponent {
     delete this.asistencia.updated_at;
     delete this.asistencia.id_asistencia;
 
+    if (this.asistencia.id_aprendiz == 0 || this.asistencia.id_horario == 0){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+    }
+    else{
+      
     this.asistenciasService.updateAsistencia(this.data,this.asistencia)
       .subscribe(
         res =>{ 
-
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La asistencia fue agregada exitosamente',
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.dialogRef.close();
+            } 
+          });
         },
         err => console.error(err)
       )
+    }
   }
 
   getHorarios(){
