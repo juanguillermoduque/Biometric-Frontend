@@ -4,6 +4,8 @@ import { AsistenciasService } from '../../asistencias.service';
 import { RolesService } from 'src/app/roles/roles.service';
 import { HorariosService } from 'src/app/horarios/horarios.service';
 import { UsuariosService } from 'src/app/usuarios/usuarios.service';
+import Swal from 'sweetalert2';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crear-asistencias',
@@ -27,7 +29,8 @@ export class CrearAsistenciasComponent implements OnInit{
 
   constructor(private asistenciasService:AsistenciasService,
     private rolesService:RolesService,
-    private horariosService:HorariosService
+    private horariosService:HorariosService,
+    public dialogRef: MatDialogRef<CrearAsistenciasComponent>
     ){}
   
   ngOnInit(){
@@ -71,13 +74,34 @@ export class CrearAsistenciasComponent implements OnInit{
     delete this.asistencia.id_asistencia;
     this.getCurrentTime();
 
+    if (this.asistencia.id_aprendiz == 0 || this.asistencia.id_horario == 0){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+    }
+    else{
+
     this.asistenciasService.saveAsistencia(this.asistencia)
       .subscribe(
         res =>{ 
-
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La asistencia fue agregada exitosamente',
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.dialogRef.close();
+            } 
+          });
         },
         err => console.error(err)
       )
+    }
   }
 
   agregarAprendiz(id:any){

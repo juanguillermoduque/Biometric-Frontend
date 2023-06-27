@@ -6,6 +6,7 @@ import { rol } from '../../../roles/roles';
 import { RolesService } from '../../../roles/roles.service';
 import { usuario_rol } from '../../../roles/usuario_rol';
 import Swal from 'sweetalert2'
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "agregar-usuario"*/
   selector: 'app-agregar-usuario', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -33,7 +34,8 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
     updated_at: '',
 };
 constructor(private usuariosService:UsuariosService,
-  private rolService:RolesService){ // creación de constructor invocando el servicio de usuariosService que me trae información del backend
+  private rolService:RolesService,
+  public dialogRef: MatDialogRef<AgregarUsuarioComponent>){ // creación de constructor invocando el servicio de usuariosService que me trae información del backend
 
 }
   ngOnInit(){ // Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
@@ -75,8 +77,11 @@ constructor(private usuariosService:UsuariosService,
               icon: 'success',
               title: 'El usuario fue agregado exitosamente',
               showConfirmButton: false,
-              timer: 1500
-            })
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.dialogRef.close();
+              } 
+            });
         
           },
           err => console.error(err) // de lo contrario saldrá un error

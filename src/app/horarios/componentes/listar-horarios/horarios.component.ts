@@ -13,7 +13,7 @@ import { debounceTime } from 'rxjs';
 })
 export class HorariosComponent implements OnInit{
 
-  displayedColumns: string[] = ['Horario', 'Instructor', 'Jornada', 'Ficha','edit'];
+  displayedColumns: string[] = ['Instructor', 'Jornada', 'Ficha','Horario','fecha','edit'];
   horarios:any = [];
   dataSource = this.horarios;
   control = new FormControl();
@@ -44,7 +44,11 @@ nuevoHorario(){
     height:'700px',
     width:'500px',
     panelClass: 'custom-dialog-create-update',
-  })
+  }).afterClosed().subscribe(
+    ()=>{
+      this.getHorarios();
+    }
+  )
 }
 
 editarHorarios(num_id : number){
@@ -53,7 +57,11 @@ editarHorarios(num_id : number){
     width:'500px',
     panelClass: 'custom-dialog-create-update',
     data: num_id
-  });
+  }).afterClosed().subscribe(
+    ()=>{
+      this.getHorarios();
+    }
+  );
 }
 
 searchHorario(){

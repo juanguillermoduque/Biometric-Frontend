@@ -5,6 +5,8 @@ import Swal from 'sweetalert2'
 import { RolesService } from '../../../roles/roles.service';
 import { UsuariosService } from '../../../usuarios/usuarios.service';
 import { FichasService } from '../../../fichas/fichas.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crear-horarios',
@@ -18,8 +20,7 @@ export class CrearHorariosComponent implements OnInit{
     id_ficha: 0,
     date_start: '',
     date_end: '',
-    created_at: '',
-    updated_at: '',
+    fecha: '',
   };
 
   instructores:any = [];
@@ -32,9 +33,12 @@ export class CrearHorariosComponent implements OnInit{
     id_instructor: 0 , 
     id_ficha: 0
   };
+
+  selectedDates: Array<Date | null> = [];
   
   constructor(private horarioService:HorariosService, private rolesService:RolesService, 
-  private usuariosService:UsuariosService, private fichasService:FichasService){}
+  private usuariosService:UsuariosService, private fichasService:FichasService,
+  public dialogRef: MatDialogRef<CrearHorariosComponent>){}
 
   agregarInstructor(instructor:any){
     this.fichaInstructor.id_instructor = instructor.num_id;
@@ -47,11 +51,9 @@ export class CrearHorariosComponent implements OnInit{
   }
 
   guardarHorario(){
-    delete this.horario.created_at;
-    delete this.horario.updated_at;
+
     if (this.horario.id_instructor == 0 || this.horario.jornada == '' || this.horario.id_ficha == 0
-    || this.horario.date_start == '' || this.horario.date_end == '' || this.horario.created_at == ''
-    || this.horario.updated_at == ''){
+    || this.horario.date_start == '' || this.horario.date_end == '' || this.selectedDates.length == 0){
 
       Swal.fire(
         {
@@ -62,34 +64,59 @@ export class CrearHorariosComponent implements OnInit{
       )
     }
     else{
-      this.horario.jornada = this.horario.jornada?.toLowerCase()
-      this.horarioService.saveHorario(this.horario).subscribe(
-        res =>{
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'El horario fue creado exitosamente',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          console.log(res);
-        },
-        err => console.error(err)
-      )
-  }
-    this.horarioService.saveHorario(this.horario).subscribe(
-      res => {
-        this.rolesService.createFichaInstructor(this.fichaInstructor).subscribe(
-          data => console.log(data)
+      for(let i = 0; i < this.selectedDates.length; i++){
+        debugger
+        this.horario.fecha = this.normalizarDate(this.selectedDates[i]);
+        this.horarioService.saveHorario(this.horario).subscribe(
+          res => {
+            this.rolesService.createFichaInstructor(this.fichaInstructor).subscribe(
+              data => console.log(data)
+            )
+          },
+          err => console.error(err)
         )
-      },
-      err => console.error(err)
-    )
-}
+      }
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Creación exitosa',
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dialogRef.close();
+        } 
+      });
+    }
+
+  }
+
+  normalizarDate(date:Date|null){
+  if(date == null){
+    return '';
+  }
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+    if(month < 10){
+      return(`${year}-0${month}-${day}`)
+    }else{
+      return(`${year}-${month}-${day}`)
+    }
+  }
 
   ngOnInit(): void {
     this.getIdUsuario();
     this.getFichas();
+  }
+
+  addEvent(event: MatDatepickerInputEvent<Date>): void {
+    this.selectedDates.push(event.value);
+  }
+  deleteDate(date: Date | null): void {
+    const index = this.selectedDates.indexOf(date);
+    if (index !== -1) {
+      this.selectedDates.splice(index, 1);
+    }
   }
   
   getIdUsuario(){
