@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutGap="5%">
+
+    <h2 class="titulo">Asistencias </h2>
+  
+    <table  class="margin-table" mat-table [dataSource]="asistencias">
+      <ng-container matColumnDef="numId">
+        <th mat-header-cell *matHeaderCellDef>Aprendiz</th>
+        <td mat-cell *matCellDef="let asistencia">{{asistencia.id_aprendiz}}</td>
+      </ng-container>
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let asistencia">{{asistencia.fecha | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="observaciones">
+        <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+        <td class="observaciones" mat-cell *matCellDef="let asistencia">{{asistencia.comments}}</td>
+      </ng-container>
+      <ng-container matColumnDef="horaIngreso">
+        <th mat-header-cell *matHeaderCellDef>Hora de ingreso</th>
+        <td mat-cell *matCellDef="let asistencia">{{asistencia.hora_ingreso}}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table >
+  
+  
+  </div>
+  

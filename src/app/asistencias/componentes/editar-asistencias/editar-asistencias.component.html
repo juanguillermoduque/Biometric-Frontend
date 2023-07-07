@@ -24,7 +24,8 @@
     
     <mat-form-field>
       <mat-label>Observaciones</mat-label>
-      <textarea matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones"></textarea>
+      <textarea maxlength="100" matInput name="comments" [(ngModel)]="asistencia.comments" placeholder="Observaciones"></textarea>
+      <mat-hint align="end">{{asistencia.comments?.length}} / 100</mat-hint>
     </mat-form-field>
 
   </form>

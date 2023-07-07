@@ -7,3 +7,8 @@
   margin-top: 5%;
 }
  
+.observaciones{
+  overflow-wrap: break-word;
+  max-width: 100px;
+
+}
