@@ -15,7 +15,7 @@
   
       <mat-form-field >
         <mat-label>Selecciona una jornada</mat-label>
-        <mat-select [(ngModel)]="horario.jornada" name="jornada" disableRipple>
+        <mat-select [(ngModel)]="horario.jornada" name="jornada">
           <mat-option value="DIURNA">DIURNA</mat-option>
           <mat-option value="MIXTA">MIXTA</mat-option>
           <mat-option value="NOCTURNA">NOCTURNA</mat-option>
@@ -33,7 +33,7 @@
   
       <mat-form-field >
         <mat-label>Selecciona la hora de ingreso</mat-label>
-        <mat-select [(ngModel)]="horario.date_start" name="date_start" disableRipple>
+        <mat-select [(ngModel)]="horario.date_start" name="date_start">
           <mat-option value="07:00">07:00</mat-option>
           <mat-option value="10:00">10:00</mat-option>
           <mat-option value="13:00">13:00</mat-option>
@@ -43,7 +43,7 @@
   
       <mat-form-field >
         <mat-label>Selecciona la hora de finalización</mat-label>
-        <mat-select [(ngModel)]="horario.date_end" name="date_end" disableRipple>
+        <mat-select [(ngModel)]="horario.date_end" name="date_end">
           <mat-option value="10:00">10:00</mat-option>
           <mat-option value="13:00">13:00</mat-option>
           <mat-option value="16:00">16:00</mat-option>
@@ -53,7 +53,7 @@
   
       <mat-form-field >
           <mat-label>Elige la fecha de formación</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input  [(ngModel)]="horario.fecha" name="fecha" matInput [matDatepicker]="picker">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

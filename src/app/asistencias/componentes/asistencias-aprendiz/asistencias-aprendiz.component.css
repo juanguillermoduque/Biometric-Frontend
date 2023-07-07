@@ -1,0 +1,14 @@
+.primera-linea{
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .titulo{
+    margin-top: 5%;
+  }
+   
+  .observaciones{
+    overflow-wrap: break-word;
+    max-width: 100px;
+  
+  }

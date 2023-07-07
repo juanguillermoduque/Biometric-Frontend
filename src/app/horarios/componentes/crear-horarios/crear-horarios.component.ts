@@ -24,8 +24,6 @@ export class CrearHorariosComponent implements OnInit{
   };
 
   instructores:any = [];
-  instructoresIdRol:any= [];
-  instructoresId:any[]= [];
   fichas:any;
   fichasAux:any;
   
@@ -65,7 +63,6 @@ export class CrearHorariosComponent implements OnInit{
     }
     else{
       for(let i = 0; i < this.selectedDates.length; i++){
-        debugger
         this.horario.fecha = this.normalizarDate(this.selectedDates[i]);
         this.horarioService.saveHorario(this.horario).subscribe(
           res => {
@@ -105,7 +102,7 @@ export class CrearHorariosComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getIdUsuario();
+    this.getInstructor();
     this.getFichas();
   }
 
@@ -119,29 +116,13 @@ export class CrearHorariosComponent implements OnInit{
     }
   }
   
-  getIdUsuario(){
-    this.rolesService.searchInstructores().subscribe(
-      (instructores) => {
-        this.instructoresIdRol = instructores;
-        this.getUsuario();
-      }
-    );
-  }
-  getUsuario(){
-    for(let i = 0; i < this.instructoresIdRol.length; i++){
-      this.instructoresId.push(this.instructoresIdRol[i].id_usuario)
-    }
-    this.getInstructor();
-  }
+
   getInstructor(){
-    for(let i = 0; i < this.instructoresId.length; i++){
-      this.usuariosService.getUsuario(this.instructoresId[i]).subscribe(
-        (data)=>{
-          this.instructores.push(data);
-        }
-      )
-    }
-    
+    this.rolesService.searchInstructores().subscribe(
+      (data)=>{
+        this.instructores = data;
+      }
+    )
   }
   getFichas(){
     this.fichasService.getFichas().subscribe(
