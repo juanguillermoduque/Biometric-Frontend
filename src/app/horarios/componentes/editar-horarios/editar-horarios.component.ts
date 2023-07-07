@@ -19,14 +19,13 @@ export class EditarHorariosComponent{
     id_ficha: 0,
     date_start: '',
     date_end: '',
+    fecha:"",
     created_at: '',
     updated_at: '',
   };
 
 
   instructores:any = [];
-  instructoresIdRol:any= [];
-  instructoresId:any[]= [];
   fichas:any;
   fichasAux:any;
   
@@ -57,41 +56,28 @@ export class EditarHorariosComponent{
 
   ngOnInit(): void {
     console.log(this.data)
-
+    this.getHorario();
+    this.getInstructor();
+    this.getFichas();
   }
 
   getHorario(){
-    
-    this.horarioService.getHorario(this.data).subscribe(
-      (res)=>{
-        console.log(res);
-        this.horario = res;
+   this.horarioService.getHorario(this.data).subscribe(
+    (data)=>{
+      this.horario = data;
+      console.log(this.horario)
+    }
+   )
+  }
+
+
+  getInstructor(){
+    this.rolesService.searchInstructores().subscribe(
+      (data)=>{
+        this.instructores = data;
       }
     )
-  }
-  
-  getIdUsuario(){
-    this.rolesService.searchInstructores().subscribe(
-      (instructores) => {
-        this.instructoresIdRol = instructores;
-        this.getUsuario();
-      }
-    );
-  }
-  getUsuario(){
-    for(let i = 0; i < this.instructoresIdRol.length; i++){
-      this.instructoresId.push(this.instructoresIdRol[i].id_usuario)
-    }
-    this.getInstructor();
-  }
-  getInstructor(){
-    for(let i = 0; i < this.instructoresId.length; i++){
-      this.usuariosService.getUsuario(this.instructoresId[i]).subscribe(
-        (data)=>{
-          this.instructores.push(data);
-        }
-      )
-    }
+    
   }
 
   getFichas(){
@@ -117,9 +103,9 @@ export class EditarHorariosComponent{
   ModificarHorario(){
     delete this.horario.created_at;
     delete this.horario.updated_at;
+    
     if (this.horario.id_instructor == 0 || this.horario.jornada == '' || this.horario.id_ficha == 0
-    || this.horario.date_start == '' || this.horario.date_end == '' || this.horario.created_at == ''
-    || this.horario.updated_at == ''){
+    || this.horario.date_start == '' || this.horario.date_end == ''){
 
       Swal.fire(
         {
@@ -130,8 +116,14 @@ export class EditarHorariosComponent{
       )
     }
     else{
-      this.horario.jornada = this.horario.jornada?.toLowerCase()
-      this.horarioService.saveHorario(this.horario).subscribe(
+      if(this.horario.fecha !== undefined){
+        let date = new Date(this.horario.fecha)
+        this.horario.fecha = this.normalizarDate(date)
+        console.log(this.horario.fecha)
+      }
+      
+      
+      this.horarioService.updateHorario(this.data,this.horario).subscribe(
         res =>{
           Swal.fire({
             position: 'center',

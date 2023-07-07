@@ -28,6 +28,7 @@ export class NavegacionComponent implements OnInit {
     ["Excusas" , "../../../../assets/img/svg/logos-navegacion/excusa.svg"],
     ["Roles" , "../../../../assets/img/svg/logos-navegacion/roles.svg"],
     ["Ver Perfil" , "../../../../assets/img/svg/logos-navegacion/perfil.svg"],
+    ["Asistencias Aprendiz" , "../../../../assets/img/svg/logos-navegacion/asistencia.svg"],
   ]);
 
   constructor(private rolServise:RolesService){}

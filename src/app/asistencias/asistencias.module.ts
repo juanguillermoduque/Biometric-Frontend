@@ -54,18 +54,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
+import { AsistenciasAprendizComponent } from './componentes/asistencias-aprendiz/asistencias-aprendiz.component';
 
 @NgModule({
   declarations: [
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
-    AsistenciasComponent
+    AsistenciasComponent,
+    AsistenciasAprendizComponent
   ],
 
   exports:[
     CrearAsistenciasComponent,
     EditarAsistenciasComponent,
     AsistenciasComponent,
+    AsistenciasAprendizComponent
   ],
 
   imports: [
