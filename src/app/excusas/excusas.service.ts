@@ -41,4 +41,8 @@ export class ExcusasService {
   search(excusasId:string){
     return this.http.get(`${this.API_URI}/filtros/searchExcusa${excusasId}`);
   }
+
+  sendPost(body:FormData):Observable<any>{
+    return this.http.post(`${this.API_URI}/upload`, body)
+  }
 }

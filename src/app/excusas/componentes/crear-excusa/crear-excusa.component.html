@@ -1,8 +1,43 @@
 
-<div class="container">
-    <form class="form-container">
 
-        <h2>Creación de excusas</h2>
+<div fxLayoutGap="1%" fxLayout="column">
+
+    <h2 class="titulo">Creación de Excusa</h2>
+  
+    <form fxLayout="column" class="form">
+
+        <mat-form-field>
+            <mat-label>Selecciona la Asistencia</mat-label>
+            <mat-select>
+              <mat-option (click)="agregarAsistencia(asistencia.id_asistencia)" *ngFor="let asistencia of asistencias[0]" [value]="asistencia">
+                Asistencia: {{asistencia.id_asistencia}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Seleccionar Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker mat-multi-year></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Selecciona un instructor</mat-label>
+            <mat-select [(ngModel)]="excusa.id_instructor" name="id_instructor">
+              <mat-option (click)="agregarInstructor(instructor)" *ngFor="let instructor of instructores" [value]="instructor.num_id">
+                Instructor: {{instructor.first_name}} {{instructor.last_name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="excusa.estado" name="estado">
+              <mat-option value="REVISADO">Revisado</mat-option>
+              <mat-option value="PENDIENTE">Pendiente</mat-option>
+            </mat-select>
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Motivo</mat-label>
