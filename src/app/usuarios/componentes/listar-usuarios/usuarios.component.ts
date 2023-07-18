@@ -5,10 +5,11 @@ import { AgregarUsuarioComponent } from '../agregar-usuario/agregar-usuario.comp
 import { EditarUsuariosComponent } from '../editar-usuarios/editar-usuarios.component';
 import { FormControl } from '@angular/forms';
 import { debounceTime, find } from 'rxjs';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { RolesService } from '../../../roles/roles.service';
 import { rol } from 'src/app/roles/roles';
 import { usuario } from '../../usuarios';
+import { ExportService } from 'src/app/utils/export/export.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -29,7 +30,8 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   control = new FormControl();
 
   constructor(
-    private usuarioService: UsuariosService, public dialog:MatDialog, private rolService:RolesService
+    private usuarioService: UsuariosService, public dialog:MatDialog, private rolService:RolesService,
+    private exportService:ExportService
     ){
 
     // definición de UsuariosService que tiene la conexión con el back
@@ -40,6 +42,19 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   ngOnInit(){
     this.getUsuario();
     this.searchUser();
+  }
+
+  ExportarUsuarios(){
+    let usuarios = this.usuarios[0];
+    for (let i =0; i< usuarios.length;i++){
+      delete usuarios[i].created_at;
+      delete usuarios[i].password;
+      delete usuarios[i].updated_at;
+      delete usuarios[i].biometric_date;
+    }
+    let dataSourse = new MatTableDataSource(usuarios)
+
+    this.exportService.exportExcel(dataSourse.data,"usuarios")
   }
 
   getUsuario(){

@@ -2,9 +2,20 @@
   <h2 class="titulo">Listar Fichas</h2>
 
   <div class="primera-linea" fxLayoutGap="42%" fxLayout="row">
-    <button matTooltip="Crear Ficha" fxFlex="6%" class="boton" mat-fab (click)="agregarFicha()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div fxLayoutGap="10%" fxFlex="30%">
+
+      <button matTooltip="Crear Ficha" fxFlex="6%" class="boton" mat-fab (click)="agregarFicha()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button matTooltip="Exportar Fichas"  class="boton" mat-fab (click)="ExportarFichas()">
+        Exportar
+      </button>
+  
+      <!--input type="file"  matTooltip="Exportar Fichas"  class="boton" mat-fab (click)="ExportarFichas()">
+        Importar-->
+
+    </div>
 
     <div fxFlex="80%" fxLayout="row" fxLayoutGap="4%" >
       <mat-form-field  matTooltip="Buscar Ficha por codigo">
