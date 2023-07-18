@@ -6,6 +6,8 @@ import { AsistenciasService } from '../../asistencias.service';
 import { CrearAsistenciasComponent } from '../crear-asistencias/crear-asistencias.component';
 import { EditarAsistenciasComponent } from '../editar-asistencias/editar-asistencias.component';
 import { ficha } from '../../../fichas/fichas';
+import { MatTableDataSource } from '@angular/material/table';
+import { ExportService } from 'src/app/utils/export/export.service';
 
 @Component({
   selector: 'app-asistencias',
@@ -18,7 +20,8 @@ export class AsistenciasComponent {
   dataSource = this.asistencias;
   control = new FormControl();
 
-  constructor(private asistenciaService:AsistenciasService,private dialog:MatDialog){}
+  constructor(private asistenciaService:AsistenciasService,private dialog:MatDialog,
+    private exportService:ExportService){}
 
   ngOnInit(){
     this.getAsistencias();
@@ -82,6 +85,17 @@ findAsistencias(query:string){
         this.getAsistencias();
       }
     )
+  }
+
+  ExportarAsistencias(){
+    let asistencias = this.asistencias[0];
+    for (let i =0; i< asistencias.length;i++){
+      delete asistencias[i].id_horario;
+      delete asistencias[i].id_asistencia;
+    }
+    let dataSourse = new MatTableDataSource(asistencias)
+
+    this.exportService.exportExcel(dataSourse.data,"asistencias")
   }
 }
 

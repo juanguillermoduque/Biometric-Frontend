@@ -2,17 +2,27 @@
 
   <h2 class="titulo">Listar Asistencias</h2>
 
-  <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
-    <button  matTooltip="Crear Asistencia" fxFlex="6%" class="boton" mat-fab  (click)="crearAsistencia()">
-      <mat-icon>add</mat-icon>
-    </button>
+  <div  class="primera-linea" fxLayoutGap="30%" fxLayout="row">
+    <div fxLayoutGap="10%" fxFlex="30%">
+      <button  matTooltip="Crear Asistencia" fxFlex="6%" class="boton" mat-fab  (click)="crearAsistencia()">
+        <mat-icon>add</mat-icon>
+      </button>
+  
+      <button matTooltip="Exportar Asistencias"  class="boton" mat-fab (click)="ExportarAsistencias()">
+        Exportar
+      </button>
+  
+      <!--input type="file"  matTooltip="Exportar Asistencias"  class="boton" mat-fab (click)="ExportarAsistencias()">
+        Importar-->
+  
+    </div>
 
     <div fxFlex="10%" >
       <mat-form-field  matTooltip="Buscar Asistencia Documento del aprendiz">
         <input matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>
     </div>
- 
+
   </div>
 
   <table  class="margin-table" mat-table [dataSource]="asistencias[0]">
