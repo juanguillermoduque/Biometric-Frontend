@@ -47,7 +47,6 @@ constructor(private excusasService:ExcusasService){ // creación de constructor 
               showConfirmButton: false,
               timer: 1500
             })
-            console.log(res);
           },
           err => console.error(err) // de lo contrario saldrá un error
         )

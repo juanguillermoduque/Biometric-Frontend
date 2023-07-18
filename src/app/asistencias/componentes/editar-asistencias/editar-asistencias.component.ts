@@ -102,7 +102,6 @@ export class EditarAsistenciasComponent {
   getHorarios(){
     this.horariosService.getHorarios().subscribe(
       res => {
-        console.log( res );
         let aux:any = res;
         this.horarios.push(aux[0]);
       }

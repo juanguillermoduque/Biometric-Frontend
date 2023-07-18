@@ -39,7 +39,6 @@ export class EditarRolesComponent implements OnInit{
         
         this.rolService.getComponentesByRol(res.id_rol).subscribe(
           data =>{
-            console.log(data)
           }
         )
       }

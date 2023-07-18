@@ -25,7 +25,6 @@ export class CrearProgramaComponent {
     delete this.programa.name_programa;
     this.programasService.savePrograma(this.programa).subscribe(
       res => {
-        console.log(res);
         alert("programa creado")
       },
       err => console.error(err)

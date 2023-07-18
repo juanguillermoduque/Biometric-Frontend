@@ -32,7 +32,6 @@ export class AsistenciasComponent {
     this.asistenciaService.getAsistencias().subscribe(
       res =>{
         this.asistencias = res;
-        console.log(this.asistencias);
       },
       err=>console.error(err)
     )
@@ -55,7 +54,6 @@ findAsistencias(query:string){
 
   this.asistenciaService.search(query).subscribe(
   res=>{
-    console.log("Busqueda realizada",res);
     this.asistencias = res;
   },
     err=>{console.log(err)}

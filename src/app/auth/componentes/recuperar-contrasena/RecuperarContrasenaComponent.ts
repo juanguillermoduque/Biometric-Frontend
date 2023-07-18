@@ -24,10 +24,6 @@ export class RecuperarContrasenaComponent {
         if(aux.ok ){
           this.mensajeEmail()
         }
-        else{
-
-        }
-        console.log(data)
       }
     )
   }
