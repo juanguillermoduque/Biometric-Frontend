@@ -115,7 +115,8 @@ import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cam
     AgregarUsuarioComponent,
     EditarUsuariosComponent,
     PerfilComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    CambiarContrasenaComponent
   ]
 })
 export class UsuariosModule { }

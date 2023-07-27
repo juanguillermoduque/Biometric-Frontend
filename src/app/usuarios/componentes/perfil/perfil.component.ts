@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import jwtDecode from 'jwt-decode';
+import { MatDialog } from '@angular/material/dialog';
+import { CambiarContrasenaComponent } from '../cambiar-contrasena/cambiar-contrasena.component';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +16,7 @@ export class PerfilComponent implements OnInit {
   last_name: string = '';
   email: string = '';
 
-  constructor(
+  constructor(public dialog:MatDialog,
     
   ) { }
 
@@ -31,6 +33,13 @@ export class PerfilComponent implements OnInit {
     this.first_name = decode.data[0].first_name;
     this.last_name= decode.data[0].last_name;
     this.email = decode.data[0].email;
+  }
+
+  cambiarContrasena(){
+    this.dialog.open(CambiarContrasenaComponent,{
+      height: '550px',
+      width: '600px',
+    })
   }
  
 
