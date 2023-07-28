@@ -6,6 +6,7 @@ import { RolesService } from 'src/app/roles/roles.service';
 import { AsistenciasService } from 'src/app/asistencias/asistencias.service';
 import { UsuariosService } from 'src/app/usuarios/usuarios.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({ /* es un decorador que se utiliza para configurar las propiedades del componente "crear-excusa"*/
@@ -38,7 +39,7 @@ export class CrearExcusaComponent implements OnInit { // llamado de componente C
   selectedDates: Array<Date | null> = [];
 
 constructor(private excusasService:ExcusasService, private rolesService:RolesService, private asistenciasService:AsistenciasService,
-  private usuariosService:UsuariosService){ // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
+  private usuariosService:UsuariosService,public dialogRef: MatDialogRef<CrearExcusaComponent>){ // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
 }
 
   ngOnInit(): void{ 
@@ -89,7 +90,6 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
   }
 
   guardarExcusa(){ // Método que me guardará la excusa 
-    
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
     if (this.excusa.comments == ''){
       Swal.fire(
@@ -115,8 +115,11 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
               title: 'La excusa fue agregada exitosamente',
               showConfirmButton: false,
               timer: 1500
-            })
-            console.log(res);
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.dialogRef.close();
+              } 
+            });      
           },
           err => console.error(err) // de lo contrario saldrá un error
         )

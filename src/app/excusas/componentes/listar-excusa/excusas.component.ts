@@ -43,18 +43,28 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
 
   crearExcusa(){ // Método crearExcusa que me muestra una ventana emergente con el componente CrearExcusa
     this.dialog.open(CrearExcusaComponent, {
-      height: '750px',
-      width: '600px',
-    });
-  }
-
-  editarExcusa(idExcusa :number){ // Método editarExcusa que me muestra una ventana emergente con el componente EditarExcusa
-    // como parámetro me recibira el valor de idExcusa
-    this.dialog.open(EditarExcusasComponent, {
       height: '800px',
       width: '600px',
+      panelClass: 'custom-dialog-create-update',
+    }).afterClosed().subscribe(
+      ()=>{
+        this.getExcusas();
+      }
+    );
+  }
+
+  editarExcusa(idExcusa : number){ // Método editarExcusa que me muestra una ventana emergente con el componente EditarExcusa
+    // como parámetro me recibira el valor de idExcusa
+    this.dialog.open(EditarExcusasComponent, {
+      height: '500px',
+      width: '600px',
+      panelClass: 'custom-dialog-create-update',
       data: idExcusa, // data almacenará el valor de este
-    });
+    }).afterClosed().subscribe(
+      ()=>{
+        this.getExcusas();
+      }
+    );
   }
   searchExcusa(){
 

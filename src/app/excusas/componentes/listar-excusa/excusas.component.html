@@ -56,8 +56,8 @@
 
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
-      <td mat-cell *matCellDef="let element">
-        <button matTooltip="Editar Excusas" class="boton" mat-mini-fab (click)="editarExcusa(element.id_excusa)">
+      <td mat-cell *matCellDef="let excusa">
+        <button matTooltip="Editar Excusas" class="boton" mat-mini-fab (click)="editarExcusa(excusa.id_excusa)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>

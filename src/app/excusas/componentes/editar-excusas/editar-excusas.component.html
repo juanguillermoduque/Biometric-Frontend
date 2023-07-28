@@ -1,15 +1,16 @@
 
-<div class="container">
-    <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
 
-        <h2>Editar excusas</h2>
+    <h2 class="titulo">Editar Excusa</h2>
+  
+    <form fxLayout="column" class="form">
 
         <mat-form-field>
             <mat-label>Estado</mat-label>
             <mat-select [(ngModel)]="excusa.estado" name="estado">
-              <mat-option value="PENDIENTE">Pendiente</mat-option>
-              <mat-option value="APROBADO">Aprobado</mat-option>
-              <mat-option value="NO APROBADO">No aprobado</mat-option>
+              <mat-option value="Pendiente">Pendiente</mat-option>
+              <mat-option value="Revisado">Revisado</mat-option>
+              <mat-option value="Rechazado">Rechazado</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -21,6 +22,6 @@
             almacenado en el atributo-->
         </mat-form-field>
 
-        <button (click)="modificarExcusa()" mat-raised-button class="botom" id="bton">Guardar</button>
+        <button (click)="modificarExcusa()" mat-raised-button class="botom" id="bton">Editar</button>
     </form>
 </div>
