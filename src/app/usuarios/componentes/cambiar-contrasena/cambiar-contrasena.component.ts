@@ -10,10 +10,11 @@ import { UsuariosService } from '../../usuarios.service';
 })
 export class CambiarContrasenaComponent {
 
-  contrasenaActual : string
-  contrasenaNueva : string
-  confirmarContrasenaNueva : string
+  contrasenaActual : string = ''
+  contrasenaNueva : string = ''
+  confirmarContrasenaNueva : string = ''
   num_id : number
+  dialogRef: any;
 
   constructor(private usuariosService:UsuariosService
 
@@ -23,20 +24,49 @@ export class CambiarContrasenaComponent {
 
   actualizarPassword(){
     this.getId()
-    if (this.contrasenaNueva == this.confirmarContrasenaNueva){
-      this.usuariosService.updatePassword(this.num_id, this.contrasenaNueva, this.contrasenaActual).subscribe(
-        ref=>{console.log(ref)}
-      )
-    }else{
+
+    if (this.contrasenaActual == '' || this.contrasenaNueva == '' || this.confirmarContrasenaNueva == '') {
       Swal.fire(
         {
           icon: 'error',
           title: 'Oops...',
-          text: 'Las contraseñas no son iguales',
+          text: 'Hay campos sin completar',
         }
       )
+
+
+    }else{
+
+      if (this.contrasenaNueva == this.confirmarContrasenaNueva){
+        this.usuariosService.updatePassword(this.num_id, this.contrasenaNueva, this.contrasenaActual).subscribe(
+          /*ref=>{console.log(ref)}*/
+
+          res =>{
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'La contraseña fue cambiada exitosamente',
+              showConfirmButton: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.dialogRef.close();
+              } 
+            });
+
+          },
+          err => console.error(err) 
+  
+          )}else{
+            Swal.fire(
+              {
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Las contraseñas no coinciden',
+              }
+            )
+          }
+      }
     }
-  }
 
   getId(){
     let tok:any = localStorage.getItem('token')
@@ -44,5 +74,4 @@ export class CambiarContrasenaComponent {
 
     this.num_id = decode.data[0].num_id;
   }
-
 }
