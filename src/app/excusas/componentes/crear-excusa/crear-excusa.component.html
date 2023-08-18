@@ -1,12 +1,32 @@
 
-<div class="container">
-    <form class="form-container">
 
-        <h2>Creación de excusas</h2>
+<div fxLayoutGap="1%" fxLayout="column">
+
+    <h2 class="titulo">Creación de Excusa</h2>
+  
+    <form fxLayout="column" class="form">
+
+        <mat-form-field>
+          <mat-label>Selecciona el horario</mat-label>
+          <mat-select [(ngModel)]="excusa.id_horario" name="id_horario">
+            <mat-option (click)="agregarHorario(horario.id_horario)" *ngFor="let horario of horarios[0]" [value]="horario.id_horario">
+             Fecha: {{horario.fecha | date: 'dd/MM/yyyy'}} - Ficha: {{horario.id_ficha}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Aprendiz</mat-label>
+            <mat-select [(ngModel)]="excusa.id_aprendiz" name="id_aprendiz">
+              <mat-option (click)="agregarAprendiz(aprendiz.num_id)" *ngFor="let aprendiz of aprendices" [value]="aprendiz.num_id">
+                Documento: {{aprendiz.num_id}} - {{aprendiz.first_name}} {{aprendiz.last_name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Motivo</mat-label>
-            <textarea matInput type="text" name="comments" [(ngModel)]="excusa.comments"></textarea> 
+            <textarea matInput type="text" name="comments" [(ngModel)]="excusa.comments" required></textarea> 
             <!--[(ngmodel)] cumple la función de actualizar el valor del atributo comments del componente excusa,
             de esta manera lo ingresado en el textarea por el usuario, actualizara el valor de lo 
             almacenado en el atributo-->
@@ -14,10 +34,10 @@
 
         <h3> Adjunte su evidencia </h3>
 
-        <input type="file" class="file-upload" [(ngModel)]="excusa.archivo" onchange="console.log(event.target.files)">
+        <input type="file" name="myFile" [(ngModel)]="excusa.ruta_archivo" (change)="getFile($event)">
          <!--[(ngmodel)] cumple la función de actualizar el valor del atributo archivo del componente excusa,
             de esta manera el documento subido por el usuario, actualizara lo almacenado en el atributo-->
-        <button (click)="guardarExcusa()" mat-raised-button class="botom" id="bton">Guardar</button>
+        <button (click)="sendFile()" mat-raised-button class="botom" id="bton" [disabled]="excusa.comments == ''">Guardar</button>
         <!--El evento click llama al método guardarExcusa() creado en el typescript de crear-excusa-->
     </form>
 </div>

@@ -12,9 +12,11 @@ import Swal from 'sweetalert2'
 export class EditarExcusasComponent implements OnInit  { // llamado de componente EditarExcusa implementando la interfaz OnInit
   excusa : excusa = { // definición de variable excusa que esta inicializada con un objeto que sigue la estructura de la interfaz excusa
     id_excusa:0,
-    id_asistencia:0,
+    id_horario:0, 
+    id_aprendiz:0,
+    estado:'',
     comments:'',
-    archivo:'',
+    ruta_archivo:''
 };
 constructor(private excusasService:ExcusasService, // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
   
@@ -28,6 +30,7 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
         this.excusasService.getExcusa(this.idExcusa)
           .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
             res=>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
+              this.excusa = res;
               console.log(res);
             },
             err => console.error(err) // de lo contrario saldrá un error
@@ -37,7 +40,11 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
 
   modificarExcusa(){ // Método que me modificará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-    if (this.excusa.comments == ''){
+    delete this.excusa.id_horario;
+    delete this.excusa.id_aprendiz;
+    delete this.excusa.ruta_archivo;
+
+    if (this.excusa.estado == '' || this.excusa.comments == ''){
       Swal.fire(
         {
           icon: 'error',
@@ -45,7 +52,6 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
           text: 'Hay campos sin completar',
         }
       )
-      this.excusa.comments=''
     }
     else{
       this.excusasService.updateexcusa(this.idExcusa,this.excusa)
@@ -55,9 +61,9 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'La excusa fue agregada exitosamente',
-              showConfirmButton: false,
-              timer: 1500
+              title: 'La excusa fue editada exitosamente',
+              showConfirmButton: true,
+          
             })
             console.log(res);
           },

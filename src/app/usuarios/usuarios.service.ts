@@ -29,9 +29,8 @@ export class UsuariosService {
   searchUsuario(id:String){
     return this.http.get(`${this.API_URI}/filtros/searchUser${id}`,);
   }
-
-  updatePassword(id:number, password:string):Observable<any>{
-    const data = { password: password };
+  updatePassword(id:number, newPassword:string, actualPassword:string):Observable<any>{
+    const data = { newPassword: newPassword, actualPassword: actualPassword };
     return this.http.put(`${this.API_URI}/usuarios/${id}/password`, data);
   }
 }

@@ -1,41 +1,48 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-  }
-  
-  .form-container mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .form-container mat-form-field:last-of-type {
-    margin-bottom: 30px;
-  }
-  
-  .form-container button {
-    margin-top: 20px;
-  }
+.form{
+  margin: 6% 1% 0 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
 
-  #bton{
-    background-color: yellowgreen;
-  }
-  
-  
+.boton-centrado{
+  width: 15%;
+  margin: 5% auto 0px;
+}
+
+.titulo{
+  margin-top: 5%;
+}
+
+.form mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form mat-form-field:last-of-type {
+  margin-bottom: 30px;
+}
+
+.form button {
+  margin-top: 20px;
+}
+
+#bton{
+  background-color: yellowgreen;
+}
+
+
+
+
+
