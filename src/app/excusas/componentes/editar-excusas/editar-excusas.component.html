@@ -1,21 +1,27 @@
 
-<div class="container">
-    <form class="form-container">
+<div fxLayoutGap="1%" fxLayout="column">
 
-        <h2>Editar excusas</h2>
+    <h2 class="titulo">Editar Excusa</h2>
+  
+    <form fxLayout="column" class="form">
+
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="excusa.estado" name="estado">
+              <mat-option value="Pendiente">Pendiente</mat-option>
+              <mat-option value="Revisado">Revisado</mat-option>
+              <mat-option value="Rechazado">Rechazado</mat-option>
+            </mat-select>
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Motivo</mat-label>
-            <textarea matInput type="text" name="comments" [(ngModel)]="excusa.comments"></textarea>
+            <textarea matInput type="text" name="comments" [(ngModel)]="excusa.comments" ></textarea>
             <!--[(ngmodel)] cumple la función de actualizar el valor del atributo comments del componente excusa,
             de esta manera lo ingresado en el textarea por el usuario, actualizara el valor de lo 
             almacenado en el atributo-->
         </mat-form-field>
 
-        <input type="file" class="file-upload" [(ngModel)]="excusa.archivo" onchange="console.log(event.target.files)">
-        <!--[(ngmodel)] cumple la función de actualizar el valor del atributo archivo del componente excusa,
-            de esta manera el documento subido por el usuario, actualizara lo almacenado en el atributo-->
-        <button (click)="modificarExcusa()" mat-raised-button class="botom" id="bton">Modificar</button>
-        <!--El evento click llama al método modificarExcusa() creado en el typescript de crear-excusa-->
+        <button (click)="modificarExcusa()" mat-raised-button class="botom" id="bton">Editar</button>
     </form>
 </div>
