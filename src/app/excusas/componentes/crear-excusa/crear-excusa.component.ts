@@ -3,9 +3,8 @@ import { excusa } from '../../excusas'; /*importación del modelo excusas trayen
 import { ExcusasService } from '../../excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
 import Swal from 'sweetalert2'
 import { RolesService } from 'src/app/roles/roles.service';
-import { AsistenciasService } from 'src/app/asistencias/asistencias.service';
 import { UsuariosService } from 'src/app/usuarios/usuarios.service';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { HorariosService } from 'src/app/horarios/horarios.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 
@@ -17,79 +16,57 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class CrearExcusaComponent implements OnInit { // llamado de componente CrearExcusa implementando la interfaz OnInit
   excusa : excusa = { // definición de variable excusa que esta inicializada con un objeto que sigue la estructura de la interfaz excusa
     id_excusa:0,
-    id_asistencia:0, 
-    id_instructor:0,
-    fecha:'',
-    estado:'',
+    id_horario:0, 
+    id_aprendiz:0,
     comments:'',
-    archivo:'',
+    ruta_archivo: ''
     
   };
 
-  instructores:any = [];
-  instructoresIdRol:any= [];
-  instructoresId:any[]= [];
-  asistencias:any = [];
+  aprendices:any[] = [];
+  horarios:any[] =[];
 
-  AsistenciaInstructor = {
-    id_instructor: 0
-  };
+  private fileTmp:any;
 
-
-  selectedDates: Array<Date | null> = [];
-
-constructor(private excusasService:ExcusasService, private rolesService:RolesService, private asistenciasService:AsistenciasService,
-  private usuariosService:UsuariosService,public dialogRef: MatDialogRef<CrearExcusaComponent>){ // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
+constructor(private excusasService:ExcusasService, private rolesService:RolesService, private horariosService:HorariosService,
+  public dialogRef: MatDialogRef<CrearExcusaComponent>){ // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
 }
 
   ngOnInit(): void{ 
-    this.getAsistencias();// Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
-    this.getIdUsuario();
+    this.getAprendices();// Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
+    this.getHorarios();
   }
 
-  agregarInstructor(instructor:any){
-    this.AsistenciaInstructor.id_instructor = instructor.num_id;
-    this.excusa.id_instructor = instructor.num_id;
+  agregarAprendiz(id:any){
+    this.excusa.id_aprendiz = id;
+  } 
+
+  agregarHorario(id:any){
+    this.excusa.id_horario = id;
   }
 
-
-  getAsistencias(){
-    this.asistenciasService.getAsistencias().subscribe(
+  getHorarios(){
+    this.horariosService.getHorarios().subscribe(
       res => {
         console.log( res );
         let aux:any = res;
-        this.asistencias.push(aux[0]);
+        this.horarios.push(aux[0]);
       }
     )
   }
 
-  getIdUsuario(){
-    this.rolesService.searchInstructores().subscribe(
-      (instructores) => {
-        this.instructoresIdRol = instructores;
-        this.getUsuario();
+  getAprendices(){
+    this.rolesService.getAprendices().subscribe(
+      res => {
+        
+        let aux:any = res;
+        this.aprendices = aux;
       }
-    );
+    )
   }
 
-  getUsuario(){
-    for(let i = 0; i < this.instructoresIdRol.length; i++){
-      this.instructoresId.push(this.instructoresIdRol[i].id_usuario)
-    }
-    this.getInstructor();
-  }
-  getInstructor(){
-    for(let i = 0; i < this.instructoresId.length; i++){
-      this.usuariosService.getUsuario(this.instructoresId[i]).subscribe(
-        (data)=>{
-          this.instructores.push(data);
-        }
-      )
-    }
-    
-  }
 
-  guardarExcusa(){ // Método que me guardará la excusa 
+  guardarExcusa(ruta:string){ // Método que me guardará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
     if (this.excusa.comments == ''){
       Swal.fire(
@@ -102,9 +79,8 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
       
    
     }
-    else{
-      for(let i = 0; i < this.selectedDates.length; i++){
-        this.excusa.fecha = this.normalizarDate(this.selectedDates[i]);
+    else{this.excusa.ruta_archivo = ruta;
+
         this.excusasService.saveexcusa(this.excusa) // el Método saveexcusa del servicio excusasService se llama pasandole como argumento el objeto this.excusa
         .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
         // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
@@ -113,7 +89,7 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
               position: 'center',
               icon: 'success',
               title: 'La excusa fue agregada exitosamente',
-              showConfirmButton: false,
+              showConfirmButton: true,
               timer: 1500
             }).then((result) => {
               if (result.isConfirmed) {
@@ -125,27 +101,37 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
         )
       }
     }
-  }
 
-  normalizarDate(date:Date|null){
-    if(date == null){
-      return '';
-    }
-      let day = date.getDate()
-      let month = date.getMonth() + 1
-      let year = date.getFullYear()
-      if(month < 10){
-        return(`${year}-0${month}-${day}`)
-      }else{
-        return(`${year}-${month}-${day}`)
+    getFile($event:any): void {
+      const [file] = $event.target.files;
+      this.fileTmp={
+        fileRaw:file,
+        fileName:file.name
       }
     }
 
-  addEvent(event: MatDatepickerInputEvent<Date>): void {
-    this.selectedDates.push(event.value);
+    sendFile():void{
+      const body = new FormData();
+      if(!this.fileTmp){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No olvides subir el archivo',
+          showConfirmButton: true,
+          timer: 1500
+        }) 
+        return;
+      }
+      body.append('myFile', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      this.excusasService.sendPost(body).subscribe(
+        res =>{
+          console.log(res)
+          if(res.length > 0){
+            this.guardarExcusa(res);
+          }
+        }  
+      )
+    }
   }
 
-  agregarAsistencia(id:any){
-    this.excusa.id_asistencia= id;
-  } 
-}
+

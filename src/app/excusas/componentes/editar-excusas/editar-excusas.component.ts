@@ -12,12 +12,11 @@ import Swal from 'sweetalert2'
 export class EditarExcusasComponent implements OnInit  { // llamado de componente EditarExcusa implementando la interfaz OnInit
   excusa : excusa = { // definición de variable excusa que esta inicializada con un objeto que sigue la estructura de la interfaz excusa
     id_excusa:0,
-    id_asistencia:0, 
-    id_instructor:0,
-    fecha:'',
+    id_horario:0, 
+    id_aprendiz:0,
     estado:'',
     comments:'',
-    archivo:'',
+    ruta_archivo:''
 };
 constructor(private excusasService:ExcusasService, // creación de constructor invocando el servicio de ExcusasService que me trae información del backend
   
@@ -41,10 +40,9 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
 
   modificarExcusa(){ // Método que me modificará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
-    delete this.excusa.id_asistencia;
-    delete this.excusa.id_instructor;
-    delete this.excusa.fecha;
-    delete this.excusa.archivo;
+    delete this.excusa.id_horario;
+    delete this.excusa.id_aprendiz;
+    delete this.excusa.ruta_archivo;
 
     if (this.excusa.estado == '' || this.excusa.comments == ''){
       Swal.fire(

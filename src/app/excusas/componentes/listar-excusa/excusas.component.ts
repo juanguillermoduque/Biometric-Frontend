@@ -14,11 +14,12 @@ import { debounceTime } from 'rxjs';
 })
 
 export class ExcusasComponent implements OnInit{ // llamado de componente Excusas implementando la interfaz OnInit
-  displayedColumns: string[] = ['Asistencia', 'Fecha', 'Instructor/a', 'Estado', 'comentarios', 'archivo', 'Acciones']; // Arreglo de columnas para mostrar en una tabla
+  displayedColumns: string[] = ['Horario', 'Fecha', 'Aprendiz', 'Estado', 'Comentarios', 'Archivo', 'Acciones']; // Arreglo de columnas para mostrar en una tabla
   excusas:any = []; // variable excusa que es un arreglo de 6 valores vacíos todos de tipo string
   dataSource = this.excusas; // se utiliza como fuente de datos para la tabla
   control = new FormControl();
 
+  
   constructor(
     private excusaService: ExcusasService, // definición de ExcusasService que tiene la conexión con el back
     public dialog: MatDialog, // MatDialog proporciona una ventana emergente en la cual se puede ingresar información sin la necesidad de cambiar de ruta
@@ -43,7 +44,7 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
 
   crearExcusa(){ // Método crearExcusa que me muestra una ventana emergente con el componente CrearExcusa
     this.dialog.open(CrearExcusaComponent, {
-      height: '800px',
+      height: '630px',
       width: '600px',
       panelClass: 'custom-dialog-create-update',
     }).afterClosed().subscribe(
@@ -69,7 +70,7 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
   searchExcusa(){
 
     this.control.valueChanges.pipe(
-      debounceTime(500)
+     
     ).subscribe(query => {
   
       this.findExcusas(query)
@@ -88,5 +89,23 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     },
     err=>{console.log(err)}
   )
-}}
+}
+downloadPdf(fileName:string) {
+  const fileId ={'filename' : fileName} ; // Reemplaza con el ID del archivo que deseas descargar
+  this.excusaService.downloadPDF(fileId.filename).subscribe((response) => {
+    console.log(response)
+    const blob = new Blob([response], { type: 'application/pdf' });
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'Excusa Aprendiz';
+    a.click();
+    window.URL.revokeObjectURL(downloadUrl);
+  },
+  (error) => {
+    console.error('Error al descargar el archivo:', error);
+  });
+}
+
+}
 
