@@ -41,7 +41,6 @@ constructor(private fichasService:FichasService,
     .subscribe(
       res=>{
         this.ficha = res;
-        console.log(this.ficha);
       },
       err => console.error(err)
     ) 

@@ -65,7 +65,7 @@ export class RolesComponent {
       (res:any)=>{
 
         let aux = res;
-        console.log(res)
+
         this.roles = aux;
         this.table.renderRows();
 

@@ -30,7 +30,6 @@ getProgramas(){
   this.programaService. getProgramas().subscribe(
     res =>{
       this.programas = res;
-      console.log(this.programas);
     },
     err => console.error(err)
   )

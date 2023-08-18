@@ -42,7 +42,7 @@ constructor(private usuariosService:UsuariosService,
     this.rolService.getRoles().subscribe(
     (res)=>{
       this.roles = res;
-      console.log(this.roles);
+
     }
     )
   }
@@ -92,7 +92,7 @@ constructor(private usuariosService:UsuariosService,
   agregarRol(rol:any){
       this.rolSeleccionado.nombre_rol = rol.nombre_rol;
       this.rolSeleccionado.id_rol = rol.id_rol;
-      console.log(this.rolSeleccionado);
+
       
   }
 
@@ -101,11 +101,11 @@ constructor(private usuariosService:UsuariosService,
       id_usuario:this.usuario.num_id,
       id_rol:this.rolSeleccionado.id_rol
     };
-    console.log(ids);
+
 
     this.rolService.saveUsuarioRol(ids).subscribe(
       (res)=>{
-        console.log(res);
+
       },(err)=>{
         console.error(err);
       }

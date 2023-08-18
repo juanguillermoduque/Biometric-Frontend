@@ -50,7 +50,6 @@ export class NavegacionComponent implements OnInit {
         (res:any)=>{
           let aux:any = res;
           this.componentes.push(aux[0])
-          console.log(this.componentes)
         }
       )
     }

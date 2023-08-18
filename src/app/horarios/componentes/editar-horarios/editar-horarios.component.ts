@@ -55,7 +55,6 @@ export class EditarHorariosComponent{
   }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.getHorario();
     this.getInstructor();
     this.getFichas();
@@ -65,7 +64,6 @@ export class EditarHorariosComponent{
    this.horarioService.getHorario(this.data).subscribe(
     (data)=>{
       this.horario = data;
-      console.log(this.horario)
     }
    )
   }
@@ -119,7 +117,6 @@ export class EditarHorariosComponent{
       if(this.horario.fecha !== undefined){
         let date = new Date(this.horario.fecha)
         this.horario.fecha = this.normalizarDate(date)
-        console.log(this.horario.fecha)
       }
       
       
@@ -136,7 +133,6 @@ export class EditarHorariosComponent{
               this.dialogRef.close();
             } 
           });
-          console.log(res);
         },
         err => console.error(err)
       )

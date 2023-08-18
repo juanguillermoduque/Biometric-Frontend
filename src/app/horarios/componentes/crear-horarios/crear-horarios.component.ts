@@ -67,7 +67,7 @@ export class CrearHorariosComponent implements OnInit{
         this.horarioService.saveHorario(this.horario).subscribe(
           res => {
             this.rolesService.createFichaInstructor(this.fichaInstructor).subscribe(
-              data => console.log(data)
+              
             )
           },
           err => console.error(err)

@@ -33,7 +33,6 @@ getHorarios(){
   this.horarioService.getHorarios().subscribe(
     res =>{
       this.horarios = res;
-      console.log(this.horarios);
     },
     err=>console.error(err)
   )
@@ -80,7 +79,6 @@ findHorarios(query:string){
   
     this.horarioService.search(query).subscribe(
     res=>{
-      console.log("Busqueda realizada",res);
       this.horarios = res;
     },
     err=>{console.log(err)}

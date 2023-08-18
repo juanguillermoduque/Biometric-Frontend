@@ -47,7 +47,6 @@ export class MainPageComponent {
       (data:any)=>{
         let aux:rol = data;
         this.usuario_rol = aux.nombre_rol;
-        console.log(data)
       }
     )
   }
