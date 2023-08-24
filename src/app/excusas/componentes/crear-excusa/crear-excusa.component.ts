@@ -105,6 +105,18 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
 
     getFile($event:any): void {
       const [file] = $event.target.files;
+      console.log(file)
+      if(file.type != 'application/pdf'){
+          Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Solo se permite pdf',
+          showConfirmButton: true,
+          timer: 1500
+        }) 
+
+        return;
+      }
       this.fileTmp={
         fileRaw:file,
         fileName:file.name
