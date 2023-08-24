@@ -23,6 +23,9 @@ export class ExcusasService {
   getExcusas(){
     return this.http.get(`${this.API_URI}/excusas/`);
   }
+  getExcusasAprendiz(id:number){
+    return this.http.get(`${this.API_URI}/excusas/aprendiz${id}`);
+  }
   getExcusa(id:number){
     return this.http.get(`${this.API_URI}/excusas/${id}`);
   }

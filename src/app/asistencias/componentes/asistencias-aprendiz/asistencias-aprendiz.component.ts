@@ -19,23 +19,20 @@ export class AsistenciasAprendizComponent {
 
   ngOnInit(){
     this.getAsistencias();
-
+  }
+  
+  getIdUsuario(){
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    return decode.data[0].num_id;
   }
 
+
   getAsistencias(){
-    this.asistenciaService.getAsistencias().subscribe(
+    this.asistenciaService.getAsistenciasAprendiz(this.getIdUsuario()).subscribe(
       (res:any) =>{
-        let tok:any = localStorage.getItem('token')
-        let decode:any = jwtDecode(tok);
-        let listaAux = []
-        let idUser = decode.data[0].num_id;
-        for(let i = 0; i < res[0].length;i++){
-          if(res[0][i].id_aprendiz == idUser){
-            listaAux.push(res[0][i])
-            
-          }
-        }
-        this.asistencias = listaAux;
+        console.log(res)
+        this.asistencias = res;
       },
       err=>console.error(err)
     )

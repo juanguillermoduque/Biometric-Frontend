@@ -26,15 +26,19 @@ export class NavegacionComponent implements OnInit {
     ["Horarios" ,"../../../../assets/img/svg/logos-navegacion/horario.svg"],
     ["Usuarios" , "../../../../assets/img/svg/logos-navegacion/usuarios.svg"],
     ["Excusas" , "../../../../assets/img/svg/logos-navegacion/excusa.svg"],
-    ["Roles" , "../../../../assets/img/svg/logos-navegacion/roles.svg"],
     ["Ver Perfil" , "../../../../assets/img/svg/logos-navegacion/perfil.svg"],
     ["Asistencias Aprendiz" , "../../../../assets/img/svg/logos-navegacion/asistencia.svg"],
+    ["Asistencias Instructor" , "../../../../assets/img/svg/logos-navegacion/asistencia.svg"],
+    ["Fichas Instructor" , "../../../../assets/img/svg/logos-navegacion/ficha.svg"],
+    ["Excusas Instructor" , "../../../../assets/img/svg/logos-navegacion/excusa.svg"],
+    ["Excusas Aprendiz" , "../../../../assets/img/svg/logos-navegacion/excusa.svg"],
   ]);
 
   constructor(private rolServise:RolesService){}
 
   ngOnInit(): void {
     this.getIdUsuario();
+    
   }
 
   getComponentes(componentes_roles:any){
@@ -50,6 +54,7 @@ export class NavegacionComponent implements OnInit {
         (res:any)=>{
           let aux:any = res;
           this.componentes.push(aux[0])
+          
         }
       )
     }
@@ -79,8 +84,8 @@ export class NavegacionComponent implements OnInit {
     let decode:any = jwtDecode(tok);
     this.idUsuario = decode.data[0].num_id;
     this.getRol(this.idUsuario)
-  
   }
+  
   seleccionarComponente(idComponente:Number){
     this.componenteSeleccionado = idComponente;
     this.seEscogioComponente.emit(this.componenteSeleccionado);

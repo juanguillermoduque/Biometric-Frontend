@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core'; /*importación del componente OnInit*/
-import { excusa } from '../../excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
-import { ExcusasService } from '../../excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
+import { excusa } from '../../../excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
+import { ExcusasService } from '../../../excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // importación MatDialog
 import Swal from 'sweetalert2'
 

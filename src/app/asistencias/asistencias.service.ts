@@ -22,6 +22,12 @@ export class AsistenciasService {
   getAsistencias(){
     return this.http.get(`${this.API_URI}/asistencias/`);
   }
+  getAsistenciasAprendiz(id:number){
+    return this.http.get(`${this.API_URI}/asistencias/aprendiz${id}`);
+  }
+  getAsistenciasInstructor(id:number){
+    return this.http.get(`${this.API_URI}/asistencias/instructor${id}`);
+  }
   getAsistencia(id:number){
     return this.http.get(`${this.API_URI}/asistencias/${id}`);
   }
