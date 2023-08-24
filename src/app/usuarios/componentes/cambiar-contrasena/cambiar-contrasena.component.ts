@@ -39,7 +39,6 @@ export class CambiarContrasenaComponent {
 
       if (this.contrasenaNueva == this.confirmarContrasenaNueva){
         this.usuariosService.updatePassword(this.num_id, this.contrasenaNueva, this.contrasenaActual).subscribe(
-          /*ref=>{console.log(ref)}*/
 
           res =>{
             Swal.fire({

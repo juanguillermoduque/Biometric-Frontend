@@ -1,4 +1,6 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirmacion',
@@ -6,7 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./confirmacion.component.css']
 })
 export class ConfirmacionComponent {
+  constructor(public dialog: MatDialog){
+    
+  }
+
   goLogin(){
-    location.reload() 
+    this.dialog.closeAll();
   }
 }
