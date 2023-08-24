@@ -70,7 +70,6 @@ import { ExcusasModule } from './excusas/excusas.module';
 import { FichasModule } from './fichas/fichas.module';
 import { HorariosModule } from './horarios/horarios.module';
 import { NavegacionModule } from './navegacion/navegacion.module';
-import { RolesModule } from './roles/roles.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { ProgramasModule } from './programas/programas.module';
 
@@ -93,7 +92,6 @@ const appRoutes:Routes=[
     FichasModule,
     HorariosModule,
     NavegacionModule,
-    RolesModule,
     UsuariosModule,
     ProgramasModule,
 

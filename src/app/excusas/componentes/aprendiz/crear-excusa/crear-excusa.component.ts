@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core'; /*importación del componente OnInit*/
-import { excusa } from '../../excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
-import { ExcusasService } from '../../excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
+import { excusa } from '../../../excusas'; /*importación del modelo excusas trayendo la interfaz excusa*/
+import { ExcusasService } from '../../../excusas.service'; /* importación del servicio ExcusasService que hace una conexión con el backend*/
 import Swal from 'sweetalert2'
 import { RolesService } from 'src/app/roles/roles.service';
 import { UsuariosService } from 'src/app/usuarios/usuarios.service';
 import { HorariosService } from 'src/app/horarios/horarios.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import jwtDecode from 'jwt-decode';
 
 
 @Component({ /* es un decorador que se utiliza para configurar las propiedades del componente "crear-excusa"*/
@@ -23,7 +24,6 @@ export class CrearExcusaComponent implements OnInit { // llamado de componente C
     
   };
 
-  aprendices:any[] = [];
   horarios:any[] =[];
 
   private fileTmp:any;
@@ -33,13 +33,8 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
 }
 
   ngOnInit(): void{ 
-    this.getAprendices();// Este método se utiliza para realizar tareas de inicialización en el componente, como la obtención de datos iniciales o la configuración de alguna variable
     this.getHorarios();
   }
-
-  agregarAprendiz(id:any){
-    this.excusa.id_aprendiz = id;
-  } 
 
   agregarHorario(id:any){
     this.excusa.id_horario = id;
@@ -55,16 +50,11 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
     )
   }
 
-  getAprendices(){
-    this.rolesService.getAprendices().subscribe(
-      res => {
-        
-        let aux:any = res;
-        this.aprendices = aux;
-      }
-    )
+  getIdUsuario(){
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    this.excusa.id_aprendiz = decode.data[0].num_id;
   }
-
 
   guardarExcusa(ruta:string){ // Método que me guardará la excusa 
     delete this.excusa.id_excusa; // al usar el método excusa el valor de id_excusa se eliminará
@@ -76,10 +66,10 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
           text: 'Hay campos sin completar',
         }
       )
-      
-   
     }
-    else{this.excusa.ruta_archivo = ruta;
+    else{
+      this.excusa.ruta_archivo = ruta;
+      this.getIdUsuario();
 
         this.excusasService.saveexcusa(this.excusa) // el Método saveexcusa del servicio excusasService se llama pasandole como argumento el objeto this.excusa
         .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio

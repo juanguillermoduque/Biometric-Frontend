@@ -1,0 +1,45 @@
+<div  fxLayout="column" fxLayoutGap="5%">
+    <h2 class="titulo">Listar Excusas</h2>
+  
+    <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
+      <button  matTooltip="Crear Excusa" fxFlex="6%" class="boton" mat-fab  (click)="crearExcusa()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+    </div>
+  
+    <table class="margin-table" mat-table [dataSource]="excusas[0]"> <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
+  
+      <ng-container matColumnDef="Fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let excusa">{{excusa.fecha | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Aprendiz">
+        <th mat-header-cell *matHeaderCellDef> Aprendiz </th>
+        <td mat-cell *matCellDef="let excusa"> {{excusa.id_aprendiz}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let excusa"> {{excusa.estado}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Comentarios">
+        <th mat-header-cell *matHeaderCellDef> Comentarios </th>
+        <td mat-cell *matCellDef="let excusa"> {{excusa.comments}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Archivo">
+        <th mat-header-cell *matHeaderCellDef> Archivo </th>
+        <td mat-cell *matCellDef="let excusa"> 
+          <button matTooltip="descargar PDF" class="boton" mat-mini-fab (click)="downloadPdf(excusa.ruta_archivo)">
+            <mat-icon>picture_as_pdf</mat-icon>
+          </button> </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

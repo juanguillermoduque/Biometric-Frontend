@@ -59,7 +59,6 @@ import { AsistenciasModule } from '../asistencias/asistencias.module';
 import { ExcusasModule } from '../excusas/excusas.module';
 import { FichasModule } from '../fichas/fichas.module';
 import { HorariosModule } from '../horarios/horarios.module';
-import { RolesModule } from '../roles/roles.module';
 import { UsuariosModule } from '../usuarios/usuarios.module';
 
 
@@ -77,7 +76,6 @@ import { UsuariosModule } from '../usuarios/usuarios.module';
     FichasModule,
     ExcusasModule,
     AsistenciasModule,
-    RolesModule,
     UsuariosModule,
 
     CommonModule,

@@ -18,20 +18,9 @@ export class MainPageComponent {
   activarComponenteById:Number = 0;
   usuario_rol:string ="";
 
-  mediaMatcherWidth: MediaQueryList = matchMedia(`(max-width:1000px)`);
-  mediaMatcherHeight: MediaQueryList = matchMedia(`(max-height:900px)`);
-
-
   constructor(private router:Router, private dialog: MatDialog,
-     private rolService:RolesService,
-     zone:NgZone)
-  {
-    this.mediaMatcherWidth.addListener(mql =>
-      zone.run(() => this.mediaMatcherWidth = matchMedia(`(max-width: 1000px)`)));
-
-    this.mediaMatcherHeight.addListener(mql =>
-      zone.run(() => this.mediaMatcherHeight = matchMedia(`(max-height: 900px)`)));
-  }
+     private rolService:RolesService)
+  {}
 
   ngOnInit(): void {
     this.getRol();
@@ -77,14 +66,5 @@ export class MainPageComponent {
       width:'600px',
       height: '475px',
     });
-  }
-
-  EsPantallaGrande(){
-    if(this.mediaMatcherWidth.matches || this.mediaMatcherHeight.matches){
-      return false;
-    }
-    else{
-      return true;
-    }
   }
 }

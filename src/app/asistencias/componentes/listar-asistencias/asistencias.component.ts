@@ -8,6 +8,7 @@ import { EditarAsistenciasComponent } from '../editar-asistencias/editar-asisten
 import { ficha } from '../../../fichas/fichas';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExportService } from 'src/app/utils/export/export.service';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-asistencias',
@@ -28,9 +29,16 @@ export class AsistenciasComponent {
     this.searchAsistencia();
   }
 
+  getIdUsuario(){
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    return decode.data[0].num_id;
+  }
+
   getAsistencias(){
-    this.asistenciaService.getAsistencias().subscribe(
+    this.asistenciaService.getAsistenciasInstructor(this.getIdUsuario()).subscribe(
       res =>{
+        console.log(res)
         this.asistencias = res;
       },
       err=>console.error(err)

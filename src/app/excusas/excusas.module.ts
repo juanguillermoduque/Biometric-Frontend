@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CrearExcusaComponent } from './componentes/crear-excusa/crear-excusa.component';
-import { EditarExcusasComponent } from './componentes/editar-excusas/editar-excusas.component';
-import { ExcusasComponent } from './componentes/listar-excusa/excusas.component';
+import { CrearExcusaComponent } from './componentes/aprendiz/crear-excusa/crear-excusa.component';
+import { EditarExcusasComponent } from './componentes/instructor/editar-excusas/editar-excusas.component';
+import { ExcusasComponent } from './componentes/instructor/listar-excusa/excusas.component';
 
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -53,17 +53,20 @@ import { FormsModule } from '@angular/forms'; // importar FormsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ListarExcusaComponent } from './componentes/aprendiz/listar-excusa/listar-excusa.component';
 
 @NgModule({
   declarations: [
     CrearExcusaComponent,
     EditarExcusasComponent,
-    ExcusasComponent
+    ExcusasComponent,
+    ListarExcusaComponent
   ],
   exports:[
     CrearExcusaComponent,
     EditarExcusasComponent,
-    ExcusasComponent
+    ExcusasComponent,
+    ListarExcusaComponent
   ],
 
   imports: [
