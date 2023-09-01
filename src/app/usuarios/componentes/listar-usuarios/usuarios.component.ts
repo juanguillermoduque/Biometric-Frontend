@@ -41,7 +41,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
 
   ngOnInit(){
     this.getUsuario();
-    this.searchUser();
+    this.searchUser(); 
   }
 
   ExportarUsuarios(){

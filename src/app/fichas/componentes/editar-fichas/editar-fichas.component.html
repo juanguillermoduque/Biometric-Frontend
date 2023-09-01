@@ -28,6 +28,11 @@
   </mat-form-field>
 
   </form>
-  <button class="boton boton-centrado" (click)="modificarFicha()" mat-raised-button>Guardar</button>
+  <div fxLayoutGap="5%" fxLayout="row">
+    <button fxFlex="20%" mat-raised-button class="boton" (click)="modificarFicha()" mat-raised-button>Editar</button>
+    <button fxFlex="20%" mat-raised-button class="boton"  (click)="vincularAprendices()">Aprendices</button>
+    <button fxFlex="20%" mat-raised-button class="boton" (click)="vincularInstructores()">Instructores</button>
+  </div>
+
 </div>
 

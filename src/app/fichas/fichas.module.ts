@@ -54,20 +54,30 @@ import { EditarFichasComponent } from './componentes/editar-fichas/editar-fichas
 import { FichasComponent } from './componentes/listar-fichas/fichas.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FichasInstructorComponent } from './componentes/fichas-instructor/fichas-instructor.component';
+import { VincularAprendizComponent } from './componentes/vincular-aprendiz/vincular-aprendiz.component';
+import { VincularInstructorComponent } from './componentes/vincular-instructor/vincular-instructor.component';
+import { ListarAprendicesComponent } from './componentes/listar-aprendices/listar-aprendices.component';
+import { ListarInstructoresComponent } from './componentes/listar-instructores/listar-instructores.component';
 
 @NgModule({
   declarations: [
     AgregarFichasComponent,
     EditarFichasComponent,
     FichasComponent,
-    FichasInstructorComponent
+    FichasInstructorComponent,
+    VincularAprendizComponent,
+    VincularInstructorComponent,
+    ListarAprendicesComponent,
+    ListarInstructoresComponent,
   ],
 
   exports:[
     AgregarFichasComponent,
     EditarFichasComponent,
     FichasComponent,
-    FichasInstructorComponent
+    FichasInstructorComponent,
+    VincularAprendizComponent,
+    VincularInstructorComponent
   ],
 
   imports: [

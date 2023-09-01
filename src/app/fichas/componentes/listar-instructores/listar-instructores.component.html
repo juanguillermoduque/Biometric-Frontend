@@ -1,0 +1,47 @@
+<div fxLayout="column" fxLayoutGap="5%">
+    <h2 class="titulo">Vincular Instructor</h2>
+  
+    <div class="primera-linea" fxLayoutGap="30%" fxLayout="row">
+      <div fxLayoutGap="10%" fxFlex="30%">
+        <button  (click)="vincular()" matTooltip="Vincular Instructor"  class="boton" mat-fab >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+  
+      <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%" >
+        <mat-form-field  matTooltip="Buscar Usuario">
+          <input matInput placeholder="Buscar" [formControl]="control">
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <table #table class="margin-table"  mat-table [dataSource]="instructores">
+      <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
+      <ng-container matColumnDef="NombreUsuario">
+        <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>
+        <td mat-cell *matCellDef="let usuario">{{usuario.first_name | titlecase}} {{usuario.last_name | titlecase}}</td>
+      </ng-container>
+      <ng-container matColumnDef="NumeroDocumento">
+        <th mat-header-cell *matHeaderCellDef>Numero de Documento</th>
+        <td mat-cell *matCellDef="let usuario">{{usuario.num_id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="CorreoElectronico">
+        <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
+        <td mat-cell *matCellDef="let usuario">{{usuario.email}}</td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let usuario"  >
+            <div fxLayout="row">
+                <button  matTooltip="vincular usuario" (click)="desvincular(usuario.num_id)"  class="boton" mat-mini-fab >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
