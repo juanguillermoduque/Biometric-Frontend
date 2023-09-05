@@ -6,6 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { RolesService } from '../../../roles/roles.service';
 import { PerfilComponent } from '../../../usuarios/componentes/perfil/perfil.component';
 import {rol} from 'src/app/roles/roles'
+import { AuthService } from "src/app/auth/auth.service";
+import { ImageUploadService } from "../services/image-upload.service";
+import { User } from "@angular/fire/auth";
+import { concatMap } from "rxjs";
 
 @Component({
   selector: 'app-main-page',
@@ -18,11 +22,18 @@ export class MainPageComponent {
   activarComponenteById:Number = 0;
   usuario_rol:string ="";
 
+  tok:any = localStorage.getItem('token')
+  decode:any = jwtDecode(this.tok);
+  user$ = this.decode.data[0];
+
   constructor(private router:Router, private dialog: MatDialog,
-     private rolService:RolesService)
+     private rolService:RolesService, private authService:AuthService, 
+     private imageUploadService: ImageUploadService//, private toast: HotToastService)
+  )
   {}
 
   ngOnInit(): void {
+    console.log(this.user$);
     this.getRol();
   }
 
@@ -67,4 +78,24 @@ export class MainPageComponent {
       height: '475px',
     });
   }
+
+  //INICIO
+
+  /*
+  uploadImage(event: any, user: User) {
+    this.imageUploadService
+      .uploadImage(event.target.files[0], `images/profile/${user.uid}`)
+      .pipe(
+        this.toast.observe({
+          loading: 'Uploading profile image...',
+          success: 'Image uploaded successfully',
+          error: 'There was an error in uploading the image',
+        }),
+        concatMap((photoURL) => this.authService.updateProfileData({ photoURL }))
+      ).subscribe();
+  }*/
+
+  //FINAL
+
+
 }
