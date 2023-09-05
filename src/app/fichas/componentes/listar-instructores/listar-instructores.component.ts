@@ -39,7 +39,6 @@ export class ListarInstructoresComponent {
   getInstructores(){
     this.fichasService.getFichaInstructor(this.data).subscribe(
       (res)=>{
-        console.log(res)
         this.instructores = res
       }
     )
@@ -88,7 +87,6 @@ export class ListarInstructoresComponent {
     }
     this.fichasService.desvincularInstructor(vinculacion).subscribe(
       (res:any)=>{
-        console.log(res)
         if(res.status){
           Swal.fire({
             position: 'center',

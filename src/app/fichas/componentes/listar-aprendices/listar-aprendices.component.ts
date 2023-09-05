@@ -39,7 +39,6 @@ export class ListarAprendicesComponent {
   getAprendices(){
     this.fichasService.getFichaAprendiz(this.data).subscribe(
       (res)=>{
-        console.log(res)
         this.aprendices = res
       }
     )
@@ -95,7 +94,6 @@ export class ListarAprendicesComponent {
     }
     this.fichasService.desvincularAprendiz(vinculacion).subscribe(
       (res:any)=>{
-        console.log(res)
         if(res.status){
           Swal.fire({
             position: 'center',

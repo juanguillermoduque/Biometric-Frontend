@@ -25,7 +25,6 @@ export class FichasInstructorComponent implements OnInit {
     ){}
   ngOnInit(){ 
     this.getFichas();
-    //this.searchFicha();
   }
 
   getIdUsuario(){
@@ -37,7 +36,6 @@ export class FichasInstructorComponent implements OnInit {
   getFichas(){
     this.fichaService.getFichasInstructor(this.getIdUsuario()).subscribe(
       res =>{
-        console.log(res);
         this.fichas = res;
         
       },

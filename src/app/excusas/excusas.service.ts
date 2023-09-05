@@ -20,15 +20,18 @@ export class ExcusasService {
     return this._refresh$;
   }
 
-  getExcusas(){
-    return this.http.get(`${this.API_URI}/excusas/`);
+  getExcusas(idInstructor:number){
+    return this.http.get(`${this.API_URI}/excusas/${idInstructor}`);
   }
+
   getExcusasAprendiz(id:number){
-    return this.http.get(`${this.API_URI}/excusas/aprendiz${id}`);
+    return this.http.get(`${this.API_URI}/excusas/aprendiz/${id}`);
   }
+
   getExcusa(id:number){
     return this.http.get(`${this.API_URI}/excusas/${id}`);
   }
+
   saveexcusa(excusa:excusa){
     return this.http.post(`${this.API_URI}/excusas/`,excusa)
       .pipe(
@@ -37,6 +40,7 @@ export class ExcusasService {
         ))
       );
   }
+
   updateexcusa(id:number,excusa:excusa):Observable<excusa>{
     return this.http.put(`${this.API_URI}/excusas/editar${id}`,excusa);
   }

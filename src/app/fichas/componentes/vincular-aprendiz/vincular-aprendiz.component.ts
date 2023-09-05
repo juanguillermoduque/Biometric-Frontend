@@ -33,7 +33,6 @@ export class VincularAprendizComponent{
 
     this.fichasService.vincularAprendiz(this.data).subscribe(
       (res:any)=>{
-        console.log(res)
         if(res.status){
           Swal.fire({
             position: 'center',
