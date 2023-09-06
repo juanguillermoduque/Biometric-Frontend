@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // importación MAT_
 import { usuario } from '../../usuarios'; /*importación del modelo usuarios trayendo la interfaz usuario*/
 import { UsuariosService } from '../../usuarios.service';  /* importación del servicio UsuariosService que hace una conexión con el backend*/
 import Swal from 'sweetalert2'
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "editar-usuario"*/
   selector: 'app-editar-usuarios', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -25,8 +26,8 @@ export class EditarUsuariosComponent implements OnInit{
 };
 
 constructor(private usuariosService:UsuariosService, // creación de constructor invocando el servicio de usuariosService que me trae información del backend
-  @Inject(MAT_DIALOG_DATA) public data:number){ // MAT_DIALOG hace como un token para inyectar datos al parámetro num_id
-
+  @Inject(MAT_DIALOG_DATA) public data:number,  public dialogRef: MatDialogRef<EditarUsuariosComponent>){ // MAT_DIALOG hace como un token para inyectar datos al parámetro num_id
+  
 }
   ngOnInit(){// el ngOnInit se ejecuta cuando se inicializa el componente
     // se realiza el llamado al servicio usuariosService para obtener datos de los usuarios
@@ -69,7 +70,11 @@ constructor(private usuariosService:UsuariosService, // creación de constructor
       Swal.fire({
         icon: 'success',
         title: 'El usuario fue modificado exitosamente',
-      })
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dialogRef.close();
+        } 
+      });
     }
   }
 

@@ -76,7 +76,7 @@ constructor(private usuariosService:UsuariosService,
               position: 'center',
               icon: 'success',
               title: 'El usuario fue agregado exitosamente',
-              showConfirmButton: false,
+              showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
                 this.dialogRef.close();

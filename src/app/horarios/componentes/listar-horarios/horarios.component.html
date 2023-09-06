@@ -3,15 +3,24 @@
   <h2  class="titulo">Listar Horarios</h2>
 
 
-  <div  class="primera-linea" fxLayoutGap="66%" fxLayout="row">
+  <div  class="primera-linea" fxLayoutGap="52%" fxLayout="row">
     <button  matTooltip="Crear Horario" fxFlex="6%" class="boton" mat-fab  (click)="nuevoHorario()">
       <mat-icon>add</mat-icon>
     </button>
 
-    <div fxFlex="10%" >
+    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%">
+
+      <mat-form-field>
+        <mat-label>Seleccionar fechas</mat-label>
+        <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)" [formControl]="controlFecha" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker mat-multi-year ></mat-datepicker>
+      </mat-form-field>
+
       <mat-form-field  matTooltip="Buscar Horario">
         <input matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>
+    
     </div>
  
   </div>
