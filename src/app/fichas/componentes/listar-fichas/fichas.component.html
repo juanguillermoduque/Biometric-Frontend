@@ -12,8 +12,8 @@
         Exportar
       </button>
   
-      <!--input type="file"  matTooltip="Exportar Fichas"  class="boton" mat-fab (click)="ExportarFichas()">
-        Importar-->
+      <input type="file" (change)="importarFichas($event)" multiple="false"  matTooltip="Exportar Fichas"  >
+        Importar>
 
     </div>
 
