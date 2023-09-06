@@ -40,7 +40,6 @@ export class ListarExcusaComponent {
     const id = this.getIdUsuario();
     this.excusaService.getExcusasAprendiz(id).subscribe( 
       res =>{ 
-        console.log(res);
         this.excusas = res;
       },
       err=>console.error(err)

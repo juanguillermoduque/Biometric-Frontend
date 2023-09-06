@@ -10,8 +10,8 @@
       <button matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
         Exportar
       </button>
-      <!--input type="file"  matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
-        Importar-->
+      <input type="file" (change)="importarUsuarios($event)" multiple="false"  matTooltip="Importar Usuarios"  >
+        Importar>
     </div>
 
 

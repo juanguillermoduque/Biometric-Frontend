@@ -1,0 +1,16 @@
+
+<div fxLayoutGap="1%" fxLayout="column">
+
+  <h2 class="titulo">Vincular Aprendiz</h2>
+
+  <form fxLayout="column" class="form">
+
+    <mat-form-field >
+      <mat-label>Codigo del aprendiz</mat-label>
+      <input matInput class="input-numerico" type="number" [(ngModel)]="data.id_instructor" name="code_ficha" required>
+    </mat-form-field>
+
+    <button [disabled]="data.id_instructor == 0" mat-raised-button class="boton boton-centrado" (click)="vincular()" mat-raised-button>Vincular</button>
+
+  </form>
+</div>

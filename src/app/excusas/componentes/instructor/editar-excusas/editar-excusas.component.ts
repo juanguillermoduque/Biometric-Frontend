@@ -31,7 +31,6 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
           .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
             res=>{ // si la respuesta por parte del servidor es exitosa se imprime la respuesta
               this.excusa = res;
-              console.log(res);
             },
             err => console.error(err) // de lo contrario saldrá un error
           )
@@ -65,7 +64,6 @@ constructor(private excusasService:ExcusasService, // creación de constructor i
               showConfirmButton: true,
           
             })
-            console.log(res);
           },
           err => console.error(err) // de lo contrario saldrá un error
         )
