@@ -42,6 +42,7 @@ export class FichasComponent implements OnInit {
     this.dialog.open(AgregarFichasComponent, {
       height: '400px',
       width: '400px',
+      panelClass: 'custom-dialog-create-update'
     }).afterClosed().subscribe(result => {
       this.getFichas();
     });
@@ -51,6 +52,7 @@ export class FichasComponent implements OnInit {
     this.dialog.open(EditarFichasComponent, {
       height: '400px',
       width: '400px',
+      panelClass: 'custom-dialog-create-update',
       data: idFicha,
     }).afterClosed().subscribe(result => {
       this.getFichas();
