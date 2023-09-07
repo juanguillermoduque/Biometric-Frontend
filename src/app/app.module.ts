@@ -9,6 +9,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
+//Firebase
+
+import { AngularFireModule } from "@angular/fire/compat";
+//import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+//import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+//import { HotToastModule } from '@ngneat/hot-toast';
+//import { getStorage, provideStorage } from '@angular/fire/storage';
+//import { provideAuth, getAuth } from '@angular/fire/auth';
+
+import { initializeApp } from 'firebase/app';
+import { provideFirebaseApp, getApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+
+
+import { environment } from '../environments/environment';
+
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -80,6 +99,8 @@ const appRoutes:Routes=[
   {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
 ]
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +115,21 @@ const appRoutes:Routes=[
     NavegacionModule,
     UsuariosModule,
     ProgramasModule,
+
+    //Firebase
+    //provideFirebaseApp(() => initializeApp(environment.firebase )),
+    //provideFirestore(() => getFirestore()),
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideAuth(() => getAuth()),
+    //provideFirestore(() => getFirestore()),
+    //provideStorage(() => getStorage()),
+    //HotToastModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    //AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
 
     FlexLayoutModule,
     MatNativeDateModule,

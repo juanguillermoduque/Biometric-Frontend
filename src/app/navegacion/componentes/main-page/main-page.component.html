@@ -1,8 +1,23 @@
   <div class="container" fxLayout="row">
-    <div class="barra-lateral" fxLayout="column" fxLayoutGap="3.75rem" fxFlex="20%">
-
-      <mat-icon class="logo">account_circle</mat-icon>
-
+    <div class="barra-lateral" fxLayout="column" fxLayoutGap="3.75rem" fxFlex="20%">  
+      <!--INICIO-->
+      <div>
+        <div
+        class="logo-contenedor"
+        >
+          <img
+          class="logo"
+            width="120"
+            height="120"
+            [src]="user.photoURL ?? '../../../../assets/img/image-placeholder.png'"
+          />
+          <button mat-mini-fab (click)="inputField.click()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <input #inputField type="file" hidden (change)="uploadImage($event, user)"/>
+      <!--FINAL-->
+      </div>
  
       <p class="nombre">{{getnombre()}}</p>
       <p class="rol">{{this.usuario_rol}}</p>
@@ -16,8 +31,6 @@
           <a mat-list-item><h1 class="opciones">Cerrar Sesión</h1></a>
         </div>
       </mat-nav-list>
-    
-      
     </div>
   
     <div fxLayout="column" fxFlex="80%" class="contenido">

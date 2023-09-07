@@ -19,4 +19,3 @@ export class AuthService {
     return this.http.get(`${this.API_URI}/usuarios/recuperarcontrasena${id}`);
   }
 }
- //este archivo está realizando la conexión entre back y fronted
