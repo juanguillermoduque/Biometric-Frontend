@@ -4,6 +4,7 @@ import { auth } from './auth';
 import { API_DOMAIN } from '../globals';
 import { UserInfo, updateProfile } from '@angular/fire/auth';
 import { Observable, concatMap, of } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -20,23 +21,6 @@ export class AuthService {
   recoveryPassword(id:number){
     return this.http.get(`${this.API_URI}/usuarios/recuperarcontrasena${id}`);
   }
-
-  //INICIO
-
-  /*updateProfileData(profileData: Partial<UserInfo>): Observable<any> {
-
-    const user = this.auth.currentUser;
-    return of(user).pipe(
-      concatMap((user) => {
-      if (!user) throw new Error('Not authenticated');
-
-      return updateProfile(user, profileData);
-      })
-    );
-  }*/
-
-  //FINAL
-
 
 }
  //este archivo está realizando la conexión entre back y fronted

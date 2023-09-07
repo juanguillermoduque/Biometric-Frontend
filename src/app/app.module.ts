@@ -10,13 +10,21 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 //Firebase
-//import { AngularFireModule } from '@angular/fire/compat';
-//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
+//import { AngularFireModule } from "@angular/fire/compat";
+//import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+//import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+//import { HotToastModule } from '@ngneat/hot-toast';
+//import { getStorage, provideStorage } from '@angular/fire/storage';
+//import { provideAuth, getAuth } from '@angular/fire/auth';
+
+import { initializeApp } from 'firebase/app';
+import { provideFirebaseApp, getApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+
 
 import { environment } from '../environments/environment';
 
@@ -91,10 +99,7 @@ const appRoutes:Routes=[
   {path: "index", component:MainPageComponent,canActivate:[AuthGuard]},
 ]
 
-provideFirebaseApp(() => initializeApp(environment.firebase));
-provideAuth(() => getAuth());
-provideFirestore(() => getFirestore());
-provideStorage(() => getStorage());
+
 
 @NgModule({
   declarations: [
@@ -112,8 +117,19 @@ provideStorage(() => getStorage());
     ProgramasModule,
 
     //Firebase
+    //provideFirebaseApp(() => initializeApp(environment.firebase )),
+    //provideFirestore(() => getFirestore()),
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideAuth(() => getAuth()),
+    //provideFirestore(() => getFirestore()),
+    //provideStorage(() => getStorage()),
+    //HotToastModule.forRoot(),
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
 
     FlexLayoutModule,
     MatNativeDateModule,

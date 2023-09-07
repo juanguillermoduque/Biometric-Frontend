@@ -10,6 +10,8 @@ import { AuthService } from "src/app/auth/auth.service";
 import { ImageUploadService } from "../services/image-upload.service";
 import { User } from "@angular/fire/auth";
 import { concatMap } from "rxjs";
+import { HotToastService } from "@ngneat/hot-toast";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 @Component({
   selector: 'app-main-page',
@@ -24,16 +26,15 @@ export class MainPageComponent {
 
   tok:any = localStorage.getItem('token')
   decode:any = jwtDecode(this.tok);
-  user$ = this.decode.data[0];
+  user = this.decode.data[0];
 
   constructor(private router:Router, private dialog: MatDialog,
      private rolService:RolesService, private authService:AuthService, 
-     private imageUploadService: ImageUploadService//, private toast: HotToastService)
-  )
+     private imageUploadService: ImageUploadService, private toast: HotToastService)
+  
   {}
 
   ngOnInit(): void {
-    console.log(this.user$);
     this.getRol();
   }
 
@@ -79,23 +80,26 @@ export class MainPageComponent {
     });
   }
 
-  //INICIO
-
-  /*
   uploadImage(event: any, user: User) {
-    this.imageUploadService
-      .uploadImage(event.target.files[0], `images/profile/${user.uid}`)
-      .pipe(
-        this.toast.observe({
-          loading: 'Uploading profile image...',
-          success: 'Image uploaded successfully',
-          error: 'There was an error in uploading the image',
-        }),
-        concatMap((photoURL) => this.authService.updateProfileData({ photoURL }))
-      ).subscribe();
-  }*/
-
-  //FINAL
-
+    const storage = getStorage();
+    const path = `images/profile/${user.uid}`;
+    const storageRef = ref(storage, path);
+    const uploadTask = uploadBytesResumable(storageRef, event.target.files[0]);
+    
+    uploadTask.on('state_changed', 
+    (snapshot) => {
+      // Puedes usar 'snapshot' para monitorizar el progreso de la carga
+    }, 
+    (error) => {
+      this.toast.error('There was an error in uploading the image');
+    }, 
+    () => {
+      getDownloadURL(storageRef).then(downloadURL => {
+        this.toast.success('Image uploaded successfully');
+        // Aquí puedes hacer algo con downloadURL si lo necesitas
+      });
+    }
+  );
+  }
 
 }

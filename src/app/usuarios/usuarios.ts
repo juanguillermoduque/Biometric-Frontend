@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export interface usuario{
     id_user?: number;
     first_name?: string;
@@ -7,6 +9,7 @@ export interface usuario{
     email?: string;
     estado?: string;
     password?: string;
+    photoURL?:Url,
     biometric_date?: string;
     created_at?: string;
     updated_at?: string; 
