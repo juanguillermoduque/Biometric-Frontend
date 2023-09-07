@@ -34,7 +34,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*boton styles*/
 .boton{
-  background: var(--verde-claro) !important;
+  background: var(--verde-sena) !important;
 }
 
 .boton:hover{

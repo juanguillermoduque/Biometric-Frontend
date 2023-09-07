@@ -1,6 +1,10 @@
 <div class="login">
 <div class="form__back">
-  <a mat-dialog-close><mat-icon class="iconretro">keyboard_arrow_left</mat-icon>Volver al inicio de sesión</a>
+  <a mat-dialog-close>
+    <mat-icon class="iconretro">
+      Arrow Left Alt
+    </mat-icon>
+  </a>
 </div>
 <div class="formularios">
   <div class="recuperar">
@@ -8,7 +12,7 @@
       <h1 class="form__title"><b>Recuperar contraseña</b></h1>
       <mat-form-field class="form__field">
         <mat-label>Escribe tu numero de documento</mat-label>
-        <input [(ngModel)]="documento" matInput type="number" name="documento">
+        <input class="input-numerico" [(ngModel)]="documento" matInput type="number" name="documento">
       </mat-form-field>
       <button mat-raised-button (click)="recuperar()" class="form__button">Enviar</button>
     </form>
