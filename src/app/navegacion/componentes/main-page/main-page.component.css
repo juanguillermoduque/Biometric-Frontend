@@ -1,7 +1,10 @@
 .logo{
-  margin-top: 2.25rem !important;
-  transform: scale(4);
-  margin: 0 auto;
+  margin-bottom: -20%;
+  border-radius: 50%;
+}
+
+.logo-contenedor{
+  margin-left: 30%;
 }
 
 .barra-lateral{

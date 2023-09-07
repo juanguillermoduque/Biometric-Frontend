@@ -12,6 +12,8 @@ import { User } from "@angular/fire/auth";
 import { concatMap } from "rxjs";
 import { HotToastService } from "@ngneat/hot-toast";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { UsuariosService } from "src/app/usuarios/usuarios.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-main-page',
@@ -30,7 +32,8 @@ export class MainPageComponent {
 
   constructor(private router:Router, private dialog: MatDialog,
      private rolService:RolesService, private authService:AuthService, 
-     private imageUploadService: ImageUploadService, private toast: HotToastService)
+     private imageUploadService: ImageUploadService, private toast: HotToastService,
+     private usuariosService:UsuariosService)
   
   {}
 
@@ -80,26 +83,59 @@ export class MainPageComponent {
     });
   }
 
-  uploadImage(event: any, user: User) {
-    const storage = getStorage();
-    const path = `images/profile/${user.uid}`;
-    const storageRef = ref(storage, path);
-    const uploadTask = uploadBytesResumable(storageRef, event.target.files[0]);
+  validateFile(event: any):any
+   {
+    const file: File = event.target.files[0];
     
-    uploadTask.on('state_changed', 
-    (snapshot) => {
-      // Puedes usar 'snapshot' para monitorizar el progreso de la carga
-    }, 
-    (error) => {
-      this.toast.error('There was an error in uploading the image');
-    }, 
-    () => {
-      getDownloadURL(storageRef).then(downloadURL => {
-        this.toast.success('Image uploaded successfully');
-        // Aquí puedes hacer algo con downloadURL si lo necesitas
-      });
+    if (file) {
+      const allowedExtensions = ['image/jpeg', 'image/png'];
+      if (!allowedExtensions.includes(file.type)) {
+        return false;
+      }
+      return true;
     }
-  );
+  }
+
+  uploadImage(event: any, user: User) {
+
+    if(this.validateFile(event)){
+      const storage = getStorage();
+      const path = `images/profile/${user.uid}`;
+      const storageRef = ref(storage, path);
+      const uploadTask = uploadBytesResumable(storageRef, event.target.files[0]);
+      
+      uploadTask.on('state_changed', 
+      (snapshot) => {
+        // Puedes usar 'snapshot' para monitorizar el progreso de la carga
+      }, 
+      (error) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ocurrio un error al subir la foto',
+          showConfirmButton: true,
+        })
+      }, 
+      () => {
+        getDownloadURL(storageRef).then(downloadURL => {
+          this.user.photoURL = downloadURL;
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La Foto fue agregada exitosamente',
+            showConfirmButton: true,
+          });
+          location.reload();
+          this.usuariosService.updateUsuario(this.user.num_id,this.user).subscribe(
+            ()=>{
+  
+            }
+          )
+        });
+      }
+    );
+    }
+
   }
 
 }

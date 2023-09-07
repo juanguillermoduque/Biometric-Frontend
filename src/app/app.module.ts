@@ -11,7 +11,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 //Firebase
 
-//import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireModule } from "@angular/fire/compat";
 //import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 //import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 //import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -124,10 +124,10 @@ const appRoutes:Routes=[
     //provideFirestore(() => getFirestore()),
     //provideStorage(() => getStorage()),
     //HotToastModule.forRoot(),
-    //AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     //AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
+    //provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
 
