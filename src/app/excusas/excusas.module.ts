@@ -60,7 +60,7 @@ import { ListarExcusaComponent } from './componentes/aprendiz/listar-excusa/list
     CrearExcusaComponent,
     EditarExcusasComponent,
     ExcusasComponent,
-    ListarExcusaComponent
+    ListarExcusaComponent,
   ],
   exports:[
     CrearExcusaComponent,

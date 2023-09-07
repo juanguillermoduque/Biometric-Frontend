@@ -9,7 +9,10 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { RolesService } from '../../../roles/roles.service';
 import { rol } from 'src/app/roles/roles';
 import { usuario } from '../../usuarios';
+import Swal from 'sweetalert2';
 import { ExportService } from 'src/app/utils/export/export.service';
+import { ImportService } from 'src/app/utils/import/import.service';
+import { usuario_rol } from 'src/app/roles/usuario_rol';
 
 @Component({
   selector: 'app-usuarios',
@@ -28,10 +31,11 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
   usuarios:any = []; // variable usuarios que es un arreglo vacío
   dataSource = this.usuarios; // se utiliza como fuente de datos para la tabla
   control = new FormControl();
+  data: any[][] = [];
 
   constructor(
     private usuarioService: UsuariosService, public dialog:MatDialog, private rolService:RolesService,
-    private exportService:ExportService
+    private exportService:ExportService,    private importService:ImportService,private usuariosService:UsuariosService
     ){
 
     // definición de UsuariosService que tiene la conexión con el back
@@ -41,7 +45,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
 
   ngOnInit(){
     this.getUsuario();
-    this.searchUser();
+    this.searchUser(); 
   }
 
   ExportarUsuarios(){
@@ -133,5 +137,91 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
       this.findUsers(query)
     })
 
+  }
+
+  importarUsuarios(evt:any){
+    const target: DataTransfer = <DataTransfer>(evt.target);
+
+    if (target.files.length !== 1) {
+      Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
+      return;
+    }
+
+    this.importService.readExcel(target.files[0]).then(rows => {
+      this.data = rows;
+      if((this.data[0][0] == 'num_id') && (this.data[0][1] == 'first_name')  && (this.data[0][1] == 'last_name')  && (this.data[0][1] == 'type_id')
+      && (this.data[0][1] == 'email')  && (this.data[0][1] == 'password')  && (this.data[0][1] == 'id_rol')){
+        for(let i = 1 ; i < this.data.length; i++){
+          if(!this.guardarUsuario(this.data[i][0],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5],this.data[i][6],this.data[i][7])){
+            Swal.fire('Error', 'Datos invalidos', 'error');
+          }
+        }
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Importación Exitosa',
+          showConfirmButton: true,
+          timer: 1500
+        })
+      }else{
+        Swal.fire('Error', 'Datos invalidos', 'error');
+      }
+      console.log(this.data[0][0])
+    }).catch(error => {
+      Swal.fire('Error', error, 'error');
+    });
+
+    this.getUsuario();
+  }
+
+  guardarUsuario(num_id:number,first_name:string,last_name:string,type_id:string,email:string,password:string,id_rol:number):boolean{
+    if (num_id == 0 || first_name == '' || last_name == '' || type_id == ''
+      || email == '' || password == '' || id_rol == 0) {
+        Swal.fire(
+          {
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Hay campos sin completar',
+          }
+        )
+        return false;
+      }
+      else{
+        let usuario : usuario = { 
+          num_id:num_id,
+          first_name:first_name,
+          last_name:last_name,
+          type_id: type_id,
+          email:email,
+          password: password
+      };
+        first_name = first_name?.toLowerCase()
+        last_name = last_name?.toLowerCase()
+        email = email?.toLowerCase()
+        this.usuariosService.saveUsuario(usuario)
+        .subscribe( 
+          res =>{
+            this.asignarRol(num_id,id_rol);
+            return true;
+          },
+          err => console.error(err) // de lo contrario saldrá un error
+      )
+      }
+      return false;
+  }
+
+  asignarRol(num_id:number,id_rol:number){
+    let ids:usuario_rol = {
+      id_usuario:num_id,
+      id_rol:id_rol
+    };
+
+    this.rolService.saveUsuarioRol(ids).subscribe(
+      (res)=>{
+
+      },(err)=>{
+        console.error(err);
+      }
+    )
   }
 }

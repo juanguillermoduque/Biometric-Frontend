@@ -8,7 +8,9 @@ import { FormControl } from '@angular/forms';
 import { debounce, debounceTime } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExportService } from 'src/app/utils/export/export.service';
-
+import { ImportService } from 'src/app/utils/import/import.service';
+import { ficha } from '../../fichas';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-fichas',
@@ -19,11 +21,13 @@ export class FichasComponent implements OnInit {
   fichas:any = [];
   dataSource = this.fichas;
   control = new FormControl();
+  data: any[][] = [];
 
   constructor(
     private fichaService: FichasService,
     public dialog: MatDialog,
-    private exportService:ExportService
+    private exportService:ExportService,
+    private importService:ImportService
     ){}
   ngOnInit(){ 
   this.getFichas();
@@ -42,6 +46,7 @@ export class FichasComponent implements OnInit {
     this.dialog.open(AgregarFichasComponent, {
       height: '400px',
       width: '400px',
+      panelClass: 'custom-dialog-create-update'
     }).afterClosed().subscribe(result => {
       this.getFichas();
     });
@@ -51,6 +56,7 @@ export class FichasComponent implements OnInit {
     this.dialog.open(EditarFichasComponent, {
       height: '400px',
       width: '400px',
+      panelClass: 'custom-dialog-create-update',
       data: idFicha,
     }).afterClosed().subscribe(result => {
       this.getFichas();
@@ -92,6 +98,70 @@ export class FichasComponent implements OnInit {
     let dataSourse = new MatTableDataSource(fichas)
 
     this.exportService.exportExcel(dataSourse.data,"fichas")
-  
-}
+    
+  }
+
+  importarFichas(evt:any){
+    const target: DataTransfer = <DataTransfer>(evt.target);
+
+    if (target.files.length !== 1) {
+      Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
+      return;
+    }
+
+    this.importService.readExcel(target.files[0]).then(rows => {
+      this.data = rows;
+      if((this.data[0][0] == 'code_ficha') && (this.data[0][1] == 'id_programa')){
+        for(let i = 1 ; i < this.data.length; i++){
+          if(!this.guardarFicha(this.data[i][0],this.data[i][1])){
+            Swal.fire('Error', 'Datos invalidos', 'error');
+          }
+        }
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Importación Exitosa',
+          showConfirmButton: true,
+          timer: 1500
+        })
+      }else{
+        Swal.fire('Error', 'Datos invalidos', 'error');
+      }
+      console.log(this.data[0][0])
+    }).catch(error => {
+      Swal.fire('Error', error, 'error');
+    });
+
+    this.getFichas();
+  }
+
+  guardarFicha(code_ficha:number,id_programa:string): boolean {
+
+    if (code_ficha == 0 || id_programa == ''){
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hay campos sin completar',
+        }
+      )
+    }
+    else{
+      let ficha:ficha ={
+        code_ficha : code_ficha,
+        id_programa : id_programa
+      }
+
+      this.fichaService.saveFicha(ficha).subscribe(
+        res => {
+          return true;
+        },
+        err => {
+          console.error(err);
+          return false;
+        }
+      );
+    }
+    return false;
+  }
 }

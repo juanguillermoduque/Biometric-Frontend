@@ -38,7 +38,6 @@ export class AsistenciasComponent {
   getAsistencias(){
     this.asistenciaService.getAsistenciasInstructor(this.getIdUsuario()).subscribe(
       res =>{
-        console.log(res)
         this.asistencias = res;
       },
       err=>console.error(err)

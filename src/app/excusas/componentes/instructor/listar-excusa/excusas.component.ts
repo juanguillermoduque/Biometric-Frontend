@@ -6,6 +6,7 @@ import { CrearExcusaComponent } from '../../aprendiz/crear-excusa/crear-excusa.c
 import { EditarExcusasComponent } from '../editar-excusas/editar-excusas.component'; // importación del componente EditarExcusa
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
 @Component({ /* es un decorador que se utiliza para configurar las propiedades del componente "excusas*/
   selector: 'app-excusas', /* es una cadena de texto que se utiliza para identificar y usar el componente en las plantillas HTML de la aplicación */
@@ -32,11 +33,16 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
     this.searchExcusa(); 
   }
 
+  getIdUsuario(){
+    let tok:any = localStorage.getItem('token')
+    let decode:any = jwtDecode(tok);
+    return decode.data[0].num_id;
+  }
+
   getExcusas(){
-    this.excusaService.getExcusas().subscribe( 
+    this.excusaService.getExcusas(this.getIdUsuario()).subscribe( 
       res =>{ 
         this.excusas = res;
-        console.log(this.excusas);
       },
       err=>console.error(err)
       )
@@ -84,7 +90,6 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
   
     this.excusaService.search(query).subscribe(
     res=>{
-      console.log("Busqueda realizada",res);
       this.excusas = res;
     },
     err=>{console.log(err)}
@@ -93,7 +98,6 @@ export class ExcusasComponent implements OnInit{ // llamado de componente Excusa
 downloadPdf(fileName:string) {
   const fileId ={'filename' : fileName} ; // Reemplaza con el ID del archivo que deseas descargar
   this.excusaService.downloadPDF(fileId.filename).subscribe((response) => {
-    console.log(response)
     const blob = new Blob([response], { type: 'application/pdf' });
     const downloadUrl = window.URL.createObjectURL(blob);
     const a = document.createElement('a');

@@ -43,7 +43,6 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
   getHorarios(){
     this.horariosService.getHorarios().subscribe(
       res => {
-        console.log( res );
         let aux:any = res;
         this.horarios.push(aux[0]);
       }
@@ -95,7 +94,6 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
 
     getFile($event:any): void {
       const [file] = $event.target.files;
-      console.log(file)
       if(file.type != 'application/pdf'){
           Swal.fire({
           position: 'center',
@@ -128,7 +126,6 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
       body.append('myFile', this.fileTmp.fileRaw, this.fileTmp.fileName);
       this.excusasService.sendPost(body).subscribe(
         res =>{
-          console.log(res)
           if(res.length > 0){
             this.guardarExcusa(res);
           }

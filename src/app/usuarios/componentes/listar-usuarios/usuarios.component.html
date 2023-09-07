@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayoutGap="5%">
   <h2 class="titulo">Listar Usuarios</h2>
 
-  <div class="primera-linea" fxLayoutGap="30%" fxLayout="row">
-    <div fxLayoutGap="10%" fxFlex="30%">
+  <div class="primera-linea" fxLayoutGap="30%" fxLayout="row" >
+    <div fxLayoutGap="10%" fxFlex="30%" fxLayoutAlign="start center">
       <button matTooltip="Crear Usuario"  class="boton" mat-fab (click)="nuevoUsuario()">
         <mat-icon>add</mat-icon>
       </button>
@@ -10,13 +10,13 @@
       <button matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
         Exportar
       </button>
-      <!--input type="file"  matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
-        Importar-->
+      <input type="file" (change)="importarUsuarios($event)" multiple="false"  matTooltip="Importar Usuarios" >
+        Importar
     </div>
 
 
-    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%" >
-      <mat-form-field  matTooltip="Buscar Usuario">
+    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%" class="buscador">
+      <mat-form-field  matTooltip="Buscar Usuario" >
         <input matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>
 
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <table #table class="margin-table"  mat-table [dataSource]="usuarios[0]">
+  <table class="margin-table"  mat-table [dataSource]="usuarios[0]">
     <!--[dataSource] se utiliza para enlazar una fuente de datos a un componente-->
     <ng-container matColumnDef="NombreUsuario">
       <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>

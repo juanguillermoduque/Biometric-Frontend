@@ -115,7 +115,6 @@
     font-size: 0.75rem;
   }
   .info .opcion{
-    max-height: 80%;
     height: 80vh;
   }
   .footer{
@@ -148,7 +147,6 @@
 
   .info .opcion{
     height: 82vh;
-    max-height: 80%;
   }
 
   .opcion:hover{

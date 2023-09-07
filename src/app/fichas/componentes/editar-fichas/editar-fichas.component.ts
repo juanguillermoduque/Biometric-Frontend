@@ -1,9 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ficha } from '../../fichas';
 import { FichasService } from '../../fichas.service';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
 import { ProgramasService } from 'src/app/programas/programas.service';
+import { VincularAprendizComponent } from '../vincular-aprendiz/vincular-aprendiz.component';
+import { VincularInstructorComponent } from '../vincular-instructor/vincular-instructor.component';
+import { ListarAprendicesComponent } from '../listar-aprendices/listar-aprendices.component';
+import { ListarInstructoresComponent } from '../listar-instructores/listar-instructores.component';
 
 @Component({
   selector: 'app-editar-fichas',
@@ -21,7 +25,8 @@ export class EditarFichasComponent implements OnInit {
 constructor(private fichasService:FichasService,
    @Inject(MAT_DIALOG_DATA) public idFicha:number,
    public programaService:ProgramasService,
-   public dialogRef: MatDialogRef<EditarFichasComponent>
+   public dialogRef: MatDialogRef<EditarFichasComponent>,
+   public dialog: MatDialog
    ){}
 
    programas: any [] = []
@@ -80,5 +85,28 @@ constructor(private fichasService:FichasService,
         err => console.error(err)
       )
     }
+  }
+
+  vincularAprendices(){
+    this.dialog.open(ListarAprendicesComponent, {
+      height: '600px',
+      width: '800px',
+      data: this.idFicha
+    })
+  }
+  vincularInstructores(){
+    this.dialog.open(ListarInstructoresComponent, {
+      height: '600px',
+      width: '800px',
+      data: this.idFicha
+    })
+  }
+
+  verFicha(){
+    this.dialog.open(VincularInstructorComponent, {
+      height: '600px',
+      width: '800px',
+      data: this.idFicha
+    })
   }
 }

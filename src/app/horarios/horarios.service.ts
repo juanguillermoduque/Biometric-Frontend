@@ -27,7 +27,8 @@ export class HorariosService {
     return this.http.put(`${this.API_URI}/horarios/editar${id}`,horario);
   }
 
-  search(horariosId:String){
+  search(horariosId:string){
     return this.http.get(`${this.API_URI}/filtros/searchHorario${horariosId}`);
   }
+
 }

@@ -11,7 +11,7 @@ import { AuthService } from '../../auth.service';
 })
 export class RecuperarContrasenaComponent {
 
-  documento = 0
+  documento:number;
   constructor(public dialog:MatDialog,
     public authService:AuthService){
     
