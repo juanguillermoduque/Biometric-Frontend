@@ -16,7 +16,6 @@
 @media(max-width:1800px){
   .primera-linea{
     margin-right: 15% !important;
-    
   }
 }
 
@@ -30,16 +29,33 @@
 @media(max-width:1250px){
   .primera-linea{
     margin-right: 25% !important;
-    
+  }
+
+  .td1{
+    max-width: 1px !important;
+  }
+
+  .doc2{
+    max-width: 1px !important;
+  }
+
+  .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+    font-size: 10px;
+  }
+
+  .letra{
+    font-size: 10px;
   }
 }
 
 @media(max-width:1100px){
   .primera-linea{
-    margin-right: 30% !important;
-    
+    margin-right: 27% !important;
   }
 }
+
+
+
 
 
 

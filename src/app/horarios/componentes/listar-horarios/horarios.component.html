@@ -3,22 +3,22 @@
   <h2  class="titulo">Listar Horarios</h2>
 
 
-  <div  class="primera-linea" fxLayoutGap="56%" fxLayout="row">
-    <button  matTooltip="Crear Horario" fxFlex="6%" class="boton add" mat-fab  (click)="nuevoHorario()">
+  <div  class="primera-linea" fxLayoutGap="56%" fxLayout="row" fxLayoutAlign="start center" >
+    <button  matTooltip="Crear Horario" class="boton" mat-fab  (click)="nuevoHorario()">
       <mat-icon>add</mat-icon>
     </button>
 
-    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%">
+    <div fxFlex="110%" fxLayout="row" fxLayoutGap="7%">
 
       <mat-form-field>
-        <mat-label>Seleccionar fechas</mat-label>
+        <mat-label class="letra">Seleccionar fechas</mat-label>
         <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)" [formControl]="controlFecha" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker mat-multi-year ></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field  matTooltip="Buscar Horario">
-        <input matInput placeholder="Buscar" [formControl]="control">
+        <input class="letra" matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>
     
     </div>
@@ -51,7 +51,7 @@
       </ng-container>
 
       <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef></th>
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let horario">
           <button matTooltip="Editar Horario" class="boton" mat-mini-fab (click)="editarHorarios(horario.id_horario)">
             <mat-icon>edit</mat-icon>

@@ -10,18 +10,21 @@
       <button matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
         Exportar
       </button>
-      <input type="file" (change)="importarUsuarios($event)" multiple="false"  matTooltip="Importar Usuarios" >
+
+      <button matTooltip="Importar Usuarios" class="boton" mat-fab (click)="inputfield.click()">
         Importar
+      </button>
+      <input #inputfield type="file" hidden (change)="importarUsuarios($event)" multiple="false">
     </div>
 
 
-    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%" class="buscador">
+    <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%">
       <mat-form-field  matTooltip="Buscar Usuario" >
-        <input matInput placeholder="Buscar" [formControl]="control">
+        <input class="letra" matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>
 
       <mat-form-field  matTooltip="Buscar usuario por estado">
-        <mat-label>Estado</mat-label>
+        <mat-label class="letra">Estado</mat-label>
         <mat-select name="status" [formControl]="control">
             <mat-option value="ACTIVO">Activo</mat-option>
             <mat-option value="INACTIVO">Inactivo</mat-option>
@@ -42,18 +45,18 @@
     </ng-container>
     <ng-container matColumnDef="NumeroDocumento">
       <th mat-header-cell *matHeaderCellDef>Numero de Documento</th>
-      <td mat-cell *matCellDef="let usuario">{{usuario.num_id}}</td>
+      <td  mat-cell *matCellDef="let usuario">{{usuario.num_id}}</td>
     </ng-container>
     <ng-container matColumnDef="CorreoElectronico">
-      <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
-      <td mat-cell *matCellDef="let usuario">{{usuario.email}}</td>
+      <th class="th1" mat-header-cell *matHeaderCellDef>Correo Electronico</th>
+      <td class="td1" mat-cell *matCellDef="let usuario">{{usuario.email}}</td>
     </ng-container>
     <ng-container matColumnDef="RolSistema">
-      <th mat-header-cell *matHeaderCellDef>Rol en el Sistema</th>
-      <td mat-cell *matCellDef="let usuario">{{usuario.rol}}</td>
+      <th class ="doc1" mat-header-cell *matHeaderCellDef>Rol en el Sistema</th>
+      <td class ="doc2" mat-cell *matCellDef="let usuario">{{usuario.rol}}</td>
     </ng-container>
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <th class mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let usuario">
         <button  matTooltip="Editar usuario" class="boton" mat-mini-fab (click)="editarUsuarios(usuario.num_id)">
           <mat-icon>edit</mat-icon>
