@@ -4,10 +4,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 :root {
-    --verde-sena: #7CC383;
+    --verde-sena: #5ec468;
     --gris-sena: #F3F3F3;
     --verde-claro: #5BCB26;
     --verde-oscuro: #00AD00;
+    --verde-botones: #5bcb26;
   }
 
   .input-numerico::-webkit-inner-spin-button,
@@ -34,11 +35,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*boton styles*/
 .boton{
-  background: var(--verde-sena) !important;
+  background: var(--verde-botones) !important;
+  color: white !important;
 }
 
 .boton:hover{
-  background: var(--verde-oscuro) !important;
+  background: var(--verde-claro) !important;
 }
 /***********************************/
 
