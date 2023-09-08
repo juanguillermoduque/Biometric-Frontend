@@ -149,13 +149,22 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
 
     this.importService.readExcel(target.files[0]).then(rows => {
       this.data = rows;
-      if((this.data[0][0] == 'num_id') && (this.data[0][1] == 'first_name')  && (this.data[0][1] == 'last_name')  && (this.data[0][1] == 'type_id')
-      && (this.data[0][1] == 'email')  && (this.data[0][1] == 'password')  && (this.data[0][1] == 'id_rol')){
+      debugger
+      if(
+        (this.data[0][0] == 'num_id') 
+      && (this.data[0][1] == 'first_name')  
+      && (this.data[0][2] == 'last_name') 
+      && (this.data[0][3] == 'type_id')
+      && (this.data[0][4] == 'email')  
+      && (this.data[0][5] == 'password') 
+      && (this.data[0][6] == 'rol_id')
+      ){
         for(let i = 1 ; i < this.data.length; i++){
-          if(!this.guardarUsuario(this.data[i][0],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5],this.data[i][6],this.data[i][7])){
+          if(!this.guardarUsuario(this.data[i][0],this.data[i][1],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5],this.data[i][6])){
             Swal.fire('Error', 'Datos invalidos', 'error');
           }
         }
+        this.getUsuario();
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -163,6 +172,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
           showConfirmButton: true,
           timer: 1500
         })
+        
       }else{
         Swal.fire('Error', 'Datos invalidos', 'error');
       }
@@ -171,7 +181,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
       Swal.fire('Error', error, 'error');
     });
 
-    this.getUsuario();
+    
   }
 
   guardarUsuario(num_id:number,first_name:string,last_name:string,type_id:string,email:string,password:string,id_rol:number):boolean{
@@ -194,7 +204,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
           type_id: type_id,
           email:email,
           password: password
-      };
+      };console.log(usuario)
         first_name = first_name?.toLowerCase()
         last_name = last_name?.toLowerCase()
         email = email?.toLowerCase()
