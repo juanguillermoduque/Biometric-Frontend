@@ -8,36 +8,61 @@
 }
 
 @media(max-width:2250px){
-  .add{
-    margin-right: 50% !important;
-    max-width:5% !important;
+  .primera-linea{
+    margin-right: 5% !important;
+   
+  }
+}
+
+@media(max-width:1940px){
+  .primera-linea{
+    margin-right: 15% !important;
+   
   }
 }
 
 @media(max-width:1800px){
-  .add{
-    margin-right: 38% !important;
-    max-width:7% !important;
+  .primera-linea{
+    margin-right: 25% !important;
+   
   }
 }
 
-@media(max-width:1500px){
-  .add{
-    margin-right: 28% !important;
-    max-width:7% !important;
+@media(max-width:1530px){
+  .primera-linea{
+    margin-right: 30% !important;
+  
   }
 }
 
-@media(max-width:1250px){
-  .add{
-    margin-right: 22% !important;
-    max-width:7% !important;
+@media(max-width:1400px){
+  .primera-linea{
+    margin-right: 37% !important;
+    
+  }
+}
+
+@media(max-width:1300px){
+  .primera-linea{
+    margin-right: 45% !important;
+    
   }
 }
 
 @media(max-width:1100px){
-  .add{
-    margin-right: 17% !important;
-    max-width:10% !important;
+  .primera-linea{
+    margin-right: 48% !important;
   }
+
+  .letra{
+    font-size: 10px;
+  }
+
+}
+
+@media(max-width:900px){
+  .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+    font-size: 10px;
+  }
+
 }
