@@ -51,6 +51,7 @@
     width: 100%;
   }
 
+
   @media screen and (max-width: 480px) {
     .contenedor_contraseña {
       padding: 10px;

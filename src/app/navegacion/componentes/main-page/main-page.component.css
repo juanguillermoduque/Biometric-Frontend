@@ -58,14 +58,14 @@
   margin-bottom: 30px;
   font-size: 20px;
   font-weight: 500;
-  margin-left: 8rem;
+  margin-left: 7rem;
 }
 
 .rol{
   margin-bottom: 1.75rem !important;
   margin-top: -45px !important;
   margin: 0 auto;
-  margin-left: 8rem;
+  margin-left: 8.7rem;
 }
 
 .logo-sena{
@@ -190,6 +190,10 @@
   position: absolute;
   bottom: 10px;
   right: 25%;
+}
+
+.editar {
+  background-color:  #3366cc !important;
 }
 
 /*FINAL*/
