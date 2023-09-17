@@ -26,31 +26,31 @@
     <mat-form-field >
       <mat-label>Selecciona la ficha</mat-label>
       <mat-select [(ngModel)]="horario.id_ficha" name="id_ficha">
-        <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas" [value]="ficha.id_ficha">
+        <mat-option (click)="agregarFicha(ficha)" *ngFor="let ficha of fichas" [value]="ficha.code_ficha">
           Código ficha: {{ficha.code_ficha}} - Nombre ficha: {{ficha.name_ficha}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field >
-      <mat-label>Selecciona la hora de ingreso</mat-label>
-      <mat-select [(ngModel)]="horario.date_start" name="date_start" disableRipple>
-        <mat-option value="07:00">07:00</mat-option>
-        <mat-option value="10:00">10:00</mat-option>
-        <mat-option value="13:00">13:00</mat-option>
-        <mat-option value="16:00">16:00</mat-option>
+      <mat-label >Selecciona la hora de ingreso</mat-label>
+      <mat-select [disabled]="horario.jornada == ''" [(ngModel)]="horario.date_start" name="date_start" disableRipple>
+        <mat-option *ngIf="horario.jornada == 'DIURNA'" value="07:00">07:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'DIURNA'" value="10:00">10:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'MIXTA'" value="13:00">13:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'MIXTA'" value="16:00">16:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'NOCTURNA'" value="18:00">18:00</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field >
       <mat-label>Selecciona la hora de finalización</mat-label>
-      <mat-select [(ngModel)]="horario.date_end" name="date_end" disableRipple>
-        <mat-option value="10:00">10:00</mat-option>
-        <mat-option value="13:00">13:00</mat-option>
-        <mat-option value="16:00">16:00</mat-option>
-        <mat-option value="18:00">18:00</mat-option>
-        <mat-option value="18:00">20:00</mat-option>
-        <mat-option value="18:00">22:00</mat-option>
+      <mat-select [disabled]="horario.jornada == '' || horario.date_start == ''"  [(ngModel)]="horario.date_end" name="date_end" disableRipple>
+        <mat-option *ngIf="horario.jornada == 'DIURNA' && horario.date_start == '07:00' " value="10:00">10:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'DIURNA'" value="13:00">13:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'MIXTA' &&  horario.date_start == '13:00'" value="16:00">16:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'MIXTA'" value="18:00">18:00</mat-option>
+        <mat-option *ngIf="horario.jornada == 'NOCTURNA'" value="18:00">22:00</mat-option>
       </mat-select>
     </mat-form-field>
 
