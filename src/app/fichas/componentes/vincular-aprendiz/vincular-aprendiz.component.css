@@ -2,11 +2,18 @@
     margin: 6% 4% 0 9%;
   }
   
-  .boton-centrado{
-    width: 15%;
-    margin: 5% auto 0px;
-  }
+.boton-centrado{
+  width: 15%;
+  margin: 5% auto 0px;
+}
+
+.tituloapr{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.inputap{
+  margin-top: 35px;
+}
   
-  .titulo{
-    margin-top: 5%;
-  }

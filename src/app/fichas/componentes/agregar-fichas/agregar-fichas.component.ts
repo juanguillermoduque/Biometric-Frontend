@@ -16,7 +16,7 @@ export class AgregarFichasComponent  implements OnInit{
 
   subscription: Subscription = new Subscription();
   ficha : ficha = {
-    code_ficha:0,
+    code_ficha:undefined,
     id_programa:'',
     created_at :'',
     updated_at :'',

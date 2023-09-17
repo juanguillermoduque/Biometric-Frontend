@@ -1,0 +1,17 @@
+.tituloap{
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.buscarap{
+    margin-left: 60px;
+}
+
+.primera-linea{
+    margin-left: 50px;
+}
+
+.botA{
+    margin-bottom: 22px;
+}

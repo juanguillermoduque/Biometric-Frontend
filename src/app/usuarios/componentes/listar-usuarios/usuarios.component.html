@@ -3,16 +3,16 @@
 
   <div class="primera-linea" fxLayoutGap="30%" fxLayout="row" >
     <div fxLayoutGap="10%" fxFlex="30%" fxLayoutAlign="start center">
-      <button matTooltip="Crear Usuario"  class="boton" mat-fab (click)="nuevoUsuario()">
+      <button matTooltip="Crear Usuario"  class="botonB" mat-fab (click)="nuevoUsuario()">
         <mat-icon>add</mat-icon>
       </button>
 
-      <button matTooltip="Exportar Usuarios"  class="boton" mat-fab (click)="ExportarUsuarios()">
-        Exportar
+      <button matTooltip="Exportar Usuarios"  class="botonB" mat-fab (click)="ExportarUsuarios()">
+        <mat-icon>file_download</mat-icon>
       </button>
 
-      <button matTooltip="Importar Usuarios" class="boton" mat-fab (click)="inputfield.click()">
-        Importar
+      <button matTooltip="Importar Usuarios" class="botonB" mat-fab (click)="inputfield.click()">
+        <mat-icon>file_upload</mat-icon>
       </button>
       <input #inputfield type="file" hidden (change)="importarUsuarios($event)" multiple="false">
     </div>

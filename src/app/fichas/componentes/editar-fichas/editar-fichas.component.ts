@@ -91,6 +91,7 @@ constructor(private fichasService:FichasService,
     this.dialog.open(ListarAprendicesComponent, {
       height: '600px',
       width: '800px',
+      panelClass: 'custom-dialog-create-update',
       data: this.idFicha
     })
   }
@@ -98,6 +99,7 @@ constructor(private fichasService:FichasService,
     this.dialog.open(ListarInstructoresComponent, {
       height: '600px',
       width: '800px',
+      panelClass: 'custom-dialog-create-update',
       data: this.idFicha
     })
   }
@@ -106,6 +108,7 @@ constructor(private fichasService:FichasService,
     this.dialog.open(VincularInstructorComponent, {
       height: '600px',
       width: '800px',
+      panelClass: 'custom-dialog-create-update',
       data: this.idFicha
     })
   }

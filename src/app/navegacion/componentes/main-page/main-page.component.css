@@ -58,14 +58,15 @@
   margin-bottom: 30px;
   font-size: 20px;
   font-weight: 500;
-  margin-left: 7rem;
+  margin-left: 7.8rem;
+  margin-top: -10px;
 }
 
 .rol{
   margin-bottom: 1.75rem !important;
-  margin-top: -45px !important;
+  margin-top: -52px !important;
   margin: 0 auto;
-  margin-left: 8.7rem;
+  margin-left: 7.8rem;
 }
 
 .logo-sena{
@@ -83,12 +84,12 @@
 
 .logout{
   position: fixed;
-  bottom: 100px;
+  bottom: 50px;
   margin-left: 17px;
   width: 19%;
 }
 
-.icono{
+.iconolog{
   margin-top: -15px;
 }
 
@@ -197,3 +198,4 @@
 }
 
 /*FINAL*/
+

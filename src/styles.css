@@ -1,6 +1,6 @@
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 
 :root {
@@ -18,8 +18,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     /* Opcionalmente, puedes agregar otras propiedades de estilo aquí */
   }
   
-
-
 .titulo{
   text-align: center;
 }
@@ -30,7 +28,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .custom-dialog-create-update{
-  box-shadow: 0px 0px 20px 8px var(--verde-sena);
+  box-shadow: 0px 0px 5px 2px var(--gris-sena);
 }
 
 /*boton styles*/
@@ -39,13 +37,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: white !important;
 }
 
+
+.botonB{
+  background: var(--verde-botones) !important;
+  color: white !important;
+}
+
 .boton:hover{
   background: var(--verde-claro) !important;
 }
+
+
+.form{
+  margin: 6% 8% 0 9% !important;
+}
+
+
+
 /***********************************/
 
 @media(max-width:1250px){
   .opciones{
+    font-size: 20px !important;
+  }
+  .opcionesLog{
     font-size: 20px !important;
   }
 }
@@ -54,4 +69,261 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .opciones{
     font-size: 15px !important;
   }
+  .opcionesLog{
+    font-size: 15px !important;
+  }
 }
+
+/***********************************/
+
+@media(max-width:1930px){
+  .rol{
+    margin-left: 7.4rem !important;
+  }
+
+  .nombre{
+    margin-left: 7.4rem !important;
+  }
+}
+
+@media(max-width:1830px){
+  .rol{
+    margin-left: 7.0rem !important;
+  }
+
+  .nombre{
+    margin-left: 7.0rem !important;
+  }
+}
+
+@media(max-width:1700px){
+  .rol{
+    margin-left: 6.8rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.8rem !important;
+  }
+}
+
+@media(max-width:1656px){
+  .rol{
+    margin-left: 6.6rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.6rem !important;
+  }
+}
+
+@media(max-width:1580px){
+  .rol{
+    margin-left: 6.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.2rem !important;
+  }
+}
+
+@media(max-width:1500px){
+  .rol{
+    margin-left: 5.8rem !important;
+    font-size: 15px !important
+  }
+
+  .nombre{
+    margin-left: 6.7rem !important;
+    font-size: 15px !important;
+  }
+
+  .opciones{
+    font-size: 20px !important;
+  }
+
+  .opcionesLog{
+    font-size: 17px !important;
+    margin-top: 24px !important;
+  }
+
+  .opcionnav{
+    margin-top: -1px !important;
+  }
+
+}
+
+@media(max-width:1470px){
+  .rol{
+    margin-left: 5.4rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.5rem !important;
+  }
+}
+
+@media(max-width:1390px){
+  .rol{
+    margin-left: 5.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.0rem !important;
+  }
+}
+
+@media(max-width:1370px){
+  .opciones{
+    font-size: 17px !important;
+  }
+
+  .opcionnav{
+    margin-top: -6px !important;
+  }
+
+  .icononav{
+    width: 35px !important;
+  }
+
+  .iconolog{
+    width: 35px !important;
+  }
+}
+
+@media(max-width:1325px){
+  .rol{
+    margin-left: 5.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 6.0rem !important;
+  }
+}
+
+@media(max-width:1300px){
+  
+  .botonB{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .titulo{
+    font-size: 20px !important;
+  }
+
+  .iconolog{
+    margin-top: 7px !important;
+  }
+
+}
+
+@media(max-width:1290px){
+  .rol{
+    margin-left: 4.7rem !important;
+    font-size: 13px !important
+  }
+
+  .nombre{
+    margin-left: 5.5rem !important;
+    font-size: 14px !important;
+  }
+
+  .opcionnav{
+    margin-top: -14px !important;
+  }
+
+}
+
+@media(max-width:1200px){
+  .logo-contenedor{
+    margin-left: 28% !important;
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+@media(max-width:1150px){
+  .iconolog{
+    margin-top: 12px !important;
+  }
+
+  .opcionesLog{ 
+    margin-top: 27px !important;
+  }
+
+}
+
+@media(max-width:1130px){
+  .iconolog{
+    width: 25px !important;
+  }
+
+  .icononav{
+    width: 25px !important;
+  }
+  .opcionesLog{
+    font-size: 15px !important;
+    margin-top: 28px !important;
+  }
+
+  .opcionnav{
+    margin-top: -20px !important;
+  }
+}
+
+@media(max-width:1122px){
+  .rol{
+    margin-left: 4.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 5.2rem !important;
+  }
+}
+
+@media(max-width:1095px){
+  .rol{
+    margin-left: 4.0rem !important;
+  }
+
+  .nombre{
+    margin-left: 4.9rem !important;
+  }
+}
+
+@media(max-width:1040px){
+  .rol{
+    margin-left: 3.7rem !important;
+  }
+
+  .nombre{
+    margin-left: 4.5rem !important;
+  }
+
+  .logo-contenedor{
+    margin-left: 25% !important;
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+@media(max-width:975px){
+  .logo-contenedor{
+    margin-left: 21% !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .rol{
+    margin-left: 3.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 3.8rem !important;
+  }
+}
+
+@media(max-width:960px){
+ 
+}
+
+
+
+

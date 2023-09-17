@@ -74,7 +74,7 @@ export class ListarAprendicesComponent {
 
   vincular(){
     let vinculacion = {
-      id_aprendiz : 0,
+      id_aprendiz : undefined,
       id_ficha : this.data
     }
 
@@ -82,6 +82,7 @@ export class ListarAprendicesComponent {
       height: '400px',
       width: '400px',
       data: vinculacion,
+      panelClass: 'custom-dialog-create-update',
     }).afterClosed().subscribe(() => {
       this.getAprendices();
     });
