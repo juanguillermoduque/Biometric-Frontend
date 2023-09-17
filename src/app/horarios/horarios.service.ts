@@ -20,8 +20,8 @@ export class HorariosService {
   getHorario(id:number){
     return this.http.get(`${this.API_URI}/horarios/${id}`);
   }
-  saveHorario(horario:horario){
-    return this.http.post(`${this.API_URI}/horarios/`,horario);
+  saveHorario(horario:horario,fichaInstructor:any){
+    return this.http.post(`${this.API_URI}/horarios/`,{horario,fichaInstructor});
   }
   updateHorario(id:number,horario:horario):Observable<horario>{
     return this.http.put(`${this.API_URI}/horarios/editar${id}`,horario);
