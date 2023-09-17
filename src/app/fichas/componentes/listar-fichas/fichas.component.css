@@ -1,22 +1,31 @@
 .primera-linea{
     margin-left: 5%;
     margin-bottom: 5%;
-  }
+}
   
-  .titulo{
+.titulo{
     margin-top: 5%;
-  }
+    font-size: 28px;
+}
   
 .logo-sena{
-    width: 150px;
+    width: 250px;
     display: block;
-    margin: -25px auto;
+    margin: -30px auto;
 }
 
 .card{
-    margin: 3% ;
+    margin: 2% ;
     cursor: pointer;
-    border: 1px solid black;
+    border-width: 10px;
+    box-shadow: 0px 0px 6px 3px var(--verde-botones);
+    width: 21%;
+    height: 300px;
+    border-radius: 20px;
+    border: #D2D2D2 4px solid;
+    background: #FBFBFB;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .centrado{
@@ -25,4 +34,97 @@
 
 .nombre-programa{
     margin: 1% 5%;
+    
 }
+
+.cuadros{
+    margin-left: 10px;
+}
+
+.colorhr{
+    background-color:var(--verde-botones);
+    height: 2px;
+}
+
+.boton{
+    width: 65px !important;
+    height: 65px !important;
+}
+
+.buscaA{
+    width: 20px !important;
+    margin-top: 10px !important;
+}
+
+
+
+@media(max-width:1380px){
+    .card{
+        width: 100%;
+    }
+}
+
+@media(max-width:1718px){
+    .logo-sena{
+        margin-left: -6px;
+    }
+}
+
+@media(max-width:1750px){
+    .primera-linea{
+        margin-right: 4% !important;
+    }
+}
+
+@media(max-width:1626px){
+    .logo-sena{
+        margin-left: -13px;
+    }
+}
+
+@media(max-width:1550px){
+    .logo-sena{
+        margin-left: -19px;
+    }
+}
+
+@media(max-width:1470px){
+    .logo-sena{
+        margin-left: -24px;
+    }
+}
+
+@media(max-width:1410px){
+    .logo-sena{
+        margin-left: -29px;
+    }
+}
+
+@media(max-width:1380px){
+    .logo-sena{
+        width: 250px;
+        display: block;
+        margin: -30px auto;
+    }
+}
+
+@media(max-width:1378px){
+    .primera-linea{
+        margin-right: 4% !important;
+    }
+}
+
+@media(max-width:1320px){
+    .primera-linea{
+        margin-right: 4% !important;
+    }
+}
+
+@media(max-width:959px){
+    .card{
+        width: 100%;
+    }
+}
+
+
+

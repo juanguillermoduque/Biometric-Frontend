@@ -1,15 +1,15 @@
 <div fxLayout="column" fxLayoutGap="5%">
-    <h2 class="titulo">Vincular Aprendices</h2>
+    <h2 class="tituloap">Vincular Aprendices</h2>
   
     <div class="primera-linea" fxLayoutGap="30%" fxLayout="row">
-      <div fxLayoutGap="10%" fxFlex="30%">
+      <div class="botA" fxLayoutGap="10%" fxFlex="26%" fxLayoutAlign="start center">
         <button  (click)="vincular()" matTooltip="Vincular Aprendiz"  class="boton" mat-fab >
           <mat-icon>add</mat-icon>
         </button>
       </div>
   
       <div fxFlex="70%" fxLayout="row" fxLayoutGap="4%" >
-        <mat-form-field  matTooltip="Buscar Usuario">
+        <mat-form-field  matTooltip="Buscar Usuario" class="buscarap">
           <input matInput placeholder="Buscar" [formControl]="control">
         </mat-form-field>
       </div>

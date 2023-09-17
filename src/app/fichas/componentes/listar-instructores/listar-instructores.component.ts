@@ -75,6 +75,7 @@ export class ListarInstructoresComponent {
       height: '400px',
       width: '400px',
       data: vinculacion,
+      panelClass: 'custom-dialog-create-update',
     }).afterClosed().subscribe(() => {
       this.getInstructores();
     });

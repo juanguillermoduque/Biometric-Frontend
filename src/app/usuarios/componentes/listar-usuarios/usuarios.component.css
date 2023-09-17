@@ -5,7 +5,9 @@
 
 .titulo{
   margin-top: 5%;
+  font-size: 28px;
 }
+
 
 @media(max-width:1965px){
   .primera-linea{
