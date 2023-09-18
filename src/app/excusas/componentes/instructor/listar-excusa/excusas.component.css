@@ -5,4 +5,11 @@
 
 .titulo{
   margin-top: 5%;
+  font-size: 28px;
+}
+
+@media(max-width:1068px){
+  .margin-tableex{
+    width: 10px !important;
+  }
 }

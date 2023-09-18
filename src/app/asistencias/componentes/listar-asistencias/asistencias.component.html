@@ -3,18 +3,18 @@
   <h2 class="titulo">Listar Asistencias</h2>
 
   <div  class="primera-linea" fxLayoutGap="30%" fxLayout="row">
-    <div fxLayoutGap="10%" fxFlex="30%">
-      <button  matTooltip="Crear Asistencia" fxFlex="6%" class="boton" mat-fab  (click)="crearAsistencia()">
+    <div fxLayoutGap="10%" fxFlex="30%" fxLayoutAlign="start center">
+      <button  matTooltip="Crear Asistencia"  class="botonB" mat-fab  (click)="crearAsistencia()">
         <mat-icon>add</mat-icon>
       </button>
   
-      <button matTooltip="Exportar Asistencias"  class="boton" mat-fab (click)="ExportarAsistencias()">
-        Exportar
+      <button matTooltip="Exportar Asistencias"  class="botonB" mat-fab (click)="ExportarAsistencias()">
+        <mat-icon>file_download</mat-icon>
       </button>
   
     </div>
 
-    <div fxFlex="10%" >
+    <div class="buscaD" fxFlex="70%" fxLayout="row" fxLayoutGap="4%">
       <mat-form-field  matTooltip="Buscar Asistencia Documento del aprendiz">
         <input matInput placeholder="Buscar" [formControl]="control">
       </mat-form-field>

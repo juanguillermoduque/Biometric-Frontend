@@ -14,9 +14,11 @@
           <button class="editar" mat-mini-fab (click)="inputField.click()">
             <mat-icon>edit</mat-icon>
           </button>
+          
       </div>
       <input #inputField type="file" hidden (change)="uploadImage($event, user)"/>
       <!--FINAL-->
+     
       </div>
  
       <p class="nombre">{{getnombre()}}</p>
@@ -26,9 +28,9 @@
 
       
       <mat-nav-list  (click)="logOut()"  class="logout">
-        <div fxLayout="row">
-          <img class="iconolog" src="../../../../assets/img/svg/logos-navegacion/logout.svg" alt="Cerrar Sesión">
-          <a mat-list-item><h1 class="opcionesLog">Cerrar Sesión</h1></a>
+        <div class="logou" fxLayout="row">
+          <img class="icononav" src="../../../../assets/img/svg/logos-navegacion/logout.svg" alt="Cerrar Sesión">
+          <a mat-list-item><h1 class="opciones">Cerrar Sesión</h1></a>
         </div>
       </mat-nav-list>
     </div>

@@ -1,7 +1,3 @@
-.opcion:hover{
-    background: var(--verde-sena);
-    cursor: pointer;
-}
 
 .opcionnav{
     margin-top: 11px;
@@ -12,11 +8,41 @@
     margin-top: -15px;
 }
 
-.opcion:hover .icono{
-    color: white;
+
+
+@media(max-width:1650px){
+    .opciones{
+        font-size: 17px !important;
+    }
 }
 
-.opcion:hover h1{
-    color: white;
+@media(max-width:1256px){
+    .opciones{
+      font-size: 15px !important;
+    }
 }
+
+@media(max-width:1110px){
+    .opciones{
+      font-size: 12px !important;
+    }
+}
+
+@media(max-width:970px){
+  
+    .opciones{
+      font-size: 10px !important;
+    }
+  }
+
+@media(max-width:905px){
+    .opcionnav{
+        
+        margin-left: 7px;
+    }
+    
+}
+  
+   
+
 

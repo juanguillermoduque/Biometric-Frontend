@@ -3,6 +3,18 @@
     margin-bottom: 5%;
   }
   
-  .titulo{
-    margin-top: 5%;
+.titulo{
+  margin-top: 5%;
+}
+
+.botonB{
+  width: 65px !important;
+  height: 65px !important;
+}
+
+@media(max-width:1100px){
+  .botonB{
+    width: 55px !important;
+    height: 55px !important;
   }
+}

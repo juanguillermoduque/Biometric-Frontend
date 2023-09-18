@@ -60,18 +60,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   .opciones{
     font-size: 20px !important;
   }
-  .opcionesLog{
-    font-size: 20px !important;
-  }
+
 }
 
 @media(max-width:1080px){
   .opciones{
     font-size: 15px !important;
   }
-  .opcionesLog{
-    font-size: 15px !important;
-  }
+
 }
 
 /***********************************/
@@ -140,11 +136,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   .opciones{
     font-size: 20px !important;
   }
-
-  .opcionesLog{
-    font-size: 17px !important;
-    margin-top: 24px !important;
-  }
+  
 
   .opcionnav{
     margin-top: -1px !important;
@@ -211,9 +203,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
     font-size: 20px !important;
   }
 
-  .iconolog{
-    margin-top: 7px !important;
-  }
 
 }
 
@@ -250,6 +239,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
     margin-top: 27px !important;
   }
 
+  .rol{
+    margin-left: 4.2rem !important;
+  }
+
+  .nombre{
+    margin-left: 5.2rem !important;
+  }
 }
 
 @media(max-width:1130px){
@@ -259,10 +255,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
   .icononav{
     width: 25px !important;
-  }
-  .opcionesLog{
-    font-size: 15px !important;
-    margin-top: 28px !important;
   }
 
   .opcionnav{
@@ -280,13 +272,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   }
 }
 
-@media(max-width:1095px){
+@media(max-width:1100px){
   .rol{
-    margin-left: 4.0rem !important;
+    margin-left: 4.4rem !important;
+    font-size: 12px !important;
   }
 
   .nombre{
-    margin-left: 4.9rem !important;
+    margin-left: 5.1rem !important;
+    font-size: 12px !important;
   }
 }
 
@@ -320,8 +314,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   }
 }
 
-@media(max-width:960px){
- 
+@media(max-width:905px){
+  .rol{
+    margin-left: 2.8rem !important;
+  }
+
+  .nombre{
+    margin-left: 3.6rem !important;
+  }
+}
+
+@media(max-width:820px){
+  .logou{
+    margin-bottom: 50px;
+  }
 }
 
 
