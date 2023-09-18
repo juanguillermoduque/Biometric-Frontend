@@ -79,8 +79,6 @@ constructor(private excusasService:ExcusasService, private rolesService:RolesSer
               icon: 'success',
               title: 'La excusa fue agregada exitosamente',
               showConfirmButton: true,
-              timer: 1500
-              
             }).then((result) => {
               if (result.isConfirmed) {
                 this.dialogRef.close();

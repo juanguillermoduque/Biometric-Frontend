@@ -20,7 +20,7 @@ export class EditarUsuariosComponent implements OnInit{
     email:'',
     estado: '',
     password: '',
-    biometric_date: '',
+    biometric_date: 0,
     created_at: '',
     updated_at: '',
 };
