@@ -57,13 +57,6 @@
 }
 
 
-
-@media(max-width:1380px){
-    .card{
-        width: 100%;
-    }
-}
-
 @media(max-width:1718px){
     .logo-sena{
         margin-left: -6px;
@@ -105,6 +98,7 @@
         width: 250px;
         display: block;
         margin: -30px auto;
+        margin-left: -27px;
     }
 }
 
@@ -120,11 +114,43 @@
     }
 }
 
-@media(max-width:959px){
+@media(max-width:1300px){
+    .logo-sena{
+        margin-left: -31px;
+    }
+}
+
+@media(max-width:1248px){
+    .logo-sena{
+        width: 250px;
+        display: block;
+        margin: -30px auto;
+        margin-left: -38px;
+    }
+}
+
+@media(max-width:1245px){
     .card{
         width: 100%;
     }
+
+    .logo-sena{
+        width: 250px;
+        display: block;
+        margin: -30px auto;
+        
+    }
+    
 }
+
+@media(max-width:959px){
+    .fichass{
+        flex-flow: wrap;
+    }
+}
+
+
+
 
 
 

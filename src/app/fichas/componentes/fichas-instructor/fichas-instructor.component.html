@@ -1,41 +1,14 @@
 <div fxLayout="column" fxLayoutGap="5%">
     <h2 class="titulo">Listar Fichas Instructor</h2>
   
-    <!--div class="primera-linea" fxLayoutGap="42%" fxLayout="row">
-      <div fxLayoutGap="10%" fxFlex="30%">
-  
-        <button matTooltip="Exportar Fichas"  class="boton" mat-fab (click)="ExportarFichas()">
-          Exportar
-        </button>
-    
-        <input type="file"  matTooltip="Exportar Fichas"  class="boton" mat-fab (click)="ExportarFichas()">
-          Importar>
-  
-      </div>
-  
-      <div fxFlex="80%" fxLayout="row" fxLayoutGap="4%" >
-        <mat-form-field  matTooltip="Buscar Ficha por codigo">
-          <input matInput placeholder="Buscar" [formControl]="control">
-        </mat-form-field>
-  
-        <mat-form-field  matTooltip="Buscar ficha por programa de estudio">
-          <mat-label>Estado</mat-label>
-          <mat-select name="status" [formControl]="control">
-              <mat-option value="ACTIVO">Activo</mat-option>
-              <mat-option value="INACTIVO">Inactivo</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div-->
-  
-    <div fxLayout="column">
-      <div fxLayout="row" fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
-        <div matTooltip="Editar Ficha" fxLayout="column" class="card" *ngFor="let ficha of fichas[0]">
+    <div fxLayout="column" class="cuadros">
+      <div fxLayout="row" class="fichass" fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
+        <div fxLayout="column" class="card" *ngFor="let ficha of fichas[0]">
           <div>
-            <p class="centrado">{{ficha.code_ficha}}</p>
-            <hr>
             <img class="logo-sena" src="../../../../assets/img/senaverde.png" alt="">
-            <hr>
+            <hr class="colorhr">
+            <p class="centrado">Ficha: {{ficha.code_ficha}}</p>
+            <br>
             <p class="centrado nombre-programa">{{ficha.name_programa | titlecase}}</p>
           </div>
         </div>
