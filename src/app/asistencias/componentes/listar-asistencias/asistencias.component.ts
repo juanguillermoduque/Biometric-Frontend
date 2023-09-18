@@ -92,8 +92,13 @@ findAsistencias(query:string){
     )
   }
 
+  async eliminarAsistencia(idAsistencia:number){
+    await this.asistenciaService.deleteAsistencia(idAsistencia).toPromise();
+    this.getAsistencias();
+  }
+
   ExportarAsistencias(){
-    let asistencias = this.asistencias[0];
+    let asistencias = this.asistencias;
     for (let i =0; i< asistencias.length;i++){
       delete asistencias[i].id_horario;
       delete asistencias[i].id_asistencia;
@@ -102,5 +107,6 @@ findAsistencias(query:string){
 
     this.exportService.exportExcel(dataSourse.data,"asistencias")
   }
+
 }
 

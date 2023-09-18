@@ -10,7 +10,7 @@ export interface usuario{
     estado?: string;
     password?: string;
     photoURL?:Url,
-    biometric_date?: string;
+    biometric_date?: number;
     created_at?: string;
     updated_at?: string; 
 }

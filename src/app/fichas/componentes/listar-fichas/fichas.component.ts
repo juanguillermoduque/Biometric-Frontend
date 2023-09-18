@@ -100,21 +100,24 @@ export class FichasComponent implements OnInit {
     this.exportService.exportExcel(dataSourse.data,"fichas")
     
   }
+  async importarFichas(evt: any) {
+    try {
 
-  importarFichas(evt:any){
-    const target: DataTransfer = <DataTransfer>(evt.target);
-
-    if (target.files.length !== 1) {
-      Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
-      return;
-    }
-
-    this.importService.readExcel(target.files[0]).then(rows => {
+      const target: DataTransfer = <DataTransfer>(evt.target);
+  
+      if (target.files.length !== 1) {
+        Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
+        return;
+      }
+  
+      const rows = await this.importService.readExcel(target.files[0]);
       this.data = rows;
-      if((this.data[0][0] == 'code_ficha') && (this.data[0][1] == 'id_programa')){
-        for(let i = 1 ; i < this.data.length; i++){
-          if(!this.guardarFicha(this.data[i][0],this.data[i][1])){
-            Swal.fire('Error', 'Datos invalidos', 'error');
+      if (this.data[0][0] === 'code_ficha' && this.data[0][1] === 'id_programa') {
+        for (let i = 1; i < this.data.length; i++) {
+          const isSuccess = await this.guardarFicha(this.data[i][0], this.data[i][1]);
+          if (!isSuccess) {
+            Swal.fire('Error', 'Datos inválidos', 'error');
+            return;  // Si hay un error, sale del bucle y no continúa intentando guardar más fichas.
           }
         }
         Swal.fire({
@@ -123,45 +126,42 @@ export class FichasComponent implements OnInit {
           title: 'Importación Exitosa',
           showConfirmButton: true,
           timer: 1500
-        })
-      }else{
-        Swal.fire('Error', 'Datos invalidos', 'error');
+        });
+      } else {
+        Swal.fire('Error', 'Datos inválidos', 'error');
       }
-      console.log(this.data[0][0])
-    }).catch(error => {
-      Swal.fire('Error', error, 'error');
-    });
-
+    } catch{
+      Swal.fire('Error', 'error');
+    }
+  
     this.getFichas();
   }
-
-  guardarFicha(code_ficha:number,id_programa:string): boolean {
-
-    if (code_ficha == 0 || id_programa == ''){
-      Swal.fire(
-        {
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Hay campos sin completar',
-        }
-      )
+  
+  async guardarFicha(code_ficha: number, id_programa: string): Promise<boolean> {
+    if (code_ficha === 0 || id_programa === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay campos sin completar',
+      });
+      return false;
     }
-    else{
-      let ficha:ficha ={
-        code_ficha : code_ficha,
-        id_programa : id_programa
-      }
-
-      this.fichaService.saveFicha(ficha).subscribe(
-        res => {
-          return true;
-        },
-        err => {
-          console.error(err);
-          return false;
+  
+    const ficha: ficha = {
+      code_ficha: code_ficha,
+      id_programa: id_programa
+    };
+  
+    try {
+      await this.fichaService.saveFicha(ficha).subscribe(
+        (res)=>{
+          console.log(res)
         }
       );
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false;
     }
-    return false;
   }
 }

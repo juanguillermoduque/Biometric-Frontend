@@ -6,6 +6,7 @@ import { rol } from '../../../roles/roles';
 import { RolesService } from '../../../roles/roles.service';
 import { usuario_rol } from '../../../roles/usuario_rol';
 import Swal from 'sweetalert2'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({/* es un decorador que se utiliza para configurar las propiedades del componente "agregar-usuario"*/
@@ -15,6 +16,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AgregarUsuarioComponent implements OnInit { // llamado de componente AgregarUsuario implementando la interfaz OnInit
   
+  form: FormGroup;
+
   rolSeleccionado:rol ={
     id_rol : 0,
     nombre_rol : ''
@@ -29,12 +32,13 @@ export class AgregarUsuarioComponent implements OnInit { // llamado de component
     type_id: '',
     email:'',
     password: '',
-    biometric_date: '',
+    biometric_date: 0,
     created_at: '',
     updated_at: '',
 };
 constructor(private usuariosService:UsuariosService,
   private rolService:RolesService,
+  private fb: FormBuilder,
   public dialogRef: MatDialogRef<AgregarUsuarioComponent>){ // creación de constructor invocando el servicio de usuariosService que me trae información del backend
 
 }
@@ -45,12 +49,18 @@ constructor(private usuariosService:UsuariosService,
 
     }
     )
+
+    this.form = this.fb.group({
+      numberInput: [
+        '', 
+        [Validators.required, Validators.min(1), Validators.max(127)]
+      ]
+    });
   }
 
   guardarUsuario(){ // Método que me guardará un Usuario
     delete this.usuario.created_at;
     delete this.usuario.updated_at; // al usar el método usuario el valor de estos campos se eliminará
-    delete this.usuario.biometric_date;
 
       if (this.usuario.num_id == 0 || this.usuario.first_name == '' || this.usuario.last_name == '' || this.usuario.type_id == ''
       || this.usuario.email == '' || this.usuario.password == '' || this.rolSeleccionado.id_rol == 0) {
@@ -64,28 +74,68 @@ constructor(private usuariosService:UsuariosService,
         )
       }
       else{
-        this.usuario.first_name = this.usuario.first_name?.toLowerCase()
-        this.usuario.last_name = this.usuario.last_name?.toLowerCase()
-        this.usuario.email = this.usuario.email?.toLowerCase()
-        this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
-        .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
-      // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
-          res =>{
-            this.asignarRol();
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'El usuario fue agregado exitosamente',
-              showConfirmButton: true,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.dialogRef.close();
-              } 
-            });
-        
-          },
-          err => console.error(err) // de lo contrario saldrá un error
-      )
+        if(this.rolSeleccionado.nombre_rol == 'APRENDIZ' || this.rolSeleccionado.nombre_rol == 'APRENDIZ - INSTRUCTOR'){
+          if(this.usuario.biometric_date != undefined){
+            if((this.usuario.biometric_date > 0) && (this.usuario.biometric_date < 128)){
+              this.usuario.first_name = this.usuario.first_name?.toLowerCase()
+              this.usuario.last_name = this.usuario.last_name?.toLowerCase()
+              this.usuario.email = this.usuario.email?.toLowerCase()
+              this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
+              .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
+            // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
+                res =>{
+                  this.asignarRol();
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'El usuario fue agregado exitosamente',
+                    showConfirmButton: true,
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      this.dialogRef.close();
+                    } 
+                  });
+              
+                },
+                  err => console.error(
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      title: err,
+                      showConfirmButton: true,
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        this.dialogRef.close();
+                      } 
+                    })
+                  ) 
+                )
+              }
+            }
+        }else{
+          this.usuario.first_name = this.usuario.first_name?.toLowerCase()
+          this.usuario.last_name = this.usuario.last_name?.toLowerCase()
+          this.usuario.email = this.usuario.email?.toLowerCase()
+          this.usuariosService.saveUsuario(this.usuario) // el Método saveUsuario del servicio usuariosService se llama pasandole como argumento el objeto this.usuario
+          .subscribe( // utilizado para subscribirse a un flujo de eventos y recibir notificaciones de cuando ocurra un cambio
+        // este método se utiliza para suscribirse a un Observable, el cual puede recibirme la respuesta del servidor
+            res =>{
+              this.asignarRol();
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'El usuario fue agregado exitosamente',
+                showConfirmButton: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  this.dialogRef.close();
+                } 
+              });
+          
+            },
+            err => console.error(err) // de lo contrario saldrá un error
+        )
+          }
       }
   }
 
@@ -110,6 +160,10 @@ constructor(private usuariosService:UsuariosService,
         console.error(err);
       }
     )
+  }
+
+  get numberInput() {
+    return this.form.get('numberInput');
   }
 
 }

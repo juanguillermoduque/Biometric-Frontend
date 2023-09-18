@@ -44,11 +44,11 @@ export class CrearHorariosComponent implements OnInit{
   }
 
   agregarFicha (ficha:any){
-    this.fichaInstructor.id_ficha = ficha.id_ficha;
-    this.horario.id_ficha = ficha.id_ficha;
+    this.fichaInstructor.id_ficha = ficha.code_ficha;
+    this.horario.id_ficha = ficha.code_ficha;
   }
 
-  guardarHorario(){
+  async guardarHorario(){
 
     if (this.horario.id_instructor == 0 || this.horario.jornada == '' || this.horario.id_ficha == 0
     || this.horario.date_start == '' || this.horario.date_end == '' || this.selectedDates.length == 0){
@@ -62,16 +62,9 @@ export class CrearHorariosComponent implements OnInit{
       )
     }
     else{
-      for(let i = 0; i < this.selectedDates.length; i++){
-        this.horario.fecha = this.normalizarDate(this.selectedDates[i]);
-        this.horarioService.saveHorario(this.horario).subscribe(
-          res => {
-            this.rolesService.createFichaInstructor(this.fichaInstructor).subscribe(
-              
-            )
-          },
-          err => console.error(err)
-        )
+      for(const date of this.selectedDates){
+        this.horario.fecha = this.normalizarDate(date);
+        await this.horarioService.saveHorario(this.horario, this.fichaInstructor).toPromise();
       }
       Swal.fire({
         position: 'center',
@@ -84,7 +77,6 @@ export class CrearHorariosComponent implements OnInit{
         } 
       });
     }
-
   }
 
   normalizarDate(date:Date|null){
