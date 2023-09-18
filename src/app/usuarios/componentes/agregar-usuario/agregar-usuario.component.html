@@ -27,6 +27,20 @@
         <input class="input-numerico" type="number" name="number" [(ngModel)]="usuario.num_id" matInput placeholder="Numero de Documento">
       </mat-form-field>
 
+      <mat-form-field *ngIf="rolSeleccionado.nombre_rol == 'APRENDIZ' || rolSeleccionado.nombre_rol == 'APRENDIZ - INSTRUCTOR'" [formGroup]="form">
+        <mat-label> Número biometrico</mat-label>
+        <input formControlName="numberInput" class="input-numerico" type="number" name="number" [(ngModel)]="usuario.biometric_date" matInput placeholder="Numero de Biometrico">
+        <div *ngIf="numberInput?.errors">
+          <p *ngIf="numberInput && numberInput.errors && numberInput.errors['required']">Este campo es obligatorio.</p>
+
+          <p *ngIf="(numberInput && numberInput.errors && numberInput.errors['min']) || 
+                   (numberInput && numberInput.errors && numberInput.errors['max'])">
+              Por favor, introduce un número entre 1 y 127.
+          </p>
+        </div>
+      </mat-form-field>
+
+
     </div>
 
     <div fxLayout="column">

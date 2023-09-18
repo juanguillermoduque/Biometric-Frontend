@@ -27,12 +27,17 @@
 
   </div>
 
-  <div fxLayoutGap="25px" fxLayout="column">
+  <div fxLayoutGap="25px"  fxLayout="column">
     <p class="datos">Información de contacto</p>
-    <form fxLayout="row">
+    <form fxLayout="row" fxLayoutGap="4%">
       <mat-form-field fxFlex="30.5%">
         <mat-label>Correo electrónico</mat-label>
         <input matInput [value]="email" disabled>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="30.5%">
+        <mat-label>Numero Biometrico</mat-label>
+        <input matInput [value]="biometric_date" disabled>
       </mat-form-field>
     </form>
   </div>

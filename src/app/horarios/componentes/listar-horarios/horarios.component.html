@@ -10,7 +10,7 @@
 
     <div fxFlex="110%" fxLayout="row" fxLayoutGap="7%">
 
-      <mat-form-field>
+      <mat-form-field matTooltip="Bucar Horario Por fecha">
         <mat-label class="letra">Seleccionar fechas</mat-label>
         <input matInput [matDatepicker]="picker" (dateInput)="addEvent($event)" [formControl]="controlFecha" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

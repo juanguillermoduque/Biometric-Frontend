@@ -15,6 +15,7 @@ export class PerfilComponent implements OnInit {
   first_name: string = '';
   last_name: string = '';
   email: string = '';
+  biometric_date:number = 0;
 
   constructor(public dialog:MatDialog,
     
@@ -33,6 +34,7 @@ export class PerfilComponent implements OnInit {
     this.first_name = decode.data[0].first_name;
     this.last_name= decode.data[0].last_name;
     this.email = decode.data[0].email;
+    this.biometric_date = decode.data[0].biometric_date;
   }
 
   cambiarContrasena(){

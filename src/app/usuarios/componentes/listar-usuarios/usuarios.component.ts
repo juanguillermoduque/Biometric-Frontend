@@ -55,6 +55,7 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
       delete usuarios[i].password;
       delete usuarios[i].updated_at;
       delete usuarios[i].biometric_date;
+      delete usuarios[i].photoURL;
     }
     let dataSourse = new MatTableDataSource(usuarios)
 
@@ -138,100 +139,95 @@ export class UsuariosComponent implements OnInit  { // llamado de componente Usu
     })
 
   }
+  async importarUsuarios(evt: any) {
+    try {
+        const target: DataTransfer = <DataTransfer>(evt.target);
 
-  importarUsuarios(evt:any){
-    const target: DataTransfer = <DataTransfer>(evt.target);
-
-    if (target.files.length !== 1) {
-      Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
-      return;
-    }
-
-    this.importService.readExcel(target.files[0]).then(rows => {
-      this.data = rows;
-      debugger
-      if(
-        (this.data[0][0] == 'num_id') 
-      && (this.data[0][1] == 'first_name')  
-      && (this.data[0][2] == 'last_name') 
-      && (this.data[0][3] == 'type_id')
-      && (this.data[0][4] == 'email')  
-      && (this.data[0][5] == 'password') 
-      && (this.data[0][6] == 'rol_id')
-      ){
-        for(let i = 1 ; i < this.data.length; i++){
-          if(!this.guardarUsuario(this.data[i][0],this.data[i][1],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5],this.data[i][6])){
-            Swal.fire('Error', 'Datos invalidos', 'error');
-          }
+        if (target.files.length !== 1) {
+            Swal.fire('Error', 'No se puede usar múltiples archivos', 'error');
+            return;
         }
-        this.getUsuario();
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Importación Exitosa',
-          showConfirmButton: true,
-          timer: 1500
-        })
-        
-      }else{
-        Swal.fire('Error', 'Datos invalidos', 'error');
-      }
-      console.log(this.data[0][0])
-    }).catch(error => {
-      Swal.fire('Error', error, 'error');
-    });
 
-    
+        const rows = await this.importService.readExcel(target.files[0]);
+        this.data = rows;
+
+        const headers = ['num_id', 'first_name', 'last_name', 'type_id', 'email', 'password', 'rol_id'];
+        const isValidHeaders = headers.every((header, idx) => this.data[0][idx] === header);
+
+        if (isValidHeaders) {
+            for (let i = 1; i < this.data.length; i++) {
+                const isSuccess = await this.guardarUsuario(
+                    this.data[i][0], this.data[i][1], this.data[i][2], this.data[i][3],
+                    this.data[i][4], this.data[i][5], this.data[i][6]
+                );
+
+                if (!isSuccess) {
+                    Swal.fire('Error', 'Datos invalidos', 'error');
+                    return;  // Si hay un error, sale del bucle y no continúa intentando guardar más usuarios.
+                }
+            }
+
+            await this.getUsuario();
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Importación Exitosa',
+                showConfirmButton: true,
+                timer: 1500
+            });
+        } else {
+            Swal.fire('Error', 'Datos invalidos', 'error');
+        }
+    } catch (error) {
+        Swal.fire('Error', 'error');
+    }
   }
 
-  guardarUsuario(num_id:number,first_name:string,last_name:string,type_id:string,email:string,password:string,id_rol:number):boolean{
-    if (num_id == 0 || first_name == '' || last_name == '' || type_id == ''
-      || email == '' || password == '' || id_rol == 0) {
-        Swal.fire(
-          {
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Hay campos sin completar',
-          }
-        )
-        return false;
-      }
-      else{
-        let usuario : usuario = { 
-          num_id:num_id,
-          first_name:first_name,
-          last_name:last_name,
-          type_id: type_id,
-          email:email,
-          password: password
-      };console.log(usuario)
-        first_name = first_name?.toLowerCase()
-        last_name = last_name?.toLowerCase()
-        email = email?.toLowerCase()
-        this.usuariosService.saveUsuario(usuario)
-        .subscribe( 
-          res =>{
-            this.asignarRol(num_id,id_rol);
+
+  async guardarUsuario(num_id: number, first_name: string, last_name: string, type_id: string, email: string, password: string, id_rol: number): Promise<boolean> {
+    try {
+        if (num_id === 0 || !first_name || !last_name || !type_id || !email || !password || id_rol === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Hay campos sin completar',
+            });
+            return false;
+        } 
+
+        const usuario: usuario = { 
+            num_id: num_id,
+            first_name: first_name.toLowerCase(),
+            last_name: last_name.toLowerCase(),
+            type_id: type_id,
+            email: email.toLowerCase(),
+            password: password
+        };
+
+        const response = await this.usuariosService.saveUsuario(usuario).toPromise();
+        if (response) {
+            await this.asignarRol(num_id, id_rol);
             return true;
-          },
-          err => console.error(err) // de lo contrario saldrá un error
-      )
-      }
-      return false;
+        }
+
+        return false;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
   }
 
-  asignarRol(num_id:number,id_rol:number){
-    let ids:usuario_rol = {
-      id_usuario:num_id,
-      id_rol:id_rol
-    };
+  async asignarRol(num_id: number, id_rol: number): Promise<void> {
+      try {
+          const ids: usuario_rol = {
+              id_usuario: num_id,
+              id_rol: id_rol
+          };
 
-    this.rolService.saveUsuarioRol(ids).subscribe(
-      (res)=>{
-
-      },(err)=>{
-        console.error(err);
+          await this.rolService.saveUsuarioRol(ids).toPromise();
+      } catch (err) {
+          console.error(err);
       }
-    )
   }
 }

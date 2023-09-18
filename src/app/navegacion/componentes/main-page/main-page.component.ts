@@ -28,7 +28,9 @@ export class MainPageComponent {
 
   tok:any = localStorage.getItem('token')
   decode:any = jwtDecode(this.tok);
+  
   user = this.decode.data[0];
+  id = this.user.num_id;
 
   constructor(private router:Router, private dialog: MatDialog,
      private rolService:RolesService, private authService:AuthService, 
@@ -39,6 +41,14 @@ export class MainPageComponent {
 
   ngOnInit(): void {
     this.getRol();
+    this.getUser();
+  }
+  getUser(){
+    this.usuariosService.getUsuario(this.id).subscribe(
+      res=>{
+        this.user = res
+      }
+    )
   }
 
   getRol(){
@@ -125,7 +135,6 @@ export class MainPageComponent {
             title: 'La Foto fue agregada exitosamente',
             showConfirmButton: true,
           });
-          location.reload();
           this.usuariosService.updateUsuario(this.user.num_id,this.user).subscribe(
             ()=>{
   

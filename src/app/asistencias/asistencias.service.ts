@@ -46,5 +46,9 @@ export class AsistenciasService {
   search(asistenciasId:String){
     return this.http.get(`${this.API_URI}/filtros/searchAsistencia${asistenciasId}`);
   }
+
+  deleteAsistencia(asistenciasId:number){
+    return this.http.delete(`${this.API_URI}/asistencias/delete/${asistenciasId}`);
+  }
  
 }

@@ -28,9 +28,7 @@ export class FichasService {
   }
 
   saveFicha(ficha:ficha){
-    return this.http.post(`${this.API_URI}/fichas/`, ficha).pipe(
-      tap(() => this._refresh$.next())
-    );
+    return this.http.post(`${this.API_URI}/fichas/`, ficha);
   }
 
   updateFicha(id:number,ficha:ficha):Observable<ficha>{
