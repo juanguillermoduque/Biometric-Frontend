@@ -47,3 +47,39 @@
   justify-content: center;
   color: white;
 }
+
+@media (max-width:1245px){
+  .cuadro-login {
+    margin-top: 57px;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width:1173px){
+  .cuadro-login {
+    margin-top: 57px;
+    margin-left: 20px;
+  }
+}
+
+
+@media (max-width:1131px){
+  .cuadro-login {
+    margin-top: 57px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width:1131px){
+  .contenedor-imagen-login {
+    margin-top: 3%;
+    margin-left: 2%;
+    width: 90%;
+    border: 1px solid #DDDDDD;
+  }
+
+  .cuadro-login {
+    margin-top: 57px;
+    margin-left: 20px;
+  }
+}
